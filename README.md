@@ -145,7 +145,7 @@ This project is licensed under the [MIT License](./LICENSE).
 
 For queries or discussions:
 
-* Join our Discord community (link to be added)
+* Contact me on LinkedIn (https://www.linkedin.com/in/lovely-mahour-992316265/)
 * Follow project updates in Issues and Discussions tab
 
 Let's build a student-friendly platform together! 🚀
