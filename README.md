@@ -65,52 +65,31 @@ Click on the **Fork** button on the top-right corner of this page to create your
 ```bash
 git clone https://github.com/your-username/StudyMatePlus.git
 cd StudyMatePlus
-3. Install Dependencies
-bash
-Copy
-Edit
+---
+---
+
+## 🧑‍💻 How to Contribute
+
+We welcome contributors of **all experience levels**, especially **beginners** participating through **GirlScript Summer of Code (GSSoC) 2025** and beyond.
+
+Follow the steps below to begin your contribution journey:
+
+---
+
+### 📄 Step 1: Read the Guidelines
+
+- 📘 Read our [README.md](./README.md)
+- 📚 Go through the [CONTRIBUTING.md](./CONTRIBUTING.md)
+- 🤝 Understand our [Code of Conduct](./CODE_OF_CONDUCT.md)
+
+---
+
+### 🛠️ Step 2: Set Up the Project Locally
+
+#### 🔧 Install Dependencies
+
+```bash
 npm install
 cd client
 npm install
-4. Run the Application Locally
-bash
-Copy
-Edit
-npm run dev
-🧑‍💻 How to Contribute
-We welcome contributors of all levels, especially beginners. Start by:
 
-Reading the CONTRIBUTING.md
-
-Exploring issues labeled good first issue
-
-Submitting your first Pull Request (PR)
-
-Following our Code of Conduct
-
-👥 Community Support
-We will maintain an active community on Discord or Gitter (Link will be added soon) where you can:
-
-Ask doubts
-
-Join onboarding sessions
-
-Receive guidance from project admins and mentors
-
-✅ First-Time Contributor Checklist
- Fork & clone the repository
-
- Read README.md and CONTRIBUTING.md
-
- Set up the project locally
-
- Pick a good first issue
-
- Make your changes and open a Pull Request
-
-📄 License
-This project is licensed under the MIT License.
-
-🙌 Acknowledgements
-This project is a part of GirlScript Summer of Code 2025.
-Maintained with 💙 by Lovely Mahour and the StudyMatePlus community.
