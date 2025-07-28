@@ -31,9 +31,9 @@ Click the **Fork** button in the top-right corner to create your own copy.
 ```bash
 git clone https://github.com/your-username/StudyMatePlus.git
 cd StudyMatePlus
-
-3. Create a Branch
-
+```
+### 3. Create a Branch
+```bash
 git checkout -b your-feature-name
 
 4. Make Changes
@@ -73,13 +73,9 @@ Write or enhance documentation
 
 🧑‍🎓 Beginner-Friendly Guide
 First time contributing to open source? Don’t worry:
-
 Look for issues labeled good first issue
-
 Ask questions in the issue comments
-
 Mention what you want to work on
-
 We’ll guide you through it!
 
 ✅ Code Guidelines
