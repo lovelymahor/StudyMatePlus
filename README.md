@@ -1,5 +1,7 @@
 # 📘 StudyMatePlus
 
+🔗 **Live Website**: [https://studymateplus.vercel.app](https://studymateplus.vercel.app)
+
 **StudyMatePlus** is an open-source platform designed to help college students access academic resources such as **syllabus**, **previous year question papers (PYQs)**, and **exam feedback**, along with an option to connect with **seniors** for guidance.
 The goal is to support students during exam preparation by providing a centralized, reliable, and user-friendly resource hub.
 
