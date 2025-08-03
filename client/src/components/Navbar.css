@@ -1,0 +1,171 @@
+/* Navbar.css - StudyMatePlus (Refined Design) */
+
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0.75rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #2d3748;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #4c51bf;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-link {
+  color: #4a5568;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar-link:hover,
+.navbar-link:focus {
+  background-color: #edf2f7;
+  color: #2d3748;
+}
+
+/* Mobile toggle button */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #4a5568;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggle:hover {
+  background-color: #e2e8f0;
+}
+
+/* Mobile menu */
+.navbar-menu-mobile {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-menu-mobile.active {
+  display: block;
+  animation: slideDown 0.25s ease;
+}
+
+.navbar-links-mobile {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.5rem;
+  list-style: none;
+  margin: 0;
+}
+
+.navbar-link-mobile {
+  padding: 0.75rem 1rem;
+  color: #4a5568;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.navbar-link-mobile:hover {
+  background-color: #edf2f7;
+  transform: translateX(4px);
+}
+
+/* Active states */
+.navbar-link.active,
+.navbar-link-mobile.active {
+  font-weight: 600;
+  background-color: #e9effc;
+  color: #2b6cb0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.4rem;
+  }
+}
+
+/* Animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility */
+.navbar-link:focus,
+.navbar-link-mobile:focus,
+.navbar-toggle:focus {
+  outline: 2px solid #cbd5e0;
+  outline-offset: 2px;
+}
+
+@media print {
+  .navbar {
+    display: none;
+  }
+}
