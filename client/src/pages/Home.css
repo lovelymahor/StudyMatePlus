@@ -333,6 +333,35 @@
   line-height: 1.6;
 }
 
+/* Testimonial Section */
+.testimonials {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.testimonial-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 20px;
+  max-width: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  font-style: italic;
+}
+.testimonial-card h4 {
+  margin-top: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  color: #444;
+}
+
 /* CTA Section */
 .cta {
   padding: 6rem 0;
@@ -359,6 +388,44 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+/* Contributors Section */
+
+.contributors {
+  padding: 60px 0;
+  background: #f1f1f1;
+  text-align: center;
+}
+
+.contributors-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.contributor-card {
+  text-decoration: none;
+  color: #333;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contributor-card img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+}
+
+.contributor-card p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
 
 /* Footer */
 .footer {
