@@ -19,6 +19,7 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <ul className="navbar-links">
           <li><Link to="/" className="navbar-link">Home</Link></li>
+          <li><Link to="/about" className='navbar-link'>About Us</Link></li>
           <li><Link to="/syllabus" className="navbar-link">Syllabus</Link></li>
           <li><Link to="/pyqs" className="navbar-link">PYQs</Link></li>
           <li><Link to="/feedback" className="navbar-link">Feedback</Link></li>
@@ -37,6 +38,7 @@ const Navbar = () => {
           <li><Link to="/syllabus" className="navbar-link-mobile" onClick={toggleMobileMenu}>Syllabus</Link></li>
           <li><Link to="/pyqs" className="navbar-link-mobile" onClick={toggleMobileMenu}>PYQs</Link></li>
           <li><Link to="/feedback" className="navbar-link-mobile" onClick={toggleMobileMenu}>Feedback</Link></li>
+          <li><Link to="/about" className='navbar-link-mobile' onClick={toggleMobileMenu}>About Us</Link></li>
         </ul>
       </div>
     </nav>
