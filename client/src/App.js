@@ -7,6 +7,7 @@ import PYQs from './pages/PYQs';
 import Feedback from './pages/Feedback';
 import About from './pages/About';
 import Privacy from './pages/Privacy';
+import Analytics from './pages/Analytics';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/syllabus" element={<Syllabus />} />
           <Route path="/pyqs" element={<PYQs />} />
+          <Route path="/analytics" element={<Analytics/>} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<Privacy />} />
