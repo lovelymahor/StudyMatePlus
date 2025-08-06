@@ -6,6 +6,7 @@ import Syllabus from './pages/Syllabus';
 import PYQs from './pages/PYQs';
 import Feedback from './pages/Feedback';
 import About from './pages/About';
+import Privacy from './pages/Privacy';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/pyqs" element={<PYQs />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/about" element={<About />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Routes>
       </div>
     </Router>

@@ -1,4 +1,4 @@
-/* Home.css - StudyMatePlus */
+/* Home.css - StudyMatePlus - Enhanced Mobile Responsive */
 
 * {
   margin: 0;
@@ -355,6 +355,7 @@
   border-radius: 10px;
   font-style: italic;
 }
+
 .testimonial-card h4 {
   margin-top: 1rem;
   font-style: normal;
@@ -390,7 +391,6 @@
 }
 
 /* Contributors Section */
-
 .contributors {
   padding: 60px 0;
   background: #f1f1f1;
@@ -412,6 +412,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.contributor-card:hover {
+  transform: scale(1.05);
 }
 
 .contributor-card img {
@@ -425,7 +430,6 @@
   margin-top: 0.5rem;
   font-size: 0.9rem;
 }
-
 
 /* Footer */
 .footer {
@@ -482,20 +486,55 @@
   opacity: 0.8;
 }
 
-/* Responsive Design */
+/* Enhanced Responsive Design */
+
+/* Large tablets and small desktops */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .hero-container {
+    gap: 3rem;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .steps-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+}
+
+/* Tablets */
 @media (max-width: 768px) {
   .hero-container {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
+    padding: 0 1rem;
+  }
+  
+  .hero {
+    min-height: 85vh;
+    padding: 2rem 0;
   }
   
   .hero-title {
     font-size: 2.5rem;
+    margin-bottom: 1rem;
   }
   
   .hero-subtitle {
     font-size: 1.1rem;
+    margin-bottom: 2rem;
   }
   
   .hero-image {
@@ -508,6 +547,11 @@
   
   .section-title {
     font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .features {
+    padding: 4rem 0;
   }
   
   .feature-card {
@@ -516,6 +560,15 @@
   
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .stats {
+    padding: 3rem 0;
+  }
+  
+  .how-it-works {
+    padding: 4rem 0;
   }
   
   .steps-grid {
@@ -523,17 +576,58 @@
     gap: 2rem;
   }
   
+  .testimonials {
+    padding: 4rem 0;
+  }
+  
+  .testimonial-grid {
+    gap: 1.5rem;
+  }
+  
+  .testimonial-card {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  .cta {
+    padding: 4rem 0;
+  }
+  
+  .cta-content h2 {
+    font-size: 2.2rem;
+  }
+  
+  .cta-content p {
+    font-size: 1.1rem;
+  }
+  
+  .contributors {
+    padding: 4rem 0;
+  }
+  
+  .contributors-grid {
+    gap: 1rem;
+  }
+  
   .hero-buttons,
   .cta-buttons {
     flex-direction: column;
     align-items: center;
+    gap: 0.75rem;
   }
   
   .btn {
     min-width: 200px;
+    padding: 0.875rem 1.5rem;
+  }
+  
+  .footer-content {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
   }
 }
 
+/* Mobile phones */
 @media (max-width: 480px) {
   .container {
     padding: 0 1rem;
@@ -541,29 +635,180 @@
   
   .hero {
     min-height: 80vh;
+    padding: 1.5rem 0;
+  }
+  
+  .hero-container {
+    padding: 0 1rem;
   }
   
   .hero-title {
     font-size: 2rem;
+    line-height: 1.1;
   }
   
   .hero-subtitle {
     font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .features {
+    padding: 3rem 0;
   }
   
   .feature-card {
     padding: 1.5rem;
+    margin: 0 0.5rem;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .stats {
+    padding: 2.5rem 0;
   }
   
   .stat-number {
     font-size: 2.5rem;
   }
   
+  .stat-label {
+    font-size: 1rem;
+  }
+  
   .stats-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .how-it-works {
+    padding: 3rem 0;
+  }
+  
+  .step-number {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .step h3 {
+    font-size: 1.3rem;
+  }
+  
+  .testimonials {
+    padding: 3rem 0;
+  }
+  
+  .testimonial-card {
+    max-width: 100%;
+    padding: 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .cta {
+    padding: 3rem 0;
   }
   
   .cta-content h2 {
     font-size: 2rem;
+  }
+  
+  .cta-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contributors {
+    padding: 3rem 0;
+  }
+  
+  .contributor-card {
+    width: 80px;
+  }
+  
+  .contributor-card img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .contributor-card p {
+    font-size: 0.8rem;
+  }
+  
+  .btn {
+    min-width: 180px;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+  
+  .footer {
+    padding: 2rem 0 1rem;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.3rem;
+  }
+  
+  .footer-section h4 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .feature-card {
+    padding: 1.25rem;
+    margin: 0 0.25rem;
+  }
+  
+  .btn {
+    min-width: 160px;
+    padding: 0.625rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .stats-grid .stat-item {
+    padding: 0.5rem;
+  }
+  
+  .testimonial-card {
+    padding: 1.25rem;
+  }
+  
+  .contributors-grid {
+    gap: 0.75rem;
   }
 }
