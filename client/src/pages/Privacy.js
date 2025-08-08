@@ -316,7 +316,7 @@ const Privacy = () => {
                 </div>
               </div>
 
-              <div className="contact-info">
+              <div className="privacy-contact-info">
                 <h3>Exercise Your Rights</h3>
                 <p>To exercise any of these rights, contact our support team:</p>
                 <div className="contact-methods">

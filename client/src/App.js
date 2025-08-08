@@ -7,6 +7,7 @@ import PYQs from './pages/PYQs';
 import Feedback from './pages/Feedback';
 import About from './pages/About';
 import Privacy from './pages/Privacy';
+import Contact from './pages/Contact';
 import Analytics from './pages/Analytics';
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
     </Router>
