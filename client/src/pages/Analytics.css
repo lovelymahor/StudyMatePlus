@@ -1,0 +1,238 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home {
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><pattern id='grid' width='10' height='10' patternUnits='userSpaceOnUse'><path d='M 10 0 L 0 0 0 10' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='0.5'/></pattern></defs><rect width='100' height='100' fill='url(%23grid)'/></svg>");
+  opacity: 0.3;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  color: white;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.brand-highlight {
+  background: linear-gradient(45deg, #ffd700, #ffed4a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.analytics-section {
+  padding: 4rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  background-color: #f9f9f9;
+}
+
+.chart-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 500px;
+}
+
+.chart-container h2 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #333;
+  text-align: center;
+}
+select {
+  border: 2px solid #667eea;
+  border-radius: 6px;
+  background-color: white;
+  color: #333;
+}
+
+button:hover {
+  background-color: #5a3e91;
+}
+.insights-section, .filter-section, .download-section {
+  margin-top: 3rem;
+  padding: 1rem 2rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.insights-section h2,
+.filter-section h2 {
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.insights-section ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.filter-section select {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.download-btn {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  background-color: #ffd700;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #ffc400;
+}
+/* Section Wrappers */
+.insights-section,
+.filter-section,
+.download-section {
+  margin-top: 3rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #fefcea, #dfeaf7);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.insights-section:hover,
+.filter-section:hover,
+.download-section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Headings */
+.insights-section h2,
+.filter-section h2 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-left: 6px solid #ffda00;
+  padding-left: 12px;
+}
+
+/* Insights List */
+.insights-section ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.insights-section ul li {
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.insights-section ul li::before {
+  content: "⭐";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Filter Dropdown */
+.filter-section select {
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  background-color: #fff8d6;
+  border: 1px solid #e0c000;
+  border-radius: 8px;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.filter-section select:focus {
+  border-color: #c9a900;
+}
+
+/* Download Button */
+.download-btn {
+  display: inline-block;
+  margin-top: 1.2rem;
+  padding: 0.9rem 1.8rem;
+  font-size: 1.1rem;
+  background: linear-gradient(to right, #ffd700, #ffb300);
+  color: #222;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.download-btn:hover {
+  background: linear-gradient(to right, #ffc400, #ffa000);
+  transform: scale(1.03);
+}
