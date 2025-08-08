@@ -1,33 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import "./PYQs.css";
 
 const PYQs = () => {
   const [selectedUniversity, setSelectedUniversity] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("");
-  const [selectedSubject, setSelectedSubject] = useState("");
   const [selectedSemester, setSelectedSemester] = useState("");
+  const [selectedSubject, setSelectedSubject] = useState("");
 
   const universities = ["Select University", "LPU", "DU", "JNU"];
-  const departments = ["Select Department", "Engineering", "Science", "Arts"];
-  const semesters = [
-    "Select Semester",
-    "1st",
-    "2nd",
-    "3rd",
-    "4th",
-    "5th",
-    "6th",
-    "7th",
-    "8th",
-  ];
-  const subjects = [
-    "Select Subject",
-    "Mathematics",
-    "Physics",
-    "Computer Science",
-  ];
-
-  // Sample papers data
+  
+  // Sample papers data (remains the same)
   const samplePapers = [
     {
       id: 1,
@@ -67,6 +49,34 @@ const PYQs = () => {
     },
   ];
 
+  // Memoized lists of available options based on selections
+  const availableDepartments = useMemo(() => {
+    if (!selectedUniversity) return [];
+    return [...new Set(
+      samplePapers
+        .filter(paper => paper.university === selectedUniversity)
+        .map(paper => paper.department)
+    )];
+  }, [selectedUniversity]);
+
+  const availableSemesters = useMemo(() => {
+    if (!selectedUniversity || !selectedDepartment) return [];
+    return [...new Set(
+      samplePapers
+        .filter(paper => paper.university === selectedUniversity && paper.department === selectedDepartment)
+        .map(paper => paper.semester)
+    )];
+  }, [selectedUniversity, selectedDepartment]);
+
+  const availableSubjects = useMemo(() => {
+    if (!selectedUniversity || !selectedDepartment || !selectedSemester) return [];
+    return [...new Set(
+      samplePapers
+        .filter(paper => paper.university === selectedUniversity && paper.department === selectedDepartment && paper.semester === selectedSemester)
+        .map(paper => paper.subject)
+    )];
+  }, [selectedUniversity, selectedDepartment, selectedSemester]);
+
   // Filter papers based on selected options
   const filteredPapers = samplePapers.filter(
     (paper) =>
@@ -78,7 +88,6 @@ const PYQs = () => {
 
   return (
     <div className="pyqs-page">
-      {/* Hero Section */}
       <section className="pyqs-hero">
         <div className="container">
           <div className="pyqs-hero-content">
@@ -87,84 +96,86 @@ const PYQs = () => {
         </div>
       </section>
 
-      {/* Selection Section */}
       <section className="pyqs-selection">
         <div className="container">
           <div className="pyqs-form">
-            {/* University */}
+            {/* University Dropdown */}
             <div className="form-group">
               <label htmlFor="university">University</label>
               <select
                 id="university"
                 value={selectedUniversity}
-                onChange={(e) => setSelectedUniversity(e.target.value)}
+                onChange={(e) => {
+                  setSelectedUniversity(e.target.value);
+                  setSelectedDepartment("");
+                  setSelectedSemester("");
+                  setSelectedSubject("");
+                }}
               >
-                {universities.map((uni, idx) => (
-                  <option
-                    key={idx}
-                    value={idx !== 0 ? uni : ""}
-                    disabled={idx === 0}
-                  >
+                <option value="" disabled>Select University</option>
+                {universities.slice(1).map((uni, idx) => (
+                  <option key={idx} value={uni}>
                     {uni}
                   </option>
                 ))}
               </select>
             </div>
 
-            {/* Department */}
+            {/* Department Dropdown */}
             <div className="form-group">
               <label htmlFor="department">Department</label>
               <select
                 id="department"
                 value={selectedDepartment}
-                onChange={(e) => setSelectedDepartment(e.target.value)}
+                onChange={(e) => {
+                  setSelectedDepartment(e.target.value);
+                  setSelectedSemester("");
+                  setSelectedSubject("");
+                }}
+                disabled={!selectedUniversity}
               >
-                {departments.map((dept, idx) => (
-                  <option
-                    key={idx}
-                    value={idx !== 0 ? dept : ""}
-                    disabled={idx === 0}
-                  >
+                <option value="" disabled>Select Department</option>
+                {availableDepartments.map((dept, idx) => (
+                  <option key={idx} value={dept}>
                     {dept}
                   </option>
                 ))}
               </select>
             </div>
 
-            {/* Semester */}
+            {/* Semester Dropdown */}
             <div className="form-group">
               <label htmlFor="semester">Semester</label>
               <select
                 id="semester"
                 value={selectedSemester}
-                onChange={(e) => setSelectedSemester(e.target.value)}
+                onChange={(e) => {
+                  setSelectedSemester(e.target.value);
+                  setSelectedSubject("");
+                }}
+                disabled={!selectedUniversity || !selectedDepartment}
               >
-                {semesters.map((sem, idx) => (
-                  <option
-                    key={idx}
-                    value={idx !== 0 ? sem : ""}
-                    disabled={idx === 0}
-                  >
+                <option value="" disabled>Select Semester</option>
+                {availableSemesters.map((sem, idx) => (
+                  <option key={idx} value={sem}>
                     {sem}
                   </option>
                 ))}
               </select>
             </div>
 
-            {/* Subject */}
+            {/* Subject Dropdown */}
             <div className="form-group">
               <label htmlFor="subject">Subject</label>
               <select
                 id="subject"
                 value={selectedSubject}
                 onChange={(e) => setSelectedSubject(e.target.value)}
+                disabled={!selectedUniversity || !selectedDepartment || !selectedSemester}
               >
-                {subjects.map((subj, idx) => (
-                  <option
-                    key={idx}
-                    value={idx !== 0 ? subj : ""}
-                    disabled={idx === 0}
-                  >
+                <option value="" disabled>Select Subject</option>
+                {availableSubjects.map((subj, idx) => (
+                  <option key={idx} value={subj}>
                     {subj}
                   </option>
                 ))}
@@ -174,7 +185,7 @@ const PYQs = () => {
         </div>
       </section>
 
-      {/* Results Section */}
+      {/* Results Section (remains the same) */}
       <section className="pyqs-results">
         <div className="container">
           {selectedUniversity &&
