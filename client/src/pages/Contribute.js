@@ -265,7 +265,7 @@ const Contribute = () => {
               {[
                 { number: "7+", label: "Contributors" },
                 { number: "30+", label: "Commits" },
-                { number: "20+", label: "Universities" }
+                { number: "15+", label: "Universities" }
               ].map((stat, index) => (
                 <motion.div 
                   key={index}
