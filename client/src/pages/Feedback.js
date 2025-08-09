@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Feedback.css';
 
 const Feedback = () => {
@@ -140,69 +141,172 @@ const Feedback = () => {
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, index) => (
-      <span
+      <motion.span
         key={index}
         className={`star ${index < rating ? 'filled' : ''}`}
+        initial={{ scale: 0, rotate: -180 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ delay: index * 0.1, type: "spring", stiffness: 300 }}
       >
         ★
-      </span>
+      </motion.span>
     ));
+  };
+
+  // Animation variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const staggerChildren = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
+  const cardHover = {
+    rest: { 
+      scale: 1,
+      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
+    },
+    hover: { 
+      scale: 1.02,
+      boxShadow: "0 20px 40px rgba(0, 0, 0, 0.15)",
+      transition: { duration: 0.3 }
+    }
   };
 
   return (
     <div className="feedback">
       {/* Hero Section */}
-      <section className="feedback-hero">
+      <motion.section 
+        className="feedback-hero"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="container">
-          <div className="feedback-hero-content">
-            <h1>🗣️ Student Feedback</h1>
-            <p className="hero-subtitle">
+          <motion.div 
+            className="feedback-hero-content"
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              🗣️ Student Feedback
+            </motion.h1>
+            <motion.p 
+              className="hero-subtitle"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
               Real experiences from students who have taken the exams. Get insights into 
               difficulty levels, important topics, exam patterns, and preparation strategies.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Stats Section */}
-      <section className="feedback-stats">
+      <motion.section 
+        className="feedback-stats"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.6 }}
+      >
         <div className="container">
-          <div className="stats-grid">
-            <div className="stat-item">
-              <div className="stat-icon">📊</div>
-              <div className="stat-number">500+</div>
-              <div className="stat-label">Student Reviews</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-icon">🎓</div>
-              <div className="stat-number">50+</div>
-              <div className="stat-label">Subjects Covered</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-icon">🏛️</div>
-              <div className="stat-number">15+</div>
-              <div className="stat-label">Universities</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-icon">⭐</div>
-              <div className="stat-number">4.2</div>
-              <div className="stat-label">Avg. Helpfulness</div>
-            </div>
-          </div>
+          <motion.div 
+            className="stats-grid"
+            variants={staggerChildren}
+            initial="hidden"
+            animate="visible"
+          >
+            {[
+              { icon: "📊", number: "500+", label: "Student Reviews" },
+              { icon: "🎓", number: "50+", label: "Subjects Covered" },
+              { icon: "🏛️", number: "15+", label: "Universities" },
+              { icon: "⭐", number: "4.2", label: "Avg. Helpfulness" }
+            ].map((stat, index) => (
+              <motion.div 
+                key={index}
+                className="stat-item"
+                variants={scaleIn}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <motion.div 
+                  className="stat-icon"
+                  initial={{ rotate: -10 }}
+                  animate={{ rotate: 0 }}
+                  transition={{ delay: index * 0.1 + 0.8, type: "spring" }}
+                >
+                  {stat.icon}
+                </motion.div>
+                <motion.div 
+                  className="stat-number"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: index * 0.1 + 1, type: "spring", stiffness: 300 }}
+                >
+                  {stat.number}
+                </motion.div>
+                <div className="stat-label">{stat.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Filters Section */}
-      <section className="feedback-filters">
+      <motion.section 
+        className="feedback-filters"
+        variants={fadeInUp}
+        initial="hidden"
+        animate="visible"
+        transition={{ delay: 1.2 }}
+      >
         <div className="container">
-          <div className="filters-wrapper">
-            <div className="filter-group">
+          <motion.div 
+            className="filters-wrapper"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.4, duration: 0.5 }}
+          >
+            <motion.div 
+              className="filter-group"
+              whileHover={{ scale: 1.02 }}
+            >
               <label htmlFor="difficulty-filter">Filter by Difficulty:</label>
-              <select 
+              <motion.select 
                 id="difficulty-filter"
                 value={selectedFilter} 
                 onChange={(e) => setSelectedFilter(e.target.value)}
                 className="filter-select"
+                whileFocus={{ scale: 1.02 }}
               >
                 <option value="all">All Difficulties</option>
                 {difficulties.slice(1).map(difficulty => (
@@ -210,16 +314,20 @@ const Feedback = () => {
                     {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
                   </option>
                 ))}
-              </select>
-            </div>
+              </motion.select>
+            </motion.div>
             
-            <div className="filter-group">
+            <motion.div 
+              className="filter-group"
+              whileHover={{ scale: 1.02 }}
+            >
               <label htmlFor="university-filter">Filter by University:</label>
-              <select 
+              <motion.select 
                 id="university-filter"
                 value={selectedUniversity} 
                 onChange={(e) => setSelectedUniversity(e.target.value)}
                 className="filter-select"
+                whileFocus={{ scale: 1.02 }}
               >
                 <option value="all">All Universities</option>
                 {universities.slice(1).map(university => (
@@ -227,110 +335,218 @@ const Feedback = () => {
                     {university}
                   </option>
                 ))}
-              </select>
-            </div>
-          </div>
+              </motion.select>
+            </motion.div>
+          </motion.div>
           
-          <div className="results-count">
+          <motion.div 
+            className="results-count"
+            key={filteredFeedback.length}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+          >
             Showing {filteredFeedback.length} feedback{filteredFeedback.length !== 1 ? 's' : ''}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Feedback Cards */}
-      <section className="feedback-content">
+      <motion.section className="feedback-content">
         <div className="container">
-          <div className="feedback-grid">
-            {filteredFeedback.map(feedback => (
-              <div key={feedback.id} className="feedback-card">
-                <div className="feedback-header">
-                  <div className="student-info">
-                    <h3 className="student-name">{feedback.studentName}</h3>
-                    <div className="student-details">
-                      <span className="university">{feedback.university}</span>
-                      <span className="separator">•</span>
-                      <span className="department">{feedback.department}</span>
-                    </div>
-                  </div>
-                  <div className="feedback-rating">
-                    <div className="stars">
-                      {renderStars(feedback.rating)}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="subject-info">
-                  <h4 className="subject-name">{feedback.subject}</h4>
-                  <div className="subject-details">
-                    <span className="semester">{feedback.semester}</span>
-                    <span className="separator">•</span>
-                    <span className="exam-date">{feedback.examDate}</span>
-                  </div>
-                </div>
-
-                <div className="difficulty-badge">
-                  <span 
-                    className="difficulty-indicator"
-                    style={{ backgroundColor: getDifficultyColor(feedback.difficulty) }}
+          <AnimatePresence>
+            <motion.div 
+              className="feedback-grid"
+              layout
+              variants={staggerChildren}
+              initial="hidden"
+              animate="visible"
+            >
+              {filteredFeedback.map((feedback, index) => (
+                <motion.div
+                  key={feedback.id}
+                  className="feedback-card"
+                  layout
+                  variants={cardHover}
+                  initial="rest"
+                  whileHover="hover"
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    transition: { delay: index * 0.1, duration: 0.5 }
+                  }}
+                  exit={{
+                    opacity: 0,
+                    scale: 0.8,
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  <motion.div 
+                    className="feedback-header"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 + 0.2 }}
                   >
-                    {getDifficultyIcon(feedback.difficulty)} {feedback.difficulty.toUpperCase()}
-                  </span>
-                  <span className="prep-time">📅 {feedback.preparationTime}</span>
-                </div>
-
-                <div className="feedback-details">
-                  <div className="detail-section">
-                    <h5>🎯 Important Topics</h5>
-                    <div className="topics-list">
-                      {feedback.importantTopics.map((topic, index) => (
-                        <span key={index} className="topic-tag">{topic}</span>
-                      ))}
+                    <div className="student-info">
+                      <motion.h3 
+                        className="student-name"
+                        whileHover={{ color: "#3b82f6" }}
+                      >
+                        {feedback.studentName}
+                      </motion.h3>
+                      <div className="student-details">
+                        <span className="university">{feedback.university}</span>
+                        <span className="separator">•</span>
+                        <span className="department">{feedback.department}</span>
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="detail-section">
-                    <h5>📝 Exam Pattern</h5>
-                    <p className="exam-pattern">{feedback.examPattern}</p>
-                  </div>
-
-                  <div className="detail-section">
-                    <h5>💡 Study Tips</h5>
-                    <p className="study-tips">{feedback.tips}</p>
-                  </div>
-
-                  <div className="detail-section">
-                    <h5>⏰ Time Management</h5>
-                    <p className="time-management">{feedback.timeManagement}</p>
-                  </div>
-
-                  <div className="detail-section">
-                    <h5>📚 Resources Used</h5>
-                    <div className="resources-list">
-                      {feedback.resources.map((resource, index) => (
-                        <span key={index} className="resource-tag">{resource}</span>
-                      ))}
+                    <div className="feedback-rating">
+                      <div className="stars">
+                        {renderStars(feedback.rating)}
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                  </motion.div>
+
+                  <motion.div 
+                    className="subject-info"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: index * 0.1 + 0.3 }}
+                  >
+                    <h4 className="subject-name">{feedback.subject}</h4>
+                    <div className="subject-details">
+                      <span className="semester">{feedback.semester}</span>
+                      <span className="separator">•</span>
+                      <span className="exam-date">{feedback.examDate}</span>
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    className="difficulty-badge"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 + 0.4 }}
+                  >
+                    <motion.span 
+                      className="difficulty-indicator"
+                      style={{ backgroundColor: getDifficultyColor(feedback.difficulty) }}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      {getDifficultyIcon(feedback.difficulty)} {feedback.difficulty.toUpperCase()}
+                    </motion.span>
+                    <span className="prep-time">📅 {feedback.preparationTime}</span>
+                  </motion.div>
+
+                  <motion.div 
+                    className="feedback-details"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: index * 0.1 + 0.5 }}
+                  >
+                    <div className="detail-section">
+                      <h5>🎯 Important Topics</h5>
+                      <div className="topics-list">
+                        {feedback.importantTopics.map((topic, topicIndex) => (
+                          <motion.span 
+                            key={topicIndex} 
+                            className="topic-tag"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: index * 0.1 + topicIndex * 0.05 + 0.6 }}
+                            whileHover={{ scale: 1.05, backgroundColor: "#e0f2fe" }}
+                          >
+                            {topic}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="detail-section">
+                      <h5>📝 Exam Pattern</h5>
+                      <p className="exam-pattern">{feedback.examPattern}</p>
+                    </div>
+
+                    <div className="detail-section">
+                      <h5>💡 Study Tips</h5>
+                      <p className="study-tips">{feedback.tips}</p>
+                    </div>
+
+                    <div className="detail-section">
+                      <h5>⏰ Time Management</h5>
+                      <p className="time-management">{feedback.timeManagement}</p>
+                    </div>
+
+                    <div className="detail-section">
+                      <h5>📚 Resources Used</h5>
+                      <div className="resources-list">
+                        {feedback.resources.map((resource, resourceIndex) => (
+                          <motion.span 
+                            key={resourceIndex} 
+                            className="resource-tag"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.1 + resourceIndex * 0.05 + 0.8 }}
+                            whileHover={{ scale: 1.05, backgroundColor: "#f0f9ff" }}
+                          >
+                            {resource}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA Section */}
-      <section className="feedback-cta">
+      <motion.section 
+        className="feedback-cta"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.6 }}
+      >
         <div className="container">
-          <div className="cta-content">
-            <h2>Share Your Experience</h2>
-            <p>
+          <motion.div 
+            className="cta-content"
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1.7 }}
+          >
+            <motion.h2
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.8, duration: 0.5 }}
+            >
+              Share Your Experience
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2, duration: 0.5 }}
+            >
               Help fellow students by sharing your exam experience and study tips. 
               Your feedback could be the key to someone's success!
-            </p>
-            <button className="btn btn-primary">Submit Your Feedback</button>
-          </div>
+            </motion.p>
+            <motion.button 
+              className="btn btn-primary"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 2.2, type: "spring", stiffness: 300 }}
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)"
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Submit Your Feedback
+            </motion.button>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
