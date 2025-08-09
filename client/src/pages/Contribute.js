@@ -263,9 +263,9 @@ const Contribute = () => {
               animate="visible"
             >
               {[
-                { number: "150+", label: "Contributors" },
-                { number: "2.5k+", label: "Commits" },
-                { number: "50+", label: "Universities" }
+                { number: "7+", label: "Contributors" },
+                { number: "30+", label: "Commits" },
+                { number: "20+", label: "Universities" }
               ].map((stat, index) => (
                 <motion.div 
                   key={index}
