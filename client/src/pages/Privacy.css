@@ -466,21 +466,21 @@
 }
 
 /* Contact Info */
-.contact-info {
+.privacy-contact-info {
   background: #f8fafc;
   padding: 2.5rem;
   border-radius: 15px;
   margin: 2rem 0;
 }
 
-.contact-info h3 {
+.privacy-contact-info h3 {
   font-size: 1.4rem;
   font-weight: 600;
   color: #333;
   margin-bottom: 1rem;
 }
 
-.contact-info p {
+.privacy-contact-info p {
   color: #666;
   margin-bottom: 1.5rem;
 }
