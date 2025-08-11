@@ -10,6 +10,7 @@ import About from './pages/About';
 import Privacy from './pages/Privacy';
 import Contact from './pages/Contact';
 import Analytics from './pages/Analytics';
+import Contribute from './pages/Contribute';
 
 const App = () => {
   return (
@@ -24,7 +25,8 @@ const App = () => {
           <Route path="/analytics" element={<Analytics/>} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/about" element={<About />} />
-          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/privacy" element={<Privacy />} 
+          <Route path="/contribute" element={<Contribute />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
