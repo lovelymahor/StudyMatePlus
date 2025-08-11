@@ -101,6 +101,7 @@ const Notes = () => {
   const [selectedUniversity, setSelectedUniversity] = useState('All');
   const [selectedDepartment, setSelectedDepartment] = useState('All');
   const [selectedSemester, setSelectedSemester] = useState('All');
+  const [selectedSubject, setSelectedSubject] = useState('All'); // New state for Subject Filter
   const [sortBy, setSortBy] = useState('downloads');
   const [previewUrl, setPreviewUrl] = useState(null);
 
@@ -117,6 +118,7 @@ const Notes = () => {
   const universities = ['All', ...new Set(notesData.map(item => item.university))];
   const departments = ['All', ...new Set(notesData.map(item => item.department))];
   const semesters = ['All', ...new Set(notesData.map(item => item.semester))];
+  const subjects = ['All', ...new Set(notesData.map(item => item.subject))]; // New subject filter list
 
   // Filter & sort logic
   const filteredNotes = useMemo(() => {
@@ -125,11 +127,13 @@ const Notes = () => {
         item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.subject.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+
       const matchesUniversity = selectedUniversity === 'All' || item.university === selectedUniversity;
       const matchesDepartment = selectedDepartment === 'All' || item.department === selectedDepartment;
       const matchesSemester = selectedSemester === 'All' || item.semester.toString() === selectedSemester;
+      const matchesSubject = selectedSubject === 'All' || item.subject === selectedSubject; // Subject filter condition
 
-      return matchesSearch && matchesUniversity && matchesDepartment && matchesSemester;
+      return matchesSearch && matchesUniversity && matchesDepartment && matchesSemester && matchesSubject;
     });
 
     filtered.sort((a, b) => {
@@ -146,7 +150,7 @@ const Notes = () => {
     });
 
     return filtered;
-  }, [searchTerm, selectedUniversity, selectedDepartment, selectedSemester, sortBy, notesData]);
+  }, [searchTerm, selectedUniversity, selectedDepartment, selectedSemester, selectedSubject, sortBy, notesData]);
 
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
@@ -226,6 +230,15 @@ const Notes = () => {
               <select value={selectedSemester} onChange={(e) => setSelectedSemester(e.target.value)}>
                 {semesters.map(sem => (
                   <option key={sem} value={sem}>{sem === 'All' ? 'All' : `Semester ${sem}`}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="filter-group">
+              <label>Subject:</label> {/* New Subject filter dropdown */}
+              <select value={selectedSubject} onChange={(e) => setSelectedSubject(e.target.value)}>
+                {subjects.map(sub => (
+                  <option key={sub} value={sub}>{sub}</option>
                 ))}
               </select>
             </div>
