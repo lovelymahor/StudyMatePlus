@@ -11,12 +11,14 @@ import Privacy from './pages/Privacy';
 import Contact from './pages/Contact';
 import Analytics from './pages/Analytics';
 import Contribute from './pages/Contribute';
+import ScrollToTop from './components/scrolltotop';
 
 const App = () => {
   return (
     <Router>
       <Navbar />
       <div style={{ padding: '2rem' }}>
+      <ScrollToTop/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/syllabus" element={<Syllabus />} />
@@ -25,7 +27,7 @@ const App = () => {
           <Route path="/analytics" element={<Analytics/>} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/about" element={<About />} />
-          <Route path="/privacy" element={<Privacy />} 
+          <Route path="/privacy" element={<Privacy />}  />
           <Route path="/contribute" element={<Contribute />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
