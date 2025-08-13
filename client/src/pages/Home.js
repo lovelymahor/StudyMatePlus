@@ -601,7 +601,73 @@ const Home = () => {
             </p>
           </motion.div>
         </div>
+<<<<<<< Updated upstream
       </motion.footer>
+=======
+      </motion.div>
+
+      {/* Quick Links */}
+      <motion.div className="footer-section" variants={fadeInUp}>
+        <h4>Quick Links</h4>
+        <motion.ul variants={staggerChildrenFast}>
+          {[
+            { to: "/syllabus", text: "Syllabus" },
+            { to: "/pyqs", text: "Previous Papers" },
+            { to: "/feedback", text: "Feedback" },
+            { to: "/mentorship", text: "Mentorship" }
+          ].map((link, index) => (
+            <motion.li key={index} variants={fadeInUp} whileHover={{ x: 5, color: "#3b82f6" }}>
+              <Link to={link.to}>{link.text}</Link>
+            </motion.li>
+          ))}
+        </motion.ul>
+      </motion.div>
+
+      {/* Support Links */}
+      <motion.div className="footer-section" variants={slideInRight}>
+        <h4>Support</h4>
+        <motion.ul variants={staggerChildrenFast}>
+          {[
+            { to: "/help", text: "Help Center" },
+            { to: "/contact", text: "Contact Ussssssss" },
+            { to: "/contribute", text: "Contribute" },
+            { to: "/privacy", text: "Privacy Policy" }
+          ].map((link, index) => (
+            <motion.li key={index} variants={fadeInUp} whileHover={{ x: 5, color: "#3b82f6" }}>
+              <Link to={link.to}>{link.text}</Link>
+            </motion.li>
+          ))}
+        </motion.ul>
+      </motion.div>
+    </motion.div>
+
+    {/* Footer Bottom */}
+    <motion.div className="footer-bottom" variants={fadeInUp}>
+      <p>&copy; {new Date().getFullYear()} StudyMatePlus. Open-source educational platform for students.</p>
+    </motion.div>
+  </div>
+</motion.footer>
+
+     {/* Scroll to Top Button */}
+<AnimatePresence>
+  {showScroll && (
+    <motion.button
+    
+      key="scrollTop"
+      className="scroll-to-top"
+      onClick={scrollToTop}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.5 }}
+      whileHover={{ scale: 1.15, rotate: 5 }}
+      whileTap={{ scale: 0.95 }}
+    >
+    <FaArrowUp/>
+    </motion.button>
+  )}
+</AnimatePresence>
+
+>>>>>>> Stashed changes
     </div>
   );
 };
