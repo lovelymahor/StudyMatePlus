@@ -604,12 +604,6 @@ const scrollToTop = () => {
             <FaDiscord />
           </a>
         </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      </motion.footer>
-=======
-=======
->>>>>>> ccac551312483a140e11c8aff669ee5679e765f9
       </motion.div>
 
       {/* Quick Links */}
@@ -635,11 +629,7 @@ const scrollToTop = () => {
         <motion.ul variants={staggerChildrenFast}>
           {[
             { to: "/help", text: "Help Center" },
-<<<<<<< HEAD
-            { to: "/contact", text: "Contact Ussssssss" },
-=======
             { to: "/contact", text: "Contact Us" },
->>>>>>> ccac551312483a140e11c8aff669ee5679e765f9
             { to: "/contribute", text: "Contribute" },
             { to: "/privacy", text: "Privacy Policy" }
           ].map((link, index) => (
@@ -677,10 +667,6 @@ const scrollToTop = () => {
   )}
 </AnimatePresence>
 
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> ccac551312483a140e11c8aff669ee5679e765f9
     </div>
   );
 };
