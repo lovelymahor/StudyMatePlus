@@ -36,3 +36,231 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* Global Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f7fc;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #4f83cc, #4b6d7f);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Style for Steps */
+.step-card {
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* FAQ Accordion */
+.faq-item {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.faq-item:hover {
+  background-color: #f9f9f9;
+}
+
+.faq-question {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.faq-answer {
+  color: #4b5563;
+}
+
+/* Contact Info */
+.contact-info {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info a {
+  color: #4f83cc;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* Button */
+.btn {
+  background-color: #4f83cc;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 1.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #3b6b99;
+}
+
+
+/* Global Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f7fc;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #4f83cc, #4b6d7f);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Style for Steps */
+.step-card {
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* FAQ Accordion */
+.faq-item {
+  background-color: #fff;
+  border-radius: 0.75rem;  /* Rounded corners */
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+  background-color: #f1f5f9;  /* Light background on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #1f2937;
+  transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+  color: #3b6b99; /* Highlight color on hover */
+  cursor: pointer;
+}
+
+.faq-answer {
+  color: #4b5563;
+  padding-top: 1rem;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.faq-answer:hover {
+  color: #333;  /* Darker color for the answer text */
+}
+
+.faq-question:focus,
+.faq-answer:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(79, 131, 204, 0.4);
+}
+
+/* Button Styles */
+.btn {
+  background-color: #4f83cc;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 1.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #3b6b99;
+}
+
+/* Go Home Button */
+.go-home {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(79, 131, 204, 0.4);
+}
+
+/* Contact Section */
+.contact-info {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.contact-info:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.contact-info a {
+  color: #4f83cc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #3b6b99;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* FAQ Accordion Arrow */
+.faq-item .faq-question span {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-question span {
+  transform: rotate(45deg); /* Rotate arrow when open */
+}
+
+.faq-item .faq-question:after {
+  content: ' ▼';
+  font-size: 1.2rem;
+  color: #4b5563;
+}

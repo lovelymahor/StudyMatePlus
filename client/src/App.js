@@ -11,6 +11,8 @@ import Privacy from './pages/Privacy';
 import Contact from './pages/Contact';
 import Analytics from './pages/Analytics';
 import Contribute from './pages/Contribute';
+import Help from './pages/Help';
+import './App.css';  
 import ScrollToTop from './components/scrolltotop';
 
 const App = () => {
@@ -31,6 +33,7 @@ const App = () => {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/contribute" element={<Contribute />} />
           <Route path="/contact" element={<Contact />} />
+           <Route path="/help" element={<Help />} />
         </Routes>
       </div>
     </Router>
