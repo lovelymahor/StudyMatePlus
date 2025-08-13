@@ -11,12 +11,9 @@ import Privacy from './pages/Privacy';
 import Contact from './pages/Contact';
 import Analytics from './pages/Analytics';
 import Contribute from './pages/Contribute';
-<<<<<<< HEAD
 import Help from './pages/Help';
 import './App.css';  
-=======
 import ScrollToTop from './components/scrolltotop';
->>>>>>> ccac551312483a140e11c8aff669ee5679e765f9
 
 const App = () => {
   return (
