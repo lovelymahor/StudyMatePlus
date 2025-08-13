@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaDiscord , FaArrowUp} from "react-icons/fa";
+import { SiX } from "react-icons/si";
+
+
 import "./Home.css";
 
 const Home = () => {
   const [contributors, setContributors] = useState([]);
+  const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
     axios
@@ -13,6 +18,34 @@ const Home = () => {
       .then((response) => setContributors(response.data))
       .catch((error) => console.error("Error fetching contributors", error));
   }, []);
+
+
+
+useEffect(() => {
+  const checkScrollTop = () => {
+    if (!showScroll && window.scrollY > 300) {
+      setShowScroll(true);
+    } else if (showScroll && window.scrollY <= 300) {
+      setShowScroll(false);
+    }
+  };
+
+  window.addEventListener("scroll", checkScrollTop);
+  return () => {
+    window.removeEventListener("scroll", checkScrollTop);
+  };
+}, [showScroll]);
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+};
+
+
+
+  
 
   // Animation variants
   const fadeInUp = {
@@ -539,71 +572,44 @@ const Home = () => {
       </motion.section>
 
       {/* Footer */}
-      <motion.footer 
-        className="footer"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-        variants={fadeInUp}
-      >
-        <div className="container">
-          <motion.div className="footer-content" variants={staggerChildren}>
-            <motion.div className="footer-section" variants={slideInLeft}>
-              <h3>📚 StudyMatePlus</h3>
-              <p>
-                Empowering students with comprehensive academic resources and
-                peer-to-peer learning.
-              </p>
-            </motion.div>
-            <motion.div className="footer-section" variants={fadeInUp}>
-              <h4>Quick Links</h4>
-              <motion.ul variants={staggerChildrenFast}>
-                {[
-                  { to: "/syllabus", text: "Syllabus" },
-                  { to: "/pyqs", text: "Previous Papers" },
-                  { to: "/feedback", text: "Feedback" },
-                  { to: "/mentorship", text: "Mentorship" }
-                ].map((link, index) => (
-                  <motion.li 
-                    key={index}
-                    variants={fadeInUp}
-                    whileHover={{ x: 5, color: "#3b82f6" }}
-                  >
-                    <Link to={link.to}>{link.text}</Link>
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </motion.div>
-            <motion.div className="footer-section" variants={slideInRight}>
-              <h4>Support</h4>
-              <motion.ul variants={staggerChildrenFast}>
-                {[
-                  { to: "/help", text: "Help Center" },
-                  { to: "/contact", text: "Contact Us" },
-                  { to: "/contribute", text: "Contribute" },
-                  { to: "/privacy", text: "Privacy Policy" }
-                ].map((link, index) => (
-                  <motion.li 
-                    key={index}
-                    variants={fadeInUp}
-                    whileHover={{ x: 5, color: "#3b82f6" }}
-                  >
-                    <Link to={link.to}>{link.text}</Link>
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </motion.div>
-          </motion.div>
-          <motion.div className="footer-bottom" variants={fadeInUp}>
-            <p>
-              &copy; 2024 StudyMatePlus. Open-source educational platform for
-              students.
-            </p>
-          </motion.div>
+
+{/* Footer */}
+<motion.footer 
+  className="footer"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-50px" }}
+  variants={fadeInUp}
+>
+  <div className="container">
+    <motion.div className="footer-content" variants={staggerChildren}>
+      
+      {/* Left Section */}
+      <motion.div className="footer-section" variants={slideInLeft}>
+        <h3>📚 StudyMatePlus</h3>
+        <p>Empowering students with comprehensive academic resources and peer-to-peer learning.</p>
+
+        {/* Social Links with Icons */}
+        <div className="social-links">
+          <a href="https://github.com/lovelymahor/StudyMatePlus" target="_blank" rel="noopener noreferrer" className="social-icon github">
+            <FaGithub />
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
+            <FaLinkedin />
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
+            <SiX />
+          </a>
+          <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon discord">
+            <FaDiscord />
+          </a>
         </div>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
       </motion.footer>
 =======
+=======
+>>>>>>> ccac551312483a140e11c8aff669ee5679e765f9
       </motion.div>
 
       {/* Quick Links */}
@@ -629,7 +635,11 @@ const Home = () => {
         <motion.ul variants={staggerChildrenFast}>
           {[
             { to: "/help", text: "Help Center" },
+<<<<<<< HEAD
             { to: "/contact", text: "Contact Ussssssss" },
+=======
+            { to: "/contact", text: "Contact Us" },
+>>>>>>> ccac551312483a140e11c8aff669ee5679e765f9
             { to: "/contribute", text: "Contribute" },
             { to: "/privacy", text: "Privacy Policy" }
           ].map((link, index) => (
@@ -667,7 +677,10 @@ const Home = () => {
   )}
 </AnimatePresence>
 
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> ccac551312483a140e11c8aff669ee5679e765f9
     </div>
   );
 };
