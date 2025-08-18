@@ -215,14 +215,22 @@
   padding: 2.5rem;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 
+    0 0 10px rgba(102, 126, 234, 0.6), /* Inner glow */
+    0 0 20px rgba(118, 75, 162, 0.4), /* Outer glow */
+    0 5px 20px rgba(0, 0, 0, 0.1); /* Subtle base shadow */
   transition: all 0.3s ease;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #f2e74f;
+  position: relative; /* Ensure proper layering */
+  z-index: 1; /* Keep cards above any background effects */
 }
 
 .feature-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 
+    0 0 15px rgba(102, 126, 234, 0.8), /* Enhanced inner glow */
+    0 0 30px rgba(118, 75, 162, 0.6), /* Enhanced outer glow */
+    0 10px 30px rgba(0, 0, 0, 0.15); /* Enhanced base shadow */
 }
 
 .feature-icon {
