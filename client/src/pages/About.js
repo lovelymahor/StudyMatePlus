@@ -1,28 +1,67 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './About.css';
 
 const About = () => {
+  // Animation Variants from Home.js
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
+  const staggerChildren = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } },
+  };
+
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+  };
+  
+  const slideInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  const slideInRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+
   return (
     <div className="about">
       {/* Hero Section */}
-      <section className="about-hero">
+      <motion.section 
+        className="about-hero"
+        initial="hidden"
+        animate="visible"
+        variants={staggerChildren}
+      >
         <div className="container">
-          <div className="about-hero-content">
-            <h1>About StudyMatePlus</h1>
-            <p className="hero-subtitle">
+          <motion.div className="about-hero-content" variants={fadeInUp}>
+            <motion.h1 variants={fadeInUp}>About StudyMatePlus</motion.h1>
+            <motion.p className="hero-subtitle" variants={fadeInUp}>
               Empowering students with comprehensive academic resources and fostering 
               a collaborative learning environment for exam preparation success.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Mission Section */}
-      <section className="mission">
+      <motion.section 
+        className="mission"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerChildren}
+      >
         <div className="container">
           <div className="mission-content">
-            <div className="mission-text">
+            <motion.div className="mission-text" variants={slideInLeft}>
               <h2>Our Mission</h2>
               <p>
                 At StudyMatePlus, we believe that every student deserves access to quality 
@@ -35,30 +74,36 @@ const About = () => {
                 geographical limitations or resource constraints don't hinder a student's 
                 academic success.
               </p>
-            </div>
-            <div className="mission-visual">
+            </motion.div>
+            <motion.div className="mission-visual" variants={slideInRight}>
               <div className="mission-icon">🎯</div>
-              <div className="mission-stats">
-                <div className="mini-stat">
+              <motion.div className="mission-stats" variants={staggerChildren}>
+                <motion.div className="mini-stat" variants={scaleIn}>
                   <span className="stat-num">50+</span>
                   <span className="stat-text">Universities</span>
-                </div>
-                <div className="mini-stat">
+                </motion.div>
+                <motion.div className="mini-stat" variants={scaleIn}>
                   <span className="stat-num">1000+</span>
                   <span className="stat-text">Resources</span>
-                </div>
-              </div>
-            </div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Story Section */}
-      <section className="story">
+      <motion.section 
+        className="story"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerChildren}
+      >
         <div className="container">
-          <h2>Our Story</h2>
-          <div className="story-content">
-            <div className="story-card">
+          <motion.h2 variants={fadeInUp}>Our Story</motion.h2>
+          <motion.div className="story-content" variants={staggerChildren}>
+            <motion.div className="story-card" variants={scaleIn} whileHover={{ y: -8, scale: 1.03 }}>
               <div className="story-icon">💡</div>
               <h3>The Problem</h3>
               <p>
@@ -66,8 +111,8 @@ const About = () => {
                 different sources. Critical resources like syllabus PDFs, previous year papers, 
                 and exam insights are either unavailable or difficult to access when needed most.
               </p>
-            </div>
-            <div className="story-card">
+            </motion.div>
+            <motion.div className="story-card" variants={scaleIn} whileHover={{ y: -8, scale: 1.03 }}>
               <div className="story-icon">🚀</div>
               <h3>The Solution</h3>
               <p>
@@ -75,8 +120,8 @@ const About = () => {
                 where students can access all their academic needs. We've built a community-driven 
                 ecosystem that grows stronger with each contribution.
               </p>
-            </div>
-            <div className="story-card">
+            </motion.div>
+            <motion.div className="story-card" variants={scaleIn} whileHover={{ y: -8, scale: 1.03 }}>
               <div className="story-icon">🌟</div>
               <h3>The Vision</h3>
               <p>
@@ -84,153 +129,110 @@ const About = () => {
                 equal access to quality educational resources and mentorship opportunities. 
                 Our open-source approach ensures transparency and continuous improvement.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Features Deep Dive */}
-      <section className="features-deep">
+      <motion.section 
+        className="features-deep"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerChildren}
+      >
         <div className="container">
-          <h2>What Makes Us Different</h2>
-          <div className="features-deep-grid">
-            <div className="feature-deep">
-              <div className="feature-deep-header">
-                <div className="feature-deep-icon">📚</div>
-                <h3>Comprehensive Resource Library</h3>
-              </div>
-              <p>
-                Our platform hosts an extensive collection of study materials organized by 
-                university and department. From detailed syllabi to comprehensive notes, 
-                we ensure students have everything they need in one place.
-              </p>
-              <ul>
-                <li>Department-wise organization</li>
-                <li>Searchable content database</li>
-                <li>Regular updates and verification</li>
-                <li>Multiple format support</li>
-              </ul>
-            </div>
-
-            <div className="feature-deep">
-              <div className="feature-deep-header">
-                <div className="feature-deep-icon">📝</div>
-                <h3>Previous Year Papers Archive</h3>
-              </div>
-              <p>
-                Access to authentic previous year question papers is crucial for exam preparation. 
-                Our curated collection spans multiple years and universities, giving students 
-                the practice they need to excel.
-              </p>
-              <ul>
-                <li>Multi-year paper collection</li>
-                <li>Solution guides available</li>
-                <li>Difficulty level indicators</li>
-                <li>Topic-wise categorization</li>
-              </ul>
-            </div>
-
-            <div className="feature-deep">
-              <div className="feature-deep-header">
-                <div className="feature-deep-icon">💬</div>
-                <h3>Real Student Feedback</h3>
-              </div>
-              <p>
-                Learn from the experiences of students who have already taken the exams. 
-                Our feedback system provides insights into exam patterns, difficulty levels, 
-                and preparation strategies.
-              </p>
-              <ul>
-                <li>Authentic student reviews</li>
-                <li>Exam difficulty ratings</li>
-                <li>Important topic highlights</li>
-                <li>Preparation time estimates</li>
-              </ul>
-            </div>
-          </div>
+          <motion.h2 variants={fadeInUp}>What Makes Us Different</motion.h2>
+          <motion.div className="features-deep-grid" variants={staggerChildren}>
+            <motion.div className="feature-deep" variants={fadeInUp} whileHover={{ y: -8, scale: 1.02 }}>
+              <div className="feature-deep-header"><div className="feature-deep-icon">📚</div><h3>Comprehensive Resource Library</h3></div>
+              <p>Our platform hosts an extensive collection of study materials organized by university and department. From detailed syllabi to comprehensive notes, we ensure students have everything they need in one place.</p>
+              <ul><li>Department-wise organization</li><li>Searchable content database</li><li>Regular updates and verification</li><li>Multiple format support</li></ul>
+            </motion.div>
+            <motion.div className="feature-deep" variants={fadeInUp} whileHover={{ y: -8, scale: 1.02 }}>
+              <div className="feature-deep-header"><div className="feature-deep-icon">📝</div><h3>Previous Year Papers Archive</h3></div>
+              <p>Access to authentic previous year question papers is crucial for exam preparation. Our curated collection spans multiple years and universities, giving students the practice they need to excel.</p>
+              <ul><li>Multi-year paper collection</li><li>Solution guides available</li><li>Difficulty level indicators</li><li>Topic-wise categorization</li></ul>
+            </motion.div>
+            <motion.div className="feature-deep" variants={fadeInUp} whileHover={{ y: -8, scale: 1.02 }}>
+              <div className="feature-deep-header"><div className="feature-deep-icon">💬</div><h3>Real Student Feedback</h3></div>
+              <p>Learn from the experiences of students who have already taken the exams. Our feedback system provides insights into exam patterns, difficulty levels, and preparation strategies.</p>
+              <ul><li>Authentic student reviews</li><li>Exam difficulty ratings</li><li>Important topic highlights</li><li>Preparation time estimates</li></ul>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Team Section */}
-      <section className="team">
+      <motion.section 
+        className="team"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerChildren}
+      >
         <div className="container">
-          <h2>Built by Students, for Students</h2>
-          <div className="team-content">
+          <motion.h2 variants={fadeInUp}>Built by Students, for Students</motion.h2>
+          <motion.div className="team-content" variants={fadeInUp}>
             <p className="team-description">
               StudyMatePlus is developed and maintained by a passionate team of students and 
               recent graduates who understand the challenges of exam preparation. Our diverse 
               team brings together expertise in technology, education, and user experience 
               to create the best possible platform for academic success.
             </p>
-            <div className="team-stats">
-              <div className="team-stat">
-                <span className="team-stat-number">15+</span>
-                <span className="team-stat-label">Contributors</span>
-              </div>
-              <div className="team-stat">
-                <span className="team-stat-number">24/7</span>
-                <span className="team-stat-label">Community Support</span>
-              </div>
-            </div>
-          </div>
+            <motion.div className="team-stats" variants={staggerChildren}>
+              <motion.div className="team-stat" variants={scaleIn}><span className="team-stat-number">15+</span><span className="team-stat-label">Contributors</span></motion.div>
+              <motion.div className="team-stat" variants={scaleIn}><span className="team-stat-number">24/7</span><span className="team-stat-label">Community Support</span></motion.div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-            {/* Values Section */}
-      <section className="values">
+      {/* Values Section */}
+      <motion.section 
+        className="values"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerChildren}
+      >
         <div className="container">
-          <h2>Our Core Values</h2>
-          <div className="values-grid">
-            <div className="value-item">
-              <div className="value-icon">🔓</div>
-              <h3>Open Source</h3>
-              <p>Transparency and community collaboration drive our development.</p>
-            </div>
-            <div className="value-item">
-              <div className="value-icon">🎓</div>
-              <h3>Quality Education</h3>
-              <p>We're committed to providing accurate, verified, and high-quality resources.</p>
-            </div>
-            <div className="value-item">
-              <div className="value-icon">🤲</div>
-              <h3>Accessibility</h3>
-              <p>Education should be accessible to everyone, regardless of their circumstances.</p>
-            </div>
-            <div className="value-item">
-              <div className="value-icon">💪</div>
-              <h3>Student Empowerment</h3>
-              <p>We believe in empowering students with the tools they need to succeed.</p>
-            </div>
-            <div className="value-item">
-              <div className="value-icon">🌱</div>
-              <h3>Continuous Growth</h3>
-              <p>Our platform evolves based on student feedback and emerging needs.</p>
-            </div>
-            <div className="value-item">
-              <div className="value-icon">🤝</div>
-              <h3>Community</h3>
-              <p>Building a supportive network where students help each other succeed.</p>
-            </div>
-          </div>
+          <motion.h2 variants={fadeInUp}>Our Core Values</motion.h2>
+          <motion.div className="values-grid" variants={staggerChildren}>
+            <motion.div className="value-item" variants={scaleIn} whileHover={{ y: -8, scale: 1.05 }}><div className="value-icon">🔓</div><h3>Open Source</h3><p>Transparency and community collaboration drive our development.</p></motion.div>
+            <motion.div className="value-item" variants={scaleIn} whileHover={{ y: -8, scale: 1.05 }}><div className="value-icon">🎓</div><h3>Quality Education</h3><p>We're committed to providing accurate, verified, and high-quality resources.</p></motion.div>
+            <motion.div className="value-item" variants={scaleIn} whileHover={{ y: -8, scale: 1.05 }}><div className="value-icon">🤲</div><h3>Accessibility</h3><p>Education should be accessible to everyone, regardless of their circumstances.</p></motion.div>
+            <motion.div className="value-item" variants={scaleIn} whileHover={{ y: -8, scale: 1.05 }}><div className="value-icon">💪</div><h3>Student Empowerment</h3><p>We believe in empowering students with the tools they need to succeed.</p></motion.div>
+            <motion.div className="value-item" variants={scaleIn} whileHover={{ y: -8, scale: 1.05 }}><div className="value-icon">🌱</div><h3>Continuous Growth</h3><p>Our platform evolves based on student feedback and emerging needs.</p></motion.div>
+            <motion.div className="value-item" variants={scaleIn} whileHover={{ y: -8, scale: 1.05 }}><div className="value-icon">🤝</div><h3>Community</h3><p>Building a supportive network where students help each other succeed.</p></motion.div>
+          </motion.div>
         </div>
-      </section>
-
+      </motion.section>
 
       {/* CTA Section */}
-      <section className="about-cta">
+      <motion.section 
+        className="about-cta"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="container">
-          <div className="cta-content">
-            <h2>Ready to Transform Your Study Experience?</h2>
-            <p>
+          <motion.div className="cta-content" variants={staggerChildren}>
+            <motion.h2 variants={fadeInUp}>Ready to Transform Your Study Experience?</motion.h2>
+            <motion.p variants={fadeInUp}>
               Join thousands of students who are already using StudyMatePlus to ace their exams. 
               Start exploring our resources today and connect with a supportive community of learners.
-            </p>
-            <div className="cta-buttons">
-              <Link to="/syllabus" className="btn btn-primary">Explore Resources</Link>
-            </div>
-          </div>
+            </motion.p>
+            <motion.div className="cta-buttons" variants={fadeInUp}>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link to="/syllabus" className="btn btn-primary">Explore Resources</Link>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
