@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Syllabus.css';
 
 const Syllabus = () => {
@@ -110,6 +111,22 @@ const Syllabus = () => {
     }
   ];
 
+  // Animation variants from Home.js
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  const staggerChildren = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } }
+  };
+  
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.85 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
   // State management
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedUniversity, setSelectedUniversity] = useState('All');
@@ -169,33 +186,46 @@ const Syllabus = () => {
   return (
     <div className="syllabus">
       {/* Hero Section */}
-      <section className="syllabus-hero">
+      <motion.section 
+        className="syllabus-hero"
+        initial="hidden"
+        animate="visible"
+        variants={staggerChildren}
+      >
         <div className="container">
-          <div className="hero-content">
-            <h1>📚 Syllabus Collection</h1>
-            <p>Access comprehensive syllabus materials from top universities across India. Find subject details, course structures, and academic requirements all in one place.</p>
-            <div className="hero-stats">
-              <div className="hero-stat">
+          <motion.div className="hero-content" variants={fadeInUp}>
+            <motion.h1 variants={fadeInUp}>📚 Syllabus Collection</motion.h1>
+            <motion.p variants={fadeInUp}>
+              Access comprehensive syllabus materials from top universities across India. Find subject details, course structures, and academic requirements all in one place.
+            </motion.p>
+            <motion.div className="hero-stats" variants={staggerChildren}>
+              <motion.div className="hero-stat" variants={scaleIn}>
                 <span className="stat-number">{syllabusData.length}</span>
                 <span className="stat-label">Syllabi Available</span>
-              </div>
-              <div className="hero-stat">
+              </motion.div>
+              <motion.div className="hero-stat" variants={scaleIn}>
                 <span className="stat-number">{universities.length - 1}</span>
                 <span className="stat-label">Universities</span>
-              </div>
-              <div className="hero-stat">
+              </motion.div>
+              <motion.div className="hero-stat" variants={scaleIn}>
                 <span className="stat-number">{departments.length - 1}</span>
                 <span className="stat-label">Departments</span>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Search and Filters */}
-      <section className="search-filters">
+      <motion.section 
+        className="search-filters"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerChildren}
+      >
         <div className="container">
-          <div className="search-bar">
+          <motion.div className="search-bar" variants={fadeInUp}>
             <div className="search-input-container">
               <input
                 type="text"
@@ -206,128 +236,164 @@ const Syllabus = () => {
               />
               <span className="search-icon">🔍</span>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="filters">
-            <div className="filter-group">
+          <motion.div className="filters" variants={staggerChildren}>
+            <motion.div className="filter-group" variants={fadeInUp}>
               <label>University:</label>
               <select value={selectedUniversity} onChange={(e) => setSelectedUniversity(e.target.value)}>
                 {universities.map(uni => (
                   <option key={uni} value={uni}>{uni}</option>
                 ))}
               </select>
-            </div>
+            </motion.div>
 
-            <div className="filter-group">
+            <motion.div className="filter-group" variants={fadeInUp}>
               <label>Department:</label>
               <select value={selectedDepartment} onChange={(e) => setSelectedDepartment(e.target.value)}>
                 {departments.map(dept => (
                   <option key={dept} value={dept}>{dept}</option>
                 ))}
               </select>
-            </div>
+            </motion.div>
 
-            <div className="filter-group">
+            <motion.div className="filter-group" variants={fadeInUp}>
               <label>Semester:</label>
               <select value={selectedSemester} onChange={(e) => setSelectedSemester(e.target.value)}>
                 {semesters.map(sem => (
                   <option key={sem} value={sem}>{sem === 'All' ? 'All' : `Semester ${sem}`}</option>
                 ))}
               </select>
-            </div>
+            </motion.div>
 
-            <div className="filter-group">
+            <motion.div className="filter-group" variants={fadeInUp}>
               <label>Sort by:</label>
               <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
                 <option value="downloads">Most Downloaded</option>
                 <option value="date">Latest Upload</option>
                 <option value="title">Title (A-Z)</option>
               </select>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Results Section */}
-      <section className="results">
+      <motion.section 
+        className="results"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerChildren}
+      >
         <div className="container">
-          <div className="results-header">
+          <motion.div className="results-header" variants={fadeInUp}>
             <h2>Found {filteredAndSortedSyllabi.length} syllabi</h2>
             <p>Browse through our collection of verified academic syllabi</p>
-          </div>
-
-          {filteredAndSortedSyllabi.length === 0 ? (
-            <div className="no-results">
-              <div className="no-results-icon">📭</div>
-              <h3>No syllabi found</h3>
-              <p>Try adjusting your search criteria or filters to find what you're looking for.</p>
-            </div>
-          ) : (
-            <div className="syllabus-grid">
-              {filteredAndSortedSyllabi.map(syllabus => (
-                <div key={syllabus.id} className="syllabus-card">
-                  <div className="card-header">
-                    <div className="card-title-section">
-                      <h3 className="card-title">{syllabus.title}</h3>
-                      <div className="card-meta">
-                        <span className="university">{syllabus.university}</span>
-                        <span className="separator">•</span>
-                        <span className="department">{syllabus.department}</span>
+          </motion.div>
+          
+          <AnimatePresence>
+            {filteredAndSortedSyllabi.length === 0 ? (
+              <motion.div 
+                className="no-results"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+              >
+                <div className="no-results-icon">📭</div>
+                <h3>No syllabi found</h3>
+                <p>Try adjusting your search criteria or filters to find what you're looking for.</p>
+              </motion.div>
+            ) : (
+              <motion.div 
+                className="syllabus-grid"
+                layout
+                variants={staggerChildren}
+              >
+                {filteredAndSortedSyllabi.map(syllabus => (
+                  <motion.div 
+                    key={syllabus.id} 
+                    className="syllabus-card"
+                    layout
+                    variants={scaleIn}
+                    initial="hidden"
+                    animate="visible"
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    whileHover={{ y: -10, scale: 1.03, boxShadow: "0 15px 30px rgba(0,0,0,0.1)" }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className="card-header">
+                      <div className="card-title-section">
+                        <h3 className="card-title">{syllabus.title}</h3>
+                        <div className="card-meta">
+                          <span className="university">{syllabus.university}</span>
+                          <span className="separator">•</span>
+                          <span className="department">{syllabus.department}</span>
+                        </div>
+                      </div>
+                      <div className="difficulty-badge" style={{ backgroundColor: getDifficultyColor(syllabus.difficulty) }}>
+                        {syllabus.difficulty}
                       </div>
                     </div>
-                    <div className="difficulty-badge" style={{ backgroundColor: getDifficultyColor(syllabus.difficulty) }}>
-                      {syllabus.difficulty}
-                    </div>
-                  </div>
 
-                  <div className="card-content">
-                    <div className="subjects-section">
-                      <h4>Subjects Covered:</h4>
-                      <div className="subjects-list">
-                        {syllabus.subjects.map((subject, index) => (
-                          <span key={index} className="subject-tag">{subject}</span>
-                        ))}
+                    <div className="card-content">
+                      <div className="subjects-section">
+                        <h4>Subjects Covered:</h4>
+                        <div className="subjects-list">
+                          {syllabus.subjects.map((subject, index) => (
+                            <span key={index} className="subject-tag">{subject}</span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="tags-section">
+                        <div className="tags">
+                          {syllabus.tags.map((tag, index) => (
+                            <span key={index} className="tag">#{tag}</span>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
-                    <div className="tags-section">
-                      <div className="tags">
-                        {syllabus.tags.map((tag, index) => (
-                          <span key={index} className="tag">#{tag}</span>
-                        ))}
+                    <div className="card-stats">
+                      <div className="stat">
+                        <span className="stat-icon">📥</span>
+                        <span>{syllabus.downloadCount.toLocaleString()} downloads</span>
+                      </div>
+                      <div className="stat">
+                        <span className="stat-icon">📅</span>
+                        <span>{new Date(syllabus.uploadDate).toLocaleDateString()}</span>
+                      </div>
+                      <div className="stat">
+                        <span className="stat-icon">📄</span>
+                        <span>{syllabus.fileSize}</span>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="card-stats">
-                    <div className="stat">
-                      <span className="stat-icon">📥</span>
-                      <span>{syllabus.downloadCount.toLocaleString()} downloads</span>
+                    <div className="card-actions">
+                      <motion.button 
+                        className="btn btn-primary" 
+                        onClick={() => handleDownload(syllabus)}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        📥 Download Syllabus
+                      </motion.button>
+                      <motion.button 
+                        className="btn btn-outline"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        👁️ Preview
+                      </motion.button>
                     </div>
-                    <div className="stat">
-                      <span className="stat-icon">📅</span>
-                      <span>{new Date(syllabus.uploadDate).toLocaleDateString()}</span>
-                    </div>
-                    <div className="stat">
-                      <span className="stat-icon">📄</span>
-                      <span>{syllabus.fileSize}</span>
-                    </div>
-                  </div>
-
-                  <div className="card-actions">
-                    <button className="btn btn-primary" onClick={() => handleDownload(syllabus)}>
-                      📥 Download Syllabus
-                    </button>
-                    <button className="btn btn-outline">
-                      👁️ Preview
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
