@@ -95,14 +95,16 @@
   border: 2px solid transparent;
 }
 
-.btn-primary {
+.btn-primary-home {
   background: linear-gradient(45deg, #ffd700, #ffed4a);
   color: #333;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 4px 15px #f5798a5d;
 }
 
-.btn-primary:hover {
+.btn-primary-home:hover {
+  background: #f5576c;
   transform: translateY(-3px);
+  color: white;
   box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
 }
 

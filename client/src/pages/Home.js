@@ -178,7 +178,7 @@ const scrollToTop = () => {
               variants={staggerChildrenFast}
             >
               <motion.div variants={scaleIn}>
-                <Link to="/syllabus" className="btn btn-primary">
+                <Link to="/syllabus" className="btn btn-primary-home">
                   <motion.span
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
