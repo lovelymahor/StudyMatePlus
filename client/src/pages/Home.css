@@ -217,14 +217,22 @@
   padding: 2.5rem;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 
+    0 0 10px rgba(102, 126, 234, 0.6), /* Inner glow */
+    0 0 20px rgba(118, 75, 162, 0.4), /* Outer glow */
+    0 5px 20px rgba(0, 0, 0, 0.1); /* Subtle base shadow */
   transition: all 0.3s ease;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #f2e74f;
+  position: relative; /* Ensure proper layering */
+  z-index: 1; /* Keep cards above any background effects */
 }
 
 .feature-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 
+    0 0 15px rgba(102, 126, 234, 0.8), /* Enhanced inner glow */
+    0 0 30px rgba(118, 75, 162, 0.6), /* Enhanced outer glow */
+    0 10px 30px rgba(0, 0, 0, 0.15); /* Enhanced base shadow */
 }
 
 .feature-icon {
@@ -513,6 +521,26 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
   }
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Slightly narrower cards */
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    padding: 2rem;
+    box-shadow: 
+      0 0 8px rgba(102, 126, 234, 0.5),
+      0 0 15px rgba(118, 75, 162, 0.3),
+      0 4px 15px rgba(0, 0, 0, 0.08); /* Reduced glow intensity */
+  }
+
+  .feature-card:hover {
+    box-shadow: 
+      0 0 12px rgba(102, 126, 234, 0.7),
+      0 0 20px rgba(118, 75, 162, 0.5),
+      0 6px 20px rgba(0, 0, 0, 0.12);
+  }
 }
 
 /* Tablets */
@@ -560,6 +588,27 @@
     padding: 2rem;
   }
   
+.features-grid {
+    grid-template-columns: 1fr; /* Stack cards vertically on tablets */
+    gap: 1rem;
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+    box-shadow: 
+      0 0 6px rgba(102, 126, 234, 0.4),
+      0 0 12px rgba(118, 75, 162, 0.2),
+      0 3px 10px rgba(0, 0, 0, 0.06); /* Further reduced glow */
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px); /* Reduced lift on hover */
+    box-shadow: 
+      0 0 10px rgba(102, 126, 234, 0.6),
+      0 0 18px rgba(118, 75, 162, 0.4),
+      0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
@@ -670,6 +719,26 @@
   
   .feature-card h3 {
     font-size: 1.3rem;
+  }
+
+  .features-grid {
+    gap: 0.75rem;
+  }
+
+  .feature-card {
+    padding: 1rem;
+    box-shadow: 
+      0 0 4px rgba(102, 126, 234, 0.3),
+      0 0 8px rgba(118, 75, 162, 0.1),
+      0 2px 8px rgba(0, 0, 0, 0.04); /* Minimal glow on mobile */
+  }
+
+  .feature-card:hover {
+    transform: translateY(-3px); /* Minimal lift on mobile */
+    box-shadow: 
+      0 0 8px rgba(102, 126, 234, 0.5),
+      0 0 12px rgba(118, 75, 162, 0.2),
+      0 3px 10px rgba(0, 0, 0, 0.06);
   }
   
   .feature-icon {
