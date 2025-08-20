@@ -10,6 +10,7 @@ import About from './pages/About';
 import Privacy from './pages/Privacy';
 import Contact from './pages/Contact';
 import Analytics from './pages/Analytics';
+import Faq from './pages/Faq';
 import Contribute from './pages/Contribute';
 import ScrollToTop from './components/scrolltotop';
 
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/notes" element={<Notes />} />
           <Route path="/pyqs" element={<PYQs />} />
           <Route path="/analytics" element={<Analytics/>} />
+          <Route path="/faq" element={<Faq />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<Privacy />}  />
