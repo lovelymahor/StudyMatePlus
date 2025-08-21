@@ -25,6 +25,7 @@ const Navbar = () => {
           <li><Link to="/pyqs" className="navbar-link">PYQs</Link></li>
           <li><Link to="/analytics" className="navbar-link">Analytics</Link></li>
           <li><Link to="/feedback" className="navbar-link">Feedback</Link></li>
+          <li><Link to="/faq" className="navbar-link">FAQs</Link></li>
         </ul>
         
         {/* Mobile Menu Toggle */}
