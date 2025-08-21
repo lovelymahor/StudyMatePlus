@@ -12,10 +12,13 @@ import Contact from './pages/Contact';
 import Analytics from './pages/Analytics';
 import Contribute from './pages/Contribute';
 import ScrollToTop from './components/scrolltotop';
+import MindMapEditor from './pages/MindMapEditor';
+
 
 const App = () => {
   return (
     <Router>
+
       <Navbar />
       <div style={{ padding: '2rem' }}>
       <ScrollToTop/>
@@ -30,6 +33,7 @@ const App = () => {
           <Route path="/privacy" element={<Privacy />}  />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/contribute" element={<Contribute />} />
+          <Route path="/mindmap" element={<MindMapEditor/>}/>
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
