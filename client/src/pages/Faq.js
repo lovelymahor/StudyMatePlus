@@ -1,6 +1,59 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./Faq.css";
+import { FaGithub, FaLinkedin, FaDiscord} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { SiX } from "react-icons/si";
+
+  // Animation variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const staggerChildren = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const staggerChildrenFast = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const slideInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const slideInRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
 
 const Faq = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -97,35 +150,80 @@ const Faq = () => {
           <button type="submit">Send Message</button>
         </form>
       </section>
-            {/* Footer Section */}
-      <footer className="footer">
-        <div className="footer-container container">
-          <div className="footer-brand">
-            <h3>📘 StudyMatePlus</h3>
-            <p>Your one-stop solution for syllabus, notes & PYQs.</p>
-          </div>
+      
+        <motion.footer 
+  className="footer"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-50px" }}
+  variants={fadeInUp}
+>
+  <div className="container">
+    <motion.div className="footer-content" variants={staggerChildren}>
+      
+      {/* Left Section */}
+      <motion.div className="footer-section" variants={slideInLeft}>
+        <h3>📚 StudyMatePlus</h3>
+        <p>Empowering students with comprehensive academic resources and peer-to-peer learning.</p>
 
-          <div className="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="/syllabus">📚 Syllabus</a></li>
-              <li><a href="/pyq">📝 PYQs</a></li>
-              <li><a href="/notes">📒 Notes</a></li>
-              <li><a href="/faq">🙋 FAQ</a></li>
-            </ul>
-          </div>
-
-          <div className="footer-contact">
-            <h4>Contact</h4>
-            <p>📩 support@studymateplus.com</p>
-            <p>🌍 www.studymateplus.com</p>
-          </div>
+        {/* Social Links with Icons */}
+        <div className="social-links">
+          <a href="https://github.com/lovelymahor/StudyMatePlus" target="_blank" rel="noopener noreferrer" className="social-icon github">
+            <FaGithub />
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
+            <FaLinkedin />
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
+            <SiX />
+          </a>
+          <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon discord">
+            <FaDiscord />
+          </a>
         </div>
-        <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} StudyMatePlus. All Rights Reserved.</p>
-        </div>
-      </footer>
+      </motion.div>
 
+      {/* Quick Links */}
+      <motion.div className="footer-section" variants={fadeInUp}>
+        <h4>Quick Links</h4>
+        <motion.ul variants={staggerChildrenFast}>
+          {[
+            { to: "/syllabus", text: "Syllabus" },
+            { to: "/pyqs", text: "Previous Papers" },
+            { to: "/feedback", text: "Feedback" },
+            { to: "/mentorship", text: "Mentorship" }
+          ].map((link, index) => (
+            <motion.li key={index} variants={fadeInUp} whileHover={{ x: 5, color: "#3b82f6" }}>
+              <Link to={link.to}>{link.text}</Link>
+            </motion.li>
+          ))}
+        </motion.ul>
+      </motion.div>
+
+      {/* Support Links */}
+      <motion.div className="footer-section" variants={slideInRight}>
+        <h4>Support</h4>
+        <motion.ul variants={staggerChildrenFast}>
+          {[
+            { to: "/help", text: "Help Center" },
+            { to: "/contact", text: "Contact Us" },
+            { to: "/contribute", text: "Contribute" },
+            { to: "/privacy", text: "Privacy Policy" }
+          ].map((link, index) => (
+            <motion.li key={index} variants={fadeInUp} whileHover={{ x: 5, color: "#3b82f6" }}>
+              <Link to={link.to}>{link.text}</Link>
+            </motion.li>
+          ))}
+        </motion.ul>
+      </motion.div>
+    </motion.div>
+
+    {/* Footer Bottom */}
+    <motion.div className="footer-bottom" variants={fadeInUp}>
+      <p>&copy; {new Date().getFullYear()} StudyMatePlus. Open-source educational platform for students.</p>
+    </motion.div>
+  </div>
+</motion.footer>
     </div>
   );
 };
