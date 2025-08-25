@@ -6,6 +6,10 @@
   color: #333;
 }
 
+body.dark-theme {
+    color: #f7fafc;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -14,7 +18,7 @@
 
 /* About Hero Section */
 .about-hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #02071e 0%, #764ba2 100%);
   padding: 6rem 0 4rem;
   color: white;
   text-align: center;
@@ -61,6 +65,10 @@
   background: #f8fafc;
 }
 
+body.dark-theme .mission {
+    background: #1a202c;
+}
+
 .mission-content {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -75,11 +83,19 @@
   color: #333;
 }
 
+body.dark-theme .mission-text h2 {
+    color: #f7fafc;
+}
+
 .mission-text p {
   font-size: 1.1rem;
   color: #666;
   margin-bottom: 1.5rem;
   line-height: 1.8;
+}
+
+body.dark-theme .mission-text p {
+    color: #cbd5e0;
 }
 
 .mission-visual {
@@ -117,10 +133,18 @@
   font-weight: 500;
 }
 
+body.dark-theme .stat-text {
+    color: #cbd5e0;
+}
+
 /* Story Section */
 .story {
   padding: 4rem 0;
   background: white;
+}
+
+body.dark-theme .story {
+    background: #2d3748;
 }
 
 .story h2 {
@@ -129,6 +153,10 @@
   font-weight: 700;
   margin-bottom: 3rem;
   color: #333;
+}
+
+body.dark-theme .story h2 {
+    color: #f7fafc;
 }
 
 .story-content {
@@ -144,6 +172,10 @@
   text-align: center;
   transition: all 0.3s ease;
   border: 2px solid transparent;
+}
+
+body.dark-theme .story-card {
+    background: #4a5568;
 }
 
 .story-card:hover {
@@ -165,9 +197,17 @@
   color: #333;
 }
 
+body.dark-theme .story-card h3 {
+    color: #f7fafc;
+}
+
 .story-card p {
   color: #666;
   line-height: 1.7;
+}
+
+body.dark-theme .story-card p {
+    color: #cbd5e0;
 }
 
 /* Features Deep Dive */
@@ -176,12 +216,20 @@
   background: #f8fafc;
 }
 
+body.dark-theme .features-deep {
+    background: #1a202c;
+}
+
 .features-deep h2 {
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 3rem;
   color: #333;
+}
+
+body.dark-theme .features-deep h2 {
+    color: #f7fafc;
 }
 
 .features-deep-grid {
@@ -196,6 +244,10 @@
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+}
+
+body.dark-theme .feature-deep {
+    background: #4a5568;
 }
 
 .feature-deep:hover {
@@ -222,10 +274,18 @@
   margin: 0;
 }
 
+body.dark-theme .feature-deep h3 {
+    color: #f7fafc;
+}
+
 .feature-deep p {
   color: #666;
   margin-bottom: 1.5rem;
   line-height: 1.7;
+}
+
+body.dark-theme .feature-deep p {
+    color: #cbd5e0;
 }
 
 .feature-deep ul {
@@ -238,6 +298,10 @@
   margin-bottom: 0.5rem;
   position: relative;
   padding-left: 1.5rem;
+}
+
+body.dark-theme .feature-deep ul li {
+    color: #cbd5e0;
 }
 
 .feature-deep ul li::before {
@@ -254,12 +318,20 @@
   background: white;
 }
 
+body.dark-theme .values {
+    background: #2d3748;
+}
+
 .values h2 {
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 3rem;
   color: #333;
+}
+
+body.dark-theme .values h2 {
+    color: #f7fafc;
 }
 
 .values-grid {
@@ -274,6 +346,10 @@
   background: #f8fafc;
   border-radius: 15px;
   transition: all 0.3s ease;
+}
+
+body.dark-theme .value-item {
+    background: #4a5568;
 }
 
 .value-item:hover {
@@ -294,10 +370,18 @@
   margin-bottom: 0.8rem;
 }
 
+body.dark-theme .value-item h3 {
+    color: #f7fafc;
+}
+
 .value-item p {
   color: inherit;
   opacity: 0.8;
   line-height: 1.6;
+}
+
+body.dark-theme .value-item p {
+    color: #cbd5e0;
 }
 
 .value-item:hover p {
@@ -339,6 +423,10 @@
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   backdrop-filter: blur(10px);
+}
+
+body.dark-theme .team-stat {
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .team-stat-number {
@@ -398,6 +486,10 @@
   border: 2px solid transparent;
 }
 
+body.dark-theme .btn-primary {
+    color: #4c51bf;
+}
+
 .btn-primary {
   background: linear-gradient(45deg, #ffd700, #ffed4a);
   color: #333;
@@ -420,6 +512,17 @@
   color: #f5576c;
   transform: translateY(-3px);
 }
+
+body.dark-theme .btn-secondary {
+    color: #f7fafc;
+    border-color: #f7fafc;
+}
+
+body.dark-theme .btn-secondary:hover {
+    background: #f7fafc;
+    color: #4c51bf;
+}
+
 
 /* Enhanced Responsive Design */
 
@@ -847,4 +950,7 @@
   .value-icon {
     font-size: 1.8rem;
   }
+}
+body.dark-theme .main-content-wrapper {
+  background-color: #1a202c; /* The same dark color as the rest of the body */
 }

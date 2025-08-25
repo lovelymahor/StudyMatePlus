@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+body.dark-theme .main-content-wrapper {
+  background-color: #1a202c; /* The same dark color as the rest of the body */
+}

@@ -12,6 +12,11 @@
   color: #333;
 }
 
+body.dark-theme .home {
+  background-color: #1a202c;
+  color: #f7fafc;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -83,6 +88,10 @@
   background-color: #f9f9f9;
 }
 
+body.dark-theme .analytics-section {
+  background-color: #2d3748;
+}
+
 .chart-container {
   background: white;
   padding: 2rem;
@@ -92,17 +101,33 @@
   max-width: 500px;
 }
 
+body.dark-theme .chart-container {
+  background: #4a5568;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
 .chart-container h2 {
   margin-bottom: 1rem;
   font-size: 1.4rem;
   color: #333;
   text-align: center;
 }
+
+body.dark-theme .chart-container h2 {
+  color: #f7fafc;
+}
+
 select {
   border: 2px solid #667eea;
   border-radius: 6px;
   background-color: white;
   color: #333;
+}
+
+body.dark-theme select {
+    background-color: #4a5568;
+    color: #f7fafc;
+    border-color: #667eea;
 }
 
 button:hover {
@@ -116,16 +141,32 @@ button:hover {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+body.dark-theme .insights-section,
+body.dark-theme .filter-section,
+body.dark-theme .download-section {
+  background: #4a5568;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 .insights-section h2,
 .filter-section h2 {
   margin-bottom: 1rem;
   color: #444;
 }
 
+body.dark-theme .insights-section h2,
+body.dark-theme .filter-section h2 {
+  color: #f7fafc;
+}
+
 .insights-section ul {
   list-style: disc;
   padding-left: 1.5rem;
   font-size: 1.1rem;
+}
+
+body.dark-theme .insights-section ul {
+  color: #cbd5e0;
 }
 
 .filter-section select {
@@ -145,6 +186,10 @@ button:hover {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+body.dark-theme .download-btn {
+  color: #222;
 }
 
 .download-btn:hover {

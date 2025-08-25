@@ -4,6 +4,11 @@
   min-height: 100vh;
 }
 
+body.dark-theme .pyqs-page {
+    background-color: #1a202c;
+    color: #f7fafc;
+}
+
 /* Hero Section */
 .pyqs-hero {
   background-color: #6b6bcf;
@@ -25,6 +30,10 @@
   background-color: #fff;
 }
 
+body.dark-theme .pyqs-selection {
+    background-color: #2d3748;
+}
+
 .pyqs-form {
   display: flex;
   flex-wrap: wrap;
@@ -43,11 +52,21 @@
   margin-bottom: 8px;
 }
 
+body.dark-theme .form-group label {
+    color: #f7fafc;
+}
+
 .form-group select {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
+}
+
+body.dark-theme .form-group select {
+    background-color: #4a5568;
+    color: #f7fafc;
+    border-color: #4a5568;
 }
 
 /* Results Section */
@@ -57,10 +76,18 @@
   text-align: center;
 }
 
+body.dark-theme .pyqs-results {
+    background-color: #1a202c;
+}
+
 .pyqs-results-box h2 {
   font-size: 1.6rem;
   margin-bottom: 20px;
   font-weight: 600;
+}
+
+body.dark-theme .pyqs-results-box h2 {
+    color: #f7fafc;
 }
 
 /* Prompt Text */
@@ -69,6 +96,10 @@
   font-style: italic;
   font-size: 1rem;
   margin-top: 20px;
+}
+
+body.dark-theme .prompt {
+    color: #cbd5e0;
 }
 
 /* Grid Layout for PYQ Cards */
@@ -90,6 +121,11 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+body.dark-theme .pyq-card {
+    background-color: #4a5568;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
 .pyq-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -101,10 +137,18 @@
   color: #333;
 }
 
+body.dark-theme .pyq-card h3 {
+    color: #f7fafc;
+}
+
 .pyq-card p {
   font-size: 0.95rem;
   color: #555;
   margin: 4px 0;
+}
+
+body.dark-theme .pyq-card p {
+    color: #cbd5e0;
 }
 
 .pyq-card button {

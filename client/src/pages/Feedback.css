@@ -811,3 +811,136 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Dark Mode Additions */
+body.dark-theme {
+    color: #f7fafc;
+}
+
+body.dark-theme .feedback-stats {
+    background: #1a202c;
+}
+
+body.dark-theme .stat-item {
+    background: #4a5568;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .stat-label {
+    color: #cbd5e0;
+}
+
+body.dark-theme .feedback-filters {
+    background: #2d3748;
+    border-bottom-color: #4a5568;
+}
+
+body.dark-theme .filter-group label {
+    color: #f7fafc;
+}
+
+body.dark-theme .filter-select {
+    background: #4a5568;
+    color: #f7fafc;
+    border-color: #4a5568;
+}
+
+body.dark-theme .results-count {
+    background: #1a202c;
+    color: #cbd5e0;
+}
+
+body.dark-theme .feedback-content {
+    background: #1a202c;
+}
+
+body.dark-theme .feedback-card {
+    background: #4a5568;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .student-name {
+    color: #f7fafc;
+}
+
+body.dark-theme .student-details {
+    color: #cbd5e0;
+}
+
+body.dark-theme .star {
+    color: #6b7280;
+}
+
+body.dark-theme .subject-info {
+    border-bottom-color: #4a5568;
+}
+
+body.dark-theme .subject-name {
+    color: #f7fafc;
+}
+
+body.dark-theme .subject-details {
+    color: #cbd5e0;
+}
+
+body.dark-theme .prep-time {
+    background: #2d3748;
+    color: #cbd5e0;
+}
+
+body.dark-theme .detail-section h5 {
+    color: #f7fafc;
+}
+
+body.dark-theme .detail-section p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .exam-pattern {
+    background: #2d3748;
+    border-color: #667eea;
+}
+
+body.dark-theme .study-tips {
+    background: #2d3748;
+    border-color: #10b981;
+}
+
+body.dark-theme .time-management {
+    background: #2d3748;
+    border-color: #f59e0b;
+}
+
+body.dark-theme .btn-primary {
+    color: #2d3748;
+}
+
+body.dark-theme .loading-state {
+    color: #cbd5e0;
+}
+
+body.dark-theme .loading-spinner {
+    border-color: #4a5568;
+    border-top-color: #667eea;
+}
+
+body.dark-theme .empty-state {
+    color: #cbd5e0;
+}
+
+body.dark-theme .empty-state h3 {
+    color: #f7fafc;
+}
+
+body.dark-theme .empty-state p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .feedback-card:focus-within {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+body.dark-theme .feedback-card {
+  color: #f7fafc;
+}

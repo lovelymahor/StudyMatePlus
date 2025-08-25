@@ -13,29 +13,32 @@ import Analytics from './pages/Analytics';
 import Faq from './pages/Faq';
 import Contribute from './pages/Contribute';
 import ScrollToTop from './components/scrolltotop';
+import { ThemeProvider } from './context/ThemeContext';
 
 const App = () => {
   return (
-    <Router>
-      <Navbar />
-      <div style={{ padding: '2rem' }}>
-      <ScrollToTop/>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/syllabus" element={<Syllabus />} />
-          <Route path="/notes" element={<Notes />} />
-          <Route path="/pyqs" element={<PYQs />} />
-          <Route path="/analytics" element={<Analytics/>} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/feedback" element={<Feedback />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/privacy" element={<Privacy />}  />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/contribute" element={<Contribute />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <Navbar />
+        <div className="main-content-wrapper" style={{ padding: '2rem' }}>
+        <ScrollToTop/>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/syllabus" element={<Syllabus />} />
+            <Route path="/notes" element={<Notes />} />
+            <Route path="/pyqs" element={<PYQs />} />
+            <Route path="/analytics" element={<Analytics/>} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/feedback" element={<Feedback />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/privacy" element={<Privacy />}  />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/contribute" element={<Contribute />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </div>
+      </Router>
+      </ThemeProvider>
   );
 };
 

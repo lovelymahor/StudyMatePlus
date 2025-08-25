@@ -6,6 +6,10 @@
   color: #333;
 }
 
+body.dark-theme {
+    color: #f7fafc;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -96,6 +100,11 @@
   border-bottom: 1px solid #e2e8f0;
 }
 
+body.dark-theme .search-filters {
+    background: #1a202c;
+    border-bottom-color: #4a5568;
+}
+
 .search-bar {
   margin-bottom: 2rem;
 }
@@ -117,6 +126,12 @@
   outline: none;
 }
 
+body.dark-theme .search-input {
+    background: #4a5568;
+    color: #f7fafc;
+    border-color: #4a5568;
+}
+
 .search-input:focus {
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -129,6 +144,10 @@
   transform: translateY(-50%);
   font-size: 1.2rem;
   color: #666;
+}
+
+body.dark-theme .search-icon {
+    color: #cbd5e0;
 }
 
 .filters {
@@ -151,6 +170,10 @@
   font-size: 0.9rem;
 }
 
+body.dark-theme .filter-group label {
+    color: #f7fafc;
+}
+
 .filter-group select {
   padding: 0.8rem;
   border: 2px solid #e2e8f0;
@@ -162,6 +185,12 @@
   transition: border-color 0.3s ease;
 }
 
+body.dark-theme .filter-group select {
+    background: #4a5568;
+    color: #f7fafc;
+    border-color: #4a5568;
+}
+
 .filter-group select:focus {
   outline: none;
   border-color: #667eea;
@@ -171,6 +200,10 @@
 .results {
   padding: 3rem 0;
   background: white;
+}
+
+body.dark-theme .results {
+    background: #2d3748;
 }
 
 .results-header {
@@ -185,9 +218,17 @@
   color: #333;
 }
 
+body.dark-theme .results-header h2 {
+    color: #f7fafc;
+}
+
 .results-header p {
   color: #666;
   font-size: 1.1rem;
+}
+
+body.dark-theme .results-header p {
+    color: #cbd5e0;
 }
 
 /* No Results */
@@ -199,9 +240,17 @@
   margin: 2rem 0;
 }
 
+body.dark-theme .no-results {
+    background: #4a5568;
+}
+
 .no-results-icon {
   font-size: 4rem;
   margin-bottom: 1rem;
+}
+
+body.dark-theme .no-results-icon {
+    color: #f7fafc;
 }
 
 .no-results h3 {
@@ -211,9 +260,17 @@
   color: #374151;
 }
 
+body.dark-theme .no-results h3 {
+    color: #f7fafc;
+}
+
 .no-results p {
   color: #6b7280;
   font-size: 1rem;
+}
+
+body.dark-theme .no-results p {
+    color: #cbd5e0;
 }
 
 /* Syllabus Grid */
@@ -234,6 +291,12 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+body.dark-theme .syllabus-card {
+    background: #4a5568;
+    border-color: #4a5568;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 .syllabus-card:hover {
@@ -262,12 +325,20 @@
   line-height: 1.4;
 }
 
+body.dark-theme .card-title {
+    color: #f7fafc;
+}
+
 .card-meta {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
   color: #666;
+}
+
+body.dark-theme .card-meta {
+    color: #cbd5e0;
 }
 
 .university {
@@ -281,6 +352,10 @@
 
 .department {
   color: #6b7280;
+}
+
+body.dark-theme .department {
+    color: #cbd5e0;
 }
 
 .difficulty-badge {
@@ -310,6 +385,10 @@
   color: #374151;
 }
 
+body.dark-theme .subjects-section h4 {
+    color: #f7fafc;
+}
+
 .subjects-list {
   display: flex;
   flex-wrap: wrap;
@@ -324,6 +403,12 @@
   font-size: 0.85rem;
   font-weight: 500;
   border: 1px solid #e5e7eb;
+}
+
+body.dark-theme .subject-tag {
+    background: #2d3748;
+    color: #cbd5e0;
+    border-color: #4a5568;
 }
 
 .tags-section {
@@ -355,6 +440,10 @@
   gap: 1rem;
 }
 
+body.dark-theme .card-stats {
+    background: #2d3748;
+}
+
 .stat {
   display: flex;
   align-items: center;
@@ -363,6 +452,10 @@
   color: #6b7280;
   flex: 1;
   justify-content: center;
+}
+
+body.dark-theme .stat {
+    color: #cbd5e0;
 }
 
 .stat-icon {
@@ -405,6 +498,11 @@
   background: transparent;
   color: #667eea;
   border: 2px solid #667eea;
+}
+
+body.dark-theme .btn-outline {
+    color: #667eea;
+    border-color: #667eea;
 }
 
 .btn-outline:hover {

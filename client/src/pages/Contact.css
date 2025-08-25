@@ -6,6 +6,10 @@
   color: #333;
 }
 
+body.dark-theme {
+    color: #f7fafc;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -39,6 +43,10 @@
   background: #f8f9fa;
 }
 
+body.dark-theme .contact-main {
+    background: #1a202c;
+}
+
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -54,10 +62,19 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+body.dark-theme .contact-form-container {
+    background: #4a5568;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
 .contact-form-container h2 {
   font-size: 1.8rem;
   margin-bottom: 30px;
   color: #333;
+}
+
+body.dark-theme .contact-form-container h2 {
+    color: #f7fafc;
 }
 
 .form-group {
@@ -73,6 +90,13 @@
   font-size: 1rem;
   transition: border-color 0.3s ease;
   font-family: inherit;
+}
+
+body.dark-theme .form-group input,
+body.dark-theme .form-group textarea {
+    background: #2d3748;
+    color: #f7fafc;
+    border-color: #4a5568;
 }
 
 .form-group input:focus,
@@ -112,6 +136,10 @@
   padding: 40px;
 }
 
+body.dark-theme .success-message {
+    background: #4a5568;
+}
+
 .success-icon {
   width: 60px;
   height: 60px;
@@ -135,11 +163,19 @@
   color: #666;
 }
 
+body.dark-theme .success-message p {
+    color: #cbd5e0;
+}
+
 /* Contact Info */
 .contact-info h2 {
   font-size: 1.8rem;
   margin-bottom: 40px;
   color: #333;
+}
+
+body.dark-theme .contact-info h2 {
+    color: #f7fafc;
 }
 
 .info-item {
@@ -159,9 +195,17 @@
   color: #333;
 }
 
+body.dark-theme .info-content h3 {
+    color: #f7fafc;
+}
+
 .info-content p {
   color: #666;
   line-height: 1.6;
+}
+
+body.dark-theme .info-content p {
+    color: #cbd5e0;
 }
 
 /* Social Links */
@@ -173,6 +217,10 @@
   font-size: 1.1rem;
   margin-bottom: 15px;
   color: #333;
+}
+
+body.dark-theme .social-links h3 {
+    color: #f7fafc;
 }
 
 .social-icons {
@@ -197,11 +245,19 @@
   background: white;
 }
 
+body.dark-theme .faq-section {
+    background: #1a202c;
+}
+
 .faq-section h2 {
   text-align: center;
   font-size: 2.2rem;
   margin-bottom: 50px;
   color: #333;
+}
+
+body.dark-theme .faq-section h2 {
+    color: #f7fafc;
 }
 
 .faq-list {
@@ -217,15 +273,28 @@
   border-left: 4px solid #667eea;
 }
 
+body.dark-theme .faq-item {
+    background: #4a5568;
+    border-color: #667eea;
+}
+
 .faq-item h3 {
   color: #333;
   margin-bottom: 10px;
   font-size: 1.1rem;
 }
 
+body.dark-theme .faq-item h3 {
+    color: #f7fafc;
+}
+
 .faq-item p {
   color: #666;
   line-height: 1.6;
+}
+
+body.dark-theme .faq-item p {
+    color: #cbd5e0;
 }
 
 /* Buttons */
@@ -260,6 +329,17 @@
   color: #1e293b;
   transform: translateY(-2px);
 }
+
+body.dark-theme .btn-secondary {
+    color: #f7fafc;
+    border-color: #f7fafc;
+}
+
+body.dark-theme .btn-secondary:hover {
+    background: #f7fafc;
+    color: #4c51bf;
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

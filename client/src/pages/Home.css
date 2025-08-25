@@ -990,3 +990,110 @@
 .scroll-to-top:active {
   transform: scale(0.95);
 }
+
+/* Dark Mode Additions */
+body.dark-theme {
+  background-color: #1a202c;
+  color: #f7fafc;
+}
+
+body.dark-theme .home {
+  background-color: #1a202c;
+  color: #f7fafc;
+}
+
+body.dark-theme .features {
+  background: #2d3748;
+}
+
+body.dark-theme .section-title {
+  color: #f7fafc;
+}
+
+body.dark-theme .feature-card {
+  background: #4a5568;
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.4), 0 0 20px rgba(118, 75, 162, 0.2), 0 5px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid #667eea;
+}
+
+body.dark-theme .feature-card:hover {
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.6), 0 0 30px rgba(118, 75, 162, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .feature-card h3 {
+  color: #f7fafc;
+}
+
+body.dark-theme .feature-card p {
+  color: #cbd5e0;
+}
+
+body.dark-theme .how-it-works {
+  background: #1a202c;
+}
+
+body.dark-theme .step h3 {
+  color: #f7fafc;
+}
+
+body.dark-theme .step p {
+  color: #cbd5e0;
+}
+
+body.dark-theme .testimonials {
+  background-color: #2d3748;
+}
+
+body.dark-theme .testimonial-card {
+  background: #4a5568;
+  color: #cbd5e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+body.dark-theme .testimonial-card h4 {
+  color: #f7fafc;
+}
+
+body.dark-theme .cta-content h2 {
+  color: #f7fafc;
+}
+
+body.dark-theme .cta-content p {
+  color: #cbd5e0;
+}
+
+body.dark-theme .btn-primary-home {
+  color: #2d3748;
+}
+
+body.dark-theme .btn-secondary {
+  color: #f7fafc;
+  border-color: #f7fafc;
+}
+
+body.dark-theme .btn-secondary:hover {
+  background: #f7fafc;
+  color: #667eea;
+}
+
+body.dark-theme .btn-outline {
+  color: #667eea;
+  border-color: #667eea;
+}
+
+body.dark-theme .btn-outline:hover {
+  background: #667eea;
+  color: #f7fafc;
+}
+
+body.dark-theme .contributors {
+  background: #2d3748;
+}
+
+body.dark-theme .contributor-card {
+  color: #f7fafc;
+}
+
+body.dark-theme .contributor-card img {
+  border-color: #4a5568;
+}

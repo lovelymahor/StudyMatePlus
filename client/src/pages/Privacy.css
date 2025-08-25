@@ -1071,3 +1071,267 @@
     margin-bottom: 2rem;
   }
 }
+
+/* Dark Mode Additions */
+body.dark-theme {
+    color: #f7fafc;
+}
+
+body.dark-theme .privacy-intro {
+    background: #1a202c;
+}
+
+body.dark-theme .intro-icon {
+    color: #f7fafc;
+}
+
+body.dark-theme .privacy-intro h2 {
+    color: #f7fafc;
+}
+
+body.dark-theme .privacy-intro p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .privacy-content {
+    background: #2d3748;
+}
+
+body.dark-theme .section-icon {
+    color: #f7fafc;
+}
+
+body.dark-theme .section-header h2 {
+    color: #f7fafc;
+}
+
+body.dark-theme .section-content > p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .info-category {
+    background: #4a5568;
+}
+
+body.dark-theme .info-category h3 {
+    color: #f7fafc;
+}
+
+body.dark-theme .info-category ul li {
+    color: #cbd5e0;
+}
+
+body.dark-theme .usage-item {
+    background: #4a5568;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .usage-icon {
+    color: #f7fafc;
+}
+
+body.dark-theme .usage-item h3 {
+    color: #f7fafc;
+}
+
+body.dark-theme .usage-item p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .important-note {
+    background: linear-gradient(135deg, #4a5568 0%, #718096 100%);
+    color: #f7fafc;
+}
+
+body.dark-theme .note-icon {
+    color: #f7fafc;
+}
+
+body.dark-theme .note-content h3 {
+    color: #f7fafc;
+}
+
+body.dark-theme .note-content p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .sharing-category {
+    background: #4a5568;
+    border-color: #4a5568;
+}
+
+body.dark-theme .sharing-category h3 {
+    color: #f7fafc;
+}
+
+body.dark-theme .sharing-category ul li {
+    color: #cbd5e0;
+}
+
+body.dark-theme .content-guidelines {
+    color: #f7fafc;
+}
+
+body.dark-theme .guideline-item {
+    background: #4a5568;
+}
+
+body.dark-theme .guideline-icon {
+    color: #f7fafc;
+}
+
+body.dark-theme .guideline-text h3 {
+    color: #f7fafc;
+}
+
+body.dark-theme .guideline-text p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .security-measures {
+    color: #f7fafc;
+}
+
+body.dark-theme .security-item {
+    background: #4a5568;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .security-icon {
+    color: #f7fafc;
+}
+
+body.dark-theme .security-item h3 {
+    color: #f7fafc;
+}
+
+body.dark-theme .security-item p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .security-disclaimer {
+    background: #2d3748;
+    border-left-color: #3182ce;
+}
+
+body.dark-theme .disclaimer-icon {
+    color: #f7fafc;
+}
+
+body.dark-theme .disclaimer-content p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .rights-grid {
+    color: #f7fafc;
+}
+
+body.dark-theme .right-item {
+    background: #4a5568;
+    color: #f7fafc;
+    border-color: #4a5568;
+}
+
+body.dark-theme .right-icon {
+    color: #f7fafc;
+}
+
+body.dark-theme .right-item h3 {
+    color: #f7fafc;
+}
+
+body.dark-theme .right-item p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .privacy-contact-info {
+    background: #4a5568;
+}
+
+body.dark-theme .privacy-contact-info h3 {
+    color: #f7fafc;
+}
+
+body.dark-theme .privacy-contact-info p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .contact-methods {
+    color: #f7fafc;
+}
+
+body.dark-theme .contact-method {
+    background: #2d3748;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-theme .contact-icon {
+    color: #f7fafc;
+}
+
+body.dark-theme .update-process {
+    color: #f7fafc;
+}
+
+body.dark-theme .update-step {
+    background: #4a5568;
+}
+
+body.dark-theme .step-content h3 {
+    color: #f7fafc;
+}
+
+body.dark-theme .step-content p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .contact-grid {
+    color: #f7fafc;
+}
+
+body.dark-theme .contact-card {
+    background: #4a5568;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .contact-card-icon {
+    color: #f7fafc;
+}
+
+body.dark-theme .contact-card h3 {
+    color: #f7fafc;
+}
+
+body.dark-theme .contact-card p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .contact-card p:last-child {
+    color: #9a9a9a;
+}
+
+body.dark-theme .btn-primary {
+    color: #2d3748;
+}
+
+body.dark-theme .btn-secondary {
+    color: white;
+    border-color: white;
+}
+
+body.dark-theme .btn-secondary:hover {
+    background: white;
+    color: #f5576c;
+}
+
+body.dark-theme .cta-buttons {
+    color: #f7fafc;
+}
+
+body.dark-theme .cta-content p {
+    color: #cbd5e0;
+}
+
+body.dark-theme .cta-content h2 {
+    color: white;
+}
