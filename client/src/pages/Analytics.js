@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Bar, Pie } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -59,6 +59,45 @@ const Analytics = () => {
         ],
       },
     ],
+  };
+
+  // State to track selected subject
+  const [selectedSubject, setSelectedSubject] = useState('all');
+
+  // Function to handle download
+  const handleDownload = (subject) => {
+    let fileUrl = '';
+    switch (subject.toLowerCase()) {
+      case 'dsa':
+        fileUrl = '/notes/dsa.pdf'; // Replace with actual path or URL
+        break;
+      case 'dbms':
+        fileUrl = '/notes/dbms.pdf'; // Replace with actual path or URL
+        break;
+      case 'cn':
+        fileUrl = '/notes/cn.pdf'; // Replace with actual path or URL
+        break;
+      case 'os':
+        fileUrl = '/notes/os.pdf'; // Replace with actual path or URL
+        break;
+      case 'java':
+        fileUrl = '/notes/java.pdf'; // Replace with actual path or URL
+        break;
+      case 'python':
+        fileUrl = '/notes/python.pdf'; // Replace with actual path or URL
+        break;
+      default:
+        fileUrl = ''; // No download for 'all'
+    }
+
+    if (fileUrl) {
+      const link = document.createElement('a');
+      link.href = fileUrl;
+      link.download = `${subject}_notes.pdf`; // Customize filename
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
 
   return (
@@ -122,7 +161,12 @@ const Analytics = () => {
           variants={fadeInUp}
         >
           <h2>🎯 Filter by Subject</h2>
-          <select>
+          <select
+            value={selectedSubject}
+            onChange={(e) => {
+              setSelectedSubject(e.target.value);
+            }}
+          >
             <option value="all">All Subjects</option>
             <option value="dsa">DSA</option>
             <option value="dbms">DBMS</option>
@@ -144,8 +188,13 @@ const Analytics = () => {
             className="download-btn"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              if (selectedSubject !== 'all') {
+                handleDownload(selectedSubject);
+              }
+            }}
           >
-            ⬇️ Download Report (PDF)
+            ⬇️ Download Notes (PDF)
           </motion.button>
         </motion.section>
       </div>
