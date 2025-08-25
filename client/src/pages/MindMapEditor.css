@@ -1,0 +1,199 @@
+:root {
+  --bg: #f5f7fb;
+  --text: #1f2430;
+  --panel: #ffffff;
+  --border: #e6e8ef;
+  --accent: #2d7ef7;
+}
+
+.mindmap.dark {
+  --bg: #121418;
+  --text: #e9edf5;
+  --panel: #171a20;
+  --border: #2a2f3a;
+  --accent: #5aa0ff;
+}
+
+.mindmap {
+  display: grid;
+  grid-template-rows: 56px 1fr;
+  grid-template-columns: 1fr 300px;
+  grid-template-areas:
+    "toolbar toolbar"
+    "canvas inspector";
+  height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+}
+
+.toolbar {
+  grid-area: toolbar;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--panel), var(--panel));
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.toolbar .group {
+  display: flex;
+  gap: 8px;
+  padding-right: 8px;
+  margin-right: 8px;
+  border-right: 1px solid var(--border);
+}
+
+.toolbar button, .toolbar label.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform .05s ease, background .2s ease, border-color .2s ease;
+  user-select: none;
+}
+.toolbar button:hover, .toolbar label.button:hover {
+  background: rgba(45, 126, 247, 0.06);
+  border-color: #cfd3df;
+}
+.toolbar button:active, .toolbar label.button:active { transform: translateY(1px); }
+
+.search {
+  height: 36px;
+  min-width: 220px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  border-radius: 10px;
+  outline: none;
+}
+
+.canvas {
+  grid-area: canvas;
+  position: relative;
+}
+
+.inspector {
+  grid-area: inspector;
+  border-left: 1px solid var(--border);
+  background: var(--panel);
+  padding: 12px;
+  overflow: auto;
+}
+
+.inspector h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.field label { font-size: 12px; opacity: .8; }
+.field input[type="text"] {
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  padding: 0 10px;
+  outline: none;
+}
+.field select, .field input[type="color"] {
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  padding: 0 10px;
+  outline: none;
+}
+
+.inspector .row {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius:12%;
+  padding:5px;
+
+}
+.btn-danger {
+  background: #ef476f;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius:12%;
+  padding:5px;
+}
+.btn-ghost {
+  background: transparent;
+}
+
+.toast {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.1);
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+
+.node-inner {
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(0,0,0,.1);
+  border: 1px solid rgba(255,255,255, .18);
+  backdrop-filter: saturate(140%) blur(2px);
+  font-weight: 600;
+  transition: box-shadow .2s ease, transform .06s ease;
+}
+.node-inner:hover { box-shadow: 0 10px 36px rgba(0,0,0,.15); }
+.node-badge {
+  display: inline-block;
+  font-size: 10px;
+  opacity: .9;
+  padding: 2px 6px;
+  border-radius: 999px;
+  margin-top: 6px;
+  background: rgba(255,255,255,.2);
+}
+
+.highlight {
+  outline: 3px solid #ffd166;
+  outline-offset: 2px;
+}
+
+.collapse-toggle {
+  font-size: 11px;
+  margin-top: 6px;
+  display: inline-block;
+  background: rgba(0,0,0,.15);
+  padding: 2px 8px;
+  border-radius: 999px;
+  cursor: pointer;
+}
