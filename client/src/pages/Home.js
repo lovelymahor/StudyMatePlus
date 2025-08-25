@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaDiscord , FaArrowUp} from "react-icons/fa";
 import { SiX } from "react-icons/si";
+import logo from "./logo.png";
 
 
 import "./Home.css";
@@ -585,9 +586,14 @@ const scrollToTop = () => {
     <motion.div className="footer-content" variants={staggerChildren}>
       
       {/* Left Section */}
-      <motion.div className="footer-section" variants={slideInLeft}>
-        <h3>📚 StudyMatePlus</h3>
-        <p>Empowering students with comprehensive academic resources and peer-to-peer learning.</p>
+     <motion.div className="footer-section" variants={slideInLeft}>
+  <img 
+    src={logo} 
+    alt="StudyMatePlus Logo" 
+    style={{ height: "50px", marginBottom: "10px" }} 
+  />
+  <p>Empowering students with comprehensive academic resources and peer-to-peer learning.</p>
+
 
         {/* Social Links with Icons */}
         <div className="social-links">
