@@ -19,6 +19,12 @@
   align-items: center;
 }
 
+.navbar-logo {
+  height: 40px; /* adjust as needed */
+  width: auto;
+  display: block;
+}
+
 .navbar-brand {
   font-size: 1.6rem;
   font-weight: bold;

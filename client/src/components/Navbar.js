@@ -13,7 +13,11 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
-          📚 StudyMatePlus
+          <img 
+            src="/logo.png" 
+            alt="StudyMatePlus Logo" 
+            className="navbar-logo" 
+          />
         </Link>
         
         {/* Desktop Menu */}
