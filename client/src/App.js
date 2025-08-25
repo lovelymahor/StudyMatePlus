@@ -12,6 +12,8 @@ import Contact from './pages/Contact';
 import Analytics from './pages/Analytics';
 import Faq from './pages/Faq';
 import Contribute from './pages/Contribute';
+import Help from './pages/Help';
+import './App.css';  
 import ScrollToTop from './components/scrolltotop';
 import MindMapEditor from './pages/MindMapEditor';
 
@@ -37,6 +39,7 @@ const App = () => {
           <Route path="/contribute" element={<Contribute />} />
           <Route path="/mindmap" element={<MindMapEditor/>}/>
           <Route path="/contact" element={<Contact />} />
+           <Route path="/help" element={<Help />} />
         </Routes>
       </div>
     </Router>
