@@ -28,6 +28,7 @@ const Navbar = () => {
           <li><Link to="/notes" className="navbar-link">Notes</Link></li>
           <li><Link to="/pyqs" className="navbar-link">PYQs</Link></li>
           <li><Link to="/analytics" className="navbar-link">Analytics</Link></li>
+          <li><Link to="/mindmap" className="navbar-link">Mind Map</Link></li>
           <li><Link to="/feedback" className="navbar-link">Feedback</Link></li>
           <li><Link to="/faq" className="navbar-link">FAQs</Link></li>
         </ul>
