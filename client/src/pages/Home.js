@@ -658,7 +658,6 @@ const scrollToTop = () => {
 <AnimatePresence>
   {showScroll && (
     <motion.button
-    
       key="scrollTop"
       className="scroll-to-top"
       onClick={scrollToTop}
@@ -668,7 +667,7 @@ const scrollToTop = () => {
       whileHover={{ scale: 1.15, rotate: 5 }}
       whileTap={{ scale: 0.95 }}
     >
-    <FaArrowUp/>
+    <FaArrowUp size={20}/>
     </motion.button>
   )}
 </AnimatePresence>
