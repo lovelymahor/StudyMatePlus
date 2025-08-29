@@ -14,7 +14,9 @@ import Faq from "./pages/Faq";
 import Contribute from "./pages/Contribute";
 import ScrollToTop from "./components/scrolltotop";
 import MindMapEditor from "./pages/MindMapEditor";
+import Profile from "./pages/Profile.js";
 import SubmitFeedback from "./pages/SubmitFeedback";
+
 
 const App = () => {
   return (
@@ -36,6 +38,7 @@ const App = () => {
           <Route path="/contribute" element={<Contribute />} />
           <Route path="/mindmap" element={<MindMapEditor />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/feedback/submit" element={<SubmitFeedback />} />
         </Routes>
       </div>
