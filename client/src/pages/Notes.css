@@ -1,5 +1,6 @@
 .notes {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
   line-height: 1.6;
   color: #333;
 }
@@ -21,7 +22,7 @@
 }
 
 .notes-hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -66,7 +67,7 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   border-radius: 15px;
   backdrop-filter: blur(10px);
   min-width: 120px;
@@ -89,7 +90,7 @@
 
 /* Search and Filters */
 .search-filters {
-  background: #f8fafc;
+  background: transparent;
   padding: 2rem 0;
   border-bottom: 1px solid #e2e8f0;
 }
@@ -110,7 +111,7 @@
   font-size: 1.1rem;
   border: 2px solid #e2e8f0;
   border-radius: 50px;
-  background: white;
+  background: transparent;
   transition: all 0.3s ease;
   outline: none;
 }
@@ -153,7 +154,7 @@
   padding: 0.8rem;
   border: 2px solid #e2e8f0;
   border-radius: 8px;
-  background: white;
+  background: transparent;
   font-size: 1rem;
   color: #374151;
   cursor: pointer;
@@ -168,7 +169,7 @@
 /* Results Section */
 .results {
   padding: 3rem 0;
-  background: white;
+  background: transparent;
 }
 
 .results-header {
@@ -192,7 +193,7 @@
 .no-results {
   text-align: center;
   padding: 4rem 2rem;
-  background: #f8fafc;
+  background: transparent;
   border-radius: 15px;
   margin: 2rem 0;
 }
@@ -490,8 +491,8 @@
   border-radius: 10px;
   padding: 1rem;
   width: 90%;
-  max-width: 1000px;    
-  max-height: 95vh;     
+  max-width: 1000px;
+  max-height: 95vh;
   display: flex;
   flex-direction: column;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -505,7 +506,7 @@
   height: 100%;
   border: none;
   border-radius: 5px;
-  min-height: 85vh;    
+  min-height: 85vh;
 }
 
 .close-btn {
@@ -566,7 +567,6 @@
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
-
 
 @media (max-width: 768px) {
   .filters {
