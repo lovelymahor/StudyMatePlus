@@ -22,7 +22,7 @@
 /* Selection Section */
 .pyqs-selection {
   padding: 40px 20px;
-  background-color: #fff;
+  background: transparent;
 }
 
 .pyqs-form {
