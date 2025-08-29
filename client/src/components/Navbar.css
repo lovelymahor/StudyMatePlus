@@ -65,6 +65,10 @@
   color: #2d3748;
 }
 
+.navbar-profile-item {
+  margin-left: auto;
+}
+
 /* Mobile toggle button */
 .navbar-toggle {
   display: none;
@@ -140,6 +144,29 @@
   font-weight: 600;
   background-color: #e9effc;
   color: #2b6cb0;
+}
+
+.navbar-profile-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.navbar-profile-img {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e2e8f0;
+  transition: border-color 0.3s ease;
+}
+
+.navbar-profile-link:hover .navbar-profile-img {
+  border-color: #667eea;
 }
 
 /* Responsive */
