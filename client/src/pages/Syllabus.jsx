@@ -1,103 +1,163 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import "./Notes.css";
+import "./Syllabus.css";
 
-// Mock data for notes
-const notesData = [
+const syllabusData = [
   {
     id: 1,
-    title: "Python - Notes",
-    university: "Mumbai University",
-    department: "Electronics Engineering",
+    title: "Computer Science Engineering - Semester 1",
+    university: "Delhi University",
+    department: "Computer Science",
     semester: 1,
-    subject: "Python",
-    fileType: "PDF",
-    downloadCount: 1400,
-    uploadDate: "2024-02-01",
-    fileSize: "3.5 MB",
-    tags: ["CSE", "Python", "First Year"],
+    subjects: [
+      "Mathematics I",
+      "Physics",
+      "Chemistry",
+      "Programming in C",
+      "English Communication",
+    ],
+    downloadCount: 1250,
+    uploadDate: "2024-01-15",
+    fileSize: "2.4 MB",
     difficulty: "Beginner",
-    link: "/pdf/python.pdf",
+    tags: ["CSE", "First Year", "Basic Programming"],
   },
   {
     id: 2,
-    title: "Operating Systems - Detailed Notes",
-    university: "NIT Trichy",
+    title: "Computer Science Engineering - Semester 3",
+    university: "Delhi University",
     department: "Computer Science",
-    semester: 2,
-    subject: "Operating Systems",
-    fileType: "PDF",
-    downloadCount: 870,
-    uploadDate: "2024-04-02",
-    fileSize: "5.8 MB",
-    tags: ["CSE", "OS", "Semester 4"],
+    semester: 3,
+    subjects: [
+      "Data Structures",
+      "Computer Organization",
+      "Discrete Mathematics",
+      "Database Systems",
+      "Software Engineering",
+    ],
+    downloadCount: 890,
+    uploadDate: "2024-01-20",
+    fileSize: "3.1 MB",
     difficulty: "Intermediate",
-    link: "/pdf/OS.pdf",
+    tags: ["CSE", "Data Structures", "Database"],
   },
   {
     id: 3,
-    title: "Data Structures - Notes",
-    university: "Anna University",
-    department: "Computer Science",
-    semester: 3,
-    subject: "Data Structures",
-    fileType: "PDF",
-    downloadCount: 980,
-    uploadDate: "2024-03-15",
-    fileSize: "4.2 MB",
-    tags: ["CSE", "DSA"],
+    title: "Mechanical Engineering - Semester 2",
+    university: "Mumbai University",
+    department: "Mechanical Engineering",
+    semester: 2,
+    subjects: [
+      "Engineering Mechanics",
+      "Thermodynamics",
+      "Manufacturing Processes",
+      "Engineering Drawing",
+      "Materials Science",
+    ],
+    downloadCount: 675,
+    uploadDate: "2024-01-18",
+    fileSize: "2.8 MB",
     difficulty: "Intermediate",
-    link: "/pdf/DSA.pdf",
+    tags: ["Mechanical", "Thermodynamics", "Manufacturing"],
   },
   {
     id: 4,
-    title: "Database Management Systems (DBMS) - Notes",
+    title: "Electronics Engineering - Semester 4",
     university: "IIT Delhi",
-    department: "Computer Science",
+    department: "Electronics Engineering",
     semester: 4,
-    subject: "Database Systems",
-    fileType: "PDF",
-    downloadCount: 1100,
-    uploadDate: "2024-03-18",
-    fileSize: "6.0 MB",
-    tags: ["CSE", "DBMS", "SQL"],
-    difficulty: "Intermediate",
-    link: "/pdf/DBMS.pdf",
+    subjects: [
+      "Digital Electronics",
+      "Microprocessors",
+      "Control Systems",
+      "Signals & Systems",
+      "Communication Systems",
+    ],
+    downloadCount: 1120,
+    uploadDate: "2024-01-22",
+    fileSize: "3.5 MB",
+    difficulty: "Advanced",
+    tags: ["Electronics", "Microprocessors", "Communication"],
   },
   {
     id: 5,
-    title: "Java - Notes",
-    university: "Delhi University",
-    department: "Computer Science",
-    semester: 5,
-    subject: "Java",
-    fileType: "PDF",
-    downloadCount: 1400,
-    uploadDate: "2024-02-01",
-    fileSize: "3.5 MB",
-    tags: ["CSE", "Java", "First Year"],
+    title: "Information Technology - Semester 1",
+    university: "Anna University",
+    department: "Information Technology",
+    semester: 1,
+    subjects: [
+      "Programming Fundamentals",
+      "Digital Logic",
+      "Computer Networks Basics",
+      "Web Technologies",
+      "Statistics",
+    ],
+    downloadCount: 945,
+    uploadDate: "2024-01-25",
+    fileSize: "2.2 MB",
     difficulty: "Beginner",
-    link: "/pdf/Java.pdf",
+    tags: ["IT", "Web Development", "Networks"],
   },
   {
     id: 6,
-    title: "Advance Web Development",
+    title: "Civil Engineering - Semester 3",
+    university: "NIT Trichy",
+    department: "Civil Engineering",
+    semester: 3,
+    subjects: [
+      "Structural Analysis",
+      "Fluid Mechanics",
+      "Surveying",
+      "Building Materials",
+      "Environmental Engineering",
+    ],
+    downloadCount: 720,
+    uploadDate: "2024-01-12",
+    fileSize: "2.9 MB",
+    difficulty: "Intermediate",
+    tags: ["Civil", "Structural", "Environmental"],
+  },
+  {
+    id: 7,
+    title: "Computer Science Engineering - Semester 5",
     university: "VIT Vellore",
     department: "Computer Science",
-    semester: 6,
-    subject: "Web Development",
-    fileType: "PDF",
-    downloadCount: 640,
-    uploadDate: "2024-07-01",
-    fileSize: "6.5 MB",
-    tags: ["CSE", "Web", "Semester 6"],
+    semester: 5,
+    subjects: [
+      "Machine Learning",
+      "Compiler Design",
+      "Computer Graphics",
+      "Network Security",
+      "Mobile Computing",
+    ],
+    downloadCount: 1340,
+    uploadDate: "2024-01-28",
+    fileSize: "4.2 MB",
     difficulty: "Advanced",
-    link: "/pdf/WebDevelopment.pdf",
+    tags: ["CSE", "Machine Learning", "Security"],
+  },
+  {
+    id: 8,
+    title: "Electrical Engineering - Semester 2",
+    university: "IIT Bombay",
+    department: "Electrical Engineering",
+    semester: 2,
+    subjects: [
+      "Circuit Analysis",
+      "Electromagnetic Theory",
+      "Power Systems",
+      "Digital Circuits",
+      "Instrumentation",
+    ],
+    downloadCount: 850,
+    uploadDate: "2024-01-14",
+    fileSize: "3.3 MB",
+    difficulty: "Intermediate",
+    tags: ["Electrical", "Power Systems", "Circuits"],
   },
 ];
 
-const Notes = () => {
-  // Animation Variants from Home.js
+const Syllabus = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
     visible: {
@@ -111,7 +171,7 @@ const Notes = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
     },
   };
 
@@ -124,46 +184,38 @@ const Notes = () => {
     },
   };
 
-  // States
+  // State management
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedUniversity, setSelectedUniversity] = useState("All");
   const [selectedDepartment, setSelectedDepartment] = useState("All");
   const [selectedSemester, setSelectedSemester] = useState("All");
-  const [selectedSubject, setSelectedSubject] = useState("All");
   const [sortBy, setSortBy] = useState("downloads");
-  const [previewUrl, setPreviewUrl] = useState(null);
 
-  // Prevent background scroll when modal is open
-  useEffect(() => {
-    if (previewUrl) {
-      document.body.classList.add("modal-open");
-    } else {
-      document.body.classList.remove("modal-open");
-    }
-  }, [previewUrl]);
-
-  // Unique filter values
+  // Get unique values for filters
   const universities = [
     "All",
-    ...new Set(notesData.map((item) => item.university)),
+    ...new Set(syllabusData.map((item) => item.university)),
   ];
   const departments = [
     "All",
-    ...new Set(notesData.map((item) => item.department)),
+    ...new Set(syllabusData.map((item) => item.department)),
   ];
-  const semesters = ["All", ...new Set(notesData.map((item) => item.semester))];
-  const subjects = ["All", ...new Set(notesData.map((item) => item.subject))]; // New subject filter list
+  const semesters = [
+    "All",
+    ...new Set(syllabusData.map((item) => item.semester)),
+  ];
 
-  // Filter & sort logic
-  const filteredNotes = useMemo(() => {
-    let filtered = notesData.filter((item) => {
+  // Filter and sort logic
+  const filteredAndSortedSyllabi = useMemo(() => {
+    let filtered = syllabusData.filter((item) => {
       const matchesSearch =
         item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.subject.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.subjects.some((subject) =>
+          subject.toLowerCase().includes(searchTerm.toLowerCase())
+        ) ||
         item.tags.some((tag) =>
           tag.toLowerCase().includes(searchTerm.toLowerCase())
         );
-
       const matchesUniversity =
         selectedUniversity === "All" || item.university === selectedUniversity;
       const matchesDepartment =
@@ -171,17 +223,16 @@ const Notes = () => {
       const matchesSemester =
         selectedSemester === "All" ||
         item.semester.toString() === selectedSemester;
-      const matchesSubject =
-        selectedSubject === "All" || item.subject === selectedSubject;
+
       return (
         matchesSearch &&
         matchesUniversity &&
         matchesDepartment &&
-        matchesSemester &&
-        matchesSubject
+        matchesSemester
       );
     });
 
+    // Sort the filtered results
     filtered.sort((a, b) => {
       switch (sortBy) {
         case "downloads":
@@ -201,9 +252,13 @@ const Notes = () => {
     selectedUniversity,
     selectedDepartment,
     selectedSemester,
-    selectedSubject,
     sortBy,
   ]);
+
+  const handleDownload = (syllabus) => {
+    // Simulate download
+    alert(`Downloading: ${syllabus.title}`);
+  };
 
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
@@ -219,25 +274,26 @@ const Notes = () => {
   };
 
   return (
-    <div className="notes">
+    <div className="syllabus">
       {/* Hero Section */}
       <motion.section
-        className="notes-hero"
+        className="syllabus-hero"
         initial="hidden"
         animate="visible"
         variants={staggerChildren}
       >
         <div className="container">
           <motion.div className="hero-content" variants={fadeInUp}>
-            <motion.h1 variants={fadeInUp}>📝 Notes, Books & PPTs</motion.h1>
+            <motion.h1 variants={fadeInUp}>📚 Syllabus Collection</motion.h1>
             <motion.p variants={fadeInUp}>
-              Access and share comprehensive study notes, reference books, and
-              PPTs uploaded by peers and seniors from top universities.
+              Access comprehensive syllabus materials from top universities
+              across India. Find subject details, course structures, and
+              academic requirements all in one place.
             </motion.p>
             <motion.div className="hero-stats" variants={staggerChildren}>
               <motion.div className="hero-stat" variants={scaleIn}>
-                <span className="stat-number">{notesData.length}</span>
-                <span className="stat-label">Resources Available</span>
+                <span className="stat-number">{syllabusData.length}</span>
+                <span className="stat-label">Syllabi Available</span>
               </motion.div>
               <motion.div className="hero-stat" variants={scaleIn}>
                 <span className="stat-number">{universities.length - 1}</span>
@@ -252,7 +308,7 @@ const Notes = () => {
         </div>
       </motion.section>
 
-      {/* Search & Filters */}
+      {/* Search and Filters */}
       <motion.section
         className="search-filters"
         initial="hidden"
@@ -265,7 +321,7 @@ const Notes = () => {
             <div className="search-input-container">
               <input
                 type="text"
-                placeholder="Search notes, books, or PPTs..."
+                placeholder="Search by subject, course name, or tags..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="search-input"
@@ -273,6 +329,7 @@ const Notes = () => {
               <span className="search-icon">🔍</span>
             </div>
           </motion.div>
+
           <motion.div className="filters" variants={staggerChildren}>
             <motion.div className="filter-group" variants={fadeInUp}>
               <label>University:</label>
@@ -287,6 +344,7 @@ const Notes = () => {
                 ))}
               </select>
             </motion.div>
+
             <motion.div className="filter-group" variants={fadeInUp}>
               <label>Department:</label>
               <select
@@ -300,6 +358,7 @@ const Notes = () => {
                 ))}
               </select>
             </motion.div>
+
             <motion.div className="filter-group" variants={fadeInUp}>
               <label>Semester:</label>
               <select
@@ -313,19 +372,7 @@ const Notes = () => {
                 ))}
               </select>
             </motion.div>
-            <motion.div className="filter-group" variants={fadeInUp}>
-              <label>Subject:</label>
-              <select
-                value={selectedSubject}
-                onChange={(e) => setSelectedSubject(e.target.value)}
-              >
-                {subjects.map((sub) => (
-                  <option key={sub} value={sub}>
-                    {sub}
-                  </option>
-                ))}
-              </select>
-            </motion.div>
+
             <motion.div className="filter-group" variants={fadeInUp}>
               <label>Sort by:</label>
               <select
@@ -347,40 +394,44 @@ const Notes = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        variants={fadeInUp}
+        variants={staggerChildren}
       >
         <div className="container">
           <motion.div className="results-header" variants={fadeInUp}>
-            <h2>Found {filteredNotes.length} resources</h2>
-            <p>
-              Browse notes, books, and PPTs shared by your peers and seniors
-            </p>
+            <h2>Found {filteredAndSortedSyllabi.length} syllabi</h2>
+            <p>Browse through our collection of verified academic syllabi</p>
           </motion.div>
-          <AnimatePresence mode="wait">
-            {filteredNotes.length === 0 ? (
+
+          <AnimatePresence>
+            {filteredAndSortedSyllabi.length === 0 ? (
               <motion.div
-                key="no-results"
                 className="no-results"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
               >
                 <div className="no-results-icon">📭</div>
-                <h3>No resources found</h3>
-                <p>Try adjusting your search criteria or filters.</p>
+                <h3>No syllabi found</h3>
+                <p>
+                  Try adjusting your search criteria or filters to find what
+                  you&apos;re looking for.
+                </p>
               </motion.div>
             ) : (
               <motion.div
-                key="notes-grid"
-                className="notes-grid"
+                className="syllabus-grid"
+                layout
                 variants={staggerChildren}
               >
-                {filteredNotes.map((note) => (
+                {filteredAndSortedSyllabi.map((syllabus) => (
                   <motion.div
-                    key={note.id}
-                    className="note-card"
+                    key={syllabus.id}
+                    className="syllabus-card"
                     layout
                     variants={scaleIn}
+                    initial="hidden"
+                    animate="visible"
+                    exit={{ opacity: 0, scale: 0.8 }}
                     whileHover={{
                       y: -10,
                       scale: 1.03,
@@ -390,27 +441,44 @@ const Notes = () => {
                   >
                     <div className="card-header">
                       <div className="card-title-section">
-                        <h3 className="card-title">{note.title}</h3>
+                        <h3 className="card-title">{syllabus.title}</h3>
                         <div className="card-meta">
-                          <span className="university">{note.university}</span>
+                          <span className="university">
+                            {syllabus.university}
+                          </span>
                           <span className="separator">•</span>
-                          <span className="department">{note.department}</span>
+                          <span className="department">
+                            {syllabus.department}
+                          </span>
                         </div>
                       </div>
                       <div
                         className="difficulty-badge"
                         style={{
-                          backgroundColor: getDifficultyColor(note.difficulty),
+                          backgroundColor: getDifficultyColor(
+                            syllabus.difficulty
+                          ),
                         }}
                       >
-                        {note.difficulty}
+                        {syllabus.difficulty}
                       </div>
                     </div>
+
                     <div className="card-content">
-                      <p className="subject">Subject: {note.subject}</p>
+                      <div className="subjects-section">
+                        <h4>Subjects Covered:</h4>
+                        <div className="subjects-list">
+                          {syllabus.subjects.map((subject, index) => (
+                            <span key={index} className="subject-tag">
+                              {subject}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
                       <div className="tags-section">
                         <div className="tags">
-                          {note.tags.map((tag, index) => (
+                          {syllabus.tags.map((tag, index) => (
                             <span key={index} className="tag">
                               #{tag}
                             </span>
@@ -418,38 +486,37 @@ const Notes = () => {
                         </div>
                       </div>
                     </div>
+
                     <div className="card-stats">
                       <div className="stat">
                         <span className="stat-icon">📥</span>
                         <span>
-                          {note.downloadCount.toLocaleString()} downloads
+                          {syllabus.downloadCount.toLocaleString()} downloads
                         </span>
                       </div>
                       <div className="stat">
                         <span className="stat-icon">📅</span>
                         <span>
-                          {new Date(note.uploadDate).toLocaleDateString()}
+                          {new Date(syllabus.uploadDate).toLocaleDateString()}
                         </span>
                       </div>
                       <div className="stat">
                         <span className="stat-icon">📄</span>
-                        <span>{note.fileSize}</span>
+                        <span>{syllabus.fileSize}</span>
                       </div>
                     </div>
+
                     <div className="card-actions">
-                      <motion.a
-                        href={note.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <motion.button
                         className="btn btn-primary"
+                        onClick={() => handleDownload(syllabus)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        📥 Download
-                      </motion.a>
+                        📥 Download Syllabus
+                      </motion.button>
                       <motion.button
                         className="btn btn-outline"
-                        onClick={() => setPreviewUrl(note.link)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -463,72 +530,8 @@ const Notes = () => {
           </AnimatePresence>
         </div>
       </motion.section>
-
-      {/* Upload Section */}
-      <motion.section
-        className="upload-section"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={staggerChildren}
-      >
-        <div className="container">
-          <motion.h3 variants={fadeInUp}>
-            Want to Share Your Notes, Books or PPTs?
-          </motion.h3>
-          <motion.p variants={fadeInUp}>
-            Upload your study materials to help others in your community.
-          </motion.p>
-          <motion.button
-            className="btn btn-primary"
-            variants={fadeInUp}
-            whileHover={{ scale: 1.05, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            📤 Upload Resource
-          </motion.button>
-        </div>
-      </motion.section>
-
-      {/* Preview Modal */}
-      <AnimatePresence>
-        {previewUrl && (
-          <motion.div
-            key="modal"
-            className="modal-overlay"
-            onClick={() => setPreviewUrl(null)}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className="modal-content"
-              onClick={(e) => e.stopPropagation()}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            >
-              <embed
-                src={previewUrl}
-                type="application/pdf"
-                width="100%"
-                height="600px"
-              />
-              <motion.button
-                className="btn btn-primary close-btn"
-                onClick={() => setPreviewUrl(null)}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                Close
-              </motion.button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
 
-export default Notes;
+export default Syllabus;
