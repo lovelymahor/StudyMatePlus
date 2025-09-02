@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css'; // Import the CSS file
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css"; // Import the CSS file
+
+const user = {
+  avatar: "https://avatar.iran.liara.run/public/boy",
+};
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

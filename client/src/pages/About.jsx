@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './About.css';
@@ -70,8 +69,8 @@ const About = () => {
                 previous year questions, exam feedback, and peer-to-peer learning opportunities.
               </p>
               <p>
-                We're committed to breaking down barriers in education and ensuring that 
-                geographical limitations or resource constraints don't hinder a student's 
+                We&apos;re committed to breaking down barriers in education and ensuring that 
+                geographical limitations or resource constraints don&apos;t hinder a student&apos;s 
                 academic success.
               </p>
             </motion.div>
@@ -117,7 +116,7 @@ const About = () => {
               <h3>The Solution</h3>
               <p>
                 StudyMatePlus was born from the idea of creating a centralized, reliable platform 
-                where students can access all their academic needs. We've built a community-driven 
+                where students can access all their academic needs. We&apos;ve built a community-driven 
                 ecosystem that grows stronger with each contribution.
               </p>
             </motion.div>
@@ -201,7 +200,7 @@ const About = () => {
           <motion.h2 variants={fadeInUp}>Our Core Values</motion.h2>
           <motion.div className="values-grid" variants={staggerChildren}>
             <motion.div className="value-item" variants={scaleIn} whileHover={{ y: -8, scale: 1.05 }}><div className="value-icon">🔓</div><h3>Open Source</h3><p>Transparency and community collaboration drive our development.</p></motion.div>
-            <motion.div className="value-item" variants={scaleIn} whileHover={{ y: -8, scale: 1.05 }}><div className="value-icon">🎓</div><h3>Quality Education</h3><p>We're committed to providing accurate, verified, and high-quality resources.</p></motion.div>
+            <motion.div className="value-item" variants={scaleIn} whileHover={{ y: -8, scale: 1.05 }}><div className="value-icon">🎓</div><h3>Quality Education</h3><p>We&apos;re committed to providing accurate, verified, and high-quality resources.</p></motion.div>
             <motion.div className="value-item" variants={scaleIn} whileHover={{ y: -8, scale: 1.05 }}><div className="value-icon">🤲</div><h3>Accessibility</h3><p>Education should be accessible to everyone, regardless of their circumstances.</p></motion.div>
             <motion.div className="value-item" variants={scaleIn} whileHover={{ y: -8, scale: 1.05 }}><div className="value-icon">💪</div><h3>Student Empowerment</h3><p>We believe in empowering students with the tools they need to succeed.</p></motion.div>
             <motion.div className="value-item" variants={scaleIn} whileHover={{ y: -8, scale: 1.05 }}><div className="value-icon">🌱</div><h3>Continuous Growth</h3><p>Our platform evolves based on student feedback and emerging needs.</p></motion.div>

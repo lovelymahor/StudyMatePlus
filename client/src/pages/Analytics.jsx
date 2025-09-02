@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Bar, Pie } from 'react-chartjs-2';
+import { useState } from "react";
+import { Bar, Pie } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,41 +8,59 @@ import {
   ArcElement,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { motion } from 'framer-motion';
-import './Analytics.css';
+} from "chart.js";
+import { motion } from "framer-motion";
+import "./Analytics.css";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Tooltip,
+  Legend
+);
 
 const Analytics = () => {
   // Animation Variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const staggerChildren = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+    },
   };
 
   const scaleIn = {
     hidden: { opacity: 0, scale: 0.9 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
   };
 
   // Dummy Data
-  const subjects = ['DSA', 'DBMS', 'CN', 'OS', 'Java', 'Python'];
+  const subjects = ["DSA", "DBMS", "CN", "OS", "Java", "Python"];
   const pyqCount = [25, 18, 10, 15, 20, 12];
 
   const barData = {
     labels: subjects,
     datasets: [
       {
-        label: 'PYQs by Subject',
+        label: "PYQs by Subject",
         data: pyqCount,
-        backgroundColor: '#ffd700',
-        borderColor: '#ffed4a',
+        backgroundColor: "#ffd700",
+        borderColor: "#ffed4a",
         borderWidth: 1,
       },
     ],
@@ -52,46 +70,51 @@ const Analytics = () => {
     labels: subjects,
     datasets: [
       {
-        label: 'PYQ Distribution',
+        label: "PYQ Distribution",
         data: pyqCount,
         backgroundColor: [
-          '#FFD700', '#FFED4A', '#FFA500', '#FFA07A', '#87CEEB', '#9370DB'
+          "#FFD700",
+          "#FFED4A",
+          "#FFA500",
+          "#FFA07A",
+          "#87CEEB",
+          "#9370DB",
         ],
       },
     ],
   };
 
   // State to track selected subject
-  const [selectedSubject, setSelectedSubject] = useState('all');
+  const [selectedSubject, setSelectedSubject] = useState("all");
 
   // Function to handle download
   const handleDownload = (subject) => {
-    let fileUrl = '';
+    let fileUrl = "";
     switch (subject.toLowerCase()) {
-      case 'dsa':
-        fileUrl = '/notes/dsa.pdf'; // Replace with actual path or URL
+      case "dsa":
+        fileUrl = "/notes/dsa.pdf"; // Replace with actual path or URL
         break;
-      case 'dbms':
-        fileUrl = '/notes/dbms.pdf'; // Replace with actual path or URL
+      case "dbms":
+        fileUrl = "/notes/dbms.pdf"; // Replace with actual path or URL
         break;
-      case 'cn':
-        fileUrl = '/notes/cn.pdf'; // Replace with actual path or URL
+      case "cn":
+        fileUrl = "/notes/cn.pdf"; // Replace with actual path or URL
         break;
-      case 'os':
-        fileUrl = '/notes/os.pdf'; // Replace with actual path or URL
+      case "os":
+        fileUrl = "/notes/os.pdf"; // Replace with actual path or URL
         break;
-      case 'java':
-        fileUrl = '/notes/java.pdf'; // Replace with actual path or URL
+      case "java":
+        fileUrl = "/notes/java.pdf"; // Replace with actual path or URL
         break;
-      case 'python':
-        fileUrl = '/notes/python.pdf'; // Replace with actual path or URL
+      case "python":
+        fileUrl = "/notes/python.pdf"; // Replace with actual path or URL
         break;
       default:
-        fileUrl = ''; // No download for 'all'
+        fileUrl = ""; // No download for 'all'
     }
 
     if (fileUrl) {
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = fileUrl;
       link.download = `${subject}_notes.pdf`; // Customize filename
       document.body.appendChild(link);
@@ -103,7 +126,7 @@ const Analytics = () => {
   return (
     <div className="home">
       <div className="container">
-        <motion.section 
+        <motion.section
           className="hero"
           initial="hidden"
           animate="visible"
@@ -115,30 +138,39 @@ const Analytics = () => {
                 PYQ <span className="brand-highlight">Analytics</span>
               </h1>
               <p className="hero-subtitle">
-                Visualize previous year questions trends subject-wise to prioritize your prep.
+                Visualize previous year questions trends subject-wise to
+                prioritize your prep.
               </p>
             </motion.div>
           </div>
         </motion.section>
 
-        <motion.section 
+        <motion.section
           className="analytics-section"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerChildren}
         >
-          <motion.div className="chart-container" variants={scaleIn} whileHover={{ y: -5, boxShadow: "0 12px 28px rgba(0,0,0,0.1)" }}>
+          <motion.div
+            className="chart-container"
+            variants={scaleIn}
+            whileHover={{ y: -5, boxShadow: "0 12px 28px rgba(0,0,0,0.1)" }}
+          >
             <h2>PYQs by Subject (Bar Chart)</h2>
             <Bar data={barData} />
           </motion.div>
-          <motion.div className="chart-container" variants={scaleIn} whileHover={{ y: -5, boxShadow: "0 12px 28px rgba(0,0,0,0.1)" }}>
+          <motion.div
+            className="chart-container"
+            variants={scaleIn}
+            whileHover={{ y: -5, boxShadow: "0 12px 28px rgba(0,0,0,0.1)" }}
+          >
             <h2>PYQ Subject Distribution (Pie Chart)</h2>
             <Pie data={pieData} />
           </motion.div>
         </motion.section>
 
-        <motion.section 
+        <motion.section
           className="insights-section"
           initial="hidden"
           whileInView="visible"
@@ -147,13 +179,21 @@ const Analytics = () => {
         >
           <motion.h2 variants={fadeInUp}>📊 Insights Summary</motion.h2>
           <motion.ul variants={staggerChildren}>
-            <motion.li variants={fadeInUp}>📈 <strong>DSA</strong> has the highest number of PYQs – focus more on problem-solving practice.</motion.li>
-            <motion.li variants={fadeInUp}>📘 <strong>DBMS</strong> and <strong>Java</strong> also have significant weightage in exams.</motion.li>
-            <motion.li variants={fadeInUp}>🎯 Use this trend to plan your revision and mock test priorities.</motion.li>
+            <motion.li variants={fadeInUp}>
+              📈 <strong>DSA</strong> has the highest number of PYQs – focus
+              more on problem-solving practice.
+            </motion.li>
+            <motion.li variants={fadeInUp}>
+              📘 <strong>DBMS</strong> and <strong>Java</strong> also have
+              significant weightage in exams.
+            </motion.li>
+            <motion.li variants={fadeInUp}>
+              🎯 Use this trend to plan your revision and mock test priorities.
+            </motion.li>
           </motion.ul>
         </motion.section>
 
-        <motion.section 
+        <motion.section
           className="filter-section"
           initial="hidden"
           whileInView="visible"
@@ -177,19 +217,19 @@ const Analytics = () => {
           </select>
         </motion.section>
 
-        <motion.section 
+        <motion.section
           className="download-section"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <motion.button 
+          <motion.button
             className="download-btn"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => {
-              if (selectedSubject !== 'all') {
+              if (selectedSubject !== "all") {
                 handleDownload(selectedSubject);
               }
             }}

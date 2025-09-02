@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import './SubmitFeedback.css'; // We will create this file next
-import './Feedback.css'; // Reusing some existing styles
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { motion } from "framer-motion";
+import "./SubmitFeedback.css"; // We will create this file next
+import "./Feedback.css"; // Reusing some existing styles
 
 const StarRating = ({ rating, setRating }) => {
   const [hover, setHover] = useState(0);
@@ -16,13 +17,13 @@ const StarRating = ({ rating, setRating }) => {
               name="rating"
               value={ratingValue}
               onClick={() => setRating(ratingValue)}
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
             />
             <motion.span
               className="star"
               style={{
-                cursor: 'pointer',
-                color: ratingValue <= (hover || rating) ? '#fbbf24' : '#d1d5db',
+                cursor: "pointer",
+                color: ratingValue <= (hover || rating) ? "#fbbf24" : "#d1d5db",
               }}
               onMouseEnter={() => setHover(ratingValue)}
               onMouseLeave={() => setHover(0)}
@@ -38,17 +39,22 @@ const StarRating = ({ rating, setRating }) => {
   );
 };
 
+StarRating.propTypes = {
+  rating: PropTypes.number.isRequired,
+  setRating: PropTypes.func.isRequired,
+};
+
 const SubmitFeedback = () => {
   const [formData, setFormData] = useState({
-    university: '',
-    department: '',
-    subjectName: '',
-    semester: '',
-    difficulty: '',
+    university: "",
+    department: "",
+    subjectName: "",
+    semester: "",
+    difficulty: "",
     overallRating: 0,
-    importantTopics: '',
-    studyTips: '',
-    resourcesUsed: '',
+    importantTopics: "",
+    studyTips: "",
+    resourcesUsed: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -57,19 +63,23 @@ const SubmitFeedback = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  
+
   const setRating = (value) => {
     setFormData({ ...formData, overallRating: value });
   };
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.university.trim()) newErrors.university = 'University is required.';
-    if (!formData.subjectName.trim()) newErrors.subjectName = 'Subject Name is required.';
-    if (!formData.semester) newErrors.semester = 'Semester is required.';
-    if (!formData.difficulty) newErrors.difficulty = 'Exam Difficulty is required.';
-    if (formData.overallRating === 0) newErrors.overallRating = 'Overall Rating is required.';
-    
+    if (!formData.university.trim())
+      newErrors.university = "University is required.";
+    if (!formData.subjectName.trim())
+      newErrors.subjectName = "Subject Name is required.";
+    if (!formData.semester) newErrors.semester = "Semester is required.";
+    if (!formData.difficulty)
+      newErrors.difficulty = "Exam Difficulty is required.";
+    if (formData.overallRating === 0)
+      newErrors.overallRating = "Overall Rating is required.";
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -77,11 +87,11 @@ const SubmitFeedback = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log('Form Submitted Successfully:', formData);
-      alert('Feedback submitted! Check the console for the data.');
+      console.log("Form Submitted Successfully:", formData);
+      alert("Feedback submitted! Check the console for the data.");
       // Here you would typically send the data to a backend.
     } else {
-      console.log('Form validation failed:', errors);
+      console.log("Form validation failed:", errors);
     }
   };
 
@@ -95,9 +105,12 @@ const SubmitFeedback = () => {
       <div className="container">
         <div className="form-header">
           <h1>✍️ Share Your Exam Experience</h1>
-          <p>Your insights can help countless other students succeed. Please fill out the form below.</p>
+          <p>
+            Your insights can help countless other students succeed. Please fill
+            out the form below.
+          </p>
         </div>
-        
+
         <form onSubmit={handleSubmit} className="feedback-form" noValidate>
           {/* University & Department */}
           <div className="form-row">
@@ -107,12 +120,16 @@ const SubmitFeedback = () => {
                 type="text"
                 id="university"
                 name="university"
-                className={`form-input ${errors.university ? 'input-error' : ''}`}
+                className={`form-input ${
+                  errors.university ? "input-error" : ""
+                }`}
                 value={formData.university}
                 onChange={handleChange}
                 placeholder="e.g., Kerala University"
               />
-              {errors.university && <span className="error-message">{errors.university}</span>}
+              {errors.university && (
+                <span className="error-message">{errors.university}</span>
+              )}
             </div>
             <div className="form-group">
               <label htmlFor="department">Department</label>
@@ -127,7 +144,7 @@ const SubmitFeedback = () => {
               />
             </div>
           </div>
-          
+
           {/* Subject Name & Semester */}
           <div className="form-row">
             <div className="form-group">
@@ -136,31 +153,39 @@ const SubmitFeedback = () => {
                 type="text"
                 id="subjectName"
                 name="subjectName"
-                className={`form-input ${errors.subjectName ? 'input-error' : ''}`}
+                className={`form-input ${
+                  errors.subjectName ? "input-error" : ""
+                }`}
                 value={formData.subjectName}
                 onChange={handleChange}
                 placeholder="e.g., Data Structures"
               />
-              {errors.subjectName && <span className="error-message">{errors.subjectName}</span>}
+              {errors.subjectName && (
+                <span className="error-message">{errors.subjectName}</span>
+              )}
             </div>
             <div className="form-group">
               <label htmlFor="semester">Semester *</label>
               <select
                 id="semester"
                 name="semester"
-                className={`form-input ${errors.semester ? 'input-error' : ''}`}
+                className={`form-input ${errors.semester ? "input-error" : ""}`}
                 value={formData.semester}
                 onChange={handleChange}
               >
                 <option value="">Select Semester</option>
                 {[...Array(8)].map((_, i) => (
-                  <option key={i + 1} value={i + 1}>{i + 1}</option>
+                  <option key={i + 1} value={i + 1}>
+                    {i + 1}
+                  </option>
                 ))}
               </select>
-              {errors.semester && <span className="error-message">{errors.semester}</span>}
+              {errors.semester && (
+                <span className="error-message">{errors.semester}</span>
+              )}
             </div>
           </div>
-          
+
           {/* Difficulty & Rating */}
           <div className="form-row">
             <div className="form-group">
@@ -168,7 +193,9 @@ const SubmitFeedback = () => {
               <select
                 id="difficulty"
                 name="difficulty"
-                className={`form-input ${errors.difficulty ? 'input-error' : ''}`}
+                className={`form-input ${
+                  errors.difficulty ? "input-error" : ""
+                }`}
                 value={formData.difficulty}
                 onChange={handleChange}
               >
@@ -177,15 +204,22 @@ const SubmitFeedback = () => {
                 <option value="Moderate">Moderate 😐</option>
                 <option value="Hard">Hard 😰</option>
               </select>
-              {errors.difficulty && <span className="error-message">{errors.difficulty}</span>}
+              {errors.difficulty && (
+                <span className="error-message">{errors.difficulty}</span>
+              )}
             </div>
             <div className="form-group">
               <label>Overall Rating *</label>
-              <StarRating rating={formData.overallRating} setRating={setRating} />
-              {errors.overallRating && <span className="error-message">{errors.overallRating}</span>}
+              <StarRating
+                rating={formData.overallRating}
+                setRating={setRating}
+              />
+              {errors.overallRating && (
+                <span className="error-message">{errors.overallRating}</span>
+              )}
             </div>
           </div>
-          
+
           {/* Text Areas */}
           <div className="form-group">
             <label htmlFor="importantTopics">Important Topics</label>
@@ -199,7 +233,7 @@ const SubmitFeedback = () => {
               rows="4"
             ></textarea>
           </div>
-          
+
           <div className="form-group">
             <label htmlFor="studyTips">Study Tips & Strategy</label>
             <textarea
@@ -212,7 +246,7 @@ const SubmitFeedback = () => {
               rows="6"
             ></textarea>
           </div>
-          
+
           <div className="form-group">
             <label htmlFor="resourcesUsed">Resources Used</label>
             <textarea
@@ -225,7 +259,7 @@ const SubmitFeedback = () => {
               rows="4"
             ></textarea>
           </div>
-          
+
           <motion.button
             type="submit"
             className="btn btn-primary"
