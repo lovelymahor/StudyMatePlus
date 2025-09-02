@@ -5,7 +5,7 @@
 }
 
 .faq-page {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.6;
   color: #333;
 }
@@ -59,7 +59,7 @@
   margin-bottom: 1rem;
   padding: 1rem 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   transition: 0.3s;
 }
@@ -206,8 +206,14 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Features Section */
@@ -216,7 +222,7 @@
   padding: 3.5rem 2rem;
   border-radius: 16px;
   margin-top: 3rem;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
 }
 
 .features-list {
@@ -233,7 +239,7 @@
   border-radius: 10px;
   font-size: 1.05rem;
   font-weight: 500;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
   transition: all 0.3s;
 }
 
@@ -277,7 +283,7 @@
 .contact-form textarea:focus {
   border-color: #667eea;
   outline: none;
-  box-shadow: 0 0 6px rgba(102,126,234,0.3);
+  box-shadow: 0 0 6px rgba(102, 126, 234, 0.3);
 }
 
 .contact-form button {
@@ -310,7 +316,8 @@
   gap: 2rem;
 }
 
-.footer h3, .footer h4 {
+.footer h3,
+.footer h4 {
   margin-bottom: 1rem;
   color: #fff;
 }
@@ -361,6 +368,6 @@
   margin-top: 2rem;
   font-size: 0.85rem;
   opacity: 0.7;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 1rem;
 }

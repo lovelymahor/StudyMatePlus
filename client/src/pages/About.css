@@ -59,7 +59,7 @@
 /* Mission Section */
 .mission {
   padding: 6rem 0;
-  background: transparent;
+  background: white;
 }
 
 .mission-content {
@@ -121,7 +121,7 @@
 /* Story Section */
 .story {
   padding: 4rem 0;
-  background: transparent;
+  background: white;
 }
 
 .story h2 {
@@ -139,7 +139,7 @@
 }
 
 .story-card {
-  background: transparent;
+  background: white;
   padding: 2.5rem;
   border-radius: 15px;
   text-align: center;
@@ -174,7 +174,7 @@
 /* Features Deep Dive */
 .features-deep {
   padding: 6rem 0;
-  background: transparent;
+  background: white;
 }
 
 .features-deep h2 {
@@ -252,7 +252,7 @@
 /* Values Section */
 .values {
   padding: 6rem 0;
-  background: transparent;
+  background: white;
 }
 
 .values h2 {
@@ -411,7 +411,7 @@
 }
 
 .btn-secondary {
-  background: transparent;
+  background: white;
   color: white;
   border: 2px solid white;
 }

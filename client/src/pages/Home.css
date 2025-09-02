@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -148,7 +147,13 @@
 /* ... floating card and animation styles are fine ... */
 
 /* ALL SECTIONS ARE NOW TRANSPARENT */
-.features, .stats, .how-it-works, .testimonials, .cta, .contributors, .footer {
+.features,
+.stats,
+.how-it-works,
+.testimonials,
+.cta,
+.contributors,
+.footer {
   padding: 6rem 0;
   background: transparent;
   position: relative;
@@ -156,14 +161,15 @@
 }
 
 /* Adjust padding for sections that had different values */
-.stats, .testimonials, .contributors {
+.stats,
+.testimonials,
+.contributors {
   padding: 4rem 0;
 }
 .footer {
   padding: 40px 0;
   margin-top: 50px;
 }
-
 
 /* FIXING TEXT COLORS FOR READABILITY */
 .section-title,
@@ -174,7 +180,9 @@
 }
 
 /* The cards are still white, so the text INSIDE them should remain dark */
-.feature-card, .step, .testimonial-card {
+.feature-card,
+.step,
+.testimonial-card {
   background: white;
   color: #333; /* Reset text color for card content */
 }
@@ -190,9 +198,10 @@
   color: #764ba2;
 }
 
-
 /* Themed sections that already had light text are fine */
-.stats, .cta, .footer {
+.stats,
+.cta,
+.footer {
   color: white;
 }
 

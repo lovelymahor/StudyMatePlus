@@ -69,7 +69,7 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  background: transparent;
+  background: white;
   border-radius: 15px;
   backdrop-filter: blur(10px);
   min-width: 120px;
@@ -92,7 +92,7 @@
 
 /* Search and Filters */
 .search-filters {
-  background: transparent;
+  background: white;
   padding: 2rem 0;
   border-bottom: 1px solid #e2e8f0;
 }
@@ -156,7 +156,7 @@
   padding: 0.8rem;
   border: 2px solid #e2e8f0;
   border-radius: 8px;
-  background: transparent;
+  background: white;
   font-size: 1rem;
   color: #374151;
   cursor: pointer;
@@ -171,7 +171,7 @@
 /* Results Section */
 .results {
   padding: 3rem 0;
-  background: transparent;
+  background: white;
 }
 
 .results-header {
@@ -195,7 +195,7 @@
 .no-results {
   text-align: center;
   padding: 4rem 2rem;
-  background: transparent;
+  background: white;
   border-radius: 15px;
   margin: 2rem 0;
 }
@@ -318,7 +318,7 @@
 }
 
 .subject-tag {
-  background: transparent;
+  background: white;
   color: #374151;
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
@@ -403,7 +403,7 @@
 }
 
 .btn-outline {
-  background: transparent;
+  background: white;
   color: #667eea;
   border: 2px solid #667eea;
 }
