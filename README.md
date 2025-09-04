@@ -84,6 +84,14 @@ npm install         # Install frontend (React) dependencies
 
 Create a `.env` file in both the root and `client/` directories using the `.env.example` file provided as a reference.
 
+Update values like your MongoDB URI and secret keys.
+Example
+```bash
+PORT=5000
+MONGO_URI=your-mongodb-uri-here
+JWT_SECRET=your-secret-key-here
+```
+
 ### 5. Run the Application
 
 Start both the backend and frontend:
