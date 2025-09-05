@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Feedback.css";
 import { Link } from "react-router-dom";
@@ -607,7 +607,7 @@ const Feedback = () => {
               transition={{ delay: 2, duration: 0.5 }}
             >
               Help fellow students by sharing your exam experience and study
-              tips. Your feedback could be the key to someone's success!
+              tips. Your feedback could be the key to someone&apos;s success!
             </motion.p>
             <Link to="/feedback/submit" style={{ textDecoration: "none" }}>
               <motion.button
