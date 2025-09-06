@@ -1,7 +1,8 @@
 /* Contribute.css - StudyMatePlus - Contribution Guidelines Page */
 
 .contribute {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
   line-height: 1.6;
   color: #333;
 }
@@ -23,7 +24,7 @@
 }
 
 .contribute-hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -143,7 +144,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: transparent;
+  background: white;
   border: 2px solid transparent;
   border-radius: 10px;
   cursor: pointer;
@@ -268,7 +269,7 @@
 
 .code-block code {
   color: #e5e7eb;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -295,7 +296,7 @@
 }
 
 .step-details-list li::before {
-  content: '→';
+  content: "→";
   position: absolute;
   left: 0;
   color: #667eea;
@@ -768,7 +769,7 @@
 }
 
 .btn-secondary {
-  background: transparent;
+  background: white;
   color: white;
   border: 2px solid white;
 }
@@ -806,32 +807,32 @@
   .container {
     padding: 0 1.5rem;
   }
-  
+
   .contribute-hero h1 {
     font-size: 3rem;
   }
-  
+
   .hero-stats {
     gap: 2rem;
   }
-  
+
   .overview-content {
     grid-template-columns: 1fr;
     gap: 3rem;
     text-align: center;
   }
-  
+
   .steps-container {
     grid-template-columns: 1fr;
     gap: 0;
   }
-  
+
   .steps-nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 0.5rem;
   }
-  
+
   .tech-categories {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
@@ -842,25 +843,25 @@
   .container {
     padding: 0 1rem;
   }
-  
+
   .contribute-hero {
     padding: 4rem 0 3rem;
   }
-  
+
   .contribute-hero h1 {
     font-size: 2.5rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.1rem;
     padding: 0 1rem;
   }
-  
+
   .hero-stats {
     flex-direction: column;
     gap: 1.5rem;
   }
-  
+
   .project-overview,
   .contribution-types,
   .contribution-guide,
@@ -871,7 +872,7 @@
   .contribute-cta {
     padding: 4rem 0;
   }
-  
+
   .overview-content,
   .contrib-grid,
   .conduct-rules,
@@ -880,52 +881,52 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .impact-metrics {
     grid-template-columns: 1fr;
   }
-  
+
   .contribution-types-preview {
     min-width: auto;
     width: 100%;
   }
-  
+
   .contrib-card,
   .conduct-rule,
   .community-link,
   .doc-card {
     margin: 0 0.5rem;
   }
-  
+
   .steps-nav {
     grid-template-columns: 1fr;
     padding: 1rem;
   }
-  
+
   .step-content {
     padding: 2rem;
   }
-  
+
   .tech-categories {
     grid-template-columns: 1fr;
   }
-  
+
   .prereq-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .conduct-links,
   .cta-buttons {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .community-link {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
   }
-  
+
   .link-arrow {
     margin-left: 0;
   }
@@ -936,26 +937,26 @@
   .container {
     padding: 0 1rem;
   }
-  
+
   .contribute-hero {
     padding: 3rem 0 2rem;
   }
-  
+
   .contribute-hero h1 {
     font-size: 2rem;
     line-height: 1.1;
     margin-bottom: 1rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1rem;
     padding: 0 0.5rem;
   }
-  
+
   .stat-number {
     font-size: 2rem;
   }
-  
+
   .project-overview,
   .contribution-types,
   .contribution-guide,
@@ -966,7 +967,7 @@
   .contribute-cta {
     padding: 3rem 0;
   }
-  
+
   .overview-text h2,
   .contribution-types h2,
   .contribution-guide h2,
@@ -977,7 +978,7 @@
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .overview-text p,
   .guide-subtitle,
   .tech-subtitle,
@@ -986,82 +987,82 @@
     font-size: 1rem;
     padding: 0 0.5rem;
   }
-  
+
   .contrib-card,
   .conduct-rule,
   .doc-card {
     padding: 1.5rem;
     margin: 0 0.25rem;
   }
-  
+
   .impact-item,
   .prereq-item {
     padding: 1.25rem;
   }
-  
+
   .contrib-icon,
   .rule-icon,
   .doc-icon,
   .community-icon {
     font-size: 2.5rem;
   }
-  
+
   .step-nav-button {
     padding: 0.75rem;
   }
-  
+
   .step-title {
     font-size: 0.85rem;
   }
-  
+
   .step-content {
     padding: 1.5rem;
   }
-  
+
   .step-header h3 {
     font-size: 1.5rem;
   }
-  
+
   .code-block {
     margin: 1.5rem 0;
   }
-  
+
   .code-header {
     padding: 0.75rem;
   }
-  
+
   .code-block pre {
     padding: 1rem;
   }
-  
+
   .code-block code {
     font-size: 0.8rem;
   }
-  
+
   .tech-category {
     padding: 1.5rem;
   }
-  
+
   .tech-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .community-link {
     padding: 1.5rem;
   }
-  
+
   .cta-content h2 {
     font-size: 2rem;
   }
-  
+
   .cta-content > p {
     font-size: 1rem;
     padding: 0 0.5rem;
     margin-bottom: 2rem;
   }
-  
+
   .btn {
     padding: 0.875rem 1.5rem;
     font-size: 1rem;
@@ -1074,19 +1075,19 @@
   .container {
     padding: 0 0.75rem;
   }
-  
+
   .contribute-hero h1 {
     font-size: 1.8rem;
   }
-  
+
   .hero-subtitle {
     font-size: 0.95rem;
   }
-  
+
   .stat-number {
     font-size: 1.8rem;
   }
-  
+
   .overview-text h2,
   .contribution-types h2,
   .contribution-guide h2,
@@ -1096,7 +1097,7 @@
   .documentation h2 {
     font-size: 1.8rem;
   }
-  
+
   .contrib-card,
   .conduct-rule,
   .community-link,
@@ -1104,15 +1105,15 @@
     padding: 1.25rem;
     margin: 0;
   }
-  
+
   .step-content {
     padding: 1rem;
   }
-  
+
   .cta-content h2 {
     font-size: 1.8rem;
   }
-  
+
   .btn {
     min-width: 180px;
     padding: 0.75rem 1.25rem;
@@ -1280,7 +1281,7 @@
 }
 
 .contrib-examples li::before {
-  content: '✓';
+  content: "✓";
   position: absolute;
   left: 0;
   color: #10b981;

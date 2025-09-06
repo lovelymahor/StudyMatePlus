@@ -1,5 +1,6 @@
 .feedback {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
   line-height: 1.6;
   color: #333;
 }
@@ -21,7 +22,7 @@
 }
 
 .feedback-hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -57,7 +58,7 @@
 /* Stats Section */
 .feedback-stats {
   padding: 4rem 0;
-  background: #f8fafc;
+  background: white;
 }
 
 .stats-grid {
@@ -128,7 +129,7 @@
 
 .filter-select {
   padding: 0.75rem 1rem;
-  margin-bottom: 0.75rem ;
+  margin-bottom: 0.75rem;
   border: 2px solid #e5e7eb;
   border-radius: 10px;
   font-size: 1rem;
@@ -157,7 +158,7 @@
 /* Feedback Content */
 .feedback-content {
   padding: 4rem 0;
-  background: #f8fafc;
+  background: white;
 }
 
 .feedback-grid {
@@ -529,19 +530,19 @@
   .container {
     padding: 0 1.5rem;
   }
-  
+
   .feedback-hero h1 {
     font-size: 3rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.2rem;
   }
-  
+
   .feedback-grid {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
@@ -552,96 +553,96 @@
   .container {
     padding: 0 1rem;
   }
-  
+
   .feedback-hero {
     padding: 4rem 0 3rem;
   }
-  
+
   .feedback-hero h1 {
     font-size: 2.5rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.1rem;
     padding: 0 1rem;
   }
-  
+
   .feedback-stats {
     padding: 3rem 0;
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 1.5rem;
   }
-  
+
   .stat-item {
     padding: 1.5rem;
   }
-  
+
   .stat-icon {
     font-size: 2.5rem;
   }
-  
+
   .stat-number {
     font-size: 2rem;
   }
-  
+
   .feedback-filters {
     padding: 2rem 0;
   }
-  
+
   .filters-wrapper {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
   }
-  
+
   .filter-select {
     min-width: 250px;
   }
-  
+
   .results-count {
     margin-left: 0;
     align-self: stretch;
     text-align: center;
   }
-  
+
   .feedback-content {
     padding: 3rem 0;
   }
-  
+
   .feedback-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .feedback-card {
     padding: 2rem;
     margin: 0 0.5rem;
   }
-  
+
   .feedback-header {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .feedback-rating {
     align-self: flex-start;
   }
-  
+
   .difficulty-badge {
     gap: 0.75rem;
   }
-  
+
   .feedback-cta {
     padding: 4rem 0;
   }
-  
+
   .cta-content h2 {
     font-size: 2.2rem;
   }
-  
+
   .cta-content p {
     font-size: 1.1rem;
     padding: 0 1rem;
@@ -653,70 +654,70 @@
   .container {
     padding: 0 1rem;
   }
-  
+
   .feedback-hero {
     padding: 3rem 0 2rem;
   }
-  
+
   .feedback-hero h1 {
     font-size: 2rem;
     line-height: 1.1;
     margin-bottom: 1rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1rem;
     padding: 0 0.5rem;
   }
-  
+
   .feedback-stats,
   .feedback-content,
   .feedback-cta {
     padding: 2.5rem 0;
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 1rem;
   }
-  
+
   .stat-item {
     padding: 1.25rem;
   }
-  
+
   .stat-icon {
     font-size: 2rem;
   }
-  
+
   .stat-number {
     font-size: 1.8rem;
   }
-  
+
   .stat-label {
     font-size: 0.9rem;
   }
-  
+
   .feedback-filters {
     padding: 1.5rem 0;
   }
-  
+
   .filter-select {
     min-width: 200px;
   }
-  
+
   .feedback-card {
     padding: 1.5rem;
     margin: 0 0.25rem;
   }
-  
+
   .student-name {
     font-size: 1.2rem;
   }
-  
+
   .subject-name {
     font-size: 1.3rem;
   }
-  
+
   .student-details,
   .subject-details {
     font-size: 0.85rem;
@@ -724,56 +725,56 @@
     align-items: flex-start;
     gap: 0.25rem;
   }
-  
+
   .separator {
     display: none;
   }
-  
+
   .difficulty-badge {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .difficulty-indicator {
     font-size: 0.75rem;
     padding: 0.4rem 0.8rem;
   }
-  
+
   .prep-time {
     font-size: 0.85rem;
     padding: 0.4rem 0.8rem;
   }
-  
+
   .detail-section h5 {
     font-size: 0.95rem;
   }
-  
+
   .detail-section p {
     font-size: 0.9rem;
   }
-  
+
   .topics-list,
   .resources-list {
     gap: 0.4rem;
   }
-  
+
   .topic-tag,
   .resource-tag {
     padding: 0.3rem 0.7rem;
     font-size: 0.75rem;
   }
-  
+
   .cta-content h2 {
     font-size: 2rem;
   }
-  
+
   .cta-content p {
     font-size: 1rem;
     padding: 0 0.5rem;
     margin-bottom: 2rem;
   }
-  
+
   .btn {
     padding: 0.875rem 1.5rem;
     font-size: 1rem;
@@ -785,62 +786,62 @@
   .container {
     padding: 0 0.75rem;
   }
-  
+
   .feedback-hero h1 {
     font-size: 1.8rem;
   }
-  
+
   .hero-subtitle {
     font-size: 0.95rem;
   }
-  
+
   .stats-grid {
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
   }
-  
+
   .stat-item {
     padding: 1rem;
   }
-  
+
   .stat-icon {
     font-size: 1.8rem;
   }
-  
+
   .stat-number {
     font-size: 1.6rem;
   }
-  
+
   .stat-label {
     font-size: 0.8rem;
   }
-  
+
   .filter-select {
     min-width: 180px;
     font-size: 0.9rem;
   }
-  
+
   .feedback-card {
     padding: 1.25rem;
     margin: 0;
   }
-  
+
   .student-name {
     font-size: 1.1rem;
   }
-  
+
   .subject-name {
     font-size: 1.2rem;
   }
-  
+
   .cta-content h2 {
     font-size: 1.8rem;
   }
-  
+
   .cta-content p {
     padding: 0 0.25rem;
   }
-  
+
   .btn {
     padding: 0.75rem 1.25rem;
     font-size: 0.95rem;
@@ -865,8 +866,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .empty-state {
@@ -907,14 +912,14 @@
   .modal-overlay { /* Added modal to print hide */
     display: none;
   }
-  
+
   .feedback-card {
     box-shadow: none;
     border: 1px solid #e5e7eb;
     page-break-inside: avoid;
     margin-bottom: 2rem;
   }
-  
+
   .feedback-grid {
     grid-template-columns: 1fr;
   }

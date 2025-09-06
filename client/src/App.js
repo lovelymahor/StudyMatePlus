@@ -14,13 +14,25 @@ import Faq from "./pages/Faq";
 import Contribute from "./pages/Contribute";
 import ScrollToTop from "./components/scrolltotop";
 import MindMapEditor from "./pages/MindMapEditor";
-import Profile from "./pages/Profile.js";
-import SubmitFeedback from "./pages/SubmitFeedback";
-
+import particlesConfig from "./config/particles-config";
+import Particles from "react-tsparticles";
+import { initParticlesEngine } from "@tsparticles/engine";
+import { loadSlim } from "tsparticles-slim";
+import InteractiveBackground from "./components/InteractiveBackground";
 
 const App = () => {
+  const particlesInit = async (engine) => {
+    await loadSlim(engine);
+  };
+
   return (
     <Router>
+      <Particles
+        id="tsparticles"
+        options={particlesConfig}
+        init={particlesInit}
+      />
+      <InteractiveBackground />
       <Navbar />
       <div style={{ padding: "2rem" }}>
         <ScrollToTop />
