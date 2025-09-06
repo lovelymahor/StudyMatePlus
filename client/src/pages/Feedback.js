@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Feedback.css";
+import { Link } from "react-router-dom";
+import { FaArrowUp } from "react-icons/fa";
 // import { Link } from "react-router-dom"; // No longer needed as we are using the modal
 import FeedbackModal from "../components/FeedbackModal"; // Import the modal component
 
 const Feedback = () => {
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [selectedUniversity, setSelectedUniversity] = useState("all");
+  const [showScroll, setShowScroll] = useState(false);
 
   // State and handlers to control the modal popup (Added from first file)
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -164,6 +167,30 @@ const Feedback = () => {
     "Cochin University",
   ];
   const difficulties = ["all", "easy", "moderate", "hard"];
+
+  // Effect to handle scroll events for the button
+  useEffect(() => {
+    const checkScrollTop = () => {
+      if (!showScroll && window.scrollY > 300) {
+        setShowScroll(true);
+      } else if (showScroll && window.scrollY <= 300) {
+        setShowScroll(false);
+      }
+    };
+
+    window.addEventListener('scroll', checkScrollTop);
+    return () => {
+      window.removeEventListener('scroll', checkScrollTop);
+    };
+  }, [showScroll]);
+
+  // Function to scroll to the top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const filteredFeedback = feedbackData.filter((feedback) => {
     const matchesDifficulty =
@@ -633,10 +660,28 @@ const Feedback = () => {
           </motion.div>
         </div>
       </motion.section>
+      
+      {/* Scroll to Top Button */}
+      <AnimatePresence>
+        {showScroll && (
+          <motion.button
+            key="scrollTop"
+            className="scroll-to-top"
+            onClick={scrollToTop}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            whileHover={{ scale: 1.15, rotate: 5 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FaArrowUp />
+          </motion.button>
+        )}
 
       {/* Conditionally render the modal at the end (Added from first file) */}
       <AnimatePresence>
         {isModalOpen && <FeedbackModal onClose={closeModal} />}
+
       </AnimatePresence>
     </div>
   );
