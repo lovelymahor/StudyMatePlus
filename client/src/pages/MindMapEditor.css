@@ -91,6 +91,7 @@
   background: var(--panel);
   padding: 12px;
   overflow: auto;
+  z-index: 3; /* Ensure inspector is on top for mobile overlay */
 }
 
 .inspector h3 {
@@ -134,7 +135,6 @@
   border: 1px solid transparent;
   border-radius:12%;
   padding:5px;
-
 }
 .btn-danger {
   background: #ef476f;
@@ -196,4 +196,89 @@
   padding: 2px 8px;
   border-radius: 999px;
   cursor: pointer;
+}
+
+/* --- NEW: Button to toggle inspector on mobile --- */
+.inspector-toggle {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+/* --- NEW: RESPONSIVE STYLES --- */
+
+/* For Tablets and Mobile */
+@media (max-width: 900px) {
+  .mindmap {
+    /* Change to a vertical layout */
+    grid-template-columns: 1fr;
+    grid-template-rows: 56px 1fr; /* Toolbar, then canvas */
+    grid-template-areas:
+      "toolbar"
+      "canvas";
+  }
+
+  .inspector {
+    /* Make inspector an overlay */
+    position: fixed;
+    top: 56px; /* Below the toolbar */
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    border-left: 1px solid var(--border);
+    transform: translateX(100%); /* Hide it off-screen */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .inspector.open {
+    transform: translateX(0); /* Show it when 'open' class is added */
+  }
+
+  /* Show the toggle button */
+  .inspector-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* For smaller mobile screens */
+@media (max-width: 600px) {
+  .toolbar {
+    flex-wrap: wrap; /* Allow toolbar items to wrap */
+    padding: 8px;
+    gap: 6px;
+  }
+  
+  .toolbar .group {
+    padding-right: 6px;
+    margin-right: 6px;
+  }
+
+  .toolbar button, .toolbar label.button {
+    height: 34px;
+    padding: 0 10px;
+    gap: 6px;
+  }
+
+  .search {
+    flex-grow: 1; /* Allow search to fill remaining space on a line */
+    min-width: 150px;
+  }
+
+  .inspector {
+    width: 280px; /* Make inspector slightly smaller */
+  }
 }

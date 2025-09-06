@@ -18,6 +18,7 @@
   align-items: center;
   text-align: center;
   color: white;
+  padding: 0 1rem; /* Added padding for responsiveness */
 }
 
 .hero-title {
@@ -30,6 +31,7 @@
   background: linear-gradient(45deg, #ffd700, #ffed4a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-subtitle {
@@ -39,104 +41,7 @@
 
 /* FAQ Section */
 .faq-section {
-  padding: 3rem 0;
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
-  color: #444;
-}
-
-.faq-list {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.faq-item {
-  background: #fff;
-  margin-bottom: 1rem;
-  padding: 1rem 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.faq-item:hover {
-  transform: translateY(-3px);
-}
-
-.faq-question {
-  font-weight: 600;
-  color: #333;
-}
-
-.faq-answer {
-  margin-top: 0.5rem;
-  color: #555;
-}
-
-/* Features Section */
-.features-section {
-  background-color: #f9f9f9;
-  padding: 3rem 2rem;
-  border-radius: 12px;
-  margin-top: 2rem;
-}
-
-.features-list {
-  max-width: 700px;
-  margin: 0 auto;
-  list-style: none;
-  padding-left: 1rem;
-}
-
-.features-list li {
-  margin: 0.5rem 0;
-  font-size: 1.1rem;
-}
-
-/* Contact Section */
-.contact-section {
-  padding: 3rem 2rem;
-  margin-top: 2rem;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 600px;
-  margin: 1rem auto 0;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 0.8rem;
-  border: 2px solid #667eea;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.contact-form button {
-  background: #667eea;
-  color: white;
-  padding: 0.9rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.contact-form button:hover {
-  background: #5a3e91;
-}
-/* FAQ Section */
-.faq-section {
-  padding: 4rem 0;
+  padding: 4rem 1rem; /* Added padding for responsiveness */
 }
 
 .section-title {
@@ -215,7 +120,7 @@
   background: #fafafa;
   padding: 3.5rem 2rem;
   border-radius: 16px;
-  margin-top: 3rem;
+  margin: 3rem 1rem 0; /* Adjusted margin */
   box-shadow: 0 6px 18px rgba(0,0,0,0.05);
 }
 
@@ -245,7 +150,7 @@
 /* Contact Section */
 .contact-section {
   padding: 4rem 2rem;
-  margin-top: 3rem;
+  margin: 3rem 1rem 0; /* Adjusted margin */
   background: linear-gradient(135deg, #667eea0d, #764ba20d);
   border-radius: 16px;
 }
@@ -296,6 +201,7 @@
   background: linear-gradient(135deg, #5a3e91, #764ba2);
   transform: scale(1.03);
 }
+
 /* Footer */
 .footer {
   background: #222;
@@ -308,6 +214,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
+  max-width: 1200px; /* Added max-width for consistency */
+  margin: 0 auto; /* Center the container */
 }
 
 .footer h3, .footer h4 {
@@ -363,4 +271,70 @@
   opacity: 0.7;
   border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: 1rem;
+  max-width: 1200px; /* Added max-width */
+  margin-left: auto; /* Center the bottom text */
+  margin-right: auto;
+}
+
+/* --- NEW: RESPONSIVE STYLES --- */
+
+/* For Tablets and smaller devices */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 40vh;
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .faq-section, .contact-section {
+    padding: 3rem 1rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+    margin-top: 80px;
+  }
+  .faq-item {
+    padding: 1rem 1.2rem;
+  }
+  .faq-question {
+    font-size: 1rem;
+  }
+}
+
+/* For Mobile Phones */
+@media (max-width: 480px) {
+  .hero {
+    min-height: 30vh;
+  }
+  .hero-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .faq-section, .features-section, .contact-section {
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+  }
+  .section-title {
+    font-size: 1.6rem;
+    margin-top: 60px;
+  }
+  .faq-item {
+    padding: 0.8rem 1rem;
+  }
+  .footer {
+    padding-top: 2rem;
+    text-align: center; /* Center align footer content on mobile */
+  }
+  .footer-container {
+    gap: 1.5rem;
+  }
+  .social-icons {
+    justify-content: center; /* Center social icons */
+  }
 }
