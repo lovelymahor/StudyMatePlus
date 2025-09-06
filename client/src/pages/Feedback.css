@@ -415,6 +415,113 @@
   box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
 }
 
+/* --- Feedback Modal Styles --- */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  
+  /* Align to the top and add padding */
+  align-items: flex-start;
+  padding-top: 5vh; /* Give some space from the top */
+  padding-bottom: 5vh; /* Give some space from the bottom */
+
+  z-index: 1000;
+  /* Add this to allow the overlay itself to scroll if the window is tiny */
+  overflow-y: auto; 
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  
+  /* Add max-height and overflow-y */
+  max-height: 90vh; /* Limit height to 90% of the viewport height */
+  overflow-y: auto;   /* Add a scrollbar ONLY if content is taller than max-height */
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #888;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.submit-form-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #007BFF, #00C6FF);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.submit-form-btn:hover {
+  opacity: 0.9;
+}
+
+.submit-form-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.status-message {
+  text-align: center;
+  margin-top: 15px;
+  color: #007BFF;
+  font-weight: bold;
+}
+
 /* Enhanced Responsive Design */
 
 /* Large tablets and small desktops */
@@ -796,7 +903,8 @@
   .feedback-hero,
   .feedback-stats,
   .feedback-filters,
-  .feedback-cta {
+  .feedback-cta,
+  .modal-overlay { /* Added modal to print hide */
     display: none;
   }
   
