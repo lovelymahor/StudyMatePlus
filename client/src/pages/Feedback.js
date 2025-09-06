@@ -3,11 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./Feedback.css";
 import { Link } from "react-router-dom";
 import { FaArrowUp } from "react-icons/fa";
+// import { Link } from "react-router-dom"; // No longer needed as we are using the modal
+import FeedbackModal from "../components/FeedbackModal"; // Import the modal component
 
 const Feedback = () => {
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [selectedUniversity, setSelectedUniversity] = useState("all");
   const [showScroll, setShowScroll] = useState(false);
+
+  // State and handlers to control the modal popup (Added from first file)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   // Sample feedback data
   const feedbackData = [
@@ -635,21 +642,21 @@ const Feedback = () => {
               Help fellow students by sharing your exam experience and study
               tips. Your feedback could be the key to someone's success!
             </motion.p>
-            <Link to="/feedback/submit" style={{ textDecoration: "none" }}>
-              <motion.button
-                className="btn btn-primary"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 2.2, type: "spring", stiffness: 300 }}
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)",
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Submit Your Feedback
-              </motion.button>
-            </Link>
+            {/* Replaced <Link> with onClick={openModal} from the first file */}
+            <motion.button
+              className="btn btn-primary"
+              onClick={openModal} 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 2.2, type: "spring", stiffness: 300 }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)",
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Submit Your Feedback
+            </motion.button>
           </motion.div>
         </div>
       </motion.section>
@@ -670,6 +677,11 @@ const Feedback = () => {
             <FaArrowUp />
           </motion.button>
         )}
+
+      {/* Conditionally render the modal at the end (Added from first file) */}
+      <AnimatePresence>
+        {isModalOpen && <FeedbackModal onClose={closeModal} />}
+
       </AnimatePresence>
     </div>
   );
