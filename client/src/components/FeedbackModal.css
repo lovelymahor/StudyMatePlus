@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 1rem; /* Added padding for extra safety on small screens */
 }
 
 .modal-content {
@@ -20,6 +21,11 @@
   position: relative;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.3s ease-in-out;
+  
+  /* --- RESPONSIVE ENHANCEMENT --- */
+  max-height: 90vh;  /* Ensures modal never exceeds 90% of viewport height */
+  overflow-y: auto;    /* Adds a scrollbar ONLY if the content is too tall */
+  /* ------------------------------- */
 }
 
 @keyframes fadeIn {

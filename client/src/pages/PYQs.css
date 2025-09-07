@@ -122,3 +122,61 @@
 .pyq-card button:hover {
   background-color: #5858b6;
 }
+
+
+/* --- NEW: RESPONSIVE STYLES --- */
+
+/* For Tablets and smaller devices */
+@media (max-width: 768px) {
+  .pyqs-hero {
+    padding: 50px 15px;
+  }
+
+  .pyqs-hero h1 {
+    font-size: 2rem;
+  }
+
+  .pyqs-selection,
+  .pyqs-results {
+    padding: 30px 15px;
+  }
+
+  .form-group {
+    min-width: 200px; /* Allow form groups to be a bit smaller */
+  }
+  
+  .pyqs-results-box h2 {
+    font-size: 1.4rem;
+  }
+}
+
+/* For Mobile Phones */
+@media (max-width: 480px) {
+  .pyqs-hero {
+    padding: 40px 10px;
+    border-radius: 0; /* Full-width hero on mobile */
+  }
+
+  .pyqs-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .pyqs-form {
+    gap: 20px;
+  }
+
+  .form-group {
+    width: 100%; /* Make form groups stack vertically */
+    min-width: 0;
+  }
+
+  .pyqs-cards-grid {
+    /* Adjust grid to ensure cards don't get too small */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .pyq-card {
+    padding: 15px;
+  }
+}
