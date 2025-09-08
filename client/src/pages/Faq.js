@@ -4,7 +4,7 @@ import "./Faq.css";
 import './ScrollToTop.css';
 import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp} from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { SiX } from "react-icons/si";
+import { FaXTwitter } from "react-icons/fa6";
 
   // Animation variants
   const fadeInUp = {
@@ -201,7 +201,7 @@ const Faq = () => {
             <FaLinkedin />
           </a>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
-            <SiX />
+            <FaXTwitter />
           </a>
           <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon discord">
             <FaDiscord />
