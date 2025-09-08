@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Contact.css';
+import './ScrollToTop.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
