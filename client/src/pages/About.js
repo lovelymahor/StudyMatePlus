@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaArrowUp } from "react-icons/fa";
 import './About.css';
-
+import './ScrollToTop.css';
 const About = () => {
   // Animation Variants from Home.js
   const fadeInUp = {

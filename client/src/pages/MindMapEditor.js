@@ -7,6 +7,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import './MindMapEditor.css';
+import './ScrollToTop.css';
 
 import { v4 as uuid } from 'uuid';
 import { motion, AnimatePresence } from 'framer-motion';

@@ -7,6 +7,7 @@ import {
   FaBookmark,
 } from "react-icons/fa";
 import "./Profile.css";
+import './ScrollToTop.css';
 
 const user = {
   name: "John Doe",

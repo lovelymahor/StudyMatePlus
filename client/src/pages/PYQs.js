@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
 import "./PYQs.css";
+import './ScrollToTop.css';
 
 const PYQs = () => {
   // Animation Variants from Home.js

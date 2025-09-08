@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Feedback.css";
+import './ScrollToTop.css';
 import { FaArrowUp } from "react-icons/fa";
 import FeedbackModal from "../components/FeedbackModal"; // Import the modal component
 
