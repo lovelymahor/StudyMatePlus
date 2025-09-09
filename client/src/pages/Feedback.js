@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Feedback.css";
-import { Link } from "react-router-dom";
+import './ScrollToTop.css';
+import { FaArrowUp } from "react-icons/fa";
+import FeedbackModal from "../components/FeedbackModal"; // Import the modal component
 
 const Feedback = () => {
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [selectedUniversity, setSelectedUniversity] = useState("all");
+  const [showScroll, setShowScroll] = useState(false);
+
+  // State and handlers to control the modal popup
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   // Sample feedback data
   const feedbackData = [
@@ -158,6 +166,30 @@ const Feedback = () => {
     "Cochin University",
   ];
   const difficulties = ["all", "easy", "moderate", "hard"];
+
+  // Effect to handle scroll events for the button
+  useEffect(() => {
+    const checkScrollTop = () => {
+      if (!showScroll && window.scrollY > 300) {
+        setShowScroll(true);
+      } else if (showScroll && window.scrollY <= 300) {
+        setShowScroll(false);
+      }
+    };
+
+    window.addEventListener('scroll', checkScrollTop);
+    return () => {
+      window.removeEventListener('scroll', checkScrollTop);
+    };
+  }, [showScroll]);
+
+  // Function to scroll to the top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const filteredFeedback = feedbackData.filter((feedback) => {
     const matchesDifficulty =
@@ -609,24 +641,46 @@ const Feedback = () => {
               Help fellow students by sharing your exam experience and study
               tips. Your feedback could be the key to someone's success!
             </motion.p>
-            <Link to="/feedback/submit" style={{ textDecoration: "none" }}>
-              <motion.button
-                className="btn btn-primary"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 2.2, type: "spring", stiffness: 300 }}
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)",
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Submit Your Feedback
-              </motion.button>
-            </Link>
+            <motion.button
+              className="btn btn-primary"
+              onClick={openModal}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 2.2, type: "spring", stiffness: 300 }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)",
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Submit Your Feedback
+            </motion.button>
           </motion.div>
         </div>
       </motion.section>
+
+      {/* --- CORRECTED SECTION START --- */}
+      {/* Both the scroll button and the modal are now children of the SAME AnimatePresence component */}
+      <AnimatePresence>
+        {showScroll && (
+          <motion.button
+            key="scrollTop"
+            className="scroll-to-top"
+            onClick={scrollToTop}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            whileHover={{ scale: 1.15, rotate: 5 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FaArrowUp />
+          </motion.button>
+        )}
+
+        {isModalOpen && <FeedbackModal onClose={closeModal} />}
+      </AnimatePresence>
+      {/* --- CORRECTED SECTION END --- */}
+
     </div>
   );
 };

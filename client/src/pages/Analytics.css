@@ -239,3 +239,97 @@ button:hover {
   background: linear-gradient(to right, #ffc400, #ffa000);
   transform: scale(1.03);
 }
+
+
+/* --- NEW: RESPONSIVE STYLES --- */
+
+/* For Tablets and smaller devices */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .hero {
+    min-height: 50vh;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .analytics-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .chart-container {
+    padding: 1.5rem;
+  }
+  
+  .insights-section h2,
+  .filter-section h2 {
+    font-size: 1.4rem;
+  }
+}
+
+/* For Mobile Phones */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .hero {
+    min-height: 40vh;
+    padding: 2rem 0;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .analytics-section {
+    padding: 2rem 1rem;
+  }
+
+  .chart-container {
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .chart-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .insights-section, .filter-section, .download-section {
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .insights-section h2,
+  .filter-section h2 {
+    font-size: 1.2rem;
+    padding-left: 10px;
+    border-left-width: 4px;
+  }
+
+  .insights-section ul {
+    font-size: 1rem;
+  }
+
+  .filter-section select {
+    width: 100%; /* Make dropdown full-width for easier tapping */
+  }
+
+  .download-btn {
+    width: 100%; /* Make button full-width */
+    padding: 0.8rem 1rem;
+  }
+}
