@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "./Faq.css";
-import { FaGithub, FaLinkedin, FaDiscord} from "react-icons/fa";
+import './ScrollToTop.css';
+import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { SiX } from "react-icons/si";
 
@@ -57,6 +58,7 @@ import { SiX } from "react-icons/si";
 
 const Faq = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [showScroll, setShowScroll] = useState(false);
 
   const faqs = [
     {
@@ -84,6 +86,30 @@ const Faq = () => {
       a: "Reach out to us via the Contact section at the bottom of the page or email support@studymateplus.com."
     }
   ];
+
+  // Effect to handle scroll events for the button
+  useEffect(() => {
+    const checkScrollTop = () => {
+      if (!showScroll && window.scrollY > 300) {
+        setShowScroll(true);
+      } else if (showScroll && window.scrollY <= 300) {
+        setShowScroll(false);
+      }
+    };
+
+    window.addEventListener('scroll', checkScrollTop);
+    return () => {
+      window.removeEventListener('scroll', checkScrollTop);
+    };
+  }, [showScroll]);
+
+  // Function to scroll to the top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <div className="faq-page">
@@ -224,6 +250,24 @@ const Faq = () => {
     </motion.div>
   </div>
 </motion.footer>
+
+      {/* Scroll to Top Button */}
+      <AnimatePresence>
+        {showScroll && (
+          <motion.button
+            key="scrollTop"
+            className="scroll-to-top"
+            onClick={scrollToTop}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            whileHover={{ scale: 1.15, rotate: 5 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FaArrowUp />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

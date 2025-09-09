@@ -1,4 +1,4 @@
-/* Navbar.css - StudyMatePlus (Refined Design) */
+/* Navbar.css - StudyMatePlus (Refined & Responsive Design) */
 
 .navbar {
   background-color: #ffffff;
@@ -20,7 +20,7 @@
 }
 
 .navbar-logo {
-  height: 40px; /* adjust as needed */
+  height: 40px;
   width: auto;
   display: block;
 }
@@ -40,8 +40,16 @@
   color: #4c51bf;
 }
 
-.navbar-links {
+/* --- NEW --- Wrapper for all right-side elements */
+.navbar-right {
   display: flex;
+  align-items: center;
+  gap: 1.5rem; /* This sets the space between nav links and the profile icon */
+}
+
+/* Desktop navigation links */
+.navbar-links {
+  display: flex; /* This remains flex for desktop layout */
   gap: 1.5rem;
   align-items: center;
   list-style: none;
@@ -65,9 +73,9 @@
   color: #2d3748;
 }
 
-/* Mobile toggle button */
+/* Mobile toggle button (hamburger icon) */
 .navbar-toggle {
-  display: none;
+  display: none; /* Hidden by default */
   background: none;
   border: none;
   font-size: 1.5rem;
@@ -82,9 +90,9 @@
   background-color: #e2e8f0;
 }
 
-/* Mobile menu */
+/* Mobile menu container */
 .navbar-menu-mobile {
-  display: none;
+  display: none; /* Hidden by default */
   position: absolute;
   top: 100%;
   left: 0;
@@ -95,7 +103,7 @@
 }
 
 .navbar-menu-mobile.active {
-  display: block;
+  display: block; /* Shown when the menu is toggled */
   animation: slideDown 0.25s ease;
 }
 
@@ -109,7 +117,7 @@
 }
 
 .navbar-links-mobile li {
-  background-color: #f3f4f6; /* subtle light grey */
+  background-color: #f3f4f6;
   padding: 12px 20px;
   color: #1a202c;
   border-radius: 10px;
@@ -142,12 +150,38 @@
   color: #2b6cb0;
 }
 
-/* Responsive */
+/* Profile Image styles */
+.navbar-profile-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.navbar-profile-img {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e2e8f0;
+  transition: border-color 0.3s ease;
+}
+
+.navbar-profile-link:hover .navbar-profile-img {
+  border-color: #667eea;
+}
+
+/* --- RESPONSIVE STYLES --- */
 @media (max-width: 768px) {
+  /* Hide the desktop links list */
   .navbar-links {
     display: none;
   }
 
+  /* Show the hamburger toggle button */
   .navbar-toggle {
     display: block;
   }
@@ -157,13 +191,12 @@
   .navbar {
     padding: 0.5rem 1rem;
   }
-
   .navbar-brand {
     font-size: 1.4rem;
   }
 }
 
-/* Animation */
+/* Animation for mobile menu dropdown */
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -172,19 +205,5 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Accessibility */
-.navbar-link:focus,
-.navbar-link-mobile:focus,
-.navbar-toggle:focus {
-  outline: 2px solid #cbd5e0;
-  outline-offset: 2px;
-}
-
-@media print {
-  .navbar {
-    display: none;
   }
 }

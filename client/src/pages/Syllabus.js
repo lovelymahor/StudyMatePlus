@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaArrowUp } from "react-icons/fa";
 import './Syllabus.css';
 
 const Syllabus = () => {
@@ -125,6 +126,30 @@ const Syllabus = () => {
   const scaleIn = {
     hidden: { opacity: 0, scale: 0.85 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+const [showScroll, setShowScroll] = useState(false);
+
+  useEffect(() => {
+    const checkScrollTop = () => {
+      if (!showScroll && window.scrollY > 300) {
+        setShowScroll(true);
+      } else if (showScroll && window.scrollY <= 300) {
+        setShowScroll(false);
+      }
+    };
+
+    window.addEventListener('scroll', checkScrollTop);
+    return () => {
+      window.removeEventListener('scroll', checkScrollTop);
+    };
+  }, [showScroll]);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   // State management
@@ -394,6 +419,24 @@ const Syllabus = () => {
           </AnimatePresence>
         </div>
       </motion.section>
+
+      {/* Scroll to Top Button */}
+            <AnimatePresence>
+              {showScroll && (
+                <motion.button
+                  key="scrollTop"
+                  className="scroll-to-top"
+                  onClick={scrollToTop}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.5 }}
+                  whileHover={{ scale: 1.15, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FaArrowUp />
+                </motion.button>
+              )}
+            </AnimatePresence>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -32,7 +33,6 @@ const App = () => {
         init={particlesInit}
       />
       <InteractiveBackground />
-
       <Navbar />
       <div style={{ padding: "2rem" }}>
         <ScrollToTop />
@@ -50,6 +50,8 @@ const App = () => {
           <Route path="/contribute" element={<Contribute />} />
           <Route path="/mindmap" element={<MindMapEditor />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/feedback/submit" element={<SubmitFeedback />} />
         </Routes>
       </div>
     </Router>

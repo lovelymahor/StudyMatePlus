@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp } from "react-icons/fa";
 import { SiX } from "react-icons/si";
 import logo from "./logo.png";
-
 import "./Home.css";
+import './ScrollToTop.css';
 
 const Home = () => {
   const [contributors, setContributors] = useState([]);
