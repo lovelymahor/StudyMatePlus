@@ -1,24 +1,73 @@
-import React, { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaArrowUp } from "react-icons/fa";
 import "./PYQs.css";
-import './ScrollToTop.css';
+
+// Sample papers data (remains the same)
+const samplePapers = [
+  {
+    id: 1,
+    university: "LPU",
+    department: "Engineering",
+    semester: "4th",
+    subject: "Computer Science",
+    uploader: "Harish",
+    date: "2024-05-20",
+  },
+  {
+    id: 2,
+    university: "DU",
+    department: "Science",
+    semester: "3rd",
+    subject: "Mathematics",
+    uploader: "Ananya Gupta",
+    date: "2023-12-10",
+  },
+  {
+    id: 3,
+    university: "JNU",
+    department: "Science",
+    semester: "2nd",
+    subject: "Physics",
+    uploader: "Ravi Verma",
+    date: "2022-06-15",
+  },
+  {
+    id: 4,
+    university: "LPU",
+    department: "Engineering",
+    semester: "4th",
+    subject: "Computer Science",
+    uploader: "Sneha Singh",
+    date: "2023-11-02",
+  },
+];
 
 const PYQs = () => {
   // Animation Variants from Home.js
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const staggerChildren = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+    },
   };
 
   const scaleIn = {
     hidden: { opacity: 0, scale: 0.85 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
   };
 
   // Component State
@@ -28,30 +77,49 @@ const PYQs = () => {
   const [selectedSubject, setSelectedSubject] = useState("");
 
   const universities = ["Select University", "LPU", "DU", "JNU"];
-  const [showScroll, setShowScroll] = useState(false);
-  
-  // Sample papers data (remains the same)
-  const samplePapers = [
-    { id: 1, university: "LPU", department: "Engineering", semester: "4th", subject: "Computer Science", uploader: "Harish", date: "2024-05-20" },
-    { id: 2, university: "DU", department: "Science", semester: "3rd", subject: "Mathematics", uploader: "Ananya Gupta", date: "2023-12-10" },
-    { id: 3, university: "JNU", department: "Science", semester: "2nd", subject: "Physics", uploader: "Ravi Verma", date: "2022-06-15" },
-    { id: 4, university: "LPU", department: "Engineering", semester: "4th", subject: "Computer Science", uploader: "Sneha Singh", date: "2023-11-02" },
-  ];
 
   // Memoized lists of available options based on selections
   const availableDepartments = useMemo(() => {
     if (!selectedUniversity) return [];
-    return [...new Set(samplePapers.filter(paper => paper.university === selectedUniversity).map(paper => paper.department))];
+    return [
+      ...new Set(
+        samplePapers
+          .filter((paper) => paper.university === selectedUniversity)
+          .map((paper) => paper.department)
+      ),
+    ];
   }, [selectedUniversity]);
 
   const availableSemesters = useMemo(() => {
     if (!selectedUniversity || !selectedDepartment) return [];
-    return [...new Set(samplePapers.filter(paper => paper.university === selectedUniversity && paper.department === selectedDepartment).map(paper => paper.semester))];
+    return [
+      ...new Set(
+        samplePapers
+          .filter(
+            (paper) =>
+              paper.university === selectedUniversity &&
+              paper.department === selectedDepartment
+          )
+          .map((paper) => paper.semester)
+      ),
+    ];
   }, [selectedUniversity, selectedDepartment]);
 
   const availableSubjects = useMemo(() => {
-    if (!selectedUniversity || !selectedDepartment || !selectedSemester) return [];
-    return [...new Set(samplePapers.filter(paper => paper.university === selectedUniversity && paper.department === selectedDepartment && paper.semester === selectedSemester).map(paper => paper.subject))];
+    if (!selectedUniversity || !selectedDepartment || !selectedSemester)
+      return [];
+    return [
+      ...new Set(
+        samplePapers
+          .filter(
+            (paper) =>
+              paper.university === selectedUniversity &&
+              paper.department === selectedDepartment &&
+              paper.semester === selectedSemester
+          )
+          .map((paper) => paper.subject)
+      ),
+    ];
   }, [selectedUniversity, selectedDepartment, selectedSemester]);
 
   // Filter papers based on selected options
@@ -63,34 +131,15 @@ const PYQs = () => {
       paper.subject === selectedSubject
   );
 
-  const areFiltersSelected = selectedUniversity && selectedDepartment && selectedSubject && selectedSemester;
-
-  useEffect(() => {
-  const checkScrollTop = () => {
-    if (!showScroll && window.scrollY > 300) {
-      setShowScroll(true);
-    } else if (showScroll && window.scrollY <= 300) {
-      setShowScroll(false);
-    }
-  };
-
-  window.addEventListener('scroll', checkScrollTop);
-  return () => {
-    window.removeEventListener('scroll', checkScrollTop);
-  };
-}, [showScroll]);
-
-// Add this function to perform the scroll action
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-};
+  const areFiltersSelected =
+    selectedUniversity &&
+    selectedDepartment &&
+    selectedSubject &&
+    selectedSemester;
 
   return (
     <div className="pyqs-page">
-      <motion.section 
+      <motion.section
         className="pyqs-hero"
         initial="hidden"
         animate="visible"
@@ -98,12 +147,14 @@ const scrollToTop = () => {
       >
         <div className="container">
           <motion.div className="pyqs-hero-content" variants={fadeInUp}>
-            <motion.h1 variants={fadeInUp}>Access Previous Year Question Papers</motion.h1>
+            <motion.h1 variants={fadeInUp}>
+              Access Previous Year Question Papers
+            </motion.h1>
           </motion.div>
         </div>
       </motion.section>
 
-      <motion.section 
+      <motion.section
         className="pyqs-selection"
         initial="hidden"
         animate="visible"
@@ -124,40 +175,90 @@ const scrollToTop = () => {
                   setSelectedSubject("");
                 }}
               >
-                <option value="" disabled>Select University</option>
-                {universities.slice(1).map((uni, idx) => (<option key={idx} value={uni}>{uni}</option>))}
+                <option value="" disabled>
+                  Select University
+                </option>
+                {universities.slice(1).map((uni, idx) => (
+                  <option key={idx} value={uni}>
+                    {uni}
+                  </option>
+                ))}
               </select>
             </motion.div>
 
             {/* Other dropdowns follow the same pattern... */}
             <motion.div className="form-group" variants={fadeInUp}>
               <label htmlFor="department">Department</label>
-              <select id="department" value={selectedDepartment} onChange={(e) => { setSelectedDepartment(e.target.value); setSelectedSemester(""); setSelectedSubject(""); }} disabled={!selectedUniversity}>
-                <option value="" disabled>Select Department</option>
-                {availableDepartments.map((dept, idx) => (<option key={idx} value={dept}>{dept}</option>))}
+              <select
+                id="department"
+                value={selectedDepartment}
+                onChange={(e) => {
+                  setSelectedDepartment(e.target.value);
+                  setSelectedSemester("");
+                  setSelectedSubject("");
+                }}
+                disabled={!selectedUniversity}
+              >
+                <option value="" disabled>
+                  Select Department
+                </option>
+                {availableDepartments.map((dept, idx) => (
+                  <option key={idx} value={dept}>
+                    {dept}
+                  </option>
+                ))}
               </select>
             </motion.div>
 
             <motion.div className="form-group" variants={fadeInUp}>
               <label htmlFor="semester">Semester</label>
-              <select id="semester" value={selectedSemester} onChange={(e) => { setSelectedSemester(e.target.value); setSelectedSubject(""); }} disabled={!selectedUniversity || !selectedDepartment}>
-                <option value="" disabled>Select Semester</option>
-                {availableSemesters.map((sem, idx) => (<option key={idx} value={sem}>{sem}</option>))}
+              <select
+                id="semester"
+                value={selectedSemester}
+                onChange={(e) => {
+                  setSelectedSemester(e.target.value);
+                  setSelectedSubject("");
+                }}
+                disabled={!selectedUniversity || !selectedDepartment}
+              >
+                <option value="" disabled>
+                  Select Semester
+                </option>
+                {availableSemesters.map((sem, idx) => (
+                  <option key={idx} value={sem}>
+                    {sem}
+                  </option>
+                ))}
               </select>
             </motion.div>
 
             <motion.div className="form-group" variants={fadeInUp}>
               <label htmlFor="subject">Subject</label>
-              <select id="subject" value={selectedSubject} onChange={(e) => setSelectedSubject(e.target.value)} disabled={!selectedUniversity || !selectedDepartment || !selectedSemester}>
-                <option value="" disabled>Select Subject</option>
-                {availableSubjects.map((subj, idx) => (<option key={idx} value={subj}>{subj}</option>))}
+              <select
+                id="subject"
+                value={selectedSubject}
+                onChange={(e) => setSelectedSubject(e.target.value)}
+                disabled={
+                  !selectedUniversity ||
+                  !selectedDepartment ||
+                  !selectedSemester
+                }
+              >
+                <option value="" disabled>
+                  Select Subject
+                </option>
+                {availableSubjects.map((subj, idx) => (
+                  <option key={idx} value={subj}>
+                    {subj}
+                  </option>
+                ))}
               </select>
             </motion.div>
           </motion.div>
         </div>
       </motion.section>
 
-      <motion.section 
+      <motion.section
         className="pyqs-results"
         initial="hidden"
         whileInView="visible"
@@ -178,7 +279,8 @@ const scrollToTop = () => {
                 <h2>
                   Previous Year Question Papers for{" "}
                   <strong>{selectedSubject}</strong> – {selectedSemester}{" "}
-                  Semester, {selectedDepartment} Department, {selectedUniversity}
+                  Semester, {selectedDepartment} Department,{" "}
+                  {selectedUniversity}
                 </h2>
 
                 {filteredPapers.length > 0 ? (
@@ -194,19 +296,31 @@ const scrollToTop = () => {
                         className="pyq-card"
                         variants={scaleIn}
                         layout
-                        whileHover={{ y: -8, scale: 1.05, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
+                        whileHover={{
+                          y: -8,
+                          scale: 1.05,
+                          boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+                        }}
                       >
                         <h3>{paper.subject}</h3>
                         <p>Uploaded on: {paper.date}</p>
                         <p>Uploader: {paper.uploader}</p>
-                        <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                        <motion.button
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
                           View ➜
                         </motion.button>
                       </motion.div>
                     ))}
                   </motion.div>
                 ) : (
-                  <motion.p className="prompt" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
+                  <motion.p
+                    className="prompt"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                  >
                     No papers found for selected filters.
                   </motion.p>
                 )}
@@ -219,30 +333,13 @@ const scrollToTop = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                Please select university, department, semester, and subject to view available question papers.
+                Please select university, department, semester, and subject to
+                view available question papers.
               </motion.p>
             )}
           </AnimatePresence>
         </div>
       </motion.section>
-
-      {/* Scroll to Top Button */}
-      <AnimatePresence>
-        {showScroll && (
-          <motion.button
-            key="scrollTop"
-            className="scroll-to-top"
-            onClick={scrollToTop}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5 }}
-            whileHover={{ scale: 1.15, rotate: 5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <FaArrowUp />
-          </motion.button>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
