@@ -145,6 +145,21 @@ const Home = () => {
     }
   };
 
+  const testimonials = [
+    {
+      quote: "StudyMatePlus helped me organize my entire semester. I wish I had found this earlier!",
+      author: "— Priya Sharma, B.Tech CSE"
+    },
+    {
+      quote: "Thanks to the previous papers section, I was able to focus on the most important topics.",
+      author: "— Rahul Meena, BBA"
+    },
+    {
+      quote: "The senior guidance feature is a game-changer. Got great tips and motivation.",
+      author: "— Ayesha Khan, B.Sc Physics"
+    }
+  ];
+
   return (
     <div className="home">
       {/* Hero Section */}
@@ -442,51 +457,79 @@ const Home = () => {
           <motion.h2 className="section-title" variants={fadeInUp}>
             What Students Say
           </motion.h2>
-          <motion.div className="testimonial-grid" variants={staggerChildren}>
-            {[
-              {
-                quote: "StudyMatePlus helped me organize my entire semester. I wish I had found this earlier!",
-                author: "— Priya Sharma, B.Tech CSE"
-              },
-              {
-                quote: "Thanks to the previous papers section, I was able to focus on the most important topics.",
-                author: "— Rahul Meena, BBA"
-              },
-              {
-                quote: "The senior guidance feature is a game-changer. Got great tips and motivation.",
-                author: "— Ayesha Khan, B.Sc Physics"
-              }
-            ].map((testimonial, index) => (
-              <motion.div 
-                key={index}
-                className="testimonial-card"
-                variants={scaleIn}
-                whileHover={{ 
-                  scale: 1.02, 
-                  y: -8,
-                  boxShadow: "0 15px 30px rgba(0,0,0,0.1)"
-                }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
+          <div className="testimonial-wrapper">
+            <motion.div 
+              className="testimonial-scroller"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ 
+                duration: 30, 
+                repeat: Infinity, 
+                ease: "linear",
+                repeatType: "loop"
+              }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <motion.div 
+                  key={index}
+                  className="testimonial-card"
+                  variants={scaleIn}
+                  whileHover={{ 
+                    scale: 1.02, 
+                    y: -8,
+                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)"
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
-                  "{testimonial.quote}"
-                </motion.p>
-                <motion.h4
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: index * 0.1 + 0.2 }}
-                  viewport={{ once: true }}
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    "{testimonial.quote}"
+                  </motion.p>
+                  <motion.h4
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: index * 0.1 + 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    {testimonial.author}
+                  </motion.h4>
+                </motion.div>
+              ))}
+              {testimonials.map((testimonial, index) => (
+                <motion.div 
+                  key={index + testimonials.length}
+                  className="testimonial-card"
+                  variants={scaleIn}
+                  whileHover={{ 
+                    scale: 1.02, 
+                    y: -8,
+                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)"
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
-                  {testimonial.author}
-                </motion.h4>
-              </motion.div>
-            ))}
-          </motion.div>
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    "{testimonial.quote}"
+                  </motion.p>
+                  <motion.h4
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: index * 0.1 + 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    {testimonial.author}
+                  </motion.h4>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </motion.section>
 
