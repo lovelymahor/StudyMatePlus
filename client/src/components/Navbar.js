@@ -2,12 +2,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom"; // CHANGED HERE
 import "./Navbar.css";
+import { useTheme } from "../theme/ThemeProvider";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const user = {
   avatar: "https://avatar.iran.liara.run/public/boy",
 };
 
 const Navbar = () => {
+  const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -58,6 +61,15 @@ const Navbar = () => {
           </ul>
           {/* END OF STEP 2 CHANGE */}
 
+
+          <button
+            aria-label="Toggle theme"
+            className="navbar-theme-toggle"
+            onClick={toggleTheme}
+            title={theme === "dark" ? "Switch to light" : "Switch to dark"}
+          >
+            {theme === "dark" ? <FaSun /> : <FaMoon />}
+          </button>
 
           <Link to="/profile" className="navbar-profile-link">
             <img

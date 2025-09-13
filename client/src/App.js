@@ -1,4 +1,5 @@
 import React from "react";
+import { ThemeProvider } from "./theme/ThemeProvider";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -20,11 +21,12 @@ import SubmitFeedback from "./pages/SubmitFeedback";
 
 const App = () => {
   return (
-    <Router>
-      <Navbar />
-      <div style={{ padding: "2rem" }}>
-        <ScrollToTop />
-        <Routes>
+    <ThemeProvider>
+      <Router>
+        <Navbar />
+        <div style={{ padding: "2rem" }}>
+          <ScrollToTop />
+          <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/syllabus" element={<Syllabus />} />
           <Route path="/notes" element={<Notes />} />
@@ -40,9 +42,10 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/feedback/submit" element={<SubmitFeedback />} />
-        </Routes>
-      </div>
-    </Router>
+          </Routes>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 };
 

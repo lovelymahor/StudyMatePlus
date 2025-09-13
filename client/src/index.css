@@ -5,9 +5,60 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: var(--text);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Theme variables */
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --card: #f8fafc;
+  --border: #e2e8f0;
+  --brand: #3b82f6;
+}
+
+html[data-theme="dark"] {
+  --bg: #0b1220;
+  --text: #e6edf7;
+  --muted: #a1a7b3;
+  --card: #0f172a;
+  --border: #1f2937;
+  --brand: #60a5fa;
+}
+
+.container, .home, .faq-page, .features, .stats, .how-it-works, .testimonials, .cta, .contributors, .footer, .navbar {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.feature-card, .stat-item, .floating-card, .cta-content, .contributor-card, .footer-content {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+a { color: var(--brand); }
+
+/* Ensure all cards/sections across pages inherit theme */
+.card, .section, .panel, .list, .grid, .hero, .faq-section, .features-section, .contact-section,
+.contributors, .cta, .stats, .how-it-works, .testimonials {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Inputs and buttons generic theming */
+input, textarea, select {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+button {
+  color: var(--text);
 }

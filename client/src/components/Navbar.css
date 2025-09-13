@@ -1,8 +1,8 @@
 /* Navbar.css - StudyMatePlus (Refined & Responsive Design) */
 
 .navbar {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border);
   padding: 0.75rem 1.5rem;
   position: sticky;
   top: 0;
@@ -28,7 +28,7 @@
 .navbar-brand {
   font-size: 1.6rem;
   font-weight: bold;
-  color: #2d3748;
+  color: var(--text);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -37,7 +37,7 @@
 }
 
 .navbar-brand:hover {
-  color: #4c51bf;
+  color: var(--brand);
 }
 
 /* --- NEW --- Wrapper for all right-side elements */
@@ -45,6 +45,24 @@
   display: flex;
   align-items: center;
   gap: 1.5rem; /* This sets the space between nav links and the profile icon */
+}
+
+/* Theme toggle button */
+.navbar-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.navbar-theme-toggle:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* Desktop navigation links */
@@ -58,7 +76,7 @@
 }
 
 .navbar-link {
-  color: #4a5568;
+  color: var(--muted);
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
@@ -69,8 +87,8 @@
 
 .navbar-link:hover,
 .navbar-link:focus {
-  background-color: #edf2f7;
-  color: #2d3748;
+  background-color: var(--card);
+  color: var(--text);
 }
 
 /* Mobile toggle button (hamburger icon) */
@@ -79,7 +97,7 @@
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: #4a5568;
+  color: var(--muted);
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 4px;
@@ -87,7 +105,7 @@
 }
 
 .navbar-toggle:hover {
-  background-color: #e2e8f0;
+  background-color: var(--card);
 }
 
 /* Mobile menu container */
@@ -97,8 +115,8 @@
   top: 100%;
   left: 0;
   right: 0;
-  background-color: #ffffff;
-  border-top: 1px solid #e2e8f0;
+  background-color: var(--bg);
+  border-top: 1px solid var(--border);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
@@ -117,9 +135,9 @@
 }
 
 .navbar-links-mobile li {
-  background-color: #f3f4f6;
+  background-color: var(--card);
   padding: 12px 20px;
-  color: #1a202c;
+  color: var(--text);
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 600;
@@ -129,7 +147,7 @@
 }
 
 .navbar-links-mobile li:hover {
-  background-color: #4f46e5;
+  background-color: var(--brand);
   color: #ffffff;
   transform: translateX(6px);
   box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
@@ -146,8 +164,8 @@
 .navbar-link.active,
 .navbar-link-mobile.active {
   font-weight: 600;
-  background-color: #e9effc;
-  color: #2b6cb0;
+  background-color: var(--card);
+  color: var(--brand);
 }
 
 /* Profile Image styles */
@@ -166,12 +184,12 @@
   width: 38px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border);
   transition: border-color 0.3s ease;
 }
 
 .navbar-profile-link:hover .navbar-profile-img {
-  border-color: #667eea;
+  border-color: var(--brand);
 }
 
 /* --- RESPONSIVE STYLES --- */
