@@ -22,6 +22,7 @@ code {
   --card: #f8fafc;
   --border: #e2e8f0;
   --brand: #3b82f6;
+  --heading: #0b1020;
 }
 
 html[data-theme="dark"] {
@@ -31,6 +32,7 @@ html[data-theme="dark"] {
   --card: #0f172a;
   --border: #1f2937;
   --brand: #60a5fa;
+  --heading: #f3f6fb;
 }
 
 .container, .home, .faq-page, .features, .stats, .how-it-works, .testimonials, .cta, .contributors, .footer, .navbar {
@@ -45,10 +47,15 @@ html[data-theme="dark"] {
 
 a { color: var(--brand); }
 
+/* Headings use dedicated heading token for readability */
+h1, h2, h3, h4, h5, h6, .section-title {
+  color: var(--heading);
+}
+
 /* Ensure all cards/sections across pages inherit theme */
 .card, .section, .panel, .list, .grid, .hero, .faq-section, .features-section, .contact-section,
 .contributors, .cta, .stats, .how-it-works, .testimonials {
-  background: var(--bg);
+  background: var(--card);
   color: var(--text);
 }
 
@@ -61,4 +68,14 @@ input, textarea, select {
 
 button {
   color: var(--text);
+}
+
+/* Themed logos: invert in dark for contrast */
+.navbar-logo, .themed-logo {
+  transition: filter 200ms ease;
+}
+
+html[data-theme="dark"] .navbar-logo,
+html[data-theme="dark"] .themed-logo {
+  filter: brightness(0) invert(1) contrast(1.05) saturate(1.1);
 }

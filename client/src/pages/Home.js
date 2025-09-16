@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/si";
 import logo from "./logo.png";
 import "./Home.css";
 import './ScrollToTop.css';
@@ -653,7 +653,7 @@ const Home = () => {
                   <FaLinkedin />
                 </a>
                 <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
-                  <FaXTwitter />
+                  <SiX />
                 </a>
                 <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon discord">
                   <FaDiscord />
