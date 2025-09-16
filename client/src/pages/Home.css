@@ -197,14 +197,21 @@
 .features {
   padding: 6rem 0;
   background: var(--card);
+  color: var(--text);
 }
 
 .section-title {
   text-align: center;
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 3rem;
-  color: var(--text);
+  color: var(--heading);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+
+/* Slightly stronger shadow in dark mode for separation from dark cards */
+html[data-theme="dark"] .section-title {
+  text-shadow: 0 1px 0 rgba(0,0,0,0.4);
 }
 
 .features-grid {
@@ -275,14 +282,31 @@
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
   text-align: center;
 }
 
 .stat-item {
+  position: relative;
   padding: 1rem;
+  background: transparent;
 }
+
+/* Purple divider strip between stat cards */
+.stat-item::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  right: -1rem;
+  width: 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(96,165,250,0.35), rgba(124,58,237,0.35));
+}
+
+/* Hide divider after the last item in a row */
+.stats-grid > .stat-item:last-child::after { display: none; }
 
 .stat-number {
   font-size: 3rem;
@@ -304,6 +328,7 @@
 .how-it-works {
   padding: 6rem 0;
   background: var(--card);
+  color: var(--text);
 }
 
 .steps-grid {
@@ -360,15 +385,17 @@
   padding: 60px 0;
   background-color: var(--card);
   text-align: center;
+  color: var(--text);
 }
 
 .testimonial-wrapper {
   overflow: hidden;
+  padding: 0 1rem;
 }
 
 .testimonial-scroller {
   display: flex;
-  gap: 0;
+  gap: 1.25rem;
   will-change: transform;
 }
 
@@ -420,6 +447,7 @@
   padding: 60px 0;
   background: var(--card);
   text-align: center;
+  color: var(--text);
 }
 
 .contributors-grid {
@@ -458,10 +486,21 @@
 
 /* Footer */
 .footer {
-  background: #111827;
-  color: #fff;
+  background: transparent; /* default; overridden in light mode for readability */
+  color: var(--text);
   padding: 40px 0;
   margin-top: 50px;
+}
+
+/* Ensure clear contrast in light mode */
+html[data-theme="light"] .footer {
+  background: var(--card);
+}
+html[data-theme="light"] .footer-section p,
+html[data-theme="light"] .footer-section a,
+html[data-theme="light"] .footer-bottom {
+  color: var(--text);
+  opacity: 1;
 }
 
 .footer-content {
@@ -474,6 +513,11 @@
 .footer-section h3, .footer-section h4 {
   color: #facc15;
   margin-bottom: 10px;
+}
+/* In light mode, use dark heading color for better contrast */
+html[data-theme="light"] .footer-section h3,
+html[data-theme="light"] .footer-section h4 {
+  color: var(--heading);
 }
 
 .footer-section p {
@@ -488,7 +532,7 @@
 }
 
 .social-links a {
-  color: #fff;
+  color: var(--text);
   font-size: 1.5rem;
   transition: all 0.3s ease;
 }
@@ -517,7 +561,7 @@
 }
 
 .footer-section a {
-  color: #d1d5db;
+  color: var(--text);
   text-decoration: none;
   transition: color 0.3s ease;
 }

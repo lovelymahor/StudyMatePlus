@@ -17,22 +17,22 @@ code {
 /* Theme variables */
 :root {
   --bg: #ffffff;
-  --text: #0f172a;
-  --muted: #475569;
-  --card: #f8fafc;
-  --border: #e2e8f0;
-  --brand: #3b82f6;
-  --heading: #0b1020;
+  --text: #0f172a; /* Slate-900 */
+  --muted: #334155; /* Slate-700 for stronger contrast */
+  --card: #f8fafc; /* Slate-50 */
+  --border: #e2e8f0; /* Slate-200 */
+  --brand: #2563eb; /* Stronger blue for links/buttons */
+  --heading: #0a0f1f; /* Deep heading color */
 }
 
 html[data-theme="dark"] {
-  --bg: #0b1220;
-  --text: #e6edf7;
-  --muted: #a1a7b3;
-  --card: #0f172a;
-  --border: #1f2937;
-  --brand: #60a5fa;
-  --heading: #f3f6fb;
+  --bg: #0b1220; /* near-ink */
+  --text: #f1f5ff; /* very light for readability */
+  --muted: #c7cfdb; /* lighter muted */
+  --card: #101826; /* slightly lighter than bg for separation */
+  --border: #263243; /* visible border */
+  --brand: #8ab4ff; /* accessible blue on dark */
+  --heading: #ffffff; /* pure white headings */
 }
 
 .container, .home, .faq-page, .features, .stats, .how-it-works, .testimonials, .cta, .contributors, .footer, .navbar {
@@ -40,16 +40,42 @@ html[data-theme="dark"] {
   color: var(--text);
 }
 
-.feature-card, .stat-item, .floating-card, .cta-content, .contributor-card, .footer-content {
+/* Let section containers inherit their section backgrounds (no white strip behind content) */
+.stats .container,
+.cta .container,
+.testimonials .container,
+.contributors .container,
+.footer .container {
+  background: transparent !important;
+}
+
+.feature-card, .floating-card, .contributor-card {
   background: var(--card);
   border-color: var(--border);
 }
 
+/* Let these elements sit on section backgrounds (no white panels) */
+.stat-item, .cta-content, .footer-content {
+  background: transparent;
+}
+
 a { color: var(--brand); }
+a:hover { filter: brightness(1.1); }
 
 /* Headings use dedicated heading token for readability */
 h1, h2, h3, h4, h5, h6, .section-title {
   color: var(--heading);
+}
+
+/* Ensure headings are crisp in dark mode regardless of inheritance */
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+html[data-theme="dark"] .section-title {
+  color: #ffffff;
 }
 
 /* Ensure all cards/sections across pages inherit theme */
