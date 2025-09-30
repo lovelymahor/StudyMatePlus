@@ -5,9 +5,103 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: var(--text);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Theme variables */
+:root {
+  --bg: #ffffff;
+  --text: #0f172a; /* Slate-900 */
+  --muted: #334155; /* Slate-700 for stronger contrast */
+  --card: #f8fafc; /* Slate-50 */
+  --border: #e2e8f0; /* Slate-200 */
+  --brand: #2563eb; /* Stronger blue for links/buttons */
+  --heading: #0a0f1f; /* Deep heading color */
+}
+
+html[data-theme="dark"] {
+  --bg: #0b1220; /* near-ink */
+  --text: #f1f5ff; /* very light for readability */
+  --muted: #c7cfdb; /* lighter muted */
+  --card: #101826; /* slightly lighter than bg for separation */
+  --border: #263243; /* visible border */
+  --brand: #8ab4ff; /* accessible blue on dark */
+  --heading: #ffffff; /* pure white headings */
+}
+
+.container, .home, .faq-page, .features, .stats, .how-it-works, .testimonials, .cta, .contributors, .footer, .navbar {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Let section containers inherit their section backgrounds (no white strip behind content) */
+.stats .container,
+.cta .container,
+.testimonials .container,
+.contributors .container,
+.footer .container {
+  background: transparent !important;
+}
+
+.feature-card, .floating-card, .contributor-card {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+/* Let these elements sit on section backgrounds (no white panels) */
+.stat-item, .cta-content, .footer-content {
+  background: transparent;
+}
+
+a { color: var(--brand); }
+a:hover { filter: brightness(1.1); }
+
+/* Headings use dedicated heading token for readability */
+h1, h2, h3, h4, h5, h6, .section-title {
+  color: var(--heading);
+}
+
+/* Ensure headings are crisp in dark mode regardless of inheritance */
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+html[data-theme="dark"] .section-title {
+  color: #ffffff;
+}
+
+/* Ensure all cards/sections across pages inherit theme */
+.card, .section, .panel, .list, .grid, .hero, .faq-section, .features-section, .contact-section,
+.contributors, .cta, .stats, .how-it-works, .testimonials {
+  background: var(--card);
+  color: var(--text);
+}
+
+/* Inputs and buttons generic theming */
+input, textarea, select {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+button {
+  color: var(--text);
+}
+
+/* Themed logos: invert in dark for contrast */
+.navbar-logo, .themed-logo {
+  transition: filter 200ms ease;
+}
+
+html[data-theme="dark"] .navbar-logo,
+html[data-theme="dark"] .themed-logo {
+  filter: brightness(0) invert(1) contrast(1.05) saturate(1.1);
 }
