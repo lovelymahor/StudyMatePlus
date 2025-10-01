@@ -42,6 +42,10 @@ const Navbar = () => {
             src="/logo.png"
             alt="StudyMatePlus Logo"
             className="navbar-logo"
+            width="120"
+            height="40"
+            fetchpriority="high"  /* hero element improves LCP */
+            decoding="async"
           />
         </Link>
 

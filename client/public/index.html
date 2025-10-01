@@ -5,6 +5,20 @@
     <link rel="icon" href="%PUBLIC_URL%/studymatelogo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+  <!-- Per-route meta descriptions are now injected via react-helmet-async (see SEO component). -->
+  <!-- Preload logo for faster LCP -->
+  <link rel="preload" as="image" href="%PUBLIC_URL%/studymatelogo.png" />
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="StudyMatePlus" />
+    <meta property="og:description" content="Access notes, PYQs, syllabus, mind maps and community-driven academic resources – all in one place." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%PUBLIC_URL%/studymatelogo.png" />
+    <meta property="og:url" content="https://studymateplus.example.com" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="StudyMatePlus" />
+    <meta name="twitter:description" content="Collaborative academic resources: notes, PYQs, mentorship & more." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/studymatelogo.png" />
     <title>StudyMatePlus</title>
   </head>
   <body>

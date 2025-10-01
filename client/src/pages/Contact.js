@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './Contact.css';
 import './ScrollToTop.css';
 
@@ -136,13 +135,13 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="social-links">
+              <div className="social-links" aria-label="Follow StudyMatePlus on social media">
                 <h3>Follow Us</h3>
                 <div className="social-icons">
-                  <a href="#" className="social-icon">Facebook</a>
-                  <a href="#" className="social-icon">Twitter</a>
-                  <a href="#" className="social-icon">LinkedIn</a>
-                  <a href="#" className="social-icon">Instagram</a>
+                  <a href="https://facebook.com/studymateplus" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Follow StudyMatePlus on Facebook (opens in new tab)">Facebook Page</a>
+                  <a href="https://twitter.com/studymateplus" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Follow StudyMatePlus on X (Twitter) (opens in new tab)">X (Twitter) Profile</a>
+                  <a href="https://www.linkedin.com/company/studymateplus" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Connect with StudyMatePlus on LinkedIn (opens in new tab)">LinkedIn Company Page</a>
+                  <a href="https://www.instagram.com/studymateplus" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Follow StudyMatePlus on Instagram (opens in new tab)">Instagram Feed</a>
                 </div>
               </div>
             </div>

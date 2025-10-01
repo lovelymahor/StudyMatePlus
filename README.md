@@ -2,8 +2,9 @@
 
 🔗 **Live Website**: [https://studymateplus.vercel.app](https://studymateplus.vercel.app)
 
-**StudyMatePlus** is an open-source platform designed to help college students access academic resources such as **syllabus**, **previous year question papers (PYQs)**, and **exam feedback**, along with an option to connect with **seniors** for guidance.
-The goal is to support students during exam preparation by providing a centralized, reliable, and user-friendly resource hub.
+**StudyMatePlus** is an open-source learning companion that centralizes **syllabus PDFs**, **previous year question papers (PYQs)**, **notes**, **mind maps**, **feedback & analytics**, and community **mentorship** resources in a clean, mobile‑friendly interface.
+
+Our mission: reduce the time students waste hunting for authentic material and empower peer‑to‑peer learning.
 
 ---
 
@@ -18,30 +19,38 @@ Students often face difficulty finding authentic academic materials in one place
 
 ---
 
-## 🌟 Key Features (To Be Developed)
+## 🌟 Current & Planned Features
 
-* ✅ Filter syllabus and papers by **university**, **semester**, **subject**
-* ✅ **Student feedback** section for each paper (e.g., "Paper was tricky — focus on Unit 2")
-* ✅ Secure **senior-student chat** or forum system
-* ✅ Upload and browse **notes, guides, and important questions**
-* ✅ Clean and **mobile-friendly** interface
+| Status | Feature |
+| ------ | ------- |
+| ✅ | Syllabus & PYQs navigation |
+| ✅ | Feedback submission + listing (MongoDB backed when configured) |
+| ✅ | Notes & resources section |
+| ✅ | Mind Map editor (React Flow) |
+| ✅ | Dark / Light theme + accessible color tokens |
+| ✅ | Route‑level code splitting (performance) |
+| ✅ | Social & meta tags (improved SEO) |
+| 🚧 | Contributor mentorship / profile features |
+| 🚧 | Analytics deep dive dashboards |
+| 🗓️ | Real‑time mentoring / chat integration |
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Area           | Technology                         |
-| -------------- | ---------------------------------- |
-| Frontend       | React.js / Next.js                 |
-| Backend        | Node.js / Express / Firebase       |
-| Database       | MongoDB / Firebase Firestore       |
-| Authentication | Google / University Email Login    |
-| Real-time      | Socket.io / Firebase Realtime DB   |
-| Hosting        | Netlify / Vercel / Heroku / Render |
+| Layer | Technology |
+| ----- | ---------- |
+| Frontend | React (CRA), React Router, Framer Motion, React Flow, Chart.js |
+| Styling / Theming | Custom CSS with CSS variables (dark/light) |
+| Backend | Node.js + Express 5 (beta) |
+| Database | MongoDB via Mongoose (optional during frontend-only development) |
+| Validation | express-validator |
+| Tooling | nodemon, react-scripts, web‑vitals |
+| Deployment | Vercel (frontend), TBD (backend) |
 
 ---
 
-## 📁 Project Structure (To Be Followed)
+## 📁 Project Structure
 
 ```
 StudyMatePlus/
@@ -72,38 +81,47 @@ cd StudyMatePlus
 
 ### 3. Install Dependencies
 
-To install the required dependencies, run the following commands:
-
 ```bash
-npm install         # Install server-side dependencies
+# From repo root
+npm install          # installs backend dependencies (server/)
 cd client
-npm install         # Install frontend (React) dependencies
+npm install          # installs frontend dependencies
+cd ..
 ```
 
 ### 4. Configure Environment Variables
 
-Create a `.env` file in both the root and `client/` directories using the `.env.example` file provided as a reference.
+Environment variables (server side) go in a root `.env` (never commit it). An example is provided in `.env.example`.
 
-Update values like your MongoDB URI and secret keys.
-Example
+Minimum (backend optional during SEO / UI work):
 ```bash
 PORT=5000
-MONGO_URI=your-mongodb-uri-here
+# If omitted the server still starts, but DB-backed endpoints will warn & skip persistence.
+MONGO_URI=mongodb+srv://<user>:<pass>@<cluster>/<db>?retryWrites=true&w=majority
+```
+If you add auth or JWT later you might extend with:
+```bash
 JWT_SECRET=your-secret-key-here
 ```
 
-### 5. Run the Application
-
-Start both the backend and frontend:
+### 5. Run the Application (Development)
 
 ```bash
-# Terminal 1
-npm run dev         # Runs server on localhost:5000 (or your preferred port)
+# Terminal 1 – backend (optional if only styling/SEO)
+npm run dev                # starts server on http://localhost:5000
 
-# Terminal 2
+# Terminal 2 – frontend
 cd client
-npm start           # Runs React frontend on localhost:3000
+npm start                  # dev server on http://localhost:3000
 ```
+
+### 6. Production Build Preview (for accurate Lighthouse)
+```bash
+cd client
+npm run build              # creates optimized build/
+npx serve -s build -l 3000 # preview production at http://localhost:3000
+```
+Run Lighthouse against the production preview, not the dev server.
 
 ---
 
@@ -115,9 +133,9 @@ Follow the steps below to begin your contribution journey:
 
 ### 📄 Step 1: Read the Guidelines
 
-* 📘 Read our [README.md](./README.md)
-* 📚 Go through the [CONTRIBUTING.md](./CONTRIBUTING.md)
-* 🤝 Understand our [Code of Conduct](./CODE_OF_CONDUCT.md)
+* 📘 Read this `README.md`
+* 📚 See [CONTRIBUTING.md](./CONTRIBUTING.md)
+* 🤝 Follow our [Code of Conduct](./CODE_OF_CONDUCT.md)
 
 ### 🌐 Step 2: Choose an Issue
 
@@ -127,9 +145,16 @@ Follow the steps below to begin your contribution journey:
 
 ### 🔧 Step 3: Make Your Changes
 
-* Create a new branch: `git checkout -b feature-name`
-* Make your changes
-* Run tests and ensure everything works smoothly
+```bash
+git checkout -b feat/<short-feature-name>
+# commit early & often
+git commit -m "feat: add <feature>"
+```
+Run production build locally for performance-related changes:
+```bash
+cd client
+npm run build
+```
 
 ### 📤 Step 4: Submit a Pull Request
 
@@ -139,9 +164,22 @@ Follow the steps below to begin your contribution journey:
 
 ---
 
-## 🙌 Code of Conduct
+## ♿ Accessibility & SEO Improvements
 
-We follow a [Contributor Covenant](https://www.contributor-covenant.org/) to ensure a welcoming environment for everyone.
+Recent upgrades (Sept/Oct 2025):
+* Added `<meta name="description">` + Open Graph + Twitter Card tags.
+* Replaced placeholder / icon‑only links with descriptive text + `aria-label` & screen‑reader spans.
+* Implemented route-based code splitting (`React.lazy`) to reduce initial JS bundle.
+* Added `.sr-only` utility class for accessible hidden text.
+* Avoided `href="#"` placeholders in favor of meaningful URLs or explicit actions.
+
+Checklist for new contributions:
+* Provide descriptive link text (no “click here”).
+* Supply `alt` text for informative images (decorative images: `alt=""`).
+* Prefer semantic headings with a single `<h1>` per page.
+* Run Lighthouse in production build mode before PR if you changed performance‑critical code.
+
+Next targeted improvements (help welcome): structured data (JSON-LD), sitemap.xml + robots.txt, bundle analysis docs, preloading critical assets.
 
 ---
 
@@ -153,9 +191,8 @@ This project is licensed under the [MIT License](./LICENSE).
 
 ## 📞 Contact & Community
 
-For queries or discussions:
+* Maintainer: [Lovely Mahour](https://www.linkedin.com/in/lovely-mahour-992316265/)
+* Open a [GitHub Discussion](./discussions) or issue for support / ideas.
+* Tag issues with `good first issue` for newcomers.
 
-* Contact me on LinkedIn (https://www.linkedin.com/in/lovely-mahour-992316265/)
-* Follow project updates in Issues and Discussions tab
-
-Let's build a student-friendly platform together! 🚀
+Let’s build a student-friendly platform together! 🚀

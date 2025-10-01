@@ -28,6 +28,20 @@
   color: #61dafb;
 }
 
+/* Lightweight loader for code-split route chunks */
+.route-loader {
+  font-size: 0.95rem;
+  padding: 1rem 0.75rem;
+  text-align: center;
+  color: var(--muted, #555);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.85; }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

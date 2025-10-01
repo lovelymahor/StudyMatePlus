@@ -11,7 +11,7 @@ import './ScrollToTop.css';
 
 import { v4 as uuid } from 'uuid';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Layers, Moon, Sun, Download, Upload, Save, Search, Plus, Trash2 } from 'lucide-react';
+import { Layers, Moon, Sun, Download, Upload, Save, Plus, Trash2 } from 'lucide-react';
 import { FaArrowUp } from "react-icons/fa";
 import * as htmlToImage from 'html-to-image';
 
@@ -60,7 +60,7 @@ function computeHiddenTargets(collapsedIds, edges) {
 
 export default function MindMapEditor() {
   const [dark, setDark] = useState(false);
-  const [search, setSearch] = useState('');
+  const [search] = useState(''); // search used for highlight; setter removed as no UI currently updates it
 
   // Graph state
   const [nodes, setNodes] = useState([

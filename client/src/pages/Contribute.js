@@ -186,10 +186,7 @@ const Contribute = () => {
       }
     }
   };
-  const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.6 } }
-};
+  // Removed unused fadeIn variant (was defined but not applied anywhere)
 
   const scaleIn = {
     hidden: { opacity: 0, scale: 0.8 },
@@ -691,8 +688,10 @@ const Contribute = () => {
               📖 Read Full Code of Conduct
             </motion.a>
             <motion.a 
-              href="#" 
+              href="https://github.com/lovelymahor/StudyMatePlus/issues/new?labels=code+of+conduct+violation&title=%5BCoC%5D+" 
               className="conduct-link"
+              aria-label="Report a Code of Conduct violation on GitHub (opens in new tab)"
+              target="_blank" rel="noopener noreferrer"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -726,18 +725,18 @@ const Contribute = () => {
                 desc: "View code, report issues, and submit pull requests"
               },
               {
-                href: "#",
+                href: "https://github.com/lovelymahor/StudyMatePlus/discussions",
                 className: "discord",
                 icon: "💬",
-                title: "Discord Community",
-                desc: "Real-time chat with contributors and maintainers"
+                title: "Community Discussions",
+                desc: "Ask questions and chat with contributors (GitHub Discussions)"
               },
               {
-                href: "#",
+                href: "https://github.com/lovelymahor/StudyMatePlus/discussions/categories/announcements",
                 className: "telegram",
                 icon: "📱",
-                title: "Telegram Group",
-                desc: "Quick updates and community announcements"
+                title: "Announcements Feed",
+                desc: "Project updates and release notes (GitHub)"
               }
             ].map((link, index) => (
               <motion.a 
@@ -852,8 +851,10 @@ const Contribute = () => {
                 🚀 Start Contributing
               </motion.a>
               <motion.a 
-                href="#" 
+                href="https://github.com/lovelymahor/StudyMatePlus/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22" 
                 className="btn btn-secondary"
+                aria-label="View open 'good first issue' tickets on GitHub (opens in new tab)"
+                target="_blank" rel="noopener noreferrer"
                 variants={scaleIn}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -865,7 +866,9 @@ const Contribute = () => {
               <p>
                 <strong>New to open source?</strong> Check out our 
                 <motion.a 
-                  href="#"
+                  href="https://github.com/lovelymahor/StudyMatePlus/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"
+                  aria-label="Browse beginner friendly issues on GitHub (opens in new tab)"
+                  target="_blank" rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                 >
                   {" "}beginner-friendly issues
