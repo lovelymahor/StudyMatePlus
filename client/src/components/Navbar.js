@@ -106,7 +106,7 @@ const Navbar = () => {
       >
         
         {/* STEP 3: Change Mobile <Link> to <NavLink> */}
-  <ul className="navbar-links-mobile" role="list">
+  <ul className="navbar-links-mobile">
           <li><NavLink to="/" className="navbar-link-mobile" onClick={closeMobileMenu}>Home</NavLink></li>
           <li><NavLink to="/about" className="navbar-link-mobile" onClick={closeMobileMenu}>About Us</NavLink></li>
           <li><NavLink to="/syllabus" className="navbar-link-mobile" onClick={closeMobileMenu}>Syllabus</NavLink></li>
