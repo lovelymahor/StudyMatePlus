@@ -31,6 +31,7 @@ const App = () => {
           <Navbar />
           <div style={{ padding: "2rem" }}>
             <ScrollToTop />
+            <main id="main" tabIndex="-1" role="main">
             <Suspense fallback={<div className="route-loader" role="status" aria-live="polite">Loading…</div>}>
               <Routes>
                 <Route path="/" element={<><SEO title="Home" description="Access syllabus, PYQs, notes, mind maps & feedback to accelerate your exam prep." path="/" /><Home /></>} />
@@ -49,6 +50,7 @@ const App = () => {
                 <Route path="/profile" element={<><SEO title="Profile" description="Manage your StudyMatePlus profile." path="/profile" noIndex /><Profile /></>} />
               </Routes>
             </Suspense>
+            </main>
           </div>
         </Router>
       </ThemeProvider>

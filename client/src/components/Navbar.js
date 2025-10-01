@@ -67,9 +67,11 @@ const Navbar = () => {
 
 
           <button
-            aria-label="Toggle theme"
+            aria-label="Toggle color theme"
+            aria-pressed={theme === 'dark'}
             className="navbar-theme-toggle"
             onClick={toggleTheme}
+            type="button"
             title={theme === "dark" ? "Switch to light" : "Switch to dark"}
           >
             {theme === "dark" ? <FaSun /> : <FaMoon />}
@@ -83,16 +85,28 @@ const Navbar = () => {
             />
           </Link>
 
-          <button className="navbar-toggle" onClick={toggleMobileMenu}>
+          <button
+            className="navbar-toggle"
+            onClick={toggleMobileMenu}
+            type="button"
+            aria-controls="mobile-menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          >
             ☰
           </button>
         </div>
       </div>
 
-      <div className={`navbar-menu-mobile ${isMobileMenuOpen ? "active" : ""}`}>
+      <div
+        id="mobile-menu"
+        className={`navbar-menu-mobile ${isMobileMenuOpen ? "active" : ""}`}
+        role="navigation"
+        aria-label="Mobile navigation"
+      >
         
         {/* STEP 3: Change Mobile <Link> to <NavLink> */}
-        <ul className="navbar-links-mobile">
+  <ul className="navbar-links-mobile" role="list">
           <li><NavLink to="/" className="navbar-link-mobile" onClick={closeMobileMenu}>Home</NavLink></li>
           <li><NavLink to="/about" className="navbar-link-mobile" onClick={closeMobileMenu}>About Us</NavLink></li>
           <li><NavLink to="/syllabus" className="navbar-link-mobile" onClick={closeMobileMenu}>Syllabus</NavLink></li>

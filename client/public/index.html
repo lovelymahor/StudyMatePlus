@@ -8,12 +8,14 @@
   <!-- Per-route meta descriptions are now injected via react-helmet-async (see SEO component). -->
   <!-- Preload logo for faster LCP -->
   <link rel="preload" as="image" href="%PUBLIC_URL%/studymatelogo.png" />
-    <!-- Open Graph / Social -->
+    <!-- Open Graph / Social (kept minimal; dynamic tags via SEO component will override) -->
     <meta property="og:title" content="StudyMatePlus" />
     <meta property="og:description" content="Access notes, PYQs, syllabus, mind maps and community-driven academic resources – all in one place." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="%PUBLIC_URL%/studymatelogo.png" />
-    <meta property="og:url" content="https://studymateplus.example.com" />
+    <meta property="og:url" content="https://studymateplus.vercel.app" />
+    <meta property="og:site_name" content="StudyMatePlus" />
+    <meta name="robots" content="index,follow" />
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="StudyMatePlus" />
@@ -22,6 +24,8 @@
     <title>StudyMatePlus</title>
   </head>
   <body>
+    <!-- Skip link for keyboard users -->
+    <a href="#main" class="skip-link">Skip to main content</a>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
