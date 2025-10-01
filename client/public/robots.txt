@@ -1,3 +1,19 @@
-# https://www.robotstxt.org/robotstxt.html
+# robots.txt for StudyMatePlus
+# Reference: https://www.robotstxt.org/robotstxt.html
+
 User-agent: *
-Disallow:
+# Block API & build artifacts (served separately / not meant for indexing)
+Disallow: /api/
+Disallow: /static/js/*.map
+Disallow: /static/css/*.map
+
+# Allow everything else
+Allow: /
+
+# Sitemap location (ensure this URL matches deployment domain)
+Sitemap: https://studymateplus.vercel.app/sitemap.xml
+
+# (Optional) Uncomment if you need to reduce crawl rate during heavy loads
+# Crawl-delay: 5
+
+# Last updated: 2025-10-01

@@ -15,7 +15,10 @@ const Home = () => {
   useEffect(() => {
     axios
       .get("https://api.github.com/repos/lovelymahor/StudyMatePlus/contributors")
-      .then((response) => setContributors(response.data))
+      .then((response) => {
+        // Limit to first 24 contributors to reduce total image transfer & layout cost
+        setContributors(response.data.slice(0, 24));
+      })
       .catch((error) => console.error("Error fetching contributors", error));
   }, []);
 
@@ -51,14 +54,7 @@ const Home = () => {
     }
   };
 
-  const fadeInDown = {
-    hidden: { opacity: 0, y: -30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
+  // Removed unused fadeInDown variant (previously defined but not applied) to satisfy ESLint
 
   const staggerChildren = {
     hidden: { opacity: 0 },
@@ -607,8 +603,13 @@ const Home = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <motion.img 
-                    src={contributor.avatar_url} 
-                    alt={contributor.login}
+                    src={`${contributor.avatar_url}&s=96`} 
+                    alt={`${contributor.login} – GitHub avatar`}
+                    width={96}
+                    height={96}
+                    loading="lazy"
+                    decoding="async"
+                    style={{ aspectRatio: '1 / 1', objectFit: 'cover', borderRadius: '50%' }}
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   />
@@ -641,22 +642,30 @@ const Home = () => {
               <img 
                 src={logo} 
                 alt="StudyMatePlus Logo" 
+                width={160}
+                height={50}
+                loading="lazy"
+                decoding="async"
                 style={{ height: "50px", marginBottom: "10px" }} 
               />
               <p>Empowering students with comprehensive academic resources and peer-to-peer learning.</p>
               {/* Social Links with Icons */}
-              <div className="social-links">
-                <a href="https://github.com/lovelymahor/StudyMatePlus" target="_blank" rel="noopener noreferrer" className="social-icon github">
-                  <FaGithub />
+              <div className="social-links" aria-label="StudyMatePlus social media">
+                <a href="https://github.com/lovelymahor/StudyMatePlus" target="_blank" rel="noopener noreferrer" className="social-icon github" aria-label="Visit our GitHub repository (opens in new tab)">
+                  <FaGithub aria-hidden="true" />
+                  <span className="sr-only">GitHub repository</span>
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
-                  <FaLinkedin />
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin" aria-label="Connect with us on LinkedIn (opens in new tab)">
+                  <FaLinkedin aria-hidden="true" />
+                  <span className="sr-only">LinkedIn page</span>
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
-                  <FaXTwitter />
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter" aria-label="Follow us on X (Twitter) (opens in new tab)">
+                  <FaXTwitter aria-hidden="true" />
+                  <span className="sr-only">X (formerly Twitter) profile</span>
                 </a>
-                <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon discord">
-                  <FaDiscord />
+                <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon discord" aria-label="Join our Discord community (opens in new tab)">
+                  <FaDiscord aria-hidden="true" />
+                  <span className="sr-only">Discord community server</span>
                 </a>
               </div>
             </motion.div>

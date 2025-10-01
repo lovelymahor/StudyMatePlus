@@ -193,18 +193,22 @@ const Faq = () => {
         <p>Empowering students with comprehensive academic resources and peer-to-peer learning.</p>
 
         {/* Social Links with Icons */}
-        <div className="social-links">
-          <a href="https://github.com/lovelymahor/StudyMatePlus" target="_blank" rel="noopener noreferrer" className="social-icon github">
-            <FaGithub />
+        <div className="social-links" aria-label="StudyMatePlus social media">
+          <a href="https://github.com/lovelymahor/StudyMatePlus" target="_blank" rel="noopener noreferrer" className="social-icon github" aria-label="Visit our GitHub repository (opens in new tab)">
+            <FaGithub aria-hidden="true" />
+            <span className="sr-only">GitHub repository</span>
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
-            <FaLinkedin />
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin" aria-label="Connect with us on LinkedIn (opens in new tab)">
+            <FaLinkedin aria-hidden="true" />
+            <span className="sr-only">LinkedIn page</span>
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
-            <FaXTwitter />
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter" aria-label="Follow us on X (Twitter) (opens in new tab)">
+            <FaXTwitter aria-hidden="true" />
+            <span className="sr-only">X (formerly Twitter) profile</span>
           </a>
-          <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon discord">
-            <FaDiscord />
+          <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon discord" aria-label="Join our Discord community (opens in new tab)">
+            <FaDiscord aria-hidden="true" />
+            <span className="sr-only">Discord community server</span>
           </a>
         </div>
       </motion.div>

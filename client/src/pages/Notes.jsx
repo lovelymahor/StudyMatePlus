@@ -20,15 +20,15 @@ const Notes = () => {
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
   };
 
-  // Mock data for notes
-  const notesData = [
+  // Mock data for notes (memoized to keep stable reference and satisfy exhaustive-deps)
+  const notesData = useMemo(() => [
     { id: 1, title: "Python - Notes", university: "Mumbai University", department: "Electronics Engineering", semester: 1, subject: "Python", fileType: "PDF", downloadCount: 1400, uploadDate: "2024-02-01", fileSize: "3.5 MB", tags: ["CSE", "Python", "First Year"], difficulty: "Beginner", link: "/pdf/python.pdf" },
     { id: 2, title: "Operating Systems - Detailed Notes", university: "NIT Trichy", department: "Computer Science", semester: 2, subject: "Operating Systems", fileType: "PDF", downloadCount: 870, uploadDate: "2024-04-02", fileSize: "5.8 MB", tags: ["CSE", "OS", "Semester 4"], difficulty: "Intermediate", link: "/pdf/OS.pdf" },
     { id: 3, title: "Data Structures - Notes", university: "Anna University", department: "Computer Science", semester: 3, subject: "Data Structures", fileType: "PDF", downloadCount: 980, uploadDate: "2024-03-15", fileSize: "4.2 MB", tags: ["CSE", "DSA"], difficulty: "Intermediate", link: "/pdf/DSA.pdf" },
     { id: 4, title: "Database Management Systems (DBMS) - Notes", university: "IIT Delhi", department: "Computer Science", semester: 4, subject: "Database Systems", fileType: "PDF", downloadCount: 1100, uploadDate: "2024-03-18", fileSize: "6.0 MB", tags: ["CSE", "DBMS", "SQL"], difficulty: "Intermediate", link: "/pdf/DBMS.pdf" },
     { id: 5, title: "Java - Notes", university: "Delhi University", department: "Computer Science", semester: 5, subject: "Java", fileType: "PDF", downloadCount: 1400, uploadDate: "2024-02-01", fileSize: "3.5 MB", tags: ["CSE", "Java", "First Year"], difficulty: "Beginner", link: "/pdf/Java.pdf" },
     { id: 6, title: "Advance Web Development", university: "VIT Vellore", department: "Computer Science", semester: 6, subject: "Web Development", fileType: "PDF", downloadCount: 640, uploadDate: "2024-07-01", fileSize: "6.5 MB", tags: ["CSE", "Web", "Semester 6"], difficulty: "Advanced", link: "/pdf/WebDevelopment.pdf" },
-  ];
+  ], []);
 
   // States
   const [searchTerm, setSearchTerm] = useState('');

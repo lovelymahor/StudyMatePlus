@@ -4,8 +4,8 @@ import { FaArrowUp } from "react-icons/fa";
 import './Syllabus.css';
 
 const Syllabus = () => {
-  // Mock data for syllabi
-  const syllabusData = [
+  // Mock data for syllabi (memoized so reference stays stable; avoids eslint exhaustive-deps warning)
+  const syllabusData = useMemo(() => [
     {
       id: 1,
       title: "Computer Science Engineering - Semester 1",
@@ -110,7 +110,7 @@ const Syllabus = () => {
       difficulty: "Intermediate",
       tags: ["Electrical", "Power Systems", "Circuits"]
     }
-  ];
+  ], []);
 
   // Animation variants from Home.js
   const fadeInUp = {
