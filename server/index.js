@@ -86,8 +86,13 @@ app.get('/api/feedbacks', async (req, res) => {
 });
 
 
-// Server Start (From your original file)
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// Export the Express app for Vercel Serverless Functions
+// When running locally (node server/index.js), also start a server
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;

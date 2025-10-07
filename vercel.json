@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    },
+    {
+      "src": "server/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "functions": {
+    "server/index.js": {
+      "runtime": "nodejs18.x",
+      "memory": 512,
+      "maxDuration": 10
+    }
+  },
+  "routes": [
+    { "src": "^/api/(.*)$", "dest": "/server/index.js" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/client/build/index.html" }
+  ]
+}

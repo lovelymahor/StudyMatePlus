@@ -39,7 +39,17 @@ const FeedbackModal = ({ onClose, onSuccess }) => {
     setStatusMessage('Submitting...');
 
     try {
-      const response = await fetch('http://localhost:5000/api/feedback', {
+      const inferLocalBase = () => {
+        if (typeof window !== 'undefined') {
+          const host = window.location.hostname;
+          if (host === 'localhost' || host === '127.0.0.1') {
+            return 'http://localhost:5000';
+          }
+        }
+        return '';
+      };
+      const base = process.env.REACT_APP_API_BASE || inferLocalBase();
+      const response = await fetch(`${base}/api/feedback`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
