@@ -85,6 +85,21 @@ app.get('/api/feedbacks', async (req, res) => {
     }
 });
 
+// Simple Health Check Route to verify MongoDB connectivity on Vercel
+app.get('/api/health', (req, res) => {
+  const state = mongoose.connection.readyState; // 0=disconnected,1=connected,2=connecting,3=disconnecting
+  const statusMap = { 0: 'disconnected', 1: 'connected', 2: 'connecting', 3: 'disconnecting' };
+  const info = {
+    mongo: statusMap[state] || 'unknown',
+    readyState: state,
+    // host and db are optional; may be undefined before initial connect
+    host: mongoose.connection.host || null,
+    db: mongoose.connection.name || null,
+    timestamp: new Date().toISOString(),
+  };
+  return res.status(200).json(info);
+});
+
 
 // Export the Express app for Vercel Serverless Functions
 // When running locally (node server/index.js), also start a server
