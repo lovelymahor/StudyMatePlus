@@ -107,6 +107,45 @@ npm start           # Runs React frontend on localhost:3000
 
 ---
 
+## 🔎 SEO and Accessibility
+
+We added a lightweight `SEO` component to manage per-page metadata without extra dependencies (compatible with React 19):
+
+- Global defaults live in `client/public/index.html` (meta description, Open Graph, Twitter Card, theme-color, canonical for homepage).
+- Per-page overrides: import and render `SEO` inside each page component.
+
+Usage example inside a page component:
+
+```jsx
+import SEO from "../components/SEO";
+
+export default function Page() {
+	return (
+		<div>
+			<SEO
+				title="Page Title — StudyMatePlus"
+				description="Short, accurate summary for search and social."
+				canonicalPath="/page-path"
+				image="/studymatelogo.png"   // optional
+				noindex={false}               // set true for private/utility pages
+			/>
+			{/* page content */}
+		</div>
+	);
+}
+```
+
+Sitemap and robots:
+- `client/public/sitemap.xml` lists key routes for better crawlability.
+- `client/public/robots.txt` includes `Sitemap: /sitemap.xml`.
+
+Accessibility:
+- Link texts are descriptive (avoid "click here").
+- Social icons have `aria-label`s.
+- Images include meaningful `alt` text or empty alt when decorative.
+
+---
+
 ## 🧑‍💻 How to Contribute
 
 We welcome contributors of **all experience levels**, especially **beginners** participating through **GirlScript Summer of Code (GSSoC) 2025** and beyond.

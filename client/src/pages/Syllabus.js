@@ -1,11 +1,12 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import SEO from "../components/SEO";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp } from "react-icons/fa";
 import './Syllabus.css';
 
 const Syllabus = () => {
   // Mock data for syllabi
-  const syllabusData = [
+  const syllabusData = useMemo(() => [
     {
       id: 1,
       title: "Computer Science Engineering - Semester 1",
@@ -110,7 +111,7 @@ const Syllabus = () => {
       difficulty: "Intermediate",
       tags: ["Electrical", "Power Systems", "Circuits"]
     }
-  ];
+  ], []);
 
   // Animation variants from Home.js
   const fadeInUp = {
@@ -210,6 +211,11 @@ const [showScroll, setShowScroll] = useState(false);
 
   return (
     <div className="syllabus">
+      <SEO
+        title="Syllabus — StudyMatePlus"
+        description="Browse department-wise syllabus organized for quick access and efficient exam preparation."
+        canonicalPath="/syllabus"
+      />
       {/* Hero Section */}
       <motion.section 
         className="syllabus-hero"

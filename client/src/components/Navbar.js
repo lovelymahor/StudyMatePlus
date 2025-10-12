@@ -37,7 +37,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         {/* Logo and Profile still use <Link> which is fine */}
-        <Link to="/" className="navbar-brand">
+        <Link to="/" className="navbar-brand" aria-label="StudyMatePlus home">
           <img
             src="/logo.png"
             alt="StudyMatePlus Logo"
@@ -80,13 +80,13 @@ const Navbar = () => {
             />
           </Link>
 
-          <button className="navbar-toggle" onClick={toggleMobileMenu}>
+          <button className="navbar-toggle" onClick={toggleMobileMenu} aria-expanded={isMobileMenuOpen} aria-controls="mobile-menu" aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}>
             ☰
           </button>
         </div>
       </div>
 
-      <div className={`navbar-menu-mobile ${isMobileMenuOpen ? "active" : ""}`}>
+      <div id="mobile-menu" className={`navbar-menu-mobile ${isMobileMenuOpen ? "active" : ""}`}>
         
         {/* STEP 3: Change Mobile <Link> to <NavLink> */}
         <ul className="navbar-links-mobile">

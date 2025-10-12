@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SEO from "../components/SEO";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
@@ -51,14 +52,7 @@ const Home = () => {
     }
   };
 
-  const fadeInDown = {
-    hidden: { opacity: 0, y: -30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
+  // removed unused fadeInDown variant
 
   const staggerChildren = {
     hidden: { opacity: 0 },
@@ -162,6 +156,11 @@ const Home = () => {
 
   return (
     <div className="home">
+      <SEO
+        title="StudyMatePlus — Study Materials, PYQs, Senior Guidance"
+        description="Discover organized syllabus, comprehensive notes, authentic previous year questions, and student exam feedback to prepare smarter."
+        canonicalPath="/"
+      />
       {/* Hero Section */}
       <motion.section 
         className="hero"
@@ -407,7 +406,7 @@ const Home = () => {
                 icon: "🤝",
                 title: "Connect & Learn",
                 description: "Get guidance from seniors and share your own exam experiences.",
-                link: "/mentorship",
+                link: "/about",
                 linkText: "Connect Now →"
               }
             ].map((step, index) => (
@@ -560,12 +559,12 @@ const Home = () => {
                 </Link>
               </motion.div>
               <motion.div variants={scaleIn}>
-                <Link to="/about" className="btn btn-outline">
+                <Link to="/about" className="btn btn-outline" aria-label="Learn more about StudyMatePlus">
                   <motion.span
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    Learn More
+                    Learn more about StudyMatePlus
                   </motion.span>
                 </Link>
               </motion.div>
@@ -646,16 +645,16 @@ const Home = () => {
               <p>Empowering students with comprehensive academic resources and peer-to-peer learning.</p>
               {/* Social Links with Icons */}
               <div className="social-links">
-                <a href="https://github.com/lovelymahor/StudyMatePlus" target="_blank" rel="noopener noreferrer" className="social-icon github">
+                <a href="https://github.com/lovelymahor/StudyMatePlus" target="_blank" rel="noopener noreferrer" className="social-icon github" aria-label="Visit StudyMatePlus on GitHub">
                   <FaGithub />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin" aria-label="Follow StudyMatePlus on LinkedIn">
                   <FaLinkedin />
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter" aria-label="Follow StudyMatePlus on X (Twitter)">
                   <FaXTwitter />
                 </a>
-                <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon discord">
+                <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon discord" aria-label="Join StudyMatePlus on Discord">
                   <FaDiscord />
                 </a>
               </div>
@@ -669,7 +668,7 @@ const Home = () => {
                   { to: "/syllabus", text: "Syllabus" },
                   { to: "/pyqs", text: "Previous Papers" },
                   { to: "/feedback", text: "Feedback" },
-                  { to: "/mentorship", text: "Mentorship" }
+                  { to: "/about", text: "Mentorship" }
                 ].map((link, index) => (
                   <motion.li key={index} variants={fadeInUp} whileHover={{ x: 5, color: "#3b82f6" }}>
                     <Link to={link.to}>{link.text}</Link>

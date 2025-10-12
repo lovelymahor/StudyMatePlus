@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SEO from "../components/SEO";
 import { motion } from "framer-motion";
 import {
   FaUserEdit,
@@ -125,6 +126,12 @@ const Profile = () => {
       <motion.div className="profile-content" variants={fadeInUp}>
         {renderContent()}
       </motion.div>
+      <SEO
+        title="Profile — StudyMatePlus"
+        description="Manage your StudyMatePlus profile and preferences."
+        canonicalPath="/profile"
+        noindex
+      />
     </motion.div>
   );
 };

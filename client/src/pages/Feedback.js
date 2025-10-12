@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import SEO from "../components/SEO";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Feedback.css";
 import './ScrollToTop.css';
@@ -284,6 +285,11 @@ const Feedback = () => {
 
   return (
     <div className="feedback">
+      <SEO
+        title="Exam Feedback — StudyMatePlus"
+        description="Read and share real exam feedback: difficulty levels, important topics, and preparation strategies across universities."
+        canonicalPath="/feedback"
+      />
       {/* Hero Section */}
       <motion.section
         className="feedback-hero"

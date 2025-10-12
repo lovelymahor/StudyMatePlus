@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SEO from "../components/SEO";
 import { Bar, Pie } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -131,6 +132,16 @@ const Analytics = () => {
 
   return (
     <div className="home">
+      <SEO
+        title="PYQ Analytics — StudyMatePlus"
+        description="Visualize trends in previous year questions to prioritize your exam preparation."
+        canonicalPath="/analytics"
+      />
+      <SEO
+        title="PYQ Analytics — StudyMatePlus"
+        description="Visualize trends from previous year questions by subject to plan your exam preparation effectively."
+        canonicalPath="/analytics"
+      />
       <div className="container">
         <motion.section 
           className="hero"

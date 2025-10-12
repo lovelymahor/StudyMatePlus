@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from "../components/SEO";
 import { motion } from 'framer-motion';
 import './SubmitFeedback.css'; // We will create this file next
 import './Feedback.css'; // Reusing some existing styles
@@ -92,6 +93,12 @@ const SubmitFeedback = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
+      <SEO
+        title="Submit Feedback — StudyMatePlus"
+        description="Share your exam experience to help other students prepare better."
+        canonicalPath="/feedback/submit"
+        noindex
+      />
       <div className="container">
         <div className="form-header">
           <h1>✍️ Share Your Exam Experience</h1>

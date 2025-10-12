@@ -64,9 +64,17 @@ const FeedbackModal = ({ onClose, onSuccess }) => {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="close-button" onClick={onClose}>&times;</button>
-        <h2>Share Your Exam Experience</h2>
+      <div
+        className="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="feedback-modal-title"
+        aria-describedby="feedback-modal-desc"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="close-button" onClick={onClose} aria-label="Close feedback form">&times;</button>
+        <h2 id="feedback-modal-title">Share Your Exam Experience</h2>
+        <p id="feedback-modal-desc" className="visually-hidden">Fill out the form to share feedback and tips about a recent exam.</p>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="studentName">Name (Optional)</label>

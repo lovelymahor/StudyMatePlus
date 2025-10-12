@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SEO from "../components/SEO";
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaArrowUp } from "react-icons/fa";
@@ -57,6 +58,11 @@ const About = () => {
 
   return (
     <div className="about">
+      <SEO
+        title="About StudyMatePlus — Open-source Academic Resources"
+        description="Learn how StudyMatePlus empowers students with an open-source platform for syllabus, notes, PYQs, and peer learning."
+        canonicalPath="/about"
+      />
       {/* Hero Section */}
       <motion.section 
         className="about-hero"

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SEO from "../components/SEO";
 import { motion, AnimatePresence } from 'framer-motion';
 import './Contribute.css';
 import './ScrollToTop.css';
@@ -186,10 +187,7 @@ const Contribute = () => {
       }
     }
   };
-  const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.6 } }
-};
+  // removed unused fadeIn variant
 
   const scaleIn = {
     hidden: { opacity: 0, scale: 0.8 },
@@ -234,6 +232,11 @@ const Contribute = () => {
 
   return (
     <div className="contribute">
+      <SEO
+        title="Contribute — StudyMatePlus"
+        description="Help grow StudyMatePlus by contributing notes, PYQs, features, or documentation."
+        canonicalPath="/contribute"
+      />
       {/* Hero Section */}
       <motion.section 
         className="contribute-hero"

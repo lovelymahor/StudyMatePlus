@@ -2,6 +2,7 @@ import React from "react";
 import { ThemeProvider } from "./theme/ThemeProvider";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import SEO from "./components/SEO";
 import Home from "./pages/Home";
 import Syllabus from "./pages/Syllabus";
 import Notes from "./pages/Notes";
@@ -24,6 +25,12 @@ const App = () => {
   return (
     <ThemeProvider>
       <Router>
+        <SEO
+          title="StudyMatePlus — Syllabus, Notes, PYQs, Feedback"
+          description="Open-source study hub for university students: browse syllabus, download notes, practice with previous year questions, and learn from authentic exam feedback."
+          canonicalPath="/"
+          image="/studymatelogo.png"
+        />
         <Navbar />
         <div style={{ padding: "2rem" }}>
           <ScrollToTop />
@@ -37,7 +44,6 @@ const App = () => {
           <Route path="/faq" element={<Faq />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/about" element={<About />} />
-          <Route path="/privacy" element={<Privacy />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/contribute" element={<Contribute />} />
           <Route path="/mindmap" element={<MindMapEditor />} />

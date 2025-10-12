@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from "../components/SEO";
 import { Link } from 'react-router-dom';
 import './Privacy.css';
 import './ScrollToTop.css';
@@ -6,6 +7,11 @@ import './ScrollToTop.css';
 const Privacy = () => {
   return (
     <div className="privacy">
+      <SEO
+        title="Privacy Policy — StudyMatePlus"
+        description="Read the StudyMatePlus privacy policy to understand how we handle your data and protect your privacy."
+        canonicalPath="/privacy"
+      />
       {/* Hero Section */}
       <section className="privacy-hero">
         <div className="container">
@@ -420,7 +426,7 @@ const Privacy = () => {
             </p>
             <div className="cta-buttons">
               <Link to="/signup" className="btn btn-primary">Create Account</Link>
-              <Link to="/about" className="btn btn-secondary">Learn More</Link>
+              <Link to="/about" className="btn btn-secondary" aria-label="Learn more about how StudyMatePlus works">Learn more about StudyMatePlus</Link>
             </div>
           </div>
         </div>

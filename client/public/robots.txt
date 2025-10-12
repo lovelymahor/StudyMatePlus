@@ -1,3 +1,11 @@
-# https://www.robotstxt.org/robotstxt.html
+## robots.txt for StudyMatePlus
+# Docs: https://www.robotstxt.org/robotstxt.html
+
+# Allow all crawlers to access the site
 User-agent: *
-Disallow:
+Allow: /
+
+# IMPORTANT: Use an absolute URL for the sitemap in production.
+# If deploying under a different domain, update the URL below.
+# Live site (see README): https://studymateplus.vercel.app
+Sitemap: https://studymateplus.vercel.app/sitemap.xml

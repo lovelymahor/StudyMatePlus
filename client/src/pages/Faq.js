@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import SEO from "../components/SEO";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Faq.css";
 import './ScrollToTop.css';
@@ -113,6 +114,11 @@ const Faq = () => {
 
   return (
     <div className="faq-page">
+      <SEO
+        title="FAQs — StudyMatePlus"
+        description="Answers to common questions about StudyMatePlus, resources, features, and contributions."
+        canonicalPath="/faq"
+      />
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-container">
@@ -169,10 +175,15 @@ const Faq = () => {
         <p>
           Still have questions? Reach out to us at <b>support@studymateplus.com</b> or fill out the form below.
         </p>
-        <form className="contact-form">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea placeholder="Your Message" rows="5"></textarea>
+        <form className="contact-form" aria-label="Contact form">
+          <label htmlFor="faq-name" className="visually-hidden">Your Name</label>
+          <input id="faq-name" type="text" placeholder="Your Name" aria-label="Your Name" required />
+
+          <label htmlFor="faq-email" className="visually-hidden">Your Email</label>
+          <input id="faq-email" type="email" placeholder="Your Email" aria-label="Your Email" required />
+
+          <label htmlFor="faq-message" className="visually-hidden">Your Message</label>
+          <textarea id="faq-message" placeholder="Your Message" rows="5" aria-label="Your Message"></textarea>
           <button type="submit">Send Message</button>
         </form>
       </section>
@@ -194,13 +205,13 @@ const Faq = () => {
 
         {/* Social Links with Icons */}
         <div className="social-links">
-          <a href="https://github.com/lovelymahor/StudyMatePlus" target="_blank" rel="noopener noreferrer" className="social-icon github">
+          <a href="https://github.com/lovelymahor/StudyMatePlus" target="_blank" rel="noopener noreferrer" className="social-icon github" aria-label="Visit StudyMatePlus on GitHub">
             <FaGithub />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin" aria-label="Follow StudyMatePlus on LinkedIn">
             <FaLinkedin />
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter" aria-label="Follow StudyMatePlus on X (Twitter)">
             <FaXTwitter />
           </a>
           <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon discord">

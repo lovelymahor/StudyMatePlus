@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Todo.css";
 import Calendar from "../components/Calendar";
+import SEO from "../components/SEO";
 
 const STORAGE_KEY = "smp_tasks_v1";
 
@@ -123,6 +124,12 @@ export default function Todo() {
 
   return (
     <div className="todo-page">
+      <SEO
+        title="Tasks — StudyMatePlus"
+        description="Organize your study tasks, set priorities and deadlines to stay on track."
+        canonicalPath="/tasks"
+        noindex
+      />
       <div className="todo-left">
         <Calendar
           tasks={tasks}

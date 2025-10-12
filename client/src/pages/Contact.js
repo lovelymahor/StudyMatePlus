@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import SEO from "../components/SEO";
 import './Contact.css';
 import './ScrollToTop.css';
 
@@ -37,6 +37,11 @@ const Contact = () => {
 
   return (
     <div className="contact">
+      <SEO
+        title="Contact StudyMatePlus — Support and Feedback"
+        description="Get in touch with the StudyMatePlus team for support, partnership, or feedback. We typically respond within 24 hours."
+        canonicalPath="/contact"
+      />
       {/* Hero Section */}
       <section className="contact-hero">
         <div className="container">
@@ -61,9 +66,11 @@ const Contact = () => {
                   <p>We'll get back to you within 24 hours.</p>
                 </div>
               ) : (
-                <form className="contact-form" onSubmit={handleSubmit}>
+                <form className="contact-form" onSubmit={handleSubmit} aria-label="Contact form">
                   <div className="form-group">
+                    <label htmlFor="contact-name" className="visually-hidden">Your Name</label>
                     <input
+                      id="contact-name"
                       type="text"
                       name="name"
                       placeholder="Your Name"
@@ -74,7 +81,9 @@ const Contact = () => {
                   </div>
                   
                   <div className="form-group">
+                    <label htmlFor="contact-email" className="visually-hidden">Your Email</label>
                     <input
+                      id="contact-email"
                       type="email"
                       name="email"
                       placeholder="Your Email"
@@ -85,7 +94,9 @@ const Contact = () => {
                   </div>
                   
                   <div className="form-group">
+                    <label htmlFor="contact-message" className="visually-hidden">Your Message</label>
                     <textarea
+                      id="contact-message"
                       name="message"
                       placeholder="Your Message"
                       value={formData.message}
@@ -139,10 +150,10 @@ const Contact = () => {
               <div className="social-links">
                 <h3>Follow Us</h3>
                 <div className="social-icons">
-                  <a href="#" className="social-icon">Facebook</a>
-                  <a href="#" className="social-icon">Twitter</a>
-                  <a href="#" className="social-icon">LinkedIn</a>
-                  <a href="#" className="social-icon">Instagram</a>
+                  <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Follow on Facebook">Facebook</a>
+                  <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Follow on X (Twitter)">Twitter</a>
+                  <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Connect on LinkedIn">LinkedIn</a>
+                  <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Follow on Instagram">Instagram</a>
                 </div>
               </div>
             </div>

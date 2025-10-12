@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
+import SEO from "../components/SEO";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
 import "./PYQs.css";
@@ -30,29 +31,29 @@ const PYQs = () => {
   const universities = ["Select University", "LPU", "DU", "JNU"];
   const [showScroll, setShowScroll] = useState(false);
   
-  // Sample papers data (remains the same)
-  const samplePapers = [
+  // Sample papers data (constant list)
+  const samplePapers = useMemo(() => ([
     { id: 1, university: "LPU", department: "Engineering", semester: "4th", subject: "Computer Science", uploader: "Harish", date: "2024-05-20" },
     { id: 2, university: "DU", department: "Science", semester: "3rd", subject: "Mathematics", uploader: "Ananya Gupta", date: "2023-12-10" },
     { id: 3, university: "JNU", department: "Science", semester: "2nd", subject: "Physics", uploader: "Ravi Verma", date: "2022-06-15" },
     { id: 4, university: "LPU", department: "Engineering", semester: "4th", subject: "Computer Science", uploader: "Sneha Singh", date: "2023-11-02" },
-  ];
+  ]), []);
 
   // Memoized lists of available options based on selections
   const availableDepartments = useMemo(() => {
     if (!selectedUniversity) return [];
     return [...new Set(samplePapers.filter(paper => paper.university === selectedUniversity).map(paper => paper.department))];
-  }, [selectedUniversity]);
+  }, [selectedUniversity, samplePapers]);
 
   const availableSemesters = useMemo(() => {
     if (!selectedUniversity || !selectedDepartment) return [];
     return [...new Set(samplePapers.filter(paper => paper.university === selectedUniversity && paper.department === selectedDepartment).map(paper => paper.semester))];
-  }, [selectedUniversity, selectedDepartment]);
+  }, [selectedUniversity, selectedDepartment, samplePapers]);
 
   const availableSubjects = useMemo(() => {
     if (!selectedUniversity || !selectedDepartment || !selectedSemester) return [];
     return [...new Set(samplePapers.filter(paper => paper.university === selectedUniversity && paper.department === selectedDepartment && paper.semester === selectedSemester).map(paper => paper.subject))];
-  }, [selectedUniversity, selectedDepartment, selectedSemester]);
+  }, [selectedUniversity, selectedDepartment, selectedSemester, samplePapers]);
 
   // Filter papers based on selected options
   const filteredPapers = samplePapers.filter(
@@ -90,6 +91,11 @@ const scrollToTop = () => {
 
   return (
     <div className="pyqs-page">
+      <SEO
+        title="Previous Year Questions (PYQs) — StudyMatePlus"
+        description="Practice with authentic previous year question papers organized by university, department, and subject."
+        canonicalPath="/pyqs"
+      />
       <motion.section 
         className="pyqs-hero"
         initial="hidden"

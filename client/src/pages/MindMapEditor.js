@@ -1,5 +1,6 @@
 'use client'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import SEO from "../components/SEO";
 import ReactFlow, {
   Controls, Background,
   applyEdgeChanges, applyNodeChanges,
@@ -512,6 +513,11 @@ export default function MindMapEditor() {
 
   return (
     <div className={`mindmap ${dark ? 'dark' : ''}`}>
+      <SEO
+        title="Mind Map Editor — StudyMatePlus"
+        description="Create and export study mind maps to visualize topics and plan your revision."
+        canonicalPath="/mindmap"
+      />
       {/* Left tools panel */}
       <div className="left-tools">
         <h4>Tools</h4>
