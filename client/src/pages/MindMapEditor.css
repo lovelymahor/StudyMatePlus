@@ -282,3 +282,39 @@
     width: 280px; /* Make inspector slightly smaller */
   }
 }
+
+/* Left tools panel */
+.left-tools {
+  position: absolute;
+  left: 12px;
+  top: 140px; /* moved lower so it doesn't overlap the toolbar */
+  width: 120px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 8px;
+  border-radius: 10px;
+  z-index: 5;
+}
+.left-tools h4 { margin: 0 0 6px; font-size: 13px; }
+.left-tools .tool-list { display:flex; flex-direction:column; gap:6px; }
+.left-tools button { height:34px; border-radius:8px; border:1px solid var(--border); background:transparent; cursor:pointer; padding:0 6px; text-align:left; }
+.left-tools button.active { background: var(--accent); color: #fff; }
+
+/* On narrow screens, keep left-tools slightly lower to avoid toolbar overlap */
+@media (max-width: 900px) {
+  .left-tools { top: 180px; left: 8px; width: 100px; }
+}
+
+.react-flow__node-info .info-node, .info-node {
+  background: #fff;
+  color: #111;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-weight:600;
+}
+
+/* Waypoint (small draggable connector) */
+.waypoint-node { display:flex; align-items:center; justify-content:center; width:28px; height:28px; }
+.waypoint-dot { width:18px; height:18px; border-radius:50%; background:#fff; border:2px solid var(--accent); box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+.react-flow__handle { width:10px; height:10px; }
