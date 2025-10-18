@@ -4,7 +4,12 @@
   "installCommand": "npm install --prefix client",
   "outputDirectory": "client/build",
   "devCommand": "npm start --prefix client",
+  "build": {
+    "env": {
+      "NODE_VERSION": "18"
+    }
+  },
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
