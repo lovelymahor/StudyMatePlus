@@ -1,7 +1,7 @@
 {
   "framework": "create-react-app",
   "buildCommand": "npm install --prefix client && npm run build --prefix client",
-  "installCommand": "npm install --prefix client",
+  "installCommand": "npm install --include=dev --prefix client",
   "outputDirectory": "client/build",
   "devCommand": "npm start --prefix client",
   "build": {

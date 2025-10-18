@@ -198,3 +198,12 @@ For queries or discussions:
 * Follow project updates in Issues and Discussions tab
 
 Let's build a student-friendly platform together! 🚀
+
+---
+
+## Node.js version compatibility
+
+- Local development: The client `package.json` declares an engines range of `>=18 <23`, which supports Node 18, 20, and 22 to avoid EBADENGINE warnings on newer Node versions.
+- Deployment: `vercel.json` pins `build.env.NODE_VERSION` to `18` to keep the production build environment stable.
+- If you need to strictly enforce Node 18 locally, you can use a version manager and an optional `.nvmrc` file containing `18`.
+
