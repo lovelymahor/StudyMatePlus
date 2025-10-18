@@ -559,7 +559,7 @@ const Home = () => {
                 </Link>
               </motion.div>
               <motion.div variants={scaleIn}>
-                <Link to="/about" className="btn btn-primary" aria-label="Learn more about StudyMatePlus">
+                <Link to="/about" className="btn btn-primary">
                   <motion.span
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
