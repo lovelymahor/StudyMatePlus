@@ -146,6 +146,13 @@
   border: 2px solid transparent;
 }
 
+
+[data-theme="dark"] .story-card {
+  background-color: #1e2a3a; /* A nice dark blue-gray */
+  color: #f0f0f0;            /* Light text color for contrast */
+  border: 1px solid #4a4a4a;    /* Optional: a subtle border for dark mode */
+}
+
 .story-card:hover {
   transform: translateY(-5px);
   border-color: #667eea;
@@ -248,6 +255,14 @@
   font-weight: bold;
 }
 
+/* Add this to your About.css file */
+
+[data-theme="dark"] .feature-deep {
+  background-color: #1e2a3a; /* A nice dark blue-gray */
+  color: #f0f0f0;            /* Light text color for contrast */
+  border: 1px solid #4a4a4a;    /* Optional: a subtle border for dark mode */
+}
+
 /* Values Section */
 .values {
   padding: 6rem 0;
@@ -302,6 +317,14 @@
 
 .value-item:hover p {
   opacity: 0.9;
+}
+
+/* Add this to your About.css file */
+
+[data-theme="dark"] .value-item {
+  background-color: #1e2a3a; /* A nice dark blue-gray */
+  color: #f0f0f0;            /* Light text color for contrast */
+  border: 1px solid #4a4a4a;    /* Optional: a subtle border for dark mode */
 }
 
 /* Team Section */
