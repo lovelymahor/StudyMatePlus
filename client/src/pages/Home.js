@@ -185,7 +185,7 @@ const Home = () => {
             <motion.div 
               className="hero-buttons"
               variants={staggerChildrenFast}
-            >
+             >
               <motion.div variants={scaleIn}>
                 <Link to="/syllabus" className="btn btn-primary-home">
                   <motion.span

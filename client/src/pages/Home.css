@@ -82,6 +82,8 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
@@ -97,9 +99,8 @@
 }
 
 .btn-primary-home {
-  background: linear-gradient(45deg, #ffd700, #ffed4a);
-  color: var(--text);
-  box-shadow: 0 4px 15px #f5798a5d;
+  background: white;
+  color: black;
 }
 
 .btn-primary-home:hover {
