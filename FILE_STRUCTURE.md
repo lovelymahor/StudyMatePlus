@@ -181,7 +181,7 @@ client/src/
 ### Backend
 ```
 npm packages added to server/package.json:
-- bcrypt@^17.0.0          # Password hashing
+- bcrypt@^6.0.0           # Password hashing
 - jsonwebtoken@^9.x.x      # JWT generation & verification
 - dotenv@^17.x.x           # Environment variables (already present)
 ```
