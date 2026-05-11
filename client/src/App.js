@@ -22,12 +22,15 @@ import SubmitFeedback from "./pages/SubmitFeedback";
 import Todo from "./pages/Todo";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import { SocketProvider } from "./context/SocketContext";
+import Chat from "./pages/Chat";
 
 
 const App = () => {
   return (
     <ThemeProvider>
       <AuthProvider>
+        <SocketProvider>
         <Router>
           <Navbar />
           <div style={{ padding: "2rem" }}>
@@ -57,9 +60,11 @@ const App = () => {
                 }
               />
               <Route path="/feedback/submit" element={<SubmitFeedback />} />
+              <Route path="/chat" element={<Chat />} />
             </Routes>
           </div>
         </Router>
+        </SocketProvider>
       </AuthProvider>
     </ThemeProvider>
   );

@@ -4,13 +4,21 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const { body, validationResult } = require('express-validator');
 
+const http = require('http');
+const { Server } = require('socket.io');
 const authRoutes = require('./routes/auth');
+const chatRoutes = require('./routes/chat');
+const Message = require('./models/Message');
+const jwt = require('jsonwebtoken');
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// serve uploaded files statically (protected access may be added later)
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 // MongoDB Connection (Using your original URI variable, removed deprecated options)
 mongoose.connect(process.env.MONGO_URI)
@@ -31,6 +39,7 @@ const Feedback = mongoose.model('Feedback', feedbackSchema);
 
 // Mount auth routes
 app.use('/api/auth', authRoutes);
+app.use('/api/chat', chatRoutes);
 
 // --- API Routes ---
 
@@ -88,8 +97,75 @@ app.get('/api/feedbacks', async (req, res) => {
 });
 
 
-// Server Start (From your original file)
+// Server Start
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+const server = http.createServer(app);
+
+// Socket.IO setup
+const io = new Server(server, {
+  cors: { origin: '*' },
+});
+
+// Simple token-auth on socket connection
+io.use((socket, next) => {
+  try {
+    const token = socket.handshake.auth?.token;
+    if (!token) return next(new Error('Authentication error'));
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    socket.user = { id: decoded.id, email: decoded.email };
+    next();
+  } catch (err) {
+    next(new Error('Authentication error'));
+  }
+});
+
+io.on('connection', (socket) => {
+  const userId = socket.user.id;
+  console.log('Socket connected:', userId);
+
+  // join user's personal room
+  socket.join(`user:${userId}`);
+
+  socket.on('join-room', (roomId) => {
+    socket.join(`room:${roomId}`);
+  });
+
+  socket.on('typing', ({ toUserId, roomId }) => {
+    if (roomId) io.to(`room:${roomId}`).emit('typing', { roomId, userId });
+    else if (toUserId) io.to(`user:${toUserId}`).emit('typing', { from: userId });
+  });
+
+  socket.on('send-message', async (payload) => {
+    // payload: { toUserId, roomId, content, attachments }
+    try {
+      const msg = new Message({
+        sender: userId,
+        receiver: payload.toUserId || undefined,
+        roomId: payload.roomId || undefined,
+        content: payload.content || '',
+        attachments: payload.attachments || [],
+        type: payload.attachments?.length ? 'file' : 'text',
+      });
+      await msg.save();
+
+      const out = { ...msg.toObject(), createdAt: msg.createdAt };
+
+      if (msg.roomId) io.to(`room:${msg.roomId}`).emit('message', out);
+      else if (msg.receiver) {
+        io.to(`user:${msg.receiver}`).emit('message', out);
+        io.to(`user:${userId}`).emit('message', out);
+      }
+    } catch (err) {
+      console.error('send-message error', err);
+      socket.emit('error', { message: 'Message send failed' });
+    }
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Socket disconnected:', userId);
+  });
+});
+
+server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
