@@ -1,7 +1,9 @@
 import React from "react";
 import { ThemeProvider } from "./theme/ThemeProvider";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import Syllabus from "./pages/Syllabus";
 import Notes from "./pages/Notes";
@@ -18,35 +20,52 @@ import MindMapEditor from "./pages/MindMapEditor";
 import Profile from "./pages/Profile.js";
 import SubmitFeedback from "./pages/SubmitFeedback";
 import Todo from "./pages/Todo";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import { SocketProvider } from "./context/SocketContext";
+import Chat from "./pages/Chat";
 
 
 const App = () => {
   return (
     <ThemeProvider>
-      <Router>
-        <Navbar />
-        <div style={{ padding: "2rem" }}>
-          <ScrollToTop />
-          <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/tasks" element={<Todo />} />
-          <Route path="/syllabus" element={<Syllabus />} />
-          <Route path="/notes" element={<Notes />} />
-          <Route path="/pyqs" element={<PYQs />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/feedback" element={<Feedback />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/contribute" element={<Contribute />} />
-          <Route path="/mindmap" element={<MindMapEditor />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/feedback/submit" element={<SubmitFeedback />} />
-          </Routes>
-        </div>
-      </Router>
+      <AuthProvider>
+        <SocketProvider>
+        <Router>
+          <Navbar />
+          <div style={{ padding: "2rem" }}>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/tasks" element={<Todo />} />
+              <Route path="/syllabus" element={<Syllabus />} />
+              <Route path="/notes" element={<Notes />} />
+              <Route path="/pyqs" element={<PYQs />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/faq" element={<Faq />} />
+              <Route path="/feedback" element={<Feedback />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/contribute" element={<Contribute />} />
+              <Route path="/mindmap" element={<MindMapEditor />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/feedback/submit" element={<SubmitFeedback />} />
+              <Route path="/chat" element={<Chat />} />
+            </Routes>
+          </div>
+        </Router>
+        </SocketProvider>
+      </AuthProvider>
     </ThemeProvider>
   );
 };
