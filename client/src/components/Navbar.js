@@ -1,9 +1,10 @@
 // STEP 1: Import NavLink along with Link
-import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom"; // CHANGED HERE
+import React, { useState, useEffect, useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom"; // CHANGED HERE
 import "./Navbar.css";
 import { useTheme } from "../theme/ThemeProvider";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { AuthContext } from "../context/AuthContext";
+import { FaMoon, FaSun, FaSignOutAlt } from "react-icons/fa";
 
 const user = {
   avatar: "https://avatar.iran.liara.run/public/boy",
@@ -11,6 +12,8 @@ const user = {
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
+  const { user: authUser, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -19,6 +22,12 @@ const Navbar = () => {
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+    closeMobileMenu();
   };
 
   useEffect(() => {
@@ -72,13 +81,34 @@ const Navbar = () => {
             {theme === "dark" ? <FaSun /> : <FaMoon />}
           </button>
 
-          <Link to="/profile" className="navbar-profile-link">
-            <img
-              src={user.avatar}
-              alt="User Profile"
-              className="navbar-profile-img"
-            />
-          </Link>
+          {authUser ? (
+            <div className="navbar-auth">
+              <Link to="/profile" className="navbar-profile-link">
+                <img
+                  src={authUser.avatar || user.avatar}
+                  alt="User Profile"
+                  className="navbar-profile-img"
+                  title={authUser.name}
+                />
+              </Link>
+              <button
+                className="navbar-logout-btn"
+                onClick={handleLogout}
+                title="Logout"
+              >
+                <FaSignOutAlt />
+              </button>
+            </div>
+          ) : (
+            <div className="navbar-auth">
+              <Link to="/login" className="navbar-auth-link">
+                Sign In
+              </Link>
+              <Link to="/register" className="navbar-auth-link signup">
+                Sign Up
+              </Link>
+            </div>
+          )}
 
           <button className="navbar-toggle" onClick={toggleMobileMenu}>
             ☰
@@ -103,7 +133,42 @@ const Navbar = () => {
         </ul>
         {/* END OF STEP 3 CHANGE */}
 
-      </div>
+        <div className="navbar-mobile-auth">
+          {authUser ? (
+            <>
+              <Link
+                to="/profile"
+                className="navbar-link-mobile"
+                onClick={closeMobileMenu}
+              >
+                Profile
+              </Link>
+              <button
+                className="navbar-link-mobile logout"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="navbar-link-mobile"
+                onClick={closeMobileMenu}
+              >
+                Sign In
+              </Link>
+              <Link
+                to="/register"
+                className="navbar-link-mobile signup"
+                onClick={closeMobileMenu}
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
+        </div>
     </nav>
   );
 };

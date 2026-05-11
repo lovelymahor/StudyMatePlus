@@ -2,9 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-
-// 1. Import tools from express-validator
 const { body, validationResult } = require('express-validator');
+
+const authRoutes = require('./routes/auth');
 
 dotenv.config();
 
@@ -29,6 +29,8 @@ const feedbackSchema = new mongoose.Schema({
 });
 const Feedback = mongoose.model('Feedback', feedbackSchema);
 
+// Mount auth routes
+app.use('/api/auth', authRoutes);
 
 // --- API Routes ---
 
