@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp, FaStar, FaQuoteLeft } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import logo from "./logo.png";
 import "./Home.css";
@@ -146,19 +146,35 @@ const Home = () => {
   };
 
   const testimonials = [
-    {
-      quote: "StudyMatePlus helped me organize my entire semester. I wish I had found this earlier!",
-      author: "— Priya Sharma, B.Tech CSE"
-    },
-    {
-      quote: "Thanks to the previous papers section, I was able to focus on the most important topics.",
-      author: "— Rahul Meena, BBA"
-    },
-    {
-      quote: "The senior guidance feature is a game-changer. Got great tips and motivation.",
-      author: "— Ayesha Khan, B.Sc Physics"
-    }
-  ];
+  {
+    quote: "StudyMatePlus helped me organize my entire semester. I wish I had found this earlier!",
+    author: "Priya Sharma",
+    role: "B.Tech CSE",
+    initials: "PS",
+    stars: 5
+  },
+  {
+    quote: "The senior guidance feature is a game-changer. Got great tips and motivation for my exams.",
+    author: "Yuvraj Singh",
+    role: "2nd Year, CSE",
+    initials: "YS",
+    stars: 5
+  },
+  {
+    quote: "Thanks to the previous papers section, I was able to focus on the most important topics easily.",
+    author: "Rahul Meena",
+    role: "BBA Student",
+    initials: "RM",
+    stars: 4
+  },
+  {
+    quote: "The community here is amazing. Sharing resources has never been this simple.",
+    author: "Ayesha Khan",
+    role: "B.Sc Physics",
+    initials: "AK",
+    stars: 5
+  }
+];
 
   return (
     <div className="home">
@@ -451,81 +467,53 @@ const Home = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        variants={staggerChildren}
+        variants={staggerChildren} // Uses your existing stagger animation
       >
         <div className="container">
-          <motion.h2 className="section-title" variants={fadeInUp}>
+          <motion.h2 
+            className="section-title" 
+            variants={fadeInDown} // Change fadeInUp to fadeInDown here
+          >
             What Students Say
           </motion.h2>
+          
           <div className="testimonial-wrapper">
             <motion.div 
               className="testimonial-scroller"
-              animate={{ x: ["0%", "-50%"] }}
+              animate={{ x: ["0%", "-50%"] }} // Smooth horizontal movement
               transition={{ 
-                duration: 30, 
+                duration: 25, 
                 repeat: Infinity, 
                 ease: "linear",
                 repeatType: "loop"
               }}
             >
-              {testimonials.map((testimonial, index) => (
+              {/* We double the array here to ensure the scroll never "gaps" */}
+              {[...testimonials, ...testimonials].map((testimonial, index) => (
                 <motion.div 
                   key={index}
                   className="testimonial-card"
-                  variants={scaleIn}
-                  whileHover={{ 
-                    scale: 1.02, 
-                    y: -8,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)"
-                  }}
+                  whileHover={{ y: -10, scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    "{testimonial.quote}"
-                  </motion.p>
-                  <motion.h4
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: index * 0.1 + 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    {testimonial.author}
-                  </motion.h4>
-                </motion.div>
-              ))}
-              {testimonials.map((testimonial, index) => (
-                <motion.div 
-                  key={index + testimonials.length}
-                  className="testimonial-card"
-                  variants={scaleIn}
-                  whileHover={{ 
-                    scale: 1.02, 
-                    y: -8,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)"
-                  }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    "{testimonial.quote}"
-                  </motion.p>
-                  <motion.h4
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: index * 0.1 + 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    {testimonial.author}
-                  </motion.h4>
+                  <div className="card-header">
+                    <FaQuoteLeft className="quote-icon" />
+                    <div className="stars">
+                      {[...Array(testimonial.stars)].map((_, i) => (
+                        <FaStar key={i} />
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="testimonial-text">"{testimonial.quote}"</p>
+
+                  <div className="testimonial-footer">
+                    <div className="user-avatar">{testimonial.initials}</div>
+                    <div className="user-info">
+                      <h4 className="user-name">{testimonial.author}</h4>
+                      <p className="user-role">{testimonial.role}</p>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
