@@ -5,7 +5,7 @@ import './Syllabus.css';
 
 const Syllabus = () => {
   // Mock data for syllabi
-  const syllabusData = [
+  const syllabusData = useMemo(() => [
     {
       id: 1,
       title: "Computer Science Engineering - Semester 1",
@@ -110,7 +110,7 @@ const Syllabus = () => {
       difficulty: "Intermediate",
       tags: ["Electrical", "Power Systems", "Circuits"]
     }
-  ];
+  ], []);
 
   // Animation variants from Home.js
   const fadeInUp = {
@@ -128,7 +128,59 @@ const Syllabus = () => {
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
   };
 
-const [showScroll, setShowScroll] = useState(false);
+  const [showScroll, setShowScroll] = useState(false);
+  const [fileSizes, setFileSizes] = useState({});
+
+  const formatBytes = (bytes) => {
+    if (typeof bytes !== 'number' || Number.isNaN(bytes)) return 'Unknown';
+    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    let value = bytes;
+    let unitIndex = 0;
+    while (value >= 1024 && unitIndex < units.length - 1) {
+      value /= 1024;
+      unitIndex += 1;
+    }
+    return `${value.toFixed(1)} ${units[unitIndex]}`;
+  };
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchFileSize = async (url) => {
+      try {
+        const response = await fetch(url, { method: 'HEAD' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        let size = response.headers.get('content-length');
+        if (!size) {
+          const fallback = await fetch(url, { method: 'GET', headers: { Range: 'bytes=0-0' } });
+          if (!fallback.ok) throw new Error(`HTTP ${fallback.status}`);
+          size = fallback.headers.get('content-length');
+        }
+        return size ? formatBytes(Number(size)) : null;
+      } catch (error) {
+        console.warn('Failed to retrieve syllabus file size for', url, error);
+        return null;
+      }
+    };
+
+    const loadFileSizes = async () => {
+      const entries = await Promise.all(syllabusData.map(async (item) => {
+        if (!item.link) return [item.id, item.fileSize || 'Unknown'];
+        const actualSize = await fetchFileSize(item.link);
+        return [item.id, actualSize || item.fileSize || 'Unknown'];
+      }));
+
+      if (isMounted) {
+        setFileSizes(Object.fromEntries(entries));
+      }
+    };
+
+    loadFileSizes();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [syllabusData]);
 
   useEffect(() => {
     const checkScrollTop = () => {
@@ -391,7 +443,7 @@ const [showScroll, setShowScroll] = useState(false);
                       </div>
                       <div className="stat">
                         <span className="stat-icon">📄</span>
-                        <span>{syllabus.fileSize}</span>
+                        <span>{fileSizes[syllabus.id] ?? syllabus.fileSize ?? 'Loading...'}</span>
                       </div>
                     </div>
 

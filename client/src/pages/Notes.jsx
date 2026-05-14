@@ -39,6 +39,57 @@ const Notes = () => {
   const [sortBy, setSortBy] = useState('downloads');
   const [previewUrl, setPreviewUrl] = useState(null);
   const [showScroll, setShowScroll] = useState(false);
+  const [fileSizes, setFileSizes] = useState({});
+
+  const formatBytes = (bytes) => {
+    if (typeof bytes !== 'number' || Number.isNaN(bytes)) return 'Unknown';
+    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    let value = bytes;
+    let unitIndex = 0;
+    while (value >= 1024 && unitIndex < units.length - 1) {
+      value /= 1024;
+      unitIndex += 1;
+    }
+    return `${value.toFixed(1)} ${units[unitIndex]}`;
+  };
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchFileSize = async (url) => {
+      try {
+        const response = await fetch(url, { method: 'HEAD' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        let size = response.headers.get('content-length');
+        if (!size) {
+          const fallback = await fetch(url, { method: 'GET', headers: { Range: 'bytes=0-0' } });
+          if (!fallback.ok) throw new Error(`HTTP ${fallback.status}`);
+          size = fallback.headers.get('content-length');
+        }
+        return size ? formatBytes(Number(size)) : null;
+      } catch (error) {
+        console.warn('Failed to retrieve PDF size for', url, error);
+        return null;
+      }
+    };
+
+    const loadFileSizes = async () => {
+      const entries = await Promise.all(notesData.map(async (note) => {
+        const actualSize = await fetchFileSize(note.link);
+        return [note.id, actualSize || note.fileSize || 'Unknown'];
+      }));
+
+      if (isMounted) {
+        setFileSizes(Object.fromEntries(entries));
+      }
+    };
+
+    loadFileSizes();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   useEffect(() => {
   const checkScrollTop = () => {
@@ -174,7 +225,7 @@ const scrollToTop = () => {
                       <div className="difficulty-badge" style={{ backgroundColor: getDifficultyColor(note.difficulty) }}>{note.difficulty}</div>
                     </div>
                     <div className="card-content"><p className="subject">Subject: {note.subject}</p><div className="tags-section"><div className="tags">{note.tags.map((tag, index) => (<span key={index} className="tag">#{tag}</span>))}</div></div></div>
-                    <div className="card-stats"><div className="stat"><span className="stat-icon">📥</span><span>{note.downloadCount.toLocaleString()} downloads</span></div><div className="stat"><span className="stat-icon">📅</span><span>{new Date(note.uploadDate).toLocaleDateString()}</span></div><div className="stat"><span className="stat-icon">📄</span><span>{note.fileSize}</span></div></div>
+                    <div className="card-stats"><div className="stat"><span className="stat-icon">📥</span><span>{note.downloadCount.toLocaleString()} downloads</span></div><div className="stat"><span className="stat-icon">📅</span><span>{new Date(note.uploadDate).toLocaleDateString()}</span></div><div className="stat"><span className="stat-icon">📄</span><span>{fileSizes[note.id] ?? note.fileSize ?? 'Loading...'}</span></div></div>
                     <div className="card-actions">
                       <motion.a href={note.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>📥 Download</motion.a>
                       <motion.button className="btn btn-outline" onClick={() => setPreviewUrl(note.link)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>👁️ Preview</motion.button>
