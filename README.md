@@ -18,17 +18,34 @@ Students often face difficulty finding authentic academic materials in one place
 
 ---
 
-## 🌟 Key Features (To Be Developed)
+## 🌟 Key Features
 
-* ✅ Filter syllabus and papers by **university**, **semester**, **subject**
-* ✅ **Student feedback** section for each paper (e.g., "Paper was tricky — focus on Unit 2")
-* ✅ Secure **senior-student chat** or forum system
-* ✅ Upload and browse **notes, guides, and important questions**
-* ✅ Clean and **mobile-friendly** interface
+## 🌟 Features
+
+- 📚 Filter syllabus and papers by university, semester, subject
+- 💬 Student feedback section for each paper
+- 🤝 Senior-student mentoring and doubt clearing
+- 📤 Upload and browse notes and important questions
+- 📱 Clean and mobile-friendly interface
 
 ---
 
+## 📸 Screenshots
+
+### 🏠 Homepage
+![Homepage](screenshots/homepage.png)
+
+### ✨ Features
+![Features](screenshots/features.png)
+
+### 🤔 Why Choose StudyMatePlus?
+![Why Choose](screenshots/why-choose.png)
+
+### ⚙️ How It Works
+![How It Works](screenshots/how-it-works.png)
 ## 🛠️ Tech Stack
+
+---
 
 | Area           | Technology                         |
 | -------------- | ---------------------------------- |
