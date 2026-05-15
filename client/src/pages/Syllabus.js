@@ -194,9 +194,14 @@ const [showScroll, setShowScroll] = useState(false);
     return filtered;
   }, [searchTerm, selectedUniversity, selectedDepartment, selectedSemester, sortBy, syllabusData]);
 
+  const pdfUrl = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
   const handleDownload = (syllabus) => {
     // Simulate download
-    alert(`Downloading: ${syllabus.title}`);
+    window.open(pdfUrl, "_blank");
+  };
+    const handlePreview = (syllabus) => {
+    // Simulate download
+    window.open(pdfUrl, "_blank");
   };
 
   const getDifficultyColor = (difficulty) => {
@@ -408,6 +413,7 @@ const [showScroll, setShowScroll] = useState(false);
                         className="btn btn-outline"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={()=>handlePreview(syllabus)}
                       >
                         👁️ Preview
                       </motion.button>
