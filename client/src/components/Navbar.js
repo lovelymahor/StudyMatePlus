@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom"; // CHANGED HERE
 import "./Navbar.css";
 import { useTheme } from "../theme/ThemeProvider";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { FaMoon, FaSun, FaBars, FaTimes } from "react-icons/fa";
 
 const user = {
   avatar: "https://avatar.iran.liara.run/public/boy",
@@ -23,7 +23,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 1100) {
         setIsMobileMenuOpen(false);
       }
     };
@@ -80,8 +80,8 @@ const Navbar = () => {
             />
           </Link>
 
-          <button className="navbar-toggle" onClick={toggleMobileMenu}>
-            ☰
+          <button className="navbar-toggle" onClick={toggleMobileMenu} aria-label="Toggle menu">
+            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>

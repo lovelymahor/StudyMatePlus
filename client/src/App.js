@@ -18,6 +18,7 @@ import MindMapEditor from "./pages/MindMapEditor";
 import Profile from "./pages/Profile.js";
 import SubmitFeedback from "./pages/SubmitFeedback";
 import Todo from "./pages/Todo";
+import Footer from "./components/Footer";
 
 
 const App = () => {
@@ -25,7 +26,7 @@ const App = () => {
     <ThemeProvider>
       <Router>
         <Navbar />
-        <div style={{ padding: "2rem" }}>
+        <div className="main-content">
           <ScrollToTop />
           <Routes>
           <Route path="/" element={<Home />} />
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/feedback/submit" element={<SubmitFeedback />} />
           </Routes>
         </div>
+        <Footer />
       </Router>
     </ThemeProvider>
   );

@@ -1,14 +1,16 @@
 /* Navbar.css - StudyMatePlus (Refined & Responsive Design) */
 
 .navbar {
-  background-color: var(--bg);
+  background-color: var(--navbar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 0.75rem 1.5rem;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
 .navbar-container {
@@ -26,18 +28,20 @@
 }
 
 .navbar-brand {
-  font-size: 1.6rem;
-  font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: 800;
   color: var(--text);
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: color 0.3s ease;
+  gap: 0.6rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: -0.02em;
 }
 
 .navbar-brand:hover {
   color: var(--brand);
+  transform: scale(1.02);
 }
 
 /* --- NEW --- Wrapper for all right-side elements */
@@ -67,8 +71,8 @@
 
 /* Desktop navigation links */
 .navbar-links {
-  display: flex; /* This remains flex for desktop layout */
-  gap: 1.5rem;
+  display: flex;
+  gap: 0.5rem; /* Reduced gap to fit more items */
   align-items: center;
   list-style: none;
   margin: 0;
@@ -79,16 +83,24 @@
   color: var(--muted);
   text-decoration: none;
   font-weight: 500;
-  font-size: 1rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.95rem; /* Slightly smaller font */
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  white-space: nowrap; /* Prevent labels from wrapping */
 }
 
 .navbar-link:hover,
 .navbar-link:focus {
-  background-color: var(--card);
-  color: var(--text);
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--brand);
+  transform: translateY(-1px);
+}
+
+.navbar-link.active {
+  background-color: var(--brand);
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 /* Mobile toggle button (hamburger icon) */
@@ -115,9 +127,11 @@
   top: 100%;
   left: 0;
   right: 0;
-  background-color: var(--bg);
+  background-color: var(--navbar-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border-top: 1px solid var(--border);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-menu-mobile.active {
@@ -136,7 +150,7 @@
 
 .navbar-links-mobile li {
   background-color: var(--card);
-  padding: 12px 20px;
+  padding: 0; /* Padding moved to NavLink */
   color: var(--text);
   border-radius: 10px;
   font-size: 1rem;
@@ -144,6 +158,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .navbar-links-mobile li:hover {
@@ -159,13 +174,14 @@
   display: block;
   width: 100%;
   height: 100%;
+  padding: 12px 20px;
 }
 
 .navbar-link.active,
 .navbar-link-mobile.active {
-  font-weight: 600;
-  background-color: var(--card);
-  color: var(--brand);
+  font-weight: 700;
+  color: white;
+  background-color: var(--brand);
 }
 
 /* Profile Image styles */
@@ -193,7 +209,7 @@
 }
 
 /* --- RESPONSIVE STYLES --- */
-@media (max-width: 768px) {
+@media (max-width: 1100px) { /* Increased breakpoint */
   /* Hide the desktop links list */
   .navbar-links {
     display: none;
