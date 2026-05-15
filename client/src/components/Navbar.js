@@ -34,10 +34,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" aria-label="Main Navigation">
       <div className="navbar-container">
         {/* Logo and Profile still use <Link> which is fine */}
-        <Link to="/" className="navbar-brand">
+        <Link to="/" className="navbar-brand" aria-label="StudyMatePlus Home">
           <img
             src="/logo.png"
             alt="StudyMatePlus Logo"
@@ -48,7 +48,7 @@ const Navbar = () => {
         <div className="navbar-right">
           
           {/* STEP 2: Change Desktop <Link> to <NavLink> */}
-          <ul className="navbar-links">
+          <ul className="navbar-links" aria-label="Desktop Menu">
             <li><NavLink to="/" className="navbar-link">Home</NavLink></li>
             <li><NavLink to="/about" className="navbar-link">About Us</NavLink></li>
             <li><NavLink to="/syllabus" className="navbar-link">Syllabus</NavLink></li>
@@ -64,7 +64,7 @@ const Navbar = () => {
 
 
           <button
-            aria-label="Toggle theme"
+            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
             className="navbar-theme-toggle"
             onClick={toggleTheme}
             title={theme === "dark" ? "Switch to light" : "Switch to dark"}
@@ -72,7 +72,7 @@ const Navbar = () => {
             {theme === "dark" ? <FaSun /> : <FaMoon />}
           </button>
 
-          <Link to="/profile" className="navbar-profile-link">
+          <Link to="/profile" className="navbar-profile-link" aria-label="View Profile">
             <img
               src={user.avatar}
               alt="User Profile"
@@ -80,16 +80,26 @@ const Navbar = () => {
             />
           </Link>
 
-          <button className="navbar-toggle" onClick={toggleMobileMenu}>
+          <button 
+            className="navbar-toggle" 
+            onClick={toggleMobileMenu} 
+            aria-label="Toggle mobile menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+          >
             ☰
           </button>
         </div>
       </div>
 
-      <div className={`navbar-menu-mobile ${isMobileMenuOpen ? "active" : ""}`}>
+      <div 
+        id="mobile-menu"
+        className={`navbar-menu-mobile ${isMobileMenuOpen ? "active" : ""}`}
+        aria-hidden={!isMobileMenuOpen}
+      >
         
         {/* STEP 3: Change Mobile <Link> to <NavLink> */}
-        <ul className="navbar-links-mobile">
+        <ul className="navbar-links-mobile" aria-label="Mobile Menu">
           <li><NavLink to="/" className="navbar-link-mobile" onClick={closeMobileMenu}>Home</NavLink></li>
           <li><NavLink to="/about" className="navbar-link-mobile" onClick={closeMobileMenu}>About Us</NavLink></li>
           <li><NavLink to="/syllabus" className="navbar-link-mobile" onClick={closeMobileMenu}>Syllabus</NavLink></li>
