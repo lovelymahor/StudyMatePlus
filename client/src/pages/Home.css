@@ -8,7 +8,7 @@
 
 .home {
   min-height: 100vh;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: var(--font-main);
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
@@ -17,7 +17,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--spacing-xl);
 }
 
 /* Hero Section */
