@@ -6,11 +6,9 @@ import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import logo from "./logo.png";
 import "./Home.css";
-import './ScrollToTop.css';
 
 const Home = () => {
   const [contributors, setContributors] = useState([]);
-  const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
     axios
@@ -18,28 +16,6 @@ const Home = () => {
       .then((response) => setContributors(response.data))
       .catch((error) => console.error("Error fetching contributors", error));
   }, []);
-
-  useEffect(() => {
-    const checkScrollTop = () => {
-      if (!showScroll && window.scrollY > 300) {
-        setShowScroll(true);
-      } else if (showScroll && window.scrollY <= 300) {
-        setShowScroll(false);
-      }
-    };
-
-    window.addEventListener("scroll", checkScrollTop);
-    return () => {
-      window.removeEventListener("scroll", checkScrollTop);
-    };
-  }, [showScroll]);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  };
 
   // Animation variants
   const fadeInUp = {
