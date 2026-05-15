@@ -172,11 +172,15 @@ export default function Todo() {
             </div>
             <form className="todo-form" onSubmit={handleSubmit}>
               <div className="row">
-                <input
-                  value={form.title}
-                  onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
-                  placeholder="Task title"
-                />
+                <div className="input-group">
+                  <input
+                    className={errors.title ? "error" : ""}
+                    value={form.title}
+                    onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
+                    placeholder="Task title"
+                  />
+                  {errors.title && <span className="error-text">{errors.title}</span>}
+                </div>
                 <select value={form.recurrence} onChange={(e) => setForm((f) => ({ ...f, recurrence: e.target.value }))}>
                   <option value="none">Does not repeat</option>
                   <option value="daily">Daily</option>
@@ -194,15 +198,20 @@ export default function Todo() {
               <div className="row">
                 <label className="deadline-label">
                   Deadline
-                  <input
-                    type="datetime-local"
-                        value={form.deadline ? new Date(form.deadline).toISOString().slice(0,16) : ''}
-                        onChange={(e) => {
-                          const v = e.target.value; // yyyy-mm-ddThh:mm
-                          const iso = v ? new Date(v).toISOString() : '';
-                          setForm((f) => ({ ...f, deadline: iso }));
-                        }}
-                  />
+                  <div className="input-group">
+                    <input
+                      type="datetime-local"
+                      className={errors.deadline ? "error" : ""}
+                      min={new Date().toISOString().slice(0, 16)}
+                      value={form.deadline ? new Date(form.deadline).toISOString().slice(0, 16) : ''}
+                      onChange={(e) => {
+                        const v = e.target.value; // yyyy-mm-ddThh:mm
+                        const iso = v ? new Date(v).toISOString() : '';
+                        setForm((f) => ({ ...f, deadline: iso }));
+                      }}
+                    />
+                    {errors.deadline && <span className="error-text">{errors.deadline}</span>}
+                  </div>
                 </label>
 
                 <div className="form-actions">
