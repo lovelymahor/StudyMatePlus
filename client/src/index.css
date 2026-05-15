@@ -7,11 +7,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: var(--bg);
   color: var(--text);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.main-content {
+  padding: 2rem;
+  min-height: calc(100vh - 70px);
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+  }
 }
 
 /* Theme variables */
@@ -23,6 +40,7 @@ code {
   --border: #e2e8f0; /* Slate-200 */
   --brand: #2563eb; /* Stronger blue for links/buttons */
   --heading: #0a0f1f; /* Deep heading color */
+  --navbar-bg: rgba(255, 255, 255, 0.8);
 }
 
 html[data-theme="dark"] {
@@ -33,6 +51,7 @@ html[data-theme="dark"] {
   --border: #263243; /* visible border */
   --brand: #8ab4ff; /* accessible blue on dark */
   --heading: #ffffff; /* pure white headings */
+  --navbar-bg: rgba(11, 18, 32, 0.8);
 }
 
 .container, .home, .faq-page, .features, .stats, .how-it-works, .testimonials, .cta, .contributors, .footer, .navbar {

@@ -109,6 +109,7 @@ export default function MindMapEditor() {
   const [connLabelTextColor, setConnLabelTextColor] = useState('#111827');
   const [currentTool, setCurrentTool] = useState('one-way'); // one-way | two-way | informational | node | dotted
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
+  const [isInspectorOpen, setIsInspectorOpen] = useState(false);
 
   // Persist
   useEffect(() => {
@@ -639,8 +640,13 @@ export default function MindMapEditor() {
         <div id="save-toast" className="toast">💾 Saved</div>
       </div>
 
+      {/* Inspector toggle for mobile */}
+      <button className="inspector-toggle" onClick={() => setIsInspectorOpen(!isInspectorOpen)}>
+        {isInspectorOpen ? '×' : '⚙️'}
+      </button>
+
       {/* Inspector */}
-      <div className="inspector">
+      <div className={`inspector ${isInspectorOpen ? 'open' : ''}`}>
         <h3>Inspector</h3>
         {selectedNode ? (
           <>

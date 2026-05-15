@@ -319,3 +319,48 @@
     font-size: 1.6rem;
   }
 }
+
+/* Dark Mode Styles */
+[data-theme="dark"] .contact {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .contact-main {
+  background: #0f172a;
+}
+
+[data-theme="dark"] .contact-form-container {
+  background: #1e293b;
+  border: 1px solid #334155;
+}
+
+[data-theme="dark"] .contact-form-container h2,
+[data-theme="dark"] .contact-info h2,
+[data-theme="dark"] .info-content h3,
+[data-theme="dark"] .social-links h3,
+[data-theme="dark"] .faq-section h2,
+[data-theme="dark"] .faq-item h3 {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .info-content p,
+[data-theme="dark"] .faq-item p,
+[data-theme="dark"] .success-message p {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .faq-section {
+  background: #0f172a;
+}
+
+[data-theme="dark"] .faq-item {
+  background: #1e293b;
+  border-left-color: #3b82f6;
+}

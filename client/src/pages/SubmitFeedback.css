@@ -122,3 +122,42 @@
     font-size: 2rem;
   }
 }
+
+/* Dark Mode Styles */
+[data-theme="dark"] .submit-feedback-page {
+  background-color: #0f172a;
+}
+
+[data-theme="dark"] .form-header h1 {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .form-header p {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .feedback-form {
+  background: #1e293b;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .form-group label {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .form-textarea {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .form-input:focus,
+[data-theme="dark"] .form-textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+[data-theme="dark"] .star-rating .star {
+  color: #475569;
+}
