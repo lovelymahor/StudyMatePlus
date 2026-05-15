@@ -212,15 +212,27 @@ const scrollToTop = () => {
                 )}
               </motion.div>
             ) : (
-              <motion.p
-                key="prompt"
-                className="prompt"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
-                Please select university, department, semester, and subject to view available question papers.
-              </motion.p>
+        <motion.div
+          key="prompt"
+          className="empty-state"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+        >
+          <h3>Complete all filters</h3>
+
+          <p>
+            Select university, department, semester, and subject
+            to view available previous year question papers.
+          </p>
+
+          <span>
+            Current Progress:
+            {" "}
+            {[selectedUniversity, selectedDepartment, selectedSemester, selectedSubject]
+              .filter(Boolean).length}/4 filters selected
+          </span>
+        </motion.div>
             )}
           </AnimatePresence>
         </div>
