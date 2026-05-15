@@ -5,6 +5,8 @@ import "./Navbar.css";
 import { useTheme } from "../theme/ThemeProvider";
 import { FaMoon, FaSun } from "react-icons/fa";
 
+import { Menu, X } from "lucide-react";
+
 const user = {
   avatar: "https://avatar.iran.liara.run/public/boy",
 };
@@ -80,8 +82,8 @@ const Navbar = () => {
             />
           </Link>
 
-          <button className="navbar-toggle" onClick={toggleMobileMenu}>
-            ☰
+          <button className="navbar-toggle" onClick={toggleMobileMenu} aria-label="Toggle mobile menu">
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>

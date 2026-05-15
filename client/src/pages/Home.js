@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { Book, FileText, GraduationCap, ClipboardList, MessageSquare, School, Users } from "lucide-react";
 import logo from "./logo.png";
 import "./Home.css";
 import './ScrollToTop.css';
@@ -218,7 +219,7 @@ const Home = () => {
               {...floatingAnimation}
               style={{ animationDelay: '0s' }}
             >
-              <span className="card-icon">📚</span>
+              <span className="card-icon"><Book size={20} /></span>
               <span className="card-text">Study Materials</span>
             </motion.div>
             <motion.div 
@@ -234,7 +235,7 @@ const Home = () => {
                 }
               }}
             >
-              <span className="card-icon">📝</span>
+              <span className="card-icon"><FileText size={20} /></span>
               <span className="card-text">Previous Papers</span>
             </motion.div>
             <motion.div 
@@ -250,7 +251,7 @@ const Home = () => {
                 }
               }}
             >
-              <span className="card-icon">🎓</span>
+              <span className="card-icon"><GraduationCap size={20} /></span>
               <span className="card-text">Senior Guidance</span>
             </motion.div>
           </motion.div>
@@ -272,21 +273,21 @@ const Home = () => {
           <motion.div className="features-grid" variants={staggerChildren}>
             {[
               {
-                icon: "📋",
+                icon: <ClipboardList size={32} />,
                 title: "Organized Syllabus",
                 description: "Department-wise syllabus collection with easy navigation and search functionality.",
                 link: "/syllabus",
                 linkText: "Explore Syllabus →"
               },
               {
-                icon: "📄",
+                icon: <FileText size={32} />,
                 title: "Previous Year Papers",
                 description: "Comprehensive collection of PYQs from multiple universities and departments.",
                 link: "/pyqs",
                 linkText: "Browse PYQs →"
               },
               {
-                icon: "💬",
+                icon: <MessageSquare size={32} />,
                 title: "Exam Feedback",
                 description: "Real student feedback on difficulty levels, important topics, and exam patterns.",
                 link: "/feedback",
@@ -390,21 +391,21 @@ const Home = () => {
           <motion.div className="steps-grid" variants={staggerChildren}>
             {[
               {
-                icon: "🏫",
+                icon: <School size={32} />,
                 title: "Choose Your Department",
                 description: "Select your university and department to access relevant study materials.",
                 link: "/syllabus",
                 linkText: "Select Department →"
               },
               {
-                icon: "📚",
+                icon: <Book size={32} />,
                 title: "Browse Resources",
                 description: "Explore syllabus, previous papers, and feedback from fellow students.",
                 link: "/pyqs",
                 linkText: "Browse Resources →"
               },
               {
-                icon: "🤝",
+                icon: <Users size={32} />,
                 title: "Connect & Learn",
                 description: "Get guidance from seniors and share your own exam experiences.",
                 link: "/mentorship",
