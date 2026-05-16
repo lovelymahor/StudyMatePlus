@@ -1,0 +1,45 @@
+/* EmptyState.css */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  text-align: center;
+  background: var(--card);
+  border: 2px dashed var(--muted);
+  border-radius: 15px;
+  margin: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.empty-state:hover {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.empty-state-icon {
+  color: var(--muted);
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.empty-state-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.empty-state-description {
+  color: var(--muted);
+  max-width: 400px;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.empty-state-action {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}

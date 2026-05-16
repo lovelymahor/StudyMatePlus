@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { ClipboardList } from "lucide-react";
 import "./Todo.css";
 import Calendar from "../components/Calendar";
+import EmptyState from "../components/EmptyState";
 
 const STORAGE_KEY = "smp_tasks_v1";
 
@@ -234,7 +236,19 @@ export default function Todo() {
             Add New Task
           </button>
         </div>
-        {tasks.length === 0 && <p className="muted">No tasks yet — add one above.</p>}
+        {tasks.length === 0 && (
+          <EmptyState 
+            icon={ClipboardList}
+            title="No tasks yet"
+            description="Use the calendar or the button above to add your first task and stay organized."
+            actionText="Add New Task"
+            onAction={() => {
+              setForm(defaultForm);
+              setIsEditing(false);
+              setShowModal(true);
+            }}
+          />
+        )}
         <ul>
           {tasks.map((t) => (
             <li key={t.id} className={`task ${t.completed ? "done" : ""}`}>
