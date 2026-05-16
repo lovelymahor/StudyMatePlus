@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { Book, FileText, GraduationCap, ClipboardList, MessageSquare, School, Users } from "lucide-react";
 import logo from "./logo.png";
 import "./Home.css";
 import './ScrollToTop.css';
@@ -163,62 +164,96 @@ const Home = () => {
   return (
     <div className="home">
       {/* Hero Section */}
-      <motion.section
+      <motion.section 
         className="hero"
         initial="hidden"
         animate="visible"
         variants={staggerChildren}
       >
         <div className="hero-container">
-          {/* LEFT — text */}
           <motion.div className="hero-content" variants={slideInLeft}>
-            <motion.div className="hero-badge" variants={fadeInUp}>
-              🎓&nbsp; Open-source · Free · Student-first
-            </motion.div>
             <motion.h1 className="hero-title" variants={fadeInUp}>
               Welcome to <span className="brand-highlight">StudyMatePlus</span>
             </motion.h1>
-            <motion.p className="hero-subtitle" variants={fadeInUp}>
+            <motion.p 
+              className="hero-subtitle"
+              variants={fadeInUp}
+            >
               Your one-stop destination for academic resources, previous year
-              questions, and connecting with seniors for exam preparation success.
+              questions, and connecting with seniors for exam preparation
+              success.
             </motion.p>
-            <motion.div className="hero-buttons" variants={staggerChildrenFast}>
+            <motion.div 
+              className="hero-buttons"
+              variants={staggerChildrenFast}
+            >
               <motion.div variants={scaleIn}>
                 <Link to="/syllabus" className="btn btn-primary-home">
-                  Browse Syllabus
+                  <motion.span
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Browse Syllabus
+                  </motion.span>
                 </Link>
               </motion.div>
               <motion.div variants={scaleIn}>
                 <Link to="/pyqs" className="btn btn-secondary">
-                  Previous Papers
+                  <motion.span
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Previous Papers
+                  </motion.span>
                 </Link>
               </motion.div>
             </motion.div>
           </motion.div>
-
-          {/* RIGHT — 2×2 card grid */}
-          <motion.div className="hero-visual" variants={slideInRight}>
-            {[
-              { icon: "📚", title: "Study Materials",  desc: "Curated notes & resources", delay: 0    },
-              { icon: "📝", title: "Previous Papers",  desc: "Year-wise PYQs by dept",    delay: 0.1  },
-              { icon: "🎓", title: "Senior Guidance",  desc: "Connect with seniors",       delay: 0.2  },
-              { icon: "💬", title: "Exam Feedback",    desc: "Real student insights",      delay: 0.3  },
-            ].map((card, i) => (
-              <motion.div
-                key={i}
-                className="hero-card"
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: card.delay + 0.5, duration: 0.5, ease: "easeOut" }}
-                whileHover={{ y: -6, scale: 1.04 }}
-              >
-                <span className="hero-card-icon">{card.icon}</span>
-                <div>
-                  <p className="hero-card-title">{card.title}</p>
-                  <p className="hero-card-desc">{card.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+          <motion.div 
+            className="hero-image"
+            variants={slideInRight}
+          >
+            <motion.div 
+              className="floating-card"
+              variants={bounceIn}
+              {...floatingAnimation}
+              style={{ animationDelay: '0s' }}
+            >
+              <span className="card-icon"><Book size={20} /></span>
+              <span className="card-text">Study Materials</span>
+            </motion.div>
+            <motion.div 
+              className="floating-card"
+              variants={bounceIn}
+              animate={{
+                y: [0, -15, 0],
+                transition: {
+                  duration: 3.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }
+              }}
+            >
+              <span className="card-icon"><FileText size={20} /></span>
+              <span className="card-text">Previous Papers</span>
+            </motion.div>
+            <motion.div 
+              className="floating-card"
+              variants={bounceIn}
+              animate={{
+                y: [0, -12, 0],
+                transition: {
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }
+              }}
+            >
+              <span className="card-icon"><GraduationCap size={20} /></span>
+              <span className="card-text">Senior Guidance</span>
+            </motion.div>
           </motion.div>
         </div>
       </motion.section>
@@ -238,21 +273,21 @@ const Home = () => {
           <motion.div className="features-grid" variants={staggerChildren}>
             {[
               {
-                icon: "📋",
+                icon: <ClipboardList size={32} />,
                 title: "Organized Syllabus",
                 description: "Department-wise syllabus collection with easy navigation and search functionality.",
                 link: "/syllabus",
                 linkText: "Explore Syllabus →"
               },
               {
-                icon: "📄",
+                icon: <FileText size={32} />,
                 title: "Previous Year Papers",
                 description: "Comprehensive collection of PYQs from multiple universities and departments.",
                 link: "/pyqs",
                 linkText: "Browse PYQs →"
               },
               {
-                icon: "💬",
+                icon: <MessageSquare size={32} />,
                 title: "Exam Feedback",
                 description: "Real student feedback on difficulty levels, important topics, and exam patterns.",
                 link: "/feedback",
@@ -356,21 +391,21 @@ const Home = () => {
           <motion.div className="steps-grid" variants={staggerChildren}>
             {[
               {
-                icon: "🏫",
+                icon: <School size={32} />,
                 title: "Choose Your Department",
                 description: "Select your university and department to access relevant study materials.",
                 link: "/syllabus",
                 linkText: "Select Department →"
               },
               {
-                icon: "📚",
+                icon: <Book size={32} />,
                 title: "Browse Resources",
                 description: "Explore syllabus, previous papers, and feedback from fellow students.",
                 link: "/pyqs",
                 linkText: "Browse Resources →"
               },
               {
-                icon: "🤝",
+                icon: <Users size={32} />,
                 title: "Connect & Learn",
                 description: "Get guidance from seniors and share your own exam experiences.",
                 link: "/mentorship",

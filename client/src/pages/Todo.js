@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { X, SkipForward } from "lucide-react";
 import "./Todo.css";
 import Calendar from "../components/Calendar";
 
@@ -168,7 +169,7 @@ export default function Todo() {
           <div className="smp-modal-content">
             <div className="smp-modal-header">
               <h3>{isEditing ? 'Edit Task' : 'Add New Task'}</h3>
-              <button aria-label="Close" className="modal-close" onClick={resetForm}>×</button>
+              <button aria-label="Close" className="modal-close" onClick={resetForm}><X size={20} /></button>
             </div>
             <form className="todo-form" onSubmit={handleSubmit}>
               <div className="row">
@@ -251,7 +252,7 @@ export default function Todo() {
               <div className="task-actions">
                 {t.recurrence !== "none" && (
                   <button title="Advance to next occurrence" onClick={() => handleAdvanceOnce(t.id)}>
-                    ⤴
+                    <SkipForward size={16} />
                   </button>
                 )}
                 <button onClick={() => handleEdit(t)}>Edit</button>
