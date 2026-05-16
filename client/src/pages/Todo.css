@@ -58,7 +58,28 @@
 .task-actions { display:flex; gap:0.4rem; align-items:center }
 .task button { background:transparent; border:1px solid var(--border); padding:0.3rem 0.5rem; border-radius:6px }
 .task .danger { border-color:#ffb3b3; color:#b80000 }
-.task.done { opacity:0.6; text-decoration:line-through }
+.todo-list .done {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+/* Validation Styles */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+input.error, textarea.error {
+  border-color: #ef4444 !important;
+}
+
+.error-text {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 4px;
+  text-align: left;
+}
 
 @media (max-width: 880px) {
   .todo-page { grid-template-columns: 1fr; padding:0 0.5rem }
