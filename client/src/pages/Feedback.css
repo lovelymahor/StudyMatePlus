@@ -1,7 +1,7 @@
 .feedback {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text);
 }
 
 .container {
@@ -12,7 +12,7 @@
 
 /* Feedback Hero Section */
 .feedback-hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   padding: 6rem 0 4rem;
   color: white;
   text-align: center;
@@ -57,7 +57,7 @@
 /* Stats Section */
 .feedback-stats {
   padding: 4rem 0;
-  background: #f8fafc;
+  background: var(--card);
 }
 
 .stats-grid {
@@ -69,7 +69,7 @@
 .stat-item {
   text-align: center;
   padding: 2rem;
-  background: white;
+  background: var(--card);
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
@@ -89,22 +89,22 @@
 .stat-number {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #667eea;
+  color: var(--brand);
   margin-bottom: 0.5rem;
   display: block;
 }
 
 .stat-label {
   font-size: 1rem;
-  color: #666;
+  color: var(--muted);
   font-weight: 500;
 }
 
 /* Filters Section */
 .feedback-filters {
   padding: 3rem 0;
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
 }
 
 .filters-wrapper {
@@ -123,41 +123,41 @@
 .filter-group label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--muted);
 }
 
 .filter-select {
   padding: 0.75rem 1rem;
   margin-bottom: 0.75rem ;
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--border);
   border-radius: 10px;
   font-size: 1rem;
-  background: white;
-  color: #374151;
+  background: var(--card);
+  color: var(--muted);
   transition: all 0.3s ease;
   min-width: 200px;
 }
 
 .filter-select:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--brand);
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 .results-count {
   margin-left: auto;
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--muted);
   font-weight: 500;
   padding: 0.75rem 1rem;
-  background: #f3f4f6;
+  background: var(--card);
   border-radius: 25px;
 }
 
 /* Feedback Content */
 .feedback-content {
   padding: 4rem 0;
-  background: #f8fafc;
+  background: var(--card);
 }
 
 .feedback-grid {
@@ -167,7 +167,7 @@
 }
 
 .feedback-card {
-  background: white;
+  background: var(--card);
   border-radius: 20px;
   padding: 2.5rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -178,7 +178,7 @@
 .feedback-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-  border-color: #667eea;
+  border-color: var(--brand);
 }
 
 /* Feedback Header */
@@ -202,7 +202,7 @@
 
 .student-details {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--muted);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -210,12 +210,12 @@
 }
 
 .separator {
-  color: #d1d5db;
+  color: var(--border);
 }
 
 .university {
   font-weight: 600;
-  color: #667eea;
+  color: var(--brand);
 }
 
 .department {
@@ -234,7 +234,7 @@
 
 .star {
   font-size: 1.2rem;
-  color: #d1d5db;
+  color: var(--border);
   transition: color 0.2s ease;
 }
 
@@ -258,7 +258,7 @@
 
 .subject-details {
   font-size: 0.95rem;
-  color: #6b7280;
+  color: var(--muted);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -294,10 +294,10 @@
 
 .prep-time {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--muted);
   font-weight: 600;
   padding: 0.5rem 1rem;
-  background: #f3f4f6;
+  background: var(--card);
   border-radius: 20px;
 }
 
@@ -335,7 +335,7 @@
 .topic-tag,
 .resource-tag {
   padding: 0.4rem 0.8rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   color: white;
   border-radius: 15px;
   font-size: 0.8rem;
@@ -348,7 +348,7 @@
 }
 
 .exam-pattern {
-  background: #f8fafc;
+  background: var(--card);
   padding: 1rem;
   border-radius: 10px;
   border-left: 4px solid #667eea;
@@ -356,17 +356,19 @@
 }
 
 .study-tips {
-  background: #ecfdf5;
+  background: rgba(16, 185, 129, 0.1);
   padding: 1rem;
   border-radius: 10px;
   border-left: 4px solid #10b981;
+  color: var(--text);
 }
 
 .time-management {
-  background: #fef3c7;
+  background: rgba(245, 158, 11, 0.1);
   padding: 1rem;
   border-radius: 10px;
   border-left: 4px solid #f59e0b;
+  color: var(--text);
 }
 
 /* CTA Section */
@@ -406,7 +408,7 @@
 
 .btn-primary {
   background: linear-gradient(45deg, #ffd700, #ffed4a);
-  color: #333;
+  color: var(--text);
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
@@ -438,7 +440,7 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--card);
   padding: 30px;
   border-radius: 12px;
   width: 90%;
@@ -454,7 +456,7 @@
 .modal-content h2 {
   margin-top: 0;
   margin-bottom: 20px;
-  color: #333;
+  color: var(--text);
   text-align: center;
 }
 
@@ -851,13 +853,13 @@
 .loading-state {
   text-align: center;
   padding: 4rem 0;
-  color: #6b7280;
+  color: var(--muted);
 }
 
 .loading-spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid #e5e7eb;
+  border: 4px solid var(--border);
   border-top: 4px solid #667eea;
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -872,13 +874,13 @@
 .empty-state {
   text-align: center;
   padding: 4rem 0;
-  color: #6b7280;
+  color: var(--muted);
 }
 
 .empty-state h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #374151;
+  color: var(--muted);
 }
 
 .empty-state p {
@@ -894,7 +896,7 @@
 }
 
 .feedback-card:focus-within {
-  border-color: #667eea;
+  border-color: var(--brand);
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
@@ -910,7 +912,7 @@
   
   .feedback-card {
     box-shadow: none;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border);
     page-break-inside: avoid;
     margin-bottom: 2rem;
   }

@@ -22,7 +22,7 @@
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   min-height: 90vh;
   display: flex;
   align-items: center;
@@ -117,18 +117,18 @@
 
 .btn-secondary:hover {
   background: var(--card);
-  color: #667eea;
+  color: var(--brand);
   transform: translateY(-3px);
 }
 
 .btn-outline {
   background: transparent;
-  color: #667eea;
+  color: var(--brand);
   border: 2px solid #667eea;
 }
 
 .btn-outline:hover {
-  background: #667eea;
+  background: var(--brand);
   color: var(--text);
   transform: translateY(-3px);
 }
@@ -263,20 +263,20 @@ html[data-theme="dark"] .section-title {
 }
 
 .feature-link {
-  color: #667eea;
+  color: var(--brand);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .feature-link:hover {
-  color: #764ba2;
+  color: var(--brand);
 }
 
 /* Stats Section */
 .stats {
   padding: 4rem 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   color: var(--text);
 }
 
@@ -511,10 +511,10 @@ html[data-theme="light"] .footer-bottom {
 }
 
 .footer-section h3, .footer-section h4 {
-  color: #facc15;
+  color: var(--heading);
   margin-bottom: 10px;
 }
-/* In light mode, use dark heading color for better contrast */
+/* In light mode, use heading color for better contrast */
 html[data-theme="light"] .footer-section h3,
 html[data-theme="light"] .footer-section h4 {
   color: var(--heading);
@@ -538,7 +538,7 @@ html[data-theme="light"] .footer-section h4 {
 }
 
 .social-links a:hover {
-  color: #3b82f6;
+  color: var(--brand);
   transform: scale(1.2);
 }
 
@@ -548,7 +548,7 @@ html[data-theme="light"] .footer-section h4 {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 15px;
   font-size: 0.9rem;
-  color: #9ca3af;
+  color: var(--muted);
 }
 
 .footer-section ul {
