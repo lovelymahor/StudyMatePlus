@@ -18,6 +18,7 @@ import MindMapEditor from "./pages/MindMapEditor";
 import Profile from "./pages/Profile.js";
 import SubmitFeedback from "./pages/SubmitFeedback";
 import Todo from "./pages/Todo";
+import Footer from "./components/Footer";
 
 
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/feedback/submit" element={<SubmitFeedback />} />
           </Routes>
         </div>
+        <Footer />
       </Router>
     </ThemeProvider>
   );
