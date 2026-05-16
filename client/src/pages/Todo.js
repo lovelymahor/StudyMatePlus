@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Todo.css";
 import Calendar from "../components/Calendar";
+import TodoItem from "../components/TodoItem";
+import TodoForm from "../components/TodoForm";
+import TaskModal from "../components/TaskModal";
 
 const STORAGE_KEY = "smp_tasks_v1";
 
@@ -68,7 +71,6 @@ export default function Todo() {
   }, []);
 
   useEffect(() => {
-    console.log("[Todo] saving tasks", tasks);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
   }, [tasks]);
 
@@ -89,7 +91,6 @@ export default function Todo() {
     }
 
     const newTask = { ...form, id: generateId(), createdAt: new Date().toISOString() };
-    console.log("[Todo] adding task", newTask);
     setTasks((prev) => [newTask, ...prev]);
     resetForm();
   }
@@ -128,7 +129,6 @@ export default function Todo() {
           tasks={tasks}
           selected={form.deadline}
           onSelect={(d) => {
-            // prefill deadline with selected day at 09:00 local time and open modal
             const dt = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 9, 0, 0);
             setForm((f) => ({ ...f, deadline: dt.toISOString() }));
             setShowModal(true);
@@ -144,88 +144,40 @@ export default function Todo() {
           {tasks.length>0 && (
             <ul style={{marginTop:8, listStyle:'none', padding:0, display:'grid', gap:8}}>
               {tasks.slice(0,3).map(t=> (
-                <li key={t.id} className="task" style={{padding:'8px', background:'var(--bg)', borderRadius:8}}>
-                  <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
-                    <div>
-                      <div style={{fontWeight:600}}>{t.title}</div>
-                      <div style={{color:'var(--muted)', fontSize:12}}>Due {new Date(t.deadline).toLocaleString()}</div>
-                    </div>
-                    <div>
-                      <button onClick={()=>handleEdit(t)} style={{marginRight:8}}>Edit</button>
-                      <button className="danger" onClick={()=>handleDelete(t.id)}>Delete</button>
-                    </div>
-                  </div>
-                </li>
+                <TodoItem 
+                  key={t.id} 
+                  task={t} 
+                  toggleComplete={toggleComplete} 
+                  handleEdit={handleEdit} 
+                  handleDelete={handleDelete} 
+                  handleAdvanceOnce={handleAdvanceOnce} 
+                />
               ))}
             </ul>
           )}
         </div>
       </div>
 
-      {/* Modal for add/edit form */}
-      {form && (
-        <div className={`smp-modal ${showModal ? 'open' : ''}`}>
-          <div className="smp-modal-content">
-            <div className="smp-modal-header">
-              <h3>{isEditing ? 'Edit Task' : 'Add New Task'}</h3>
-              <button aria-label="Close" className="modal-close" onClick={resetForm}>×</button>
-            </div>
-            <form className="todo-form" onSubmit={handleSubmit}>
-              <div className="row">
-                <input
-                  value={form.title}
-                  onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
-                  placeholder="Task title"
-                />
-                <select value={form.recurrence} onChange={(e) => setForm((f) => ({ ...f, recurrence: e.target.value }))}>
-                  <option value="none">Does not repeat</option>
-                  <option value="daily">Daily</option>
-                  <option value="weekly">Weekly</option>
-                  <option value="monthly">Monthly</option>
-                </select>
-              </div>
+      <TaskModal 
+        isOpen={showModal} 
+        onClose={resetForm} 
+        title={isEditing ? 'Edit Task' : 'Add New Task'}
+      >
+        <TodoForm 
+          form={form} 
+          setForm={setForm} 
+          handleSubmit={handleSubmit} 
+          resetForm={resetForm} 
+          isEditing={isEditing} 
+        />
+      </TaskModal>
 
-              <textarea
-                value={form.description}
-                onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
-                placeholder="Description (optional)"
-              />
-
-              <div className="row">
-                <label className="deadline-label">
-                  Deadline
-                  <input
-                    type="datetime-local"
-                        value={form.deadline ? new Date(form.deadline).toISOString().slice(0,16) : ''}
-                        onChange={(e) => {
-                          const v = e.target.value; // yyyy-mm-ddThh:mm
-                          const iso = v ? new Date(v).toISOString() : '';
-                          setForm((f) => ({ ...f, deadline: iso }));
-                        }}
-                  />
-                </label>
-
-                <div className="form-actions">
-                  <button type="submit" className="btn-primary">
-                    {isEditing ? "Save" : "Add Task"}
-                  </button>
-                  <button type="button" className="btn-secondary" onClick={resetForm}>
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
-  <div className="todo-list">
+      <div className="todo-list">
         <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
           <h3>Upcoming Tasks</h3>
           <button
             className="btn-primary"
             onClick={() => {
-              // prepare empty form and open modal
               setForm(defaultForm);
               setIsEditing(false);
               setShowModal(true);
@@ -237,29 +189,14 @@ export default function Todo() {
         {tasks.length === 0 && <p className="muted">No tasks yet — add one above.</p>}
         <ul>
           {tasks.map((t) => (
-            <li key={t.id} className={`task ${t.completed ? "done" : ""}`}>
-              <div className="task-main">
-                <input type="checkbox" checked={!!t.completed} onChange={() => toggleComplete(t.id)} />
-                <div className="task-info">
-                  <div className="task-title">{t.title}</div>
-                  <div className="task-meta">
-                    Due {new Date(t.deadline).toLocaleString()} • {t.recurrence !== "none" ? `${t.recurrence}` : "one‑time"}
-                  </div>
-                  {t.description && <div className="task-desc">{t.description}</div>}
-                </div>
-              </div>
-              <div className="task-actions">
-                {t.recurrence !== "none" && (
-                  <button title="Advance to next occurrence" onClick={() => handleAdvanceOnce(t.id)}>
-                    ⤴
-                  </button>
-                )}
-                <button onClick={() => handleEdit(t)}>Edit</button>
-                <button className="danger" onClick={() => handleDelete(t.id)}>
-                  Delete
-                </button>
-              </div>
-            </li>
+            <TodoItem 
+              key={t.id} 
+              task={t} 
+              toggleComplete={toggleComplete} 
+              handleEdit={handleEdit} 
+              handleDelete={handleDelete} 
+              handleAdvanceOnce={handleAdvanceOnce} 
+            />
           ))}
         </ul>
       </div>
