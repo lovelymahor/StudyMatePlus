@@ -18,6 +18,8 @@ import MindMapEditor from "./pages/MindMapEditor";
 import Profile from "./pages/Profile.js";
 import SubmitFeedback from "./pages/SubmitFeedback";
 import Todo from "./pages/Todo";
+import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
 
 
 const App = () => {
@@ -26,6 +28,7 @@ const App = () => {
       <Router>
         <Navbar />
         <div style={{ padding: "2rem" }}>
+          <BackToTop />
           <ScrollToTop />
           <Routes>
           <Route path="/" element={<Home />} />
