@@ -6,11 +6,9 @@
 }
 
 .profile-header-card {
-  background: transparent;
-  padding: 2rem;
-  border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
+  background: var(--card);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,19 +35,19 @@
 .profile-user-name {
   font-size: 2.25rem;
   font-weight: 700;
-  color: #1a202c;
+  color: var(--heading);
   margin: 0;
 }
 
 .profile-user-email {
   font-size: 1.1rem;
-  color: #718096;
+  color: var(--text-secondary);
   margin: 0.25rem 0;
 }
 
 .profile-join-date {
   font-size: 0.9rem;
-  color: #a0aec0;
+  color: var(--muted);
   margin-top: 0.5rem;
 }
 
@@ -95,7 +93,7 @@
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
-  color: #4a5568;
+  color: var(--text);
   border-radius: 50px;
   transition: all 0.3s ease;
 }
@@ -122,43 +120,51 @@
   justify-content: center;
   text-align: center;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
+  background: var(--card);
 }
 
 .content-icon {
   font-size: 4rem;
-  color: #cbd5e1;
+  color: var(--muted);
+  opacity: 0.6;
   margin-bottom: 1.5rem;
 }
 
 .content-panel p {
   font-size: 1.2rem;
-  color: #718096;
+  color: var(--muted);
   font-weight: 500;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+
   .profile-header-card,
   .profile-info {
     flex-direction: column;
     text-align: center;
   }
+
   .edit-profile-btn-modern {
     margin-top: 1rem;
   }
+
   .profile-avatar {
     width: 100px;
     height: 100px;
   }
+
   .profile-user-name {
     font-size: 1.8rem;
   }
+
   .profile-tabs {
     flex-direction: column;
     width: 100%;
     border-radius: 16px;
   }
+
   .tab-btn {
     width: 100%;
   }

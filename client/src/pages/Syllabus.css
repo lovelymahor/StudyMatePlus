@@ -3,7 +3,7 @@
 .syllabus {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text);
 }
 
 .container {
@@ -91,9 +91,9 @@
 
 /* Search and Filters */
 .search-filters {
-  background: #f8fafc;
+  background: var(--card);
   padding: 2rem 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border);
 }
 
 .search-bar {
@@ -110,9 +110,10 @@
   width: 100%;
   padding: 1rem 1rem 1rem 3rem;
   font-size: 1.1rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border);
   border-radius: 50px;
-  background: white;
+  background: var(--bg);
+  color: var(--text);
   transition: all 0.3s ease;
   outline: none;
 }
@@ -153,11 +154,11 @@
 
 .filter-group select {
   padding: 0.8rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border);
   border-radius: 8px;
-  background: white;
+  background: var(--bg);
   font-size: 1rem;
-  color: #374151;
+  color: var(--text);
   cursor: pointer;
   transition: border-color 0.3s ease;
 }
@@ -170,7 +171,7 @@
 /* Results Section */
 .results {
   padding: 3rem 0;
-  background: white;
+  background: var(--bg);
 }
 
 .results-header {
@@ -182,7 +183,7 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--heading);
 }
 
 .results-header p {
@@ -208,7 +209,7 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #374151;
+  color: var(--heading);
 }
 
 .no-results p {
@@ -225,11 +226,11 @@
 
 /* Syllabus Card */
 .syllabus-card {
-  background: white;
+  background: var(--card);
   border-radius: 15px;
   padding: 2rem;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -257,7 +258,7 @@
 .card-title {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #333;
+  color: var(--heading);
   margin-bottom: 0.5rem;
   line-height: 1.4;
 }
@@ -307,7 +308,7 @@
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.8rem;
-  color: #374151;
+  color: var(--heading);
 }
 
 .subjects-list {
@@ -317,13 +318,13 @@
 }
 
 .subject-tag {
-  background: #f3f4f6;
-  color: #374151;
+  background: var(--bg);
+  color: var(--muted);
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 500;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
 }
 
 .tags-section {
@@ -430,54 +431,54 @@
   .syllabus-hero h1 {
     font-size: 2.5rem;
   }
-  
+
   .syllabus-hero p {
     font-size: 1.1rem;
   }
-  
+
   .hero-stats {
     gap: 1.5rem;
   }
-  
+
   .hero-stat {
     min-width: 100px;
   }
-  
+
   .stat-number {
     font-size: 2rem;
   }
-  
+
   .filters {
     grid-template-columns: 1fr;
   }
-  
+
   .syllabus-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .card-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
-  
+
   .difficulty-badge {
     align-self: flex-start;
   }
-  
+
   .card-stats {
     flex-direction: column;
     gap: 0.8rem;
   }
-  
+
   .stat {
     justify-content: flex-start;
   }
-  
+
   .card-actions {
     flex-direction: column;
   }
-  
+
   .help-actions {
     flex-direction: column;
     align-items: center;
@@ -488,35 +489,35 @@
   .container {
     padding: 0 1rem;
   }
-  
+
   .syllabus-hero {
     padding: 3rem 0;
   }
-  
+
   .syllabus-hero h1 {
     font-size: 2rem;
   }
-  
+
   .search-filters {
     padding: 1.5rem 0;
   }
-  
+
   .search-input {
     font-size: 1rem;
   }
-  
+
   .results {
     padding: 2rem 0;
   }
-  
+
   .syllabus-card {
     padding: 1.5rem;
   }
-  
+
   .subjects-list {
     gap: 0.3rem;
   }
-  
+
   .subject-tag {
     font-size: 0.8rem;
     padding: 0.3rem 0.6rem;

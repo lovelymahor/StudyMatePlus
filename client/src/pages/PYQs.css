@@ -22,7 +22,7 @@
 /* Selection Section */
 .pyqs-selection {
   padding: 40px 20px;
-  background-color: #fff;
+  background-color: var(--bg);
 }
 
 .pyqs-form {
@@ -53,7 +53,7 @@
 /* Results Section */
 .pyqs-results {
   padding: 40px 20px;
-  background-color: #f8f9fa;
+  background-color: var(--card);
   text-align: center;
 }
 
@@ -82,10 +82,11 @@
 
 /* Individual PYQ Card */
 .pyq-card {
-  background-color: #fff;
+  background-color: var(--bg);
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border);
   text-align: left;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -98,12 +99,12 @@
 .pyq-card h3 {
   font-size: 1.1rem;
   margin-bottom: 10px;
-  color: #333;
+  color: var(--heading);
 }
 
 .pyq-card p {
   font-size: 0.95rem;
-  color: #555;
+  color: var(--muted);
   margin: 4px 0;
 }
 
@@ -142,9 +143,10 @@
   }
 
   .form-group {
-    min-width: 200px; /* Allow form groups to be a bit smaller */
+    min-width: 200px;
+    /* Allow form groups to be a bit smaller */
   }
-  
+
   .pyqs-results-box h2 {
     font-size: 1.4rem;
   }
@@ -154,7 +156,8 @@
 @media (max-width: 480px) {
   .pyqs-hero {
     padding: 40px 10px;
-    border-radius: 0; /* Full-width hero on mobile */
+    border-radius: 0;
+    /* Full-width hero on mobile */
   }
 
   .pyqs-hero h1 {
@@ -166,7 +169,8 @@
   }
 
   .form-group {
-    width: 100%; /* Make form groups stack vertically */
+    width: 100%;
+    /* Make form groups stack vertically */
     min-width: 0;
   }
 

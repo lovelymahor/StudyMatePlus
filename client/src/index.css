@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -17,25 +21,47 @@ code {
 /* Theme variables */
 :root {
   --bg: #ffffff;
-  --text: #0f172a; /* Slate-900 */
-  --muted: #334155; /* Slate-700 for stronger contrast */
-  --card: #f8fafc; /* Slate-50 */
-  --border: #e2e8f0; /* Slate-200 */
-  --brand: #2563eb; /* Stronger blue for links/buttons */
-  --heading: #0a0f1f; /* Deep heading color */
+  --text: #0f172a;
+  /* Slate-900 */
+  --muted: #334155;
+  /* Slate-700 for stronger contrast */
+  --card: #f8fafc;
+  /* Slate-50 */
+  --border: #e2e8f0;
+  /* Slate-200 */
+  --brand: #2563eb;
+  /* Stronger blue for links/buttons */
+  --heading: #0a0f1f;
+  /* Deep heading color */
 }
 
 html[data-theme="dark"] {
-  --bg: #0b1220; /* near-ink */
-  --text: #f1f5ff; /* very light for readability */
-  --muted: #c7cfdb; /* lighter muted */
-  --card: #101826; /* slightly lighter than bg for separation */
-  --border: #263243; /* visible border */
-  --brand: #8ab4ff; /* accessible blue on dark */
-  --heading: #ffffff; /* pure white headings */
+  --bg: #0f172a;
+  /* Premium Slate 900 */
+  --text: #f8fafc;
+  /* Slate 50 */
+  --muted: #94a3b8;
+  /* Slate 400 */
+  --card: #1e293b;
+  /* Slate 800 */
+  --border: #334155;
+  /* Slate 700 */
+  --brand: #6366f1;
+  /* Indigo 500 */
+  --heading: #ffffff;
 }
 
-.container, .home, .faq-page, .features, .stats, .how-it-works, .testimonials, .cta, .contributors, .footer, .navbar {
+.container,
+.home,
+.faq-page,
+.features,
+.stats,
+.how-it-works,
+.testimonials,
+.cta,
+.contributors,
+.footer,
+.navbar {
   background: var(--bg);
   color: var(--text);
 }
@@ -49,21 +75,36 @@ html[data-theme="dark"] {
   background: transparent !important;
 }
 
-.feature-card, .floating-card, .contributor-card {
+.feature-card,
+.floating-card,
+.contributor-card {
   background: var(--card);
   border-color: var(--border);
 }
 
 /* Let these elements sit on section backgrounds (no white panels) */
-.stat-item, .cta-content, .footer-content {
+.stat-item,
+.cta-content,
+.footer-content {
   background: transparent;
 }
 
-a { color: var(--brand); }
-a:hover { filter: brightness(1.1); }
+a {
+  color: var(--brand);
+}
+
+a:hover {
+  filter: brightness(1.1);
+}
 
 /* Headings use dedicated heading token for readability */
-h1, h2, h3, h4, h5, h6, .section-title {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.section-title {
   color: var(--heading);
 }
 
@@ -79,14 +120,28 @@ html[data-theme="dark"] .section-title {
 }
 
 /* Ensure all cards/sections across pages inherit theme */
-.card, .section, .panel, .list, .grid, .hero, .faq-section, .features-section, .contact-section,
-.contributors, .cta, .stats, .how-it-works, .testimonials {
+.card,
+.section,
+.panel,
+.list,
+.grid,
+.hero,
+.faq-section,
+.features-section,
+.contact-section,
+.contributors,
+.cta,
+.stats,
+.how-it-works,
+.testimonials {
   background: var(--card);
   color: var(--text);
 }
 
 /* Inputs and buttons generic theming */
-input, textarea, select {
+input,
+textarea,
+select {
   background: var(--card);
   color: var(--text);
   border: 1px solid var(--border);
@@ -97,7 +152,8 @@ button {
 }
 
 /* Themed logos: invert in dark for contrast */
-.navbar-logo, .themed-logo {
+.navbar-logo,
+.themed-logo {
   transition: filter 200ms ease;
 }
 

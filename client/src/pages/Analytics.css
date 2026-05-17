@@ -9,7 +9,7 @@
   min-height: 100vh;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text);
 }
 
 .container {
@@ -80,14 +80,15 @@
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
-  background-color: #f9f9f9;
+  background-color: var(--card);
 }
 
 .chart-container {
-  background: white;
+  background: var(--bg);
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-premium, 0 8px 24px rgba(0, 0, 0, 0.05));
+  border: 1px solid var(--border);
   width: 100%;
   max-width: 500px;
 }
@@ -95,25 +96,30 @@
 .chart-container h2 {
   margin-bottom: 1rem;
   font-size: 1.4rem;
-  color: #333;
+  color: var(--heading);
   text-align: center;
 }
+
 select {
   border: 2px solid #667eea;
   border-radius: 6px;
-  background-color: white;
-  color: #333;
+  background-color: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
 }
 
 button:hover {
   background-color: #5a3e91;
 }
-.insights-section, .filter-section, .download-section {
+
+.insights-section,
+.filter-section,
+.download-section {
   margin-top: 3rem;
   padding: 1rem 2rem;
   background-color: #f9f9f9;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .insights-section h2,
@@ -150,6 +156,7 @@ button:hover {
 .download-btn:hover {
   background-color: #ffc400;
 }
+
 /* Section Wrappers */
 .insights-section,
 .filter-section,
@@ -257,7 +264,7 @@ button:hover {
   .hero-subtitle {
     font-size: 1.1rem;
   }
-  
+
   .analytics-section {
     padding: 3rem 1.5rem;
   }
@@ -265,7 +272,7 @@ button:hover {
   .chart-container {
     padding: 1.5rem;
   }
-  
+
   .insights-section h2,
   .filter-section h2 {
     font-size: 1.4rem;
@@ -291,7 +298,7 @@ button:hover {
   .hero-subtitle {
     font-size: 1rem;
   }
-  
+
   .analytics-section {
     padding: 2rem 1rem;
   }
@@ -305,7 +312,9 @@ button:hover {
     font-size: 1.2rem;
   }
 
-  .insights-section, .filter-section, .download-section {
+  .insights-section,
+  .filter-section,
+  .download-section {
     margin-top: 2rem;
     padding: 1rem 1.5rem;
   }
@@ -322,11 +331,13 @@ button:hover {
   }
 
   .filter-section select {
-    width: 100%; /* Make dropdown full-width for easier tapping */
+    width: 100%;
+    /* Make dropdown full-width for easier tapping */
   }
 
   .download-btn {
-    width: 100%; /* Make button full-width */
+    width: 100%;
+    /* Make button full-width */
     padding: 0.8rem 1rem;
   }
 }

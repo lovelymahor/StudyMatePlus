@@ -1,9 +1,8 @@
-// STEP 1: Import NavLink along with Link
 import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom"; // CHANGED HERE
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { useTheme } from "../theme/ThemeProvider";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { FaMoon, FaSun, FaBars, FaTimes, FaUserCircle } from "react-icons/fa";
 
 const user = {
   avatar: "https://avatar.iran.liara.run/public/boy",
@@ -23,86 +22,97 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 992) {
         setIsMobileMenuOpen(false);
       }
     };
     window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const navLinks = [
+    { to: "/", label: "Home" },
+    { to: "/about", label: "About" },
+    { to: "/syllabus", label: "Syllabus" },
+    { to: "/notes", label: "Notes" },
+    { to: "/pyqs", label: "PYQs" },
+    { to: "/analytics", label: "Analytics" },
+    { to: "/tasks", label: "Tasks" },
+    { to: "/mindmap", label: "Mind Map" },
+    { to: "/feedback", label: "Feedback" },
+    { to: "/faq", label: "FAQs" },
+  ];
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Logo and Profile still use <Link> which is fine */}
-        <Link to="/" className="navbar-brand">
+        <Link to="/" className="navbar-brand" onClick={closeMobileMenu}>
           <img
             src="/logo.png"
-            alt="StudyMatePlus Logo"
+            alt="StudyMatePlus"
             className="navbar-logo"
           />
         </Link>
 
+        {/* Desktop Links - Hidden on Mobile */}
+        <ul className="navbar-links">
+          {navLinks.map((link) => (
+            <li key={link.to}>
+              <NavLink to={link.to} className="navbar-link">
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+
         <div className="navbar-right">
-          
-          {/* STEP 2: Change Desktop <Link> to <NavLink> */}
-          <ul className="navbar-links">
-            <li><NavLink to="/" className="navbar-link">Home</NavLink></li>
-            <li><NavLink to="/about" className="navbar-link">About Us</NavLink></li>
-            <li><NavLink to="/syllabus" className="navbar-link">Syllabus</NavLink></li>
-            <li><NavLink to="/notes" className="navbar-link">Notes</NavLink></li>
-            <li><NavLink to="/pyqs" className="navbar-link">PYQs</NavLink></li>
-            <li><NavLink to="/analytics" className="navbar-link">Analytics</NavLink></li>
-            <li><NavLink to="/tasks" className="navbar-link">Tasks</NavLink></li>
-            <li><NavLink to="/mindmap" className="navbar-link">Mind Map</NavLink></li>
-            <li><NavLink to="/feedback" className="navbar-link">Feedback</NavLink></li>
-            <li><NavLink to="/faq" className="navbar-link">FAQs</NavLink></li>
-          </ul>
-          {/* END OF STEP 2 CHANGE */}
-
-
           <button
             aria-label="Toggle theme"
             className="navbar-theme-toggle"
             onClick={toggleTheme}
-            title={theme === "dark" ? "Switch to light" : "Switch to dark"}
+            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           >
-            {theme === "dark" ? <FaSun /> : <FaMoon />}
+            {theme === "dark" ? <FaSun className="sun-icon" /> : <FaMoon className="moon-icon" />}
           </button>
 
-          <Link to="/profile" className="navbar-profile-link">
+          <Link to="/profile" className="navbar-profile-link" onClick={closeMobileMenu}>
             <img
               src={user.avatar}
-              alt="User Profile"
+              alt="Profile"
               className="navbar-profile-img"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'block';
+              }}
             />
+            <FaUserCircle className="navbar-profile-fallback" style={{ display: 'none', fontSize: '2rem', color: 'var(--muted)' }} />
           </Link>
 
-          <button className="navbar-toggle" onClick={toggleMobileMenu}>
-            ☰
+          <button
+            className="navbar-toggle"
+            onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
 
+      {/* Mobile Menu Dropdown */}
       <div className={`navbar-menu-mobile ${isMobileMenuOpen ? "active" : ""}`}>
-        
-        {/* STEP 3: Change Mobile <Link> to <NavLink> */}
         <ul className="navbar-links-mobile">
-          <li><NavLink to="/" className="navbar-link-mobile" onClick={closeMobileMenu}>Home</NavLink></li>
-          <li><NavLink to="/about" className="navbar-link-mobile" onClick={closeMobileMenu}>About Us</NavLink></li>
-          <li><NavLink to="/syllabus" className="navbar-link-mobile" onClick={closeMobileMenu}>Syllabus</NavLink></li>
-          <li><NavLink to="/notes" className="navbar-link-mobile" onClick={closeMobileMenu}>Notes</NavLink></li>
-          <li><NavLink to="/pyqs" className="navbar-link-mobile" onClick={closeMobileMenu}>PYQs</NavLink></li>
-          <li><NavLink to="/analytics" className="navbar-link-mobile" onClick={closeMobileMenu}>Analytics</NavLink></li>
-          <li><NavLink to="/tasks" className="navbar-link-mobile" onClick={closeMobileMenu}>Tasks</NavLink></li>
-          <li><NavLink to="/mindmap" className="navbar-link-mobile" onClick={closeMobileMenu}>Mind Map</NavLink></li>
-          <li><NavLink to="/feedback" className="navbar-link-mobile" onClick={closeMobileMenu}>Feedback</NavLink></li>
-          <li><NavLink to="/faq" className="navbar-link-mobile" onClick={closeMobileMenu}>FAQs</NavLink></li>
+          {navLinks.map((link) => (
+            <li key={link.to}>
+              <NavLink
+                to={link.to}
+                className="navbar-link-mobile"
+                onClick={closeMobileMenu}
+              >
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
-        {/* END OF STEP 3 CHANGE */}
-
       </div>
     </nav>
   );

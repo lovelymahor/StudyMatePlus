@@ -1,227 +1,249 @@
-/* Navbar.css - StudyMatePlus (Refined & Responsive Design) */
+/* Navbar.css - Enhanced & Premium Alignment */
 
 .navbar {
-  background-color: var(--bg);
+  background-color: var(--glass-bg, rgba(255, 255, 255, 0.8));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 2rem;
   position: sticky;
   top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] .navbar {
+  background-color: var(--glass-bg, rgba(11, 18, 32, 0.8));
 }
 
 .navbar-container {
-  max-width: 1200px;
+  max-width: 1400px;
+  /* Slightly wider for many links */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.navbar-logo {
-  height: 40px;
-  width: auto;
-  display: block;
+  height: 64px;
 }
 
 .navbar-brand {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: var(--text);
-  text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: color 0.3s ease;
+  gap: 0.75rem;
+  text-decoration: none;
+  z-index: 2100;
 }
 
-.navbar-brand:hover {
-  color: var(--brand);
+.navbar-logo {
+  height: 36px;
+  width: auto;
+  transition: transform 0.3s ease;
 }
 
-/* --- NEW --- Wrapper for all right-side elements */
+.navbar-brand:hover .navbar-logo {
+  transform: scale(1.05);
+}
+
+/* Right side elements */
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 1.5rem; /* This sets the space between nav links and the profile icon */
+  gap: 1rem;
 }
 
-/* Theme toggle button */
-.navbar-theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 9999px;
-  background: var(--card);
-  color: var(--text);
-  border: 1px solid var(--border);
-  cursor: pointer;
-}
-
-.navbar-theme-toggle:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-/* Desktop navigation links */
+/* Desktop Links */
 .navbar-links {
-  display: flex; /* This remains flex for desktop layout */
-  gap: 1.5rem;
-  align-items: center;
+  display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 0.5rem;
 }
 
 .navbar-link {
   color: var(--muted);
   text-decoration: none;
   font-weight: 500;
-  font-size: 1rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  position: relative;
 }
 
-.navbar-link:hover,
-.navbar-link:focus {
-  background-color: var(--card);
+.navbar-link:hover {
   color: var(--text);
+  background: var(--card);
 }
 
-/* Mobile toggle button (hamburger icon) */
-.navbar-toggle {
-  display: none; /* Hidden by default */
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--muted);
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.navbar-toggle:hover {
-  background-color: var(--card);
-}
-
-/* Mobile menu container */
-.navbar-menu-mobile {
-  display: none; /* Hidden by default */
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: var(--bg);
-  border-top: 1px solid var(--border);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.navbar-menu-mobile.active {
-  display: block; /* Shown when the menu is toggled */
-  animation: slideDown 0.25s ease;
-}
-
-.navbar-links-mobile {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  list-style: none;
-  margin: 0;
-  gap: 0.8rem;
-}
-
-.navbar-links-mobile li {
-  background-color: var(--card);
-  padding: 12px 20px;
-  color: var(--text);
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 600;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.navbar-links-mobile li:hover {
-  background-color: var(--brand);
-  color: #ffffff;
-  transform: translateX(6px);
-  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
-}
-
-.navbar-link-mobile {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.navbar-link.active,
-.navbar-link-mobile.active {
-  font-weight: 600;
-  background-color: var(--card);
+.navbar-link.active {
   color: var(--brand);
+  background: var(--card);
+  font-weight: 600;
 }
 
-/* Profile Image styles */
-.navbar-profile-link {
+/* Theme Toggle Button */
+.navbar-theme-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 42px;
-  width: 42px;
-  border-radius: 50%;
-  transition: background-color 0.2s ease;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.navbar-theme-toggle .sun-icon {
+  color: #fbbf24;
+}
+
+.navbar-theme-toggle .moon-icon {
+  color: #6366f1;
+}
+
+.navbar-theme-toggle:hover {
+  background: var(--border);
+  transform: translateY(-2px);
+  color: var(--brand);
+}
+
+/* Profile Image */
+.navbar-profile-link {
+  display: flex;
+  align-items: center;
 }
 
 .navbar-profile-img {
-  height: 38px;
   width: 38px;
-  border-radius: 50%;
+  height: 38px;
+  border-radius: 10px;
   object-fit: cover;
   border: 2px solid var(--border);
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.navbar-profile-link:hover .navbar-profile-img {
+.navbar-profile-link:hover .navbar-profile-img,
+.navbar-profile-link:hover .navbar-profile-fallback {
+  border-color: var(--brand);
+  color: var(--brand) !important;
+  transform: scale(1.05);
+}
+
+.navbar-profile-fallback {
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+/* Mobile Toggle Hamburger */
+.navbar-toggle {
+  display: none;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.6rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Menu */
+.navbar-menu-mobile {
+  position: fixed;
+  top: 80px;
+  left: 1.5rem;
+  right: 1.5rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1900;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+[data-theme="dark"] .navbar-menu-mobile {
+  background: #111827;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-menu-mobile.active {
+  display: block;
+  animation: slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-links-mobile {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.navbar-links-mobile li {
+  width: 100%;
+}
+
+.navbar-link-mobile {
+  display: block;
+  padding: 1rem;
+  background: var(--card);
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border);
+}
+
+.navbar-link-mobile:hover,
+.navbar-link-mobile.active {
+  background: var(--brand);
+  color: white;
   border-color: var(--brand);
 }
 
-/* --- RESPONSIVE STYLES --- */
-@media (max-width: 768px) {
-  /* Hide the desktop links list */
+/* Desktop/Tablet Breakpoints */
+@media (max-width: 1100px) {
+  .navbar-links {
+    gap: 0.25rem;
+  }
+
+  .navbar-link {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 992px) {
   .navbar-links {
     display: none;
   }
 
-  /* Show the hamburger toggle button */
   .navbar-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-@media (max-width: 480px) {
-  .navbar {
-    padding: 0.5rem 1rem;
-  }
-  .navbar-brand {
-    font-size: 1.4rem;
-  }
-}
-
-/* Animation for mobile menu dropdown */
-@keyframes slideDown {
+@keyframes slideInUp {
   from {
     opacity: 0;
-    transform: translateY(-5px);
+    transform: translateY(20px) scale(0.95);
   }
+
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
