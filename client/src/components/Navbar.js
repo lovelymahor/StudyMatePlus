@@ -10,20 +10,20 @@ const user = {
 
 // Primary links always visible in the bar
 const primaryLinks = [
-  { to: "/",         label: "Home"      },
-  { to: "/syllabus", label: "Syllabus"  },
-  { to: "/notes",    label: "Notes"     },
-  { to: "/pyqs",     label: "PYQs"      },
-  { to: "/feedback", label: "Feedback"  },
+  { to: "/", label: "Home" },
+  { to: "/syllabus", label: "Syllabus" },
+  { to: "/notes", label: "Notes" },
+  { to: "/pyqs", label: "PYQs" },
+  { to: "/feedback", label: "Feedback" },
 ];
 
 // Secondary links hidden inside "More" dropdown
 const moreLinks = [
-  { to: "/about",     label: "About Us"  },
+  { to: "/about", label: "About Us" },
   { to: "/analytics", label: "Analytics" },
-  { to: "/tasks",     label: "Tasks"     },
-  { to: "/mindmap",   label: "Mind Map"  },
-  { to: "/faq",       label: "FAQs"      },
+  { to: "/tasks", label: "Tasks" },
+  { to: "/mindmap", label: "Mind Map" },
+  { to: "/faq", label: "FAQs" },
 ];
 
 // All links for mobile menu
@@ -36,7 +36,7 @@ const Navbar = () => {
   const dropdownRef = useRef(null);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
-  const closeMobileMenu  = () => setIsMobileMenuOpen(false);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -67,12 +67,9 @@ const Navbar = () => {
           <img src="/logo.png" alt="StudyMatePlus Logo" className="navbar-logo" />
         </Link>
 
-        {/* Right side — desktop */}
-        <div className="navbar-right">
-
-          {/* Primary nav links */}
-          <ul className="navbar-links">
-            {primaryLinks.map(({ to, label }) => (
+        {/* Center — desktop links */}
+        <ul className="navbar-links">
+          {primaryLinks.map(({ to, label }) => (
               <li key={to}>
                 <NavLink
                   to={to}
@@ -116,18 +113,8 @@ const Navbar = () => {
             </li>
           </ul>
 
-          {/* Divider */}
-          <span className="navbar-divider" aria-hidden="true" />
-
-          {/* Theme toggle */}
-          <button
-            aria-label="Toggle theme"
-            className="navbar-theme-toggle"
-            onClick={toggleTheme}
-            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            {theme === "dark" ? <FaSun /> : <FaMoon />}
-          </button>
+        {/* Right side — desktop */}
+        <div className="navbar-right">
 
           {/* Profile */}
           <Link to="/profile" className="navbar-profile-link" aria-label="User profile">
@@ -167,13 +154,6 @@ const Navbar = () => {
 
         {/* Mobile bottom controls */}
         <div className="navbar-mobile-controls">
-          <button
-            aria-label="Toggle theme"
-            className="navbar-theme-toggle"
-            onClick={toggleTheme}
-          >
-            {theme === "dark" ? <FaSun /> : <FaMoon />}
-          </button>
           <Link
             to="/profile"
             className="navbar-profile-link"
