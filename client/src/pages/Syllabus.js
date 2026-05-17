@@ -226,7 +226,7 @@ const [showScroll, setShowScroll] = useState(false);
             <motion.div className="hero-stats" variants={staggerChildren}>
               <motion.div className="hero-stat" variants={scaleIn}>
                 <span className="stat-number">{syllabusData.length}</span>
-                <span className="stat-label">Syllabi Available</span>
+                <span className="stat-label">Syllabus Available</span>
               </motion.div>
               <motion.div className="hero-stat" variants={scaleIn}>
                 <span className="stat-number">{universities.length - 1}</span>
@@ -313,8 +313,8 @@ const [showScroll, setShowScroll] = useState(false);
       >
         <div className="container">
           <motion.div className="results-header" variants={fadeInUp}>
-            <h2>Found {filteredAndSortedSyllabi.length} syllabi</h2>
-            <p>Browse through our collection of verified academic syllabi</p>
+            <h2>Found {filteredAndSortedSyllabi.length} syllabus</h2>
+            <p>Browse through our collection of verified academic syllabus</p>
           </motion.div>
           
           <AnimatePresence>
@@ -326,7 +326,7 @@ const [showScroll, setShowScroll] = useState(false);
                 exit={{ opacity: 0, y: -30 }}
               >
                 <div className="no-results-icon">📭</div>
-                <h3>No syllabi found</h3>
+                <h3>No syllabus found</h3>
                 <p>Try adjusting your search criteria or filters to find what you're looking for.</p>
               </motion.div>
             ) : (
