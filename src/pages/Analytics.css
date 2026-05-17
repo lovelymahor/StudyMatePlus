@@ -19,7 +19,7 @@
 }
 
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #021466 0%, #764ba2 100%);
   min-height: 60vh;
   display: flex;
   align-items: center;
@@ -98,6 +98,7 @@
   color: #333;
   text-align: center;
 }
+
 select {
   border: 2px solid #667eea;
   border-radius: 6px;
@@ -108,12 +109,15 @@ select {
 button:hover {
   background-color: #5a3e91;
 }
-.insights-section, .filter-section, .download-section {
+
+.insights-section,
+.filter-section,
+.download-section {
   margin-top: 3rem;
   padding: 1rem 2rem;
   background-color: #f9f9f9;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .insights-section h2,
@@ -150,6 +154,7 @@ button:hover {
 .download-btn:hover {
   background-color: #ffc400;
 }
+
 /* Section Wrappers */
 .insights-section,
 .filter-section,
@@ -257,7 +262,7 @@ button:hover {
   .hero-subtitle {
     font-size: 1.1rem;
   }
-  
+
   .analytics-section {
     padding: 3rem 1.5rem;
   }
@@ -265,7 +270,7 @@ button:hover {
   .chart-container {
     padding: 1.5rem;
   }
-  
+
   .insights-section h2,
   .filter-section h2 {
     font-size: 1.4rem;
@@ -291,7 +296,7 @@ button:hover {
   .hero-subtitle {
     font-size: 1rem;
   }
-  
+
   .analytics-section {
     padding: 2rem 1rem;
   }
@@ -305,7 +310,9 @@ button:hover {
     font-size: 1.2rem;
   }
 
-  .insights-section, .filter-section, .download-section {
+  .insights-section,
+  .filter-section,
+  .download-section {
     margin-top: 2rem;
     padding: 1rem 1.5rem;
   }
@@ -322,11 +329,13 @@ button:hover {
   }
 
   .filter-section select {
-    width: 100%; /* Make dropdown full-width for easier tapping */
+    width: 100%;
+    /* Make dropdown full-width for easier tapping */
   }
 
   .download-btn {
-    width: 100%; /* Make button full-width */
+    width: 100%;
+    /* Make button full-width */
     padding: 0.8rem 1rem;
   }
 }

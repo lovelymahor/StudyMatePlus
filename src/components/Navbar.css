@@ -6,7 +6,7 @@
 
 /* ── Base ── */
 .navbar {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
@@ -21,9 +21,9 @@
 }
 
 html[data-theme="dark"] .navbar {
-  background: rgba(11, 18, 32, 0.92);
-  border-bottom-color: rgba(38, 50, 67, 0.8);
-  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom-color: rgba(34, 34, 34, 0.9);
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.5);
 }
 
 /* ── Container ── */
@@ -74,7 +74,7 @@ html[data-theme="dark"] .navbar {
 .navbar-link {
   display: inline-flex;
   align-items: center;
-  color: var(--muted);
+  color: #1a4a6b; /* Dark blue — matches logo */
   text-decoration: none;
   font-weight: 500;
   font-size: 0.875rem;
@@ -86,14 +86,14 @@ html[data-theme="dark"] .navbar {
 }
 
 .navbar-link:hover {
-  background: rgba(99, 102, 241, 0.08);
-  color: #4f46e5;
+  background: rgba(26, 74, 107, 0.1);
+  color: #0f2d42;
 }
 
 /* Active pill highlight */
 .navbar-link.active {
-  background: rgba(99, 102, 241, 0.12);
-  color: #4f46e5;
+  background: rgba(26, 74, 107, 0.12);
+  color: #0f2d42;
   font-weight: 600;
 }
 
@@ -112,7 +112,7 @@ html[data-theme="dark"] .navbar-link.active {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  color: var(--muted);
+  color: #1a4a6b; /* Dark blue — matches logo */
   background: none;
   border: none;
   font-family: inherit;
@@ -127,8 +127,8 @@ html[data-theme="dark"] .navbar-link.active {
 }
 
 .navbar-dropdown-btn:hover {
-  background: rgba(99, 102, 241, 0.08);
-  color: #4f46e5;
+  background: rgba(26, 74, 107, 0.1);
+  color: #0f2d42;
 }
 
 .navbar-dropdown-btn svg,
@@ -171,7 +171,7 @@ html[data-theme="dark"] .navbar-link.active {
   display: block;
   padding: 0.55rem 0.9rem;
   border-radius: 8px;
-  color: var(--muted);
+  color: #1a4a6b; /* Dark blue — matches logo */
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 500;
@@ -180,8 +180,8 @@ html[data-theme="dark"] .navbar-link.active {
 
 .navbar-dropdown-menu a:hover,
 .navbar-dropdown-menu a.active {
-  background: rgba(99, 102, 241, 0.09);
-  color: #4f46e5;
+  background: rgba(26, 74, 107, 0.1);
+  color: #0f2d42;
 }
 
 html[data-theme="dark"] .navbar-dropdown-menu {
@@ -329,7 +329,7 @@ html[data-theme="dark"] .navbar-menu-mobile {
 .navbar-link-mobile {
   display: block;
   padding: 0.7rem 1rem;
-  color: var(--muted);
+  color: #1a4a6b; /* Dark blue — matches logo */
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
@@ -339,8 +339,8 @@ html[data-theme="dark"] .navbar-menu-mobile {
 
 .navbar-link-mobile:hover,
 .navbar-link-mobile.active {
-  background: rgba(99, 102, 241, 0.09);
-  color: #4f46e5;
+  background: rgba(26, 74, 107, 0.1);
+  color: #0f2d42;
   transform: translateX(4px);
 }
 

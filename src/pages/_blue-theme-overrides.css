@@ -1,0 +1,226 @@
+/* ================================================================
+   _blue-theme-overrides.css — StudyMatePlus
+   Applied to: Syllabus, Notes, PYQs, Feedback, About, Contact,
+               FAQ, Todo, Analytics, MindMap & all other pages
+   ================================================================ */
+
+/* ── Page root backgrounds → solid blue ── */
+.syllabus,
+.notes,
+.pyqs-page,
+.feedback,
+.about-page,
+.contact-page,
+.faq-page,
+.todo-page,
+.analytics-page,
+.mindmap-editor,
+.contribute-page,
+.privacy-page,
+.submit-feedback-page {
+  background: #1a4a6b;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* ── Hero / banner sections → darker blue ── */
+.syllabus-hero,
+.notes-hero,
+.pyqs-hero,
+.feedback-hero,
+.about-hero,
+.contact-hero,
+.faq-hero,
+.contribute-hero,
+.analytics .hero {
+  background: linear-gradient(135deg, #1a4a6b 0%, #0f2d42 60%, #052152 100%) !important;
+  color: #ffffff !important;
+}
+
+/* ── Remove ALL dot grid / radial-gradient overlay pseudo-elements site-wide ── */
+.hero::before,
+.stats::before,
+.cta::before,
+.syllabus-hero::before,
+.notes-hero::before,
+.pyqs-hero::before,
+.feedback-hero::before,
+.about-hero::before,
+.contact-hero::before,
+.faq-hero::before,
+.contribute-hero::before,
+.hero::after,
+.stats::after,
+.cta::after {
+  background-image: none !important;
+  background: transparent !important;
+}
+
+
+/* ── All text in every page section → white ── */
+.syllabus *,
+.notes *,
+.pyqs-page *,
+.feedback *,
+.about-page *,
+.contact-page *,
+.faq-page *,
+.todo-page *,
+.analytics-page *,
+.mindmap-editor *,
+.contribute-page *,
+.privacy-page * {
+  color: #ffffff;
+}
+
+/* ── Bold / heading text → yellow ── */
+.syllabus h1, .syllabus h2, .syllabus h3, .syllabus h4, .syllabus h5, .syllabus h6,
+.syllabus strong, .syllabus b, .syllabus .section-title,
+.notes h1, .notes h2, .notes h3, .notes h4, .notes h5, .notes h6,
+.notes strong, .notes b, .notes .section-title,
+.pyqs-page h1, .pyqs-page h2, .pyqs-page h3, .pyqs-page h4, .pyqs-page h5, .pyqs-page h6,
+.pyqs-page strong, .pyqs-page b,
+.feedback h1, .feedback h2, .feedback h3, .feedback h4, .feedback h5, .feedback h6,
+.feedback strong, .feedback b, .feedback .section-title,
+.about-page h1, .about-page h2, .about-page h3, .about-page h4, .about-page h5, .about-page h6,
+.about-page strong, .about-page b,
+.contact-page h1, .contact-page h2, .contact-page h3, .contact-page h4, .contact-page h5, .contact-page h6,
+.contact-page strong, .contact-page b,
+.faq-page h1, .faq-page h2, .faq-page h3, .faq-page h4, .faq-page h5, .faq-page h6,
+.faq-page strong, .faq-page b,
+.todo-page h1, .todo-page h2, .todo-page h3, .todo-page h4, .todo-page h5, .todo-page h6,
+.todo-page strong, .todo-page b,
+.analytics-page h1, .analytics-page h2, .analytics-page h3, .analytics-page h4, .analytics-page h5, .analytics-page h6,
+.analytics-page strong, .analytics-page b,
+.contribute-page h1, .contribute-page h2, .contribute-page h3, .contribute-page h4, .contribute-page h5, .contribute-page h6,
+.contribute-page strong, .contribute-page b,
+.privacy-page h1, .privacy-page h2, .privacy-page h3, .privacy-page h4, .privacy-page h5, .privacy-page h6,
+.privacy-page strong, .privacy-page b {
+  color: #fbbf24 !important;
+}
+
+/* ── Card backgrounds → translucent blue-white ── */
+.syllabus-card,
+.note-card,
+.pyq-card,
+.feedback-card,
+.search-filters,
+.results,
+.pyqs-selection,
+.pyqs-results,
+.feedback-stats,
+.feedback-filters,
+.feedback-content,
+.upload-section,
+.no-results {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+}
+
+/* ── Card stats rows ── */
+.card-stats,
+.stat-item {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #a8c8e0 !important;
+}
+
+/* ── Card stat text ── */
+.stat,
+.card-meta,
+.card-meta *,
+.stat-label,
+.student-details,
+.subject-details,
+.detail-section p,
+.no-results p,
+.results-header p,
+.pyqs-results-box p,
+.prompt {
+  color: #a8c8e0 !important;
+}
+
+/* ── Tags → blue accent ── */
+.subject-tag {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* ── Inputs & selects → dark blue ── */
+.syllabus .search-input,
+.syllabus .filter-group select,
+.notes .search-input,
+.notes .filter-group select,
+.pyqs-page .form-group select,
+.feedback .filter-select {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.syllabus .search-input::placeholder,
+.notes .search-input::placeholder {
+  color: #a8c8e0;
+}
+
+.syllabus .filter-group select option,
+.notes .filter-group select option,
+.pyqs-page .form-group select option,
+.feedback .filter-select option {
+  background: #0f2d42;
+  color: #ffffff;
+}
+
+/* ── CTA sections → deep blue ── */
+.feedback-cta {
+  background: #052152 !important;
+  color: #ffffff !important;
+}
+
+.feedback-cta h2,
+.feedback-cta h3,
+.feedback-cta strong {
+  color: #fbbf24 !important;
+}
+
+/* ── Hover effects on cards ── */
+.syllabus-card:hover,
+.note-card:hover,
+.pyq-card:hover,
+.feedback-card:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-5px);
+}
+
+/* ── Buttons keep their colors ── */
+.btn-primary,
+.btn-outline,
+.btn-secondary,
+.pyq-card button,
+.submit-form-btn {
+  color: #ffffff !important;
+}
+
+/* ── Keep modal white for readability ── */
+.modal-overlay .modal-content {
+  background: #ffffff !important;
+  color: #333333 !important;
+}
+
+.modal-overlay .modal-content h2,
+.modal-overlay .modal-content h3,
+.modal-overlay .modal-content strong,
+.modal-overlay .modal-content label,
+.modal-overlay .modal-content p {
+  color: #1a4a6b !important;
+}
+
+.modal-overlay .modal-content input,
+.modal-overlay .modal-content select,
+.modal-overlay .modal-content textarea {
+  background: #ffffff !important;
+  color: #333333 !important;
+  border-color: #e2e8f0 !important;
+}
