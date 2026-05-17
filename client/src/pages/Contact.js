@@ -136,13 +136,14 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="social-links">
-                <h3>Follow Us</h3>
-                <div className="social-icons">
-                  <a href="#" className="social-icon">Facebook</a>
-                  <a href="#" className="social-icon">Twitter</a>
-                  <a href="#" className="social-icon">LinkedIn</a>
-                  <a href="#" className="social-icon">Instagram</a>
+              <div className="social-section">
+                    <h3>Follow Us</h3>
+
+                <div className="custom-social-links">
+                    <a href="/">Facebook</a>
+                    <a href="/">Twitter</a>
+                    <a href="/">LinkedIn</a>
+                    <a href="/">Instagram</a>
                 </div>
               </div>
             </div>

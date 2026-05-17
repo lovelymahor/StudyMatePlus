@@ -164,33 +164,46 @@
   line-height: 1.6;
 }
 
+
 /* Social Links */
-.social-links {
+.social-section {
   margin-top: 40px;
 }
 
-.social-links h3 {
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-  color: #333;
+.social-section h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 20px;
 }
 
-.social-icons {
+.custom-social-links {
   display: flex;
-  gap: 15px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.social-icon {
-  color: #667eea;
+.custom-social-links a {
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  background: white;
+  color: #111;
+
+  border: 2px solid #111;
+
+  padding: 10px 18px;
+  border-radius: 12px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: all 0.3s ease;
 }
 
-.social-icon:hover {
-  color: #5a6fd8;
+.custom-social-links a:hover {
+  background: #111;
+  color: white;
+  transform: translateY(-2px);
 }
-
 /* FAQ Section */
 .faq-section {
   padding: 80px 0;
