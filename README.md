@@ -1,161 +1,70 @@
-# 📘 StudyMatePlus
+# Getting Started with Create React App
 
-🔗 **Live Website**: [https://studymateplus.vercel.app](https://studymateplus.vercel.app)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-**StudyMatePlus** is an open-source platform designed to help college students access academic resources such as **syllabus**, **previous year question papers (PYQs)**, and **exam feedback**, along with an option to connect with **seniors** for guidance.
-The goal is to support students during exam preparation by providing a centralized, reliable, and user-friendly resource hub.
+## Available Scripts
 
----
+In the project directory, you can run:
 
-## 🎯 Project Objective
+### `npm start`
 
-Students often face difficulty finding authentic academic materials in one place. Information like syllabus PDFs, PYQs, and exam tips are scattered or unavailable. This project aims to build a platform that:
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-* Organizes syllabus and PYQs department-wise
-* Includes student feedback on exam papers (e.g., difficulty levels, important topics)
-* Connects juniors with seniors for mentoring and doubt clearing
-* Supports **multiple universities and departments** in one place
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
----
+### `npm test`
 
-## 🌟 Key Features (To Be Developed)
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-* ✅ Filter syllabus and papers by **university**, **semester**, **subject**
-* ✅ **Student feedback** section for each paper (e.g., "Paper was tricky — focus on Unit 2")
-* ✅ Secure **senior-student chat** or forum system
-* ✅ Upload and browse **notes, guides, and important questions**
-* ✅ Clean and **mobile-friendly** interface
+### `npm run build`
 
----
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## 🛠️ Tech Stack
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-| Area           | Technology                         |
-| -------------- | ---------------------------------- |
-| Frontend       | React.js / Next.js                 |
-| Backend        | Node.js / Express / Firebase       |
-| Database       | MongoDB / Firebase Firestore       |
-| Authentication | Google / University Email Login    |
-| Real-time      | Socket.io / Firebase Realtime DB   |
-| Hosting        | Netlify / Vercel / Heroku / Render |
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
----
+### `npm run eject`
 
-## 📁 Project Structure (To Be Followed)
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-```
-StudyMatePlus/
-├── client/                # Frontend code
-├── server/                # Backend code
-├── docs/                  # Diagrams, mockups
-├── .github/               # Issue templates, PR templates
-├── README.md
-├── CONTRIBUTING.md
-├── LICENSE
-└── .env.example
-```
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
----
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-## 💻 Getting Started
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-### 1. Fork the Repository
+## Learn More
 
-Click on the **Fork** button on the top-right corner of this page to create your own copy.
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-### 2. Clone Your Fork
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-```bash
-git clone https://github.com/your-username/StudyMatePlus.git
-cd StudyMatePlus
-```
+### Code Splitting
 
-### 3. Install Dependencies
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-To install the required dependencies, run the following commands:
+### Analyzing the Bundle Size
 
-```bash
-npm install         # Install server-side dependencies
-cd client
-npm install         # Install frontend (React) dependencies
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### 4. Configure Environment Variables
+### Making a Progressive Web App
 
-Create a `.env` file in both the root and `client/` directories using the `.env.example` file provided as a reference.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-Update values like your MongoDB URI and secret keys.
-Example
-```bash
-PORT=5000
-MONGO_URI=your-mongodb-uri-here
-JWT_SECRET=your-secret-key-here
-```
+### Advanced Configuration
 
-### 5. Run the Application
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-Start both the backend and frontend:
+### Deployment
 
-```bash
-# Terminal 1
-npm run dev         # Runs server on localhost:5000 (or your preferred port)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-# Terminal 2
-cd client
-npm start           # Runs React frontend on localhost:3000
-```
+### `npm run build` fails to minify
 
----
-
-## 🧑‍💻 How to Contribute
-
-We welcome contributors of **all experience levels**, especially **beginners** participating through **GirlScript Summer of Code (GSSoC) 2025** and beyond.
-
-Follow the steps below to begin your contribution journey:
-
-### 📄 Step 1: Read the Guidelines
-
-* 📘 Read our [README.md](./README.md)
-* 📚 Go through the [CONTRIBUTING.md](./CONTRIBUTING.md)
-* 🤝 Understand our [Code of Conduct](./CODE_OF_CONDUCT.md)
-
-### 🌐 Step 2: Choose an Issue
-
-* Check the **Issues** tab for `good first issue` labels
-* Comment on the issue you want to work on
-* Wait for the maintainers to assign you the issue
-
-### 🔧 Step 3: Make Your Changes
-
-* Create a new branch: `git checkout -b feature-name`
-* Make your changes
-* Run tests and ensure everything works smoothly
-
-### 📤 Step 4: Submit a Pull Request
-
-* Push your changes: `git push origin feature-name`
-* Open a Pull Request (PR) from your forked repository
-* Link the issue number in your PR description
-
----
-
-## 🙌 Code of Conduct
-
-We follow a [Contributor Covenant](https://www.contributor-covenant.org/) to ensure a welcoming environment for everyone.
-
----
-
-## 📜 License
-
-This project is licensed under the [MIT License](./LICENSE).
-
----
-
-## 📞 Contact & Community
-
-For queries or discussions:
-
-* Contact me on LinkedIn (https://www.linkedin.com/in/lovely-mahour-992316265/)
-* Follow project updates in Issues and Discussions tab
-
-Let's build a student-friendly platform together! 🚀
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

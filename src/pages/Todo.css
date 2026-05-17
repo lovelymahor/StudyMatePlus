@@ -1,0 +1,94 @@
+.todo-page {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.todo-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.todo-card h2 {
+  margin: 0 0 0.75rem 0;
+}
+
+.todo-form .row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.todo-form input[type="text"], .todo-form input[type="datetime-local"], .todo-form select, .todo-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.todo-form textarea {
+  min-height: 80px;
+  margin: 0.6rem 0;
+}
+
+.deadline-label { display:flex; flex-direction:column; gap:0.4rem; font-size:0.9rem }
+
+.form-actions { display:flex; gap:0.6rem }
+.btn-primary { background:var(--brand); color:white; border:none; padding:0.5rem 0.9rem; border-radius:8px }
+.btn-secondary { background:transparent; border:1px solid var(--border); padding:0.45rem 0.8rem; border-radius:8px }
+
+.todo-list { background: var(--card); border:1px solid var(--border); padding:1rem; border-radius:10px }
+.todo-list h3 { margin-top:0 }
+.muted { color:var(--muted) }
+
+.todo-list ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem }
+.task { display:flex; justify-content:space-between; align-items:flex-start; padding:0.6rem; border-radius:8px; background:var(--bg); border:1px solid var(--border) }
+.task .task-main { display:flex; gap:0.6rem; align-items:flex-start }
+.task .task-info { min-width:0 }
+.task-title { font-weight:600 }
+.task-meta { color:var(--muted); font-size:0.85rem }
+.task-desc { margin-top:0.4rem; color:var(--muted) }
+.task-actions { display:flex; gap:0.4rem; align-items:center }
+.task button { background:transparent; border:1px solid var(--border); padding:0.3rem 0.5rem; border-radius:6px }
+.task .danger { border-color:#ffb3b3; color:#b80000 }
+.task.done { opacity:0.6; text-decoration:line-through }
+
+@media (max-width: 880px) {
+  .todo-page { grid-template-columns: 1fr; padding:0 0.5rem }
+}
+
+/* Calendar styles */
+.smp-calendar { background:var(--card); border:1px solid var(--border); padding:1rem; border-radius:10px }
+.cal-header { text-align:center; margin-bottom:0.5rem }
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:6px }
+.cal-weekday { font-size:0.75rem; color:var(--muted); text-align:center }
+.cal-day { min-height:56px; border-radius:8px; display:flex; align-items:flex-start; justify-content:flex-start; padding:6px; cursor:pointer }
+.cal-day.empty { background:transparent; cursor:default }
+.cal-day .cal-day-num { font-weight:600; font-size:0.9rem }
+.cal-dot { width:8px; height:8px; background:var(--brand); border-radius:50%; margin-left:auto; margin-top:6px }
+.cal-day.has-task { background: rgba(79,70,229,0.06); border:1px dashed rgba(79,70,229,0.14) }
+.cal-day.today { box-shadow: 0 0 0 2px rgba(79,70,229,0.08); border-radius:8px }
+.cal-day.selected { background: linear-gradient(90deg, rgba(34,197,94,0.08), rgba(79,70,229,0.04)); border:1px solid rgba(34,197,94,0.16) }
+.cal-nav { background:transparent; border:none; font-size:18px; padding:4px 8px; cursor:pointer }
+.cal-header { display:flex; align-items:center; justify-content:space-between }
+
+/* Modal */
+.smp-modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.35); z-index:2000 }
+.smp-modal.open { display:flex }
+.smp-modal-content { width:640px; max-width:92%; background:var(--card); border-radius:12px; padding:1rem; border:1px solid var(--border) }
+.smp-modal-content h3 { margin-top:0 }
+
+.todo-page { align-items:start }
+.todo-list { height:300px }
+
+.smp-modal-header { display:flex; align-items:center; justify-content:space-between; gap:12px }
+.modal-close { background:transparent; border:none; font-size:22px; cursor:pointer; padding:4px 8px }
+.modal-close:hover { background:var(--bg); border-radius:6px }
+

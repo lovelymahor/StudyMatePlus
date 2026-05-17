@@ -1,0 +1,26 @@
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #facc15, #fbbf24); /* matches yellow accent */
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.scroll-to-top:hover {
+  background: linear-gradient(135deg, #fbbf24, #eab308);
+  transform: translateY(-3px) scale(1.1);
+}
+
+.scroll-to-top:active {
+  transform: scale(0.95);
+}
