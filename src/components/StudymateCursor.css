@@ -1,0 +1,4 @@
+/* Hide default system cursor — replaced by canvas cursor */
+*, *::before, *::after {
+  cursor: none !important;
+}

@@ -16,27 +16,29 @@ code {
 
 /* Theme variables */
 :root {
-  --bg: #ffffff;
-  --text: #0f172a; /* Slate-900 */
-  --muted: #334155; /* Slate-700 for stronger contrast */
-  --card: #f8fafc; /* Slate-50 */
-  --border: #e2e8f0; /* Slate-200 */
-  --brand: #2563eb; /* Stronger blue for links/buttons */
-  --heading: #0a0f1f; /* Deep heading color */
+  --bg: #ffffff;           /* Light mode — white background */
+  --text: #0f172a;          /* Dark text for readability */
+  --muted: #475569;         /* Slate-600 muted text */
+  --card: #f1f5f9;          /* Slightly off-white cards */
+  --border: #e2e8f0;        /* Light border */
+  --brand: #1a4a6b;         /* Logo dark blue for links/buttons */
+  --heading: #0a0f1f;       /* Deep heading color */
 }
 
 html[data-theme="dark"] {
-  --bg: #0b1220; /* near-ink */
-  --text: #f1f5ff; /* very light for readability */
-  --muted: #c7cfdb; /* lighter muted */
-  --card: #101826; /* slightly lighter than bg for separation */
-  --border: #263243; /* visible border */
-  --brand: #8ab4ff; /* accessible blue on dark */
-  --heading: #ffffff; /* pure white headings */
+  --bg: #000000;            /* Dark mode — pure black background */
+  --text: #ffffff;          /* Pure white text */
+  --muted: #94a3b8;         /* Slate-400 muted text */
+  --card: #111111;          /* Very dark card */
+  --border: #222222;        /* Subtle dark border */
+  --brand: #4db8ff;         /* Bright accent blue */
+  --heading: #ffffff;       /* White headings */
 }
 
 /* Base page-level theming only — section backgrounds are set in page CSS */
-.home, .faq-page, .navbar {
+.home,
+.faq-page,
+.navbar {
   background: var(--bg);
   color: var(--text);
 }
@@ -52,24 +54,78 @@ html[data-theme="dark"] {
 }
 
 /* Stat and CTA inner elements must not get white backgrounds */
-.stat-item, .cta-content, .footer-content {
+.stat-item,
+.cta-content,
+.footer-content {
   background: transparent !important;
 }
 
-.feature-card, .floating-card {
+.feature-card,
+.floating-card {
   background: var(--card);
   border-color: var(--border);
 }
 
-a { color: var(--brand); }
-a:hover { filter: brightness(1.1); }
+a {
+  color: var(--brand);
+}
+
+a:hover {
+  color: #7dcfff;
+  filter: brightness(1.15);
+}
 
 /* Headings use dedicated heading token for readability */
-h1, h2, h3, h4, h5, h6, .section-title {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.section-title {
   color: var(--heading);
 }
 
-/* Ensure headings are crisp in dark mode regardless of inheritance */
+/* Hero section — always blue with white text regardless of theme */
+.hero {
+  background: linear-gradient(135deg, #1a4a6b 0%, #0f2d42 60%, #052152 100%) !important;
+  color: #ffffff !important;
+}
+
+.hero *:not(.btn-primary-home):not(.btn-secondary):not(.btn-primary) {
+  color: #ffffff;
+}
+
+/* ── Yellow bold fonts across all blue scroll sections ── */
+.features h1, .features h2, .features h3, .features h4, .features h5, .features h6,
+.features strong, .features b, .features .section-title,
+.how-it-works h1, .how-it-works h2, .how-it-works h3, .how-it-works h4, .how-it-works h5, .how-it-works h6,
+.how-it-works strong, .how-it-works b, .how-it-works .section-title,
+.testimonials h1, .testimonials h2, .testimonials h3, .testimonials h4, .testimonials h5, .testimonials h6,
+.testimonials strong, .testimonials b, .testimonials .section-title,
+.stats h1, .stats h2, .stats h3, .stats h4, .stats h5, .stats h6,
+.stats strong, .stats b, .stats .section-title,
+.cta h1, .cta h2, .cta h3, .cta h4, .cta h5, .cta h6,
+.cta strong, .cta b, .cta .section-title,
+.contributors h1, .contributors h2, .contributors h3, .contributors h4, .contributors h5, .contributors h6,
+.contributors strong, .contributors b, .contributors .section-title,
+.footer h1, .footer h2, .footer h3, .footer h4, .footer h5, .footer h6,
+.footer strong, .footer b {
+  color: #fbbf24 !important; /* Golden yellow for all bold/heading text */
+}
+
+/* Also catch any inline bold text (font-weight 600+) in blue sections */
+.features [style*="font-weight"],
+.how-it-works [style*="font-weight"],
+.testimonials [style*="font-weight"],
+.stats [style*="font-weight"],
+.cta [style*="font-weight"],
+.contributors [style*="font-weight"],
+.footer [style*="font-weight"] {
+  color: #fbbf24;
+}
+
+/* Ensure headings are crisp in dark mode */
 html[data-theme="dark"] h1,
 html[data-theme="dark"] h2,
 html[data-theme="dark"] h3,
@@ -81,13 +137,16 @@ html[data-theme="dark"] .section-title {
 }
 
 /* Generic card/panel theming — does NOT include named page sections which manage their own backgrounds */
-.card, .panel {
+.card,
+.panel {
   background: var(--card);
   color: var(--text);
 }
 
 /* Inputs and buttons generic theming */
-input, textarea, select {
+input,
+textarea,
+select {
   background: var(--card);
   color: var(--text);
   border: 1px solid var(--border);
@@ -97,12 +156,15 @@ button {
   color: var(--text);
 }
 
-/* Themed logos: invert in dark for contrast */
-.navbar-logo, .themed-logo {
+/* Light mode: logo keeps original blue color — no filter */
+.navbar-logo,
+.themed-logo {
   transition: filter 200ms ease;
+  filter: none;
 }
 
+/* Dark mode: logo becomes white to stand out on dark background */
 html[data-theme="dark"] .navbar-logo,
 html[data-theme="dark"] .themed-logo {
-  filter: brightness(0) invert(1) contrast(1.05) saturate(1.1);
+  filter: brightness(0) invert(1);
 }

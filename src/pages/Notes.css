@@ -490,8 +490,8 @@
   border-radius: 10px;
   padding: 1rem;
   width: 90%;
-  max-width: 1000px;    
-  max-height: 95vh;     
+  max-width: 1000px;
+  max-height: 95vh;
   display: flex;
   flex-direction: column;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -505,7 +505,7 @@
   height: 100%;
   border: none;
   border-radius: 5px;
-  min-height: 85vh;    
+  min-height: 85vh;
 }
 
 .close-btn {

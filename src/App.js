@@ -18,11 +18,13 @@ import MindMapEditor from "./pages/MindMapEditor";
 import Profile from "./pages/Profile.js";
 import SubmitFeedback from "./pages/SubmitFeedback";
 import Todo from "./pages/Todo";
-
+import "./pages/_blue-theme-overrides.css";
+import StudymateCursor from "./components/StudymateCursor";
 
 const App = () => {
   return (
     <ThemeProvider>
+      <StudymateCursor />
       <Router>
         <Navbar />
         <div style={{ padding: "2rem" }}>
