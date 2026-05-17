@@ -34,7 +34,7 @@ const Notes = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/notes');
+        const response = await fetch('http://localhost:5001/api/notes');
         if (response.ok) {
           const dbData = await response.json();
           if (dbData && dbData.length > 0) {
@@ -77,7 +77,7 @@ const Notes = () => {
     setUploadProgress(0);
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:5000/api/notes/upload', true);
+    xhr.open('POST', 'http://localhost:5001/api/notes/upload', true);
 
     xhr.upload.onprogress = (event) => {
       if (event.lengthComputable) {
@@ -127,7 +127,7 @@ const handleDownload = (e, note) => {
   // Construct absolute URL pointing explicitly to your Node backend instance
   const absoluteDownloadUrl = note.link.startsWith('http') 
     ? note.link 
-    : `http://localhost:5000${note.link}`;
+    : `http://localhost:5001${note.link}`;
 
   // Force a secure file detachment window opening link sequence
   const link = document.createElement('a');
@@ -349,7 +349,7 @@ const handleDownload = (e, note) => {
               if (previewUrl.startsWith('/pdf/')) {
                 absolutePreviewUrl = `http://localhost:3000${previewUrl}`;
               } else {
-                absolutePreviewUrl = `http://localhost:5000${previewUrl}`;
+                absolutePreviewUrl = `http://localhost:5001${previewUrl}`;
               }
             }
 

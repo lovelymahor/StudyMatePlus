@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -9,6 +9,7 @@ import "./Home.css";
 import './ScrollToTop.css';
 
 const Home = () => {
+  const navigate = useNavigate();
   const [contributors, setContributors] = useState([]);
   const [showScroll, setShowScroll] = useState(false);
 
@@ -269,6 +270,8 @@ const Home = () => {
                   boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
                 }}
                 transition={{ type: "spring", stiffness: 300 }}
+                onClick={() => navigate(feature.link)}
+                style={{ cursor: "pointer" }}
               >
                 <motion.div 
                   className="feature-icon"
