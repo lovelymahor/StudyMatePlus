@@ -162,6 +162,7 @@ const Home = () => {
 
   return (
     <div className="home">
+
       {/* Hero Section */}
       <motion.section
         className="hero"
@@ -194,10 +195,34 @@ const Home = () => {
                 </Link>
               </motion.div>
             </motion.div>
+            {/* Aesthetic animated shapes */}
+            <motion.div
+              className="hero-animated-shapes"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 1.2 }}
+              style={{ marginTop: "2.5rem", display: "flex", gap: "1.5rem" }}
+            >
+              <motion.div
+                style={{ width: 48, height: 48, borderRadius: "50%", background: "linear-gradient(135deg,#fbbf24,#f59e0b)", filter: "blur(2px)" }}
+                animate={{ y: [0, -18, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                style={{ width: 32, height: 32, borderRadius: "50%", background: "linear-gradient(135deg,#6366f1,#a855f7)", filter: "blur(1.5px)" }}
+                animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              />
+              <motion.div
+                style={{ width: 20, height: 20, borderRadius: "50%", background: "linear-gradient(135deg,#ec4899,#fbbf24)", filter: "blur(1px)" }}
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              />
+            </motion.div>
           </motion.div>
 
-          {/* RIGHT — 2×2 card grid */}
-          <motion.div className="hero-visual" variants={slideInRight}>
+          {/* RIGHT — 2×2 card grid with floating effect */}
+          <motion.div className="hero-visual" variants={slideInRight} style={{ position: "relative" }}>
             {[
               { icon: "📚", title: "Study Materials",  desc: "Curated notes & resources", delay: 0    },
               { icon: "📝", title: "Previous Papers",  desc: "Year-wise PYQs by dept",    delay: 0.1  },
@@ -210,7 +235,8 @@ const Home = () => {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: card.delay + 0.5, duration: 0.5, ease: "easeOut" }}
-                whileHover={{ y: -6, scale: 1.04 }}
+                whileHover={{ y: -6, scale: 1.08, boxShadow: "0 8px 32px rgba(99,102,241,0.18)" }}
+                style={{ position: "relative", zIndex: 2 }}
               >
                 <span className="hero-card-icon">{card.icon}</span>
                 <div>
@@ -219,6 +245,22 @@ const Home = () => {
                 </div>
               </motion.div>
             ))}
+            {/* Floating gradient orb */}
+            <motion.div
+              style={{
+                position: "absolute",
+                top: -60,
+                right: -60,
+                width: 120,
+                height: 120,
+                borderRadius: "50%",
+                background: "radial-gradient(circle,rgba(124,58,237,0.25) 0%,transparent 70%)",
+                zIndex: 1,
+                filter: "blur(2px)"
+              }}
+              animate={{ y: [0, 24, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
           </motion.div>
         </div>
       </motion.section>

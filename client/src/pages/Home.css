@@ -4,6 +4,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
+html[data-theme="dark"] {
+  --scrollbar-thumb: #6366f1;
+  --scrollbar-track: #18181b;
+}
+html[data-theme="light"] {
+  --scrollbar-thumb: #a855f7;
+  --scrollbar-track: #f4f4f4;
+}
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;

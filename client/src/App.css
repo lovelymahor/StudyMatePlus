@@ -28,6 +28,33 @@
   color: #61dafb;
 }
 
+/* ===== Custom Scrollbar ===== */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb, #b4b4b4);
+  border-radius: 8px;
+  border: 3px solid var(--scrollbar-track, #f4f4f4);
+}
+body::-webkit-scrollbar-track {
+  background: var(--scrollbar-track, #f4f4f4);
+}
+
+html[data-theme="dark"] {
+  --scrollbar-thumb: #6366f1;
+  --scrollbar-track: #18181b;
+}
+html[data-theme="light"] {
+  --scrollbar-thumb: #a855f7;
+  --scrollbar-track: #f4f4f4;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
