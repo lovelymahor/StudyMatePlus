@@ -1,6 +1,4 @@
-/* ============================================================
-   Home.css — StudyMatePlus  |  Premium UI Refresh
-   ============================================================ */
+/* Home page styles */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
@@ -24,9 +22,7 @@
   padding: 0 2rem;
 }
 
-/* ============================================================
-   HERO SECTION
-   ============================================================ */
+/* Hero */
 .hero {
   background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
   min-height: 92vh;
@@ -36,7 +32,6 @@
   overflow: hidden;
 }
 
-/* Subtle dot grid overlay */
 .hero::before {
   content: '';
   position: absolute;
@@ -46,7 +41,6 @@
   pointer-events: none;
 }
 
-/* Glowing orbs */
 .hero::after {
   content: '';
   position: absolute;
@@ -71,7 +65,6 @@
   z-index: 1;
 }
 
-/* Hero text — left aligned on desktop */
 .hero-content {
   color: #ffffff;
   display: flex;
@@ -80,7 +73,6 @@
   gap: 0;
 }
 
-/* Badge pill */
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -134,7 +126,7 @@
   align-items: center;
 }
 
-/* ── Buttons ── */
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -201,7 +193,7 @@
   transform: translateY(-2px);
 }
 
-/* ── Hero RIGHT — 2×2 card grid ── */
+/* Hero cards */
 .hero-visual {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -246,9 +238,7 @@
   margin: 0;
 }
 
-/* ============================================================
-   SECTION SHARED
-   ============================================================ */
+/* Shared section styles */
 .section-title {
   text-align: center;
   font-size: clamp(1.8rem, 3vw, 2.6rem);
@@ -269,9 +259,7 @@
 
 html[data-theme="dark"] .section-title { color: #ffffff; }
 
-/* ============================================================
-   FEATURES SECTION
-   ============================================================ */
+/* Features */
 .features {
   padding: 5rem 0;
   background: var(--bg);
@@ -350,9 +338,7 @@ html[data-theme="dark"] .section-title { color: #ffffff; }
   gap: 0.6rem;
 }
 
-/* ============================================================
-   STATS SECTION
-   ============================================================ */
+/* Stats */
 .stats {
   padding: 5rem 0;
   background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
@@ -409,9 +395,7 @@ html[data-theme="dark"] .section-title { color: #ffffff; }
   font-weight: 500;
 }
 
-/* ============================================================
-   HOW IT WORKS
-   ============================================================ */
+/* How it works */
 .how-it-works {
   padding: 5rem 0;
   background: var(--card);
@@ -427,7 +411,6 @@ html[data-theme="dark"] .how-it-works { background: #0d1a2d; }
   position: relative;
 }
 
-/* Connector line between steps on desktop */
 .steps-grid::before {
   content: '';
   position: absolute;
@@ -460,7 +443,6 @@ html[data-theme="dark"] .step { background: #101826; }
   border-color: rgba(79,70,229,0.35);
 }
 
-/* Step number badge */
 .step::before {
   content: attr(data-step);
   display: none;
@@ -487,9 +469,7 @@ html[data-theme="dark"] .step { background: #101826; }
   margin-bottom: 1.5rem;
 }
 
-/* ============================================================
-   TESTIMONIALS
-   ============================================================ */
+/* Testimonials */
 .testimonials {
   padding: 5rem 0;
   background: var(--bg);
@@ -551,9 +531,7 @@ html[data-theme="dark"] .step { background: #101826; }
   color: #6366f1;
 }
 
-/* ============================================================
-   CTA SECTION
-   ============================================================ */
+/* CTA */
 .cta {
   padding: 5rem 0;
   background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #4f46e5 100%);
@@ -601,7 +579,7 @@ html[data-theme="dark"] .step { background: #101826; }
   flex-wrap: wrap;
 }
 
-/* CTA-specific button overrides — high specificity to override base .btn-primary on <a> tags */
+/* Keep CTA buttons readable over the gradient. */
 .cta .cta-buttons a.btn-primary,
 .cta .cta-buttons .btn-primary {
   background: #ffffff !important;
@@ -630,9 +608,7 @@ html[data-theme="dark"] .step { background: #101826; }
   border-color: #ffffff !important;
 }
 
-/* ============================================================
-   CONTRIBUTORS
-   ============================================================ */
+/* Contributors */
 .contributors {
   padding: 5rem 0;
   background: var(--card);
@@ -691,9 +667,7 @@ html[data-theme="dark"] .contributors { background: #0d1a2d; }
   word-break: break-all;
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
+/* Footer */
 .footer {
   background: var(--bg);
   border-top: 1px solid var(--border);
@@ -782,9 +756,7 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
   color: var(--muted);
 }
 
-/* ============================================================
-   SCROLL TO TOP
-   ============================================================ */
+/* Scroll to top */
 .scroll-to-top {
   position: fixed;
   bottom: 2rem;
@@ -810,9 +782,7 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
   box-shadow: 0 8px 28px rgba(79,70,229,0.55);
 }
 
-/* ============================================================
-   RESPONSIVE — Tablet (≤ 1024px)
-   ============================================================ */
+/* Tablet */
 @media (max-width: 1024px) {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -826,7 +796,6 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
 
   .steps-grid::before { display: none; }
 
-  /* Collapse hero to single column, show visual as 1-col grid */
   .hero-container {
     grid-template-columns: 1fr;
     text-align: center;
@@ -849,9 +818,7 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
   }
 }
 
-/* ============================================================
-   RESPONSIVE — Tablet (≤ 768px)
-   ============================================================ */
+/* Small tablets */
 @media (max-width: 768px) {
   .hero-container {
     grid-template-columns: 1fr;
@@ -891,9 +858,7 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
   .footer-section p { max-width: 100%; }
 }
 
-/* ============================================================
-   RESPONSIVE — Mobile (≤ 480px)
-   ============================================================ */
+/* Mobile */
 @media (max-width: 480px) {
   .container { padding: 0 1.25rem; }
 
@@ -920,44 +885,10 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
   .scroll-to-top { bottom: 1.25rem; right: 1.25rem; width: 44px; height: 44px; }
 }
 
-/* ============================================================
-   RESPONSIVE — Small phones (≤ 360px)
-   ============================================================ */
+/* Small phones */
 @media (max-width: 360px) {
   .container { padding: 0 1rem; }
   .btn { min-width: 170px; font-size: 0.95rem; }
   .feature-card, .step { padding: 1.5rem 1.25rem; }
 }
 
-/* ============================================================
-   Home-specific: underline on hover for header & navbar links
-   Applies only when Home.css is imported (scoped to `.home`)
-   ============================================================ */
-.home .navbar-brand,
-.home .navbar-link,
-.home .navbar-link-mobile,
-.home .navbar-dropdown-menu a {
-  text-decoration: none;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  transition: color 0.18s ease, text-decoration-color 0.18s ease;
-}
-
-.home .navbar-brand:hover,
-.home .navbar-link:hover,
-.home .navbar-link-mobile:hover,
-.home .navbar-dropdown-menu a:hover {
-  text-decoration: underline;
-  text-decoration-color: currentColor;
-}
-
-.home .navbar-brand:focus-visible,
-.home .navbar-link:focus-visible,
-.home .navbar-link-mobile:focus-visible,
-.home .navbar-dropdown-menu a:focus-visible {
-  text-decoration: underline;
-  text-decoration-color: currentColor;
-  outline: none;
-  box-shadow: 0 0 0 2px currentColor;
-  border-radius: 6px;
-}
