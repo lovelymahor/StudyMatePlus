@@ -928,3 +928,36 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
   .btn { min-width: 170px; font-size: 0.95rem; }
   .feature-card, .step { padding: 1.5rem 1.25rem; }
 }
+
+/* ============================================================
+   Home-specific: underline on hover for header & navbar links
+   Applies only when Home.css is imported (scoped to `.home`)
+   ============================================================ */
+.home .navbar-brand,
+.home .navbar-link,
+.home .navbar-link-mobile,
+.home .navbar-dropdown-menu a {
+  text-decoration: none;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+}
+
+.home .navbar-brand:hover,
+.home .navbar-link:hover,
+.home .navbar-link-mobile:hover,
+.home .navbar-dropdown-menu a:hover {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+
+.home .navbar-brand:focus-visible,
+.home .navbar-link:focus-visible,
+.home .navbar-link-mobile:focus-visible,
+.home .navbar-dropdown-menu a:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  outline: none;
+  box-shadow: 0 0 0 2px currentColor;
+  border-radius: 6px;
+}
