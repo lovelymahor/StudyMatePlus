@@ -399,3 +399,51 @@ html[data-theme="dark"] .navbar-link-mobile.active {
     height: 30px;
   }
 }
+
+/* ============================================================
+   GLOBAL NAVBAR HOVER EFFECT
+   Removes the duplicate pill and applies a premium underline
+   ============================================================ */
+
+/* 1. Reset standard hover states and prevent the background pill */
+.navbar-link:not(.active):hover,
+.navbar-link-mobile:not(.active):hover,
+.navbar-dropdown-menu a:hover {
+  background: transparent !important; /* Forces the background pill to disappear on hover */
+  color: #6366f1 !important;          /* Sets a crisp, clear hover text color */
+}
+
+/* 2. Setup the relative positioning for our underline element */
+.navbar-link,
+.navbar-link-mobile,
+.navbar-dropdown-menu a {
+  position: relative;
+  text-decoration: none !important;
+}
+
+/* 3. Build the smooth animating underline pseudo-element */
+.navbar-link::after,
+.navbar-link-mobile::after,
+.navbar-dropdown-menu a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px; /* Adjusts how far below the text the line sits */
+  width: 100%;
+  height: 2px;
+  background-color: #6366f1; /* Premium purple underline color */
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* 4. Trigger the underline transition on Hover & Focus (excluding active page) */
+.navbar-link:not(.active):hover::after,
+.navbar-link-mobile:not(.active):hover::after,
+.navbar-dropdown-menu a:hover::after,
+.navbar-link:not(.active):focus-visible::after,
+.navbar-link-mobile:not(.active):focus-visible::after,
+.navbar-dropdown-menu a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
