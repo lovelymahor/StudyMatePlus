@@ -1,107 +1,221 @@
 // client/src/components/FeedbackModal.js
+
 import React, { useState, useEffect } from "react";
-import './FeedbackModal.css'; // This line connects the component to the CSS above
+import "./FeedbackModal.css";
+
+const API_URL = "http://127.0.0.1:8000";
 
 const FeedbackModal = ({ onClose, onSuccess }) => {
   const [formData, setFormData] = useState({
-    studentName: '',
-    university: '',
-    examName: '',
-    difficulty: 'Medium',
-    feedback: '',
-    tips: '',
+    studentName: "",
+    university: "",
+    examName: "",
+    difficulty: "Medium",
+    feedback: "",
+    tips: "",
   });
 
-  const [statusMessage, setStatusMessage] = useState('');
+  const [statusMessage, setStatusMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Effect to handle closing the modal with the Escape key
+  // ESC key close
   useEffect(() => {
-    const handleEscapeKey = (event) => {
-      if (event.key === 'Escape') {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
         onClose();
       }
     };
-    document.addEventListener('keydown', handleEscapeKey);
+
+    document.addEventListener("keydown", handleEscape);
+
     return () => {
-      document.removeEventListener('keydown', handleEscapeKey);
+      document.removeEventListener("keydown", handleEscape);
     };
   }, [onClose]);
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({ ...prevState, [name]: value }));
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
+  // Submit feedback
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setIsSubmitting(true);
-    setStatusMessage('Submitting...');
+    setStatusMessage("Submitting feedback...");
 
     try {
-      const response = await fetch('http://localhost:5000/api/feedback', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch(`${API_URL}/api/feedback`, {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
         body: JSON.stringify(formData),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error('Something went wrong');
+        throw new Error(data.message || "Submission failed");
       }
 
-      setStatusMessage('Thank you! Your feedback has been submitted.');
+      setStatusMessage("✅ Feedback submitted successfully!");
+
+      setFormData({
+        studentName: "",
+        university: "",
+        examName: "",
+        difficulty: "Medium",
+        feedback: "",
+        tips: "",
+      });
+
       if (onSuccess) {
         onSuccess();
       }
+
       setTimeout(() => {
         onClose();
       }, 2000);
+
     } catch (error) {
-      setStatusMessage(`Error: ${error.message}`);
+      console.error("Feedback submission error:", error);
+
+      setStatusMessage(
+        `❌ ${error.message || "Failed to submit feedback"}`
+      );
+    } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="close-button" onClick={onClose}>&times;</button>
+      <div
+        className="modal-content"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button className="close-button" onClick={onClose}>
+          &times;
+        </button>
+
+        {/* Heading */}
         <h2>Share Your Exam Experience</h2>
+
+        {/* Form */}
         <form onSubmit={handleSubmit}>
+          
+          {/* Name */}
           <div className="form-group">
-            <label htmlFor="studentName">Name (Optional)</label>
-            <input type="text" id="studentName" name="studentName" value={formData.studentName} onChange={handleChange} />
+            <label>Name (Optional)</label>
+
+            <input
+              type="text"
+              name="studentName"
+              placeholder="Your name"
+              value={formData.studentName}
+              onChange={handleChange}
+            />
           </div>
+
+          {/* University */}
           <div className="form-group">
-            <label htmlFor="university">University</label>
-            <input type="text" id="university" name="university" value={formData.university} onChange={handleChange} required />
+            <label>University</label>
+
+            <input
+              type="text"
+              name="university"
+              placeholder="e.g. IIT Roorkee"
+              value={formData.university}
+              onChange={handleChange}
+              required
+            />
           </div>
+
+          {/* Exam */}
           <div className="form-group">
-            <label htmlFor="examName">Subject / Exam Name</label>
-            <input type="text" id="examName" name="examName" value={formData.examName} onChange={handleChange} required />
+            <label>Subject / Exam Name</label>
+
+            <input
+              type="text"
+              name="examName"
+              placeholder="e.g. DAA Midsem"
+              value={formData.examName}
+              onChange={handleChange}
+              required
+            />
           </div>
+
+          {/* Difficulty */}
           <div className="form-group">
-            <label htmlFor="difficulty">Difficulty Level</label>
-            <select id="difficulty" name="difficulty" value={formData.difficulty} onChange={handleChange}>
+            <label>Difficulty Level</label>
+
+            <select
+              name="difficulty"
+              value={formData.difficulty}
+              onChange={handleChange}
+            >
               <option value="Easy">Easy</option>
               <option value="Medium">Medium</option>
               <option value="Hard">Hard</option>
               <option value="Very Hard">Very Hard</option>
             </select>
           </div>
+
+          {/* Feedback */}
           <div className="form-group">
-            <label htmlFor="feedback">Your Feedback</label>
-            <textarea id="feedback" name="feedback" rows="4" value={formData.feedback} onChange={handleChange} required placeholder="How was the paper?"></textarea>
+            <label>Your Feedback</label>
+
+            <textarea
+              name="feedback"
+              rows="5"
+              placeholder="How was the exam? Important topics? Pattern?"
+              value={formData.feedback}
+              onChange={handleChange}
+              required
+            />
           </div>
+
+          {/* Tips */}
           <div className="form-group">
-            <label htmlFor="tips">Study Tips for Juniors</label>
-            <textarea id="tips" name="tips" rows="3" value={formData.tips} onChange={handleChange} placeholder="e.g., 'Focus on Unit 2'"></textarea>
+            <label>Study Tips for Juniors</label>
+
+            <textarea
+              name="tips"
+              rows="4"
+              placeholder="Any preparation tips?"
+              value={formData.tips}
+              onChange={handleChange}
+            />
           </div>
-          <button type="submit" className="submit-form-btn" disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting...' : 'Submit Feedback'}
+
+          {/* Submit */}
+          <button
+            type="submit"
+            className="submit-form-btn"
+            disabled={isSubmitting}
+          >
+            {isSubmitting
+              ? "Submitting..."
+              : "Submit Feedback"}
           </button>
         </form>
-        {statusMessage && <p className="status-message">{statusMessage}</p>}
+
+        {/* Status Message */}
+        {statusMessage && (
+          <p className="status-message">
+            {statusMessage}
+          </p>
+        )}
       </div>
     </div>
   );
