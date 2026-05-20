@@ -650,7 +650,7 @@ const Home = () => {
               <motion.ul variants={staggerChildrenFast}>
                 {[
                   { to: "/help", text: "Help Center" },
-                  { to: "/contact", text: "Contact Us" },
+                  { to: "/faq", text: "Contact Us" },
                   { to: "/contribute", text: "Contribute" },
                   { to: "/privacy", text: "Privacy Policy" }
                 ].map((link, index) => (
