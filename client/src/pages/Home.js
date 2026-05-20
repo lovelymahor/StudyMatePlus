@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { FaFire, FaBolt, FaBookOpen } from "react-icons/fa";
 import logo from "./logo.png";
 import "./Home.css";
 import './ScrollToTop.css';
+import { useGamification } from "../context/GamificationContext";
 
 const Home = () => {
+  const { streak, tokens } = useGamification();
   const [contributors, setContributors] = useState([]);
   const [showScroll, setShowScroll] = useState(false);
 
@@ -162,6 +165,63 @@ const Home = () => {
 
   return (
     <div className="home">
+      {/* Student Dashboard (Visible to returning users) */}
+      <motion.section 
+        className="student-dashboard"
+        initial="hidden"
+        animate="visible"
+        variants={staggerChildren}
+      >
+        <div className="container dashboard-container">
+          <motion.h2 className="dashboard-title" variants={fadeInUp}>
+            Welcome back, <span className="brand-highlight">Scholar</span>
+          </motion.h2>
+          
+          <div className="dashboard-widgets">
+            {/* Widget 1: Streak */}
+            <motion.div className="dashboard-widget glass-panel" variants={scaleIn} whileHover={{ y: -5 }}>
+              <div className="widget-header">
+                <h3>Daily Streak</h3>
+                <FaFire className="widget-icon streak-icon" />
+              </div>
+              <div className="widget-content">
+                <div className="streak-circle">
+                  <span className="streak-number">{streak}</span>
+                  <span className="streak-label">Days</span>
+                </div>
+                <p>Keep studying every day to maintain your streak!</p>
+              </div>
+            </motion.div>
+
+            {/* Widget 2: Tokens */}
+            <motion.div className="dashboard-widget glass-panel" variants={scaleIn} whileHover={{ y: -5 }}>
+              <div className="widget-header">
+                <h3>Academic Tokens</h3>
+                <FaBolt className="widget-icon token-icon" />
+              </div>
+              <div className="widget-content">
+                <div className="token-display">
+                  <span className="token-number">{tokens}</span>
+                </div>
+                <p>Earn tokens by reading syllabus and solving PYQs.</p>
+              </div>
+            </motion.div>
+
+            {/* Widget 3: Quick Access */}
+            <motion.div className="dashboard-widget glass-panel quick-access" variants={scaleIn} whileHover={{ y: -5 }}>
+              <div className="widget-header">
+                <h3>Quick Actions</h3>
+                <FaBookOpen className="widget-icon action-icon" />
+              </div>
+              <div className="widget-content action-buttons">
+                <Link to="/syllabus" className="btn btn-outline btn-block">Jump to Syllabus</Link>
+                <Link to="/pyqs" className="btn btn-primary btn-block">Practice PYQs</Link>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
       {/* Hero Section */}
       <motion.section
         className="hero"

@@ -247,6 +247,121 @@
 }
 
 /* ============================================================
+   DASHBOARD SECTION (New Premium UI)
+   ============================================================ */
+.student-dashboard {
+  padding: 3rem 0;
+  background: var(--bg);
+  position: relative;
+  z-index: 2;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--heading);
+}
+
+.dashboard-widgets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.dashboard-widget {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.widget-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin: 0;
+}
+
+.widget-icon {
+  font-size: 1.5rem;
+}
+
+.streak-icon { color: #f97316; }
+.token-icon { color: #eab308; }
+.action-icon { color: #3b82f6; }
+
+.widget-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.widget-content p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.streak-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 6px solid #f97316;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
+}
+
+.streak-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--heading);
+  line-height: 1;
+}
+
+.streak-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #f97316;
+  text-transform: uppercase;
+}
+
+.token-display {
+  background: linear-gradient(135deg, #fef08a, #eab308);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.btn-block {
+  width: 100%;
+  text-align: center;
+}
+
+/* ============================================================
    SECTION SHARED
    ============================================================ */
 .section-title {
