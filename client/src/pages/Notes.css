@@ -1,7 +1,7 @@
 .notes {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text);
 }
 
 .container {
@@ -12,7 +12,7 @@
 
 /* Hero Section */
 .notes-hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   padding: 4rem 0;
   color: white;
   text-align: center;
@@ -34,6 +34,7 @@
 .hero-content {
   position: relative;
   z-index: 1;
+  color: var(--text);
 }
 
 .notes-hero h1 {
@@ -52,6 +53,7 @@
   margin: 0 auto 2.5rem;
   opacity: 0.9;
   line-height: 1.7;
+  color: var(--text);
 }
 
 .hero-stats {
@@ -89,9 +91,9 @@
 
 /* Search and Filters */
 .search-filters {
-  background: #f8fafc;
+  background: var(--card);
   padding: 2rem 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border);
 }
 
 .search-bar {
@@ -108,15 +110,15 @@
   width: 100%;
   padding: 1rem 1rem 1rem 3rem;
   font-size: 1.1rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border);
   border-radius: 50px;
-  background: white;
+  background: var(--card);
   transition: all 0.3s ease;
   outline: none;
 }
 
 .search-input:focus {
-  border-color: #667eea;
+  border-color: var(--brand);
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
@@ -126,7 +128,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.2rem;
-  color: #666;
+  color: var(--muted);
 }
 
 .filters {
@@ -145,30 +147,30 @@
 
 .filter-group label {
   font-weight: 600;
-  color: #374151;
+  color: var(--muted);
   font-size: 0.9rem;
 }
 
 .filter-group select {
   padding: 0.8rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border);
   border-radius: 8px;
-  background: white;
+  background: var(--card);
   font-size: 1rem;
-  color: #374151;
+  color: var(--muted);
   cursor: pointer;
   transition: border-color 0.3s ease;
 }
 
 .filter-group select:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--brand);
 }
 
 /* Results Section */
 .results {
   padding: 3rem 0;
-  background: white;
+  background: var(--card);
 }
 
 .results-header {
@@ -180,11 +182,11 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--text);
 }
 
 .results-header p {
-  color: #666;
+  color: var(--muted);
   font-size: 1.1rem;
 }
 
@@ -192,7 +194,7 @@
 .no-results {
   text-align: center;
   padding: 4rem 2rem;
-  background: #f8fafc;
+  background: var(--card);
   border-radius: 15px;
   margin: 2rem 0;
 }
@@ -206,11 +208,11 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #374151;
+  color: var(--muted);
 }
 
 .no-results p {
-  color: #6b7280;
+  color: var(--muted);
   font-size: 1rem;
 }
 
@@ -223,11 +225,11 @@
 
 /* Note Card */
 .note-card {
-  background: white;
+  background: var(--card);
   border-radius: 15px;
   padding: 2rem;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -237,7 +239,7 @@
 .note-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-  border-color: #667eea;
+  border-color: var(--brand);
 }
 
 /* Card Header and Content reuse same styles as syllabus */
@@ -256,7 +258,7 @@
 .card-title {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text);
   margin-bottom: 0.5rem;
   line-height: 1.4;
 }
@@ -266,20 +268,20 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--muted);
 }
 
 .university {
   font-weight: 600;
-  color: #667eea;
+  color: var(--brand);
 }
 
 .separator {
-  color: #d1d5db;
+  color: var(--border);
 }
 
 .department {
-  color: #6b7280;
+  color: var(--muted);
 }
 
 .difficulty-badge {
@@ -309,7 +311,7 @@
 }
 
 .tag {
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   color: white;
   padding: 0.3rem 0.6rem;
   border-radius: 15px;
@@ -323,7 +325,7 @@
   justify-content: space-between;
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background: #f8fafc;
+  background: var(--card);
   border-radius: 10px;
   gap: 1rem;
 }
@@ -333,7 +335,7 @@
   align-items: center;
   gap: 0.4rem;
   font-size: 0.85rem;
-  color: #6b7280;
+  color: var(--muted);
   flex: 1;
   justify-content: center;
 }
@@ -364,7 +366,7 @@
 }
 
 .btn-primary {
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   color: white;
   box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
 }
@@ -376,28 +378,28 @@
 
 .btn-outline {
   background: transparent;
-  color: #667eea;
+  color: var(--brand);
   border: 2px solid #667eea;
 }
 
 .btn-outline:hover {
-  background: #667eea;
+  background: var(--brand);
   color: white;
   transform: translateY(-2px);
 }
 
 /* Upload Section */
 .upload-section {
-  background: #f8fafc;
+  background: var(--card);
   padding: 3rem 1rem;
   text-align: center;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--border);
 }
 
 .upload-section h3 {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text);
   margin-bottom: 1rem;
 }
 
@@ -486,7 +488,7 @@
 }
 
 .modal-content {
-  background: #fff;
+  background: var(--card);
   border-radius: 10px;
   padding: 1rem;
   width: 90%;
@@ -512,7 +514,7 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -542,17 +544,17 @@
 
 .filter-group label {
   font-weight: 600;
-  color: #374151;
+  color: var(--muted);
   font-size: 0.9rem;
 }
 
 .filter-group select {
   padding: 0.8rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border);
   border-radius: 8px;
-  background: white;
+  background: var(--card);
   font-size: 1rem;
-  color: #374151;
+  color: var(--muted);
   cursor: pointer;
   transition: border-color 0.3s ease, box-shadow 0.2s ease;
 }
@@ -563,7 +565,7 @@
 
 .filter-group select:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--brand);
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 

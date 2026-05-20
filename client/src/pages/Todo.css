@@ -57,7 +57,7 @@
 .task-desc { margin-top:0.4rem; color:var(--muted) }
 .task-actions { display:flex; gap:0.4rem; align-items:center }
 .task button { background:transparent; border:1px solid var(--border); padding:0.3rem 0.5rem; border-radius:6px }
-.task .danger { border-color:#ffb3b3; color:#b80000 }
+.task .danger { border-color: var(--border); color: var(--brand) }
 .task.done { opacity:0.6; text-decoration:line-through }
 
 @media (max-width: 880px) {
