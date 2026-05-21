@@ -21,19 +21,6 @@ const Syllabus = () => {
     },
     {
       id: 2,
-      title: "Computer Science Engineering - Semester 3",
-      university: "Delhi University",
-      department: "Computer Science",
-      semester: 3,
-      subjects: ["Data Structures", "Computer Organization", "Discrete Mathematics", "Database Systems", "Software Engineering"],
-      downloadCount: 890,
-      uploadDate: "2024-01-20",
-      fileSize: "3.1 MB",
-      difficulty: "Intermediate",
-      tags: ["CSE", "Data Structures", "Database"]
-    },
-    {
-      id: 3,
       title: "Mechanical Engineering - Semester 2",
       university: "Mumbai University",
       department: "Mechanical Engineering",
@@ -44,6 +31,19 @@ const Syllabus = () => {
       fileSize: "2.8 MB",
       difficulty: "Intermediate",
       tags: ["Mechanical", "Thermodynamics", "Manufacturing"]
+    },
+    {
+      id: 3,
+      title: "Computer Science Engineering - Semester 3",
+      university: "Delhi University",
+      department: "Computer Science",
+      semester: 3,
+      subjects: ["Data Structures", "Computer Organization", "Discrete Mathematics", "Database Systems", "Software Engineering"],
+      downloadCount: 890,
+      uploadDate: "2024-01-20",
+      fileSize: "3.1 MB",
+      difficulty: "Intermediate",
+      tags: ["CSE", "Data Structures", "Database"]
     },
     {
       id: 4,
