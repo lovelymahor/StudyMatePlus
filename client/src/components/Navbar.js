@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { useTheme } from "../theme/ThemeProvider";
 import { FaMoon, FaSun, FaChevronDown } from "react-icons/fa";
@@ -10,20 +10,20 @@ const user = {
 
 // Primary links always visible in the bar
 const primaryLinks = [
-  { to: "/",         label: "Home"      },
-  { to: "/syllabus", label: "Syllabus"  },
-  { to: "/notes",    label: "Notes"     },
-  { to: "/pyqs",     label: "PYQs"      },
-  { to: "/feedback", label: "Feedback"  },
+  { to: "/", label: "Home" },
+  { to: "/syllabus", label: "Syllabus" },
+  { to: "/notes", label: "Notes" },
+  { to: "/pyqs", label: "PYQs" },
+  { to: "/feedback", label: "Feedback" },
 ];
 
 // Secondary links hidden inside "More" dropdown
 const moreLinks = [
-  { to: "/about",     label: "About Us"  },
+  { to: "/about", label: "About Us" },
   { to: "/analytics", label: "Analytics" },
-  { to: "/tasks",     label: "Tasks"     },
-  { to: "/mindmap",   label: "Mind Map"  },
-  { to: "/faq",       label: "FAQs"      },
+  { to: "/tasks", label: "Tasks" },
+  { to: "/mindmap", label: "Mind Map" },
+  { to: "/faq", label: "FAQs" },
 ];
 
 // All links for mobile menu
@@ -31,12 +31,16 @@ const allLinks = [...primaryLinks, ...moreLinks];
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
-  const closeMobileMenu  = () => setIsMobileMenuOpen(false);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
+  const isMoreActive = moreLinks.some(({ to }) => location.pathname === to);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -45,6 +49,7 @@ const Navbar = () => {
         setIsDropdownOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -54,6 +59,7 @@ const Navbar = () => {
     const handleResize = () => {
       if (window.innerWidth > 768) setIsMobileMenuOpen(false);
     };
+
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -61,15 +67,17 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-
         {/* Logo */}
         <Link to="/" className="navbar-brand">
-          <img src="/logo.png" alt="StudyMatePlus Logo" className="navbar-logo" />
+          <img
+            src="/logo.png"
+            alt="StudyMatePlus Logo"
+            className="navbar-logo"
+          />
         </Link>
 
         {/* Right side — desktop */}
         <div className="navbar-right">
-
           {/* Primary nav links */}
           <ul className="navbar-links">
             {primaryLinks.map(({ to, label }) => (
@@ -92,7 +100,7 @@ const Navbar = () => {
               ref={dropdownRef}
             >
               <button
-                className="navbar-dropdown-btn"
+                className={`navbar-dropdown-btn${isMoreActive ? " active" : ""}`}
                 onClick={() => setIsDropdownOpen((prev) => !prev)}
                 aria-expanded={isDropdownOpen}
                 aria-haspopup="true"
@@ -100,12 +108,13 @@ const Navbar = () => {
                 More
                 <FaChevronDown className="navbar-dropdown-arrow" />
               </button>
+
               <div className="navbar-dropdown-menu" role="menu">
                 {moreLinks.map(({ to, label }) => (
                   <NavLink
                     key={to}
                     to={to}
-                    className={({ isActive }) => isActive ? "active" : ""}
+                    className={({ isActive }) => (isActive ? "active" : "")}
                     onClick={() => setIsDropdownOpen(false)}
                     role="menuitem"
                   >
@@ -124,14 +133,24 @@ const Navbar = () => {
             aria-label="Toggle theme"
             className="navbar-theme-toggle"
             onClick={toggleTheme}
-            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            title={
+              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+            }
           >
             {theme === "dark" ? <FaSun /> : <FaMoon />}
           </button>
 
           {/* Profile */}
-          <Link to="/profile" className="navbar-profile-link" aria-label="User profile">
-            <img src={user.avatar} alt="User Profile" className="navbar-profile-img" />
+          <Link
+            to="/profile"
+            className="navbar-profile-link"
+            aria-label="User profile"
+          >
+            <img
+              src={user.avatar}
+              alt="User Profile"
+              className="navbar-profile-img"
+            />
           </Link>
 
           {/* Hamburger — mobile only */}
@@ -174,13 +193,18 @@ const Navbar = () => {
           >
             {theme === "dark" ? <FaSun /> : <FaMoon />}
           </button>
+
           <Link
             to="/profile"
             className="navbar-profile-link"
             onClick={closeMobileMenu}
             aria-label="User profile"
           >
-            <img src={user.avatar} alt="User Profile" className="navbar-profile-img" />
+            <img
+              src={user.avatar}
+              alt="User Profile"
+              className="navbar-profile-img"
+            />
           </Link>
         </div>
       </div>

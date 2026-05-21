@@ -399,3 +399,13 @@ html[data-theme="dark"] .navbar-link-mobile.active {
     height: 30px;
   }
 }
+.navbar-dropdown-btn.active {
+  background: rgba(99, 102, 241, 0.12);
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+html[data-theme="dark"] .navbar-dropdown-btn.active {
+  background: rgba(139, 180, 255, 0.12);
+  color: #8ab4ff;
+}
