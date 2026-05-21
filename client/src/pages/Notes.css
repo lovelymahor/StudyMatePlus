@@ -574,3 +574,38 @@
     gap: 1rem;
   }
 }
+/* ===== NOTES DARK MODE FIX ===== */
+
+html[data-theme="dark"] .notes {
+  color: white !important;
+}
+
+/* Main headings */
+html[data-theme="dark"] .notes h1,
+html[data-theme="dark"] .notes h2,
+html[data-theme="dark"] .notes h3,
+html[data-theme="dark"] .notes h4,
+
+/* Paragraphs and labels */
+html[data-theme="dark"] .notes p,
+html[data-theme="dark"] .notes label,
+
+/* Card/content text */
+html[data-theme="dark"] .notes .card-title,
+html[data-theme="dark"] .notes .results-header h2,
+html[data-theme="dark"] .notes .results-header p,
+html[data-theme="dark"] .notes .subject-name,
+html[data-theme="dark"] .notes .note-title,
+html[data-theme="dark"] .notes .note-description,
+html[data-theme="dark"] .notes .stat,
+html[data-theme="dark"] .notes .card-meta {
+
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+html[data-theme="dark"] .notes input,
+html[data-theme="dark"] .notes select,
+html[data-theme="dark"] .notes textarea {
+
+  color: #111111 !important;
+}

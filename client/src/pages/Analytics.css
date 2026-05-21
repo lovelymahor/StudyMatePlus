@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-.home {
+.analytics-page {
   min-height: 100vh;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
@@ -84,19 +84,34 @@
 }
 
 .chart-container {
-  background: white;
+  background: #ffffff;
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 500px;
+  opacity:1;
 }
 
 .chart-container h2 {
-  margin-bottom: 1rem;
-  font-size: 1.4rem;
-  color: #333;
+  color: #000 !important;
+  font-size: 1.5rem;
+  font-weight: 700;
   text-align: center;
+  margin-bottom: 1rem;
+}
+html[data-theme="dark"] .chart-container h2 {
+  color: #ffffff !important;
+}
+.chart-container canvas {
+  background: white;
+}
+.stat-label {
+  color: #666;
+}
+
+[data-theme="dark"] .stat-label {
+  color: #f1f5f9;
 }
 select {
   border: 2px solid #667eea;
@@ -329,4 +344,37 @@ button:hover {
     width: 100%; /* Make button full-width */
     padding: 0.8rem 1rem;
   }
+}
+.analytics-section * {
+  visibility: visible;
+}
+.chart-container canvas {
+  display: block;
+}
+/* FIX ANALYTICS CHART HEADINGS */
+.analytics-section .chart-container h2 {
+  color: #111 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .analytics-section .chart-container h2 {
+  color: #ffffff !important;
+}
+/* FIX LIGHT CARDS TEXT IN DARK MODE */
+html[data-theme="dark"] .insights-section h2,
+html[data-theme="dark"] .filter-section h2,
+html[data-theme="dark"] .insights-section ul,
+html[data-theme="dark"] .filter-section select {
+  color: #222 !important;
+}
+
+/* Dropdown text fix */
+html[data-theme="dark"] .filter-section select {
+  background-color: #fff8d6 !important;
+  color: #222 !important;
 }
