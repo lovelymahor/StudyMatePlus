@@ -11,7 +11,7 @@ import './ScrollToTop.css';
 
 import { v4 as uuid } from 'uuid';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Layers, Moon, Sun, Download, Upload, Save, Plus, Trash2 } from 'lucide-react';
+import { Layers, Moon, Sun, Download, Upload, Save, Plus, Trash2, Undo2, Redo2 } from 'lucide-react';
 import { FaArrowUp } from "react-icons/fa";
 import * as htmlToImage from 'html-to-image';
 
@@ -109,6 +109,61 @@ export default function MindMapEditor() {
   const [connLabelTextColor, setConnLabelTextColor] = useState('#111827');
   const [currentTool, setCurrentTool] = useState('one-way'); // one-way | two-way | informational | node | dotted
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
+  const MAX_HISTORY = 50;
+const [undoStack, setUndoStack] = useState([]);
+const [redoStack, setRedoStack] = useState([]);
+
+const createSnapshot = useCallback(() => ({
+  nodes,
+  edges,
+  collapsed: Array.from(collapsed),
+}), [nodes, edges, collapsed]);
+
+const restoreSnapshot = useCallback((snapshot) => {
+  setNodes(snapshot.nodes);
+  setEdges(snapshot.edges);
+  setCollapsed(new Set(snapshot.collapsed || []));
+}, [setNodes, setEdges]);
+
+const saveToHistory = useCallback(() => {
+  setUndoStack((prev) => [
+    ...prev.slice(-(MAX_HISTORY - 1)),
+    createSnapshot(),
+  ]);
+  setRedoStack([]);
+}, [createSnapshot]);
+
+const handleUndo = useCallback(() => {
+  setUndoStack((prev) => {
+    if (prev.length === 0) return prev;
+
+    const previousSnapshot = prev[prev.length - 1];
+
+    setRedoStack((redoPrev) => [
+      ...redoPrev.slice(-(MAX_HISTORY - 1)),
+      createSnapshot(),
+    ]);
+
+    restoreSnapshot(previousSnapshot);
+    return prev.slice(0, -1);
+  });
+}, [createSnapshot, restoreSnapshot]);
+
+const handleRedo = useCallback(() => {
+  setRedoStack((prev) => {
+    if (prev.length === 0) return prev;
+
+    const nextSnapshot = prev[prev.length - 1];
+
+    setUndoStack((undoPrev) => [
+      ...undoPrev.slice(-(MAX_HISTORY - 1)),
+      createSnapshot(),
+    ]);
+
+    restoreSnapshot(nextSnapshot);
+    return prev.slice(0, -1);
+  });
+}, [createSnapshot, restoreSnapshot]);
 
   // Persist
   useEffect(() => {
@@ -183,35 +238,56 @@ export default function MindMapEditor() {
   }, [edges, hiddenTargets, collapsed]);
 
   // create a new node (used by Node Box tool)
-  const createNodeBox = useCallback(() => {
-    const id = uuid();
+ const createNodeBox = useCallback(() => {
+  saveToHistory();
+  const id = uuid();
     const pos = { x: 120 + Math.random() * 200, y: 120 + Math.random() * 200 };
     const color = SUBJECTS.Default;
     const newNode = { id, type: 'study', position: pos, data: { label: `New Node`, subject: 'Default', color, collapsed: false } };
     setNodes(nds => nds.concat(newNode));
     setSelectedId(id);
-  }, []);
+  }, [saveToHistory]);
 
   const createNodeBoxAt = useCallback((pos) => {
-    const id = uuid();
+  saveToHistory();
+  const id = uuid();
     const color = SUBJECTS.Default;
     const newNode = { id, type: 'study', position: pos, data: { label: `New Node`, subject: 'Default', color, collapsed: false } };
     setNodes(nds => nds.concat(newNode));
     setSelectedId(id);
-  }, []);
+  }, [saveToHistory]);
 
   const createInfoNodeAt = useCallback((pos) => {
-    const id = uuid();
+  saveToHistory();
+  const id = uuid();
     const newNode = { id, type: 'info', position: pos, data: { label: 'Info', color: '#fff' } };
     setNodes(nds => nds.concat(newNode));
     setSelectedId(id);
-  }, []);
+  }, [saveToHistory]);
 
   // RF handlers
-  const onNodesChange = useCallback(changes => setNodes(nds => applyNodeChanges(changes, nds)), []);
-  const onEdgesChange = useCallback(changes => setEdges(eds => applyEdgeChanges(changes, eds)), []);
+  const onNodesChange = useCallback((changes) => {
+  const shouldSave = changes.some((change) => change.type === 'remove');
+
+  if (shouldSave) {
+    saveToHistory();
+  }
+
+  setNodes((nds) => applyNodeChanges(changes, nds));
+}, [saveToHistory]);
+
+const onEdgesChange = useCallback((changes) => {
+  const shouldSave = changes.some((change) => change.type === 'remove');
+
+  if (shouldSave) {
+    saveToHistory();
+  }
+
+  setEdges((eds) => applyEdgeChanges(changes, eds));
+}, [saveToHistory]);
   const onConnect = useCallback(
-    (params) => {
+  (params) => {
+    saveToHistory();
       const id = uuid();
       const baseStyle = { stroke: connColor, strokeWidth: Number(connWidth) };
 
@@ -270,7 +346,7 @@ export default function MindMapEditor() {
       };
       setEdges((eds) => eds.concat(edge));
     },
-    [connColor, connLabel, connType, connWidth, connLabelBg, connLabelBgColor, connLabelTextColor, currentTool, nodes, createNodeBox]
+    [connColor, connLabel, connType, connWidth, connLabelBg, connLabelBgColor, connLabelTextColor, currentTool, nodes, createNodeBox,saveToHistory]
   );
 
   // Selection
@@ -294,6 +370,17 @@ export default function MindMapEditor() {
   // Keyboard shortcuts: Delete to remove selected node/edge, Shift+N to create a new node at center
   useEffect(() => {
     const onKey = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
+  e.preventDefault();
+  handleUndo();
+  return;
+}
+
+if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') {
+  e.preventDefault();
+  handleRedo();
+  return;
+}
       // Delete / Backspace removes selected node or edge
       if (e.key === 'Delete' || e.key === 'Backspace') {
         if (selectedEdgeId) {
@@ -329,12 +416,14 @@ export default function MindMapEditor() {
 
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [selectedId, selectedEdgeId, createNodeBoxAt, createNodeBox, reactFlowInstance]);
+  }, [selectedId, selectedEdgeId, createNodeBoxAt, createNodeBox, reactFlowInstance, handleUndo, handleRedo]);
 
   // Actions
   const addChild = useCallback((subject = 'Default') => {
-    const base = selectedNode || nodes[0];
-    if (!base) return;
+  const base = selectedNode || nodes[0];
+  if (!base) return;
+
+  saveToHistory();
     const id = uuid();
     const pos = { x: base.position.x + 200, y: base.position.y + (Math.random() * 160 - 80) };
     const color = SUBJECTS[subject] || SUBJECTS.Default;
@@ -342,15 +431,17 @@ export default function MindMapEditor() {
     setNodes(nds => nds.concat(newNode));
     setEdges(eds => eds.concat({ id: uuid(), source: base.id, target: id, type: 'smoothstep', markerEnd: { type: MarkerType.ArrowClosed } }));
     setSelectedId(id);
-  }, [nodes, selectedNode]);
+  }, [nodes, selectedNode,saveToHistory]);
 
   const deleteSelected = useCallback(() => {
-    if (!selectedNode || selectedNode.id === 'root') return;
+  if (!selectedNode || selectedNode.id === 'root') return;
+
+  saveToHistory();
     const id = selectedNode.id;
     setNodes(nds => nds.filter(n => n.id !== id));
     setEdges(eds => eds.filter(e => e.source !== id && e.target !== id));
     setSelectedId('root');
-  }, [selectedNode]);
+  }, [selectedNode, saveToHistory]);
 
   // Waypoint helpers (allow bending edges by inserting a tiny draggable waypoint node)
   const splitEdgeToWaypoint = useCallback((edgeId) => {
@@ -431,11 +522,20 @@ export default function MindMapEditor() {
 
   // Inspector edits
   const updateSelected = (patch) => {
-    setNodes(nds => nds.map(n => n.id === selectedId ? { ...n, data: { ...n.data, ...patch } } : n));
-  };
+  saveToHistory();
+
+  setNodes((nds) =>
+    nds.map((n) =>
+      n.id === selectedId
+        ? { ...n, data: { ...n.data, ...patch } }
+        : n
+    )
+  );
+};
 
   // Templates
   const applyTemplate = (type) => {
+  saveToHistory();
     if (type === 'exam') {
       const n1 = { id: '1', type: 'study', position: { x: 250, y: 80 }, data: { label: 'Exam Prep', subject: 'Default', color: SUBJECTS.Default } };
       const n2 = { id: '2', type: 'study', position: { x: 60, y: 260 }, data: { label: 'Math', subject: 'Math', color: SUBJECTS.Math } };
@@ -503,8 +603,10 @@ export default function MindMapEditor() {
     reader.onload = (e) => {
       try {
         const parsed = JSON.parse(e.target.result);
-        setNodes(parsed.nodes || []); setEdges(parsed.edges || []);
-        setCollapsed(new Set(parsed.collapsed || []));
+saveToHistory();
+setNodes(parsed.nodes || []);
+setEdges(parsed.edges || []);
+setCollapsed(new Set(parsed.collapsed || []));
       } catch { alert('Invalid JSON'); }
     };
     reader.readAsText(file);
@@ -526,46 +628,65 @@ export default function MindMapEditor() {
       </div>
       {/* Toolbar */}
       <motion.div className="toolbar" initial={{ y: -24, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
-        <div className="group">
-          <button onClick={() => applyTemplate('exam')}><Layers size={16}/> Exam Prep</button>
-          <button onClick={() => applyTemplate('research')}><Layers size={16}/> Research</button>
-          <button onClick={() => applyTemplate('planner')}><Layers size={16}/> Planner</button>
-        </div>
-        <div className="group">
-          <button onClick={() => addChild('Math')}>+ Math</button>
-          <button onClick={() => addChild('Science')}>+ Science</button>
-          <button onClick={() => addChild('History')}>+ History</button>
-          <button onClick={() => addChild('Literature')}>+ Lit</button>
-          <button onClick={() => addChild('CS')}>+ CS</button>
-        </div>
-        <div className="group">
-          <button onClick={() => {
-            // simple auto-arrange: grid layout
-            const perRow = Math.ceil(Math.sqrt(nodes.length || 1));
-            const spacingX = 200; const spacingY = 160;
-            const arranged = nodes.map((n, idx) => ({
-              ...n,
-              position: { x: 80 + (idx % perRow) * spacingX, y: 80 + Math.floor(idx / perRow) * spacingY }
-            }));
-            setNodes(arranged);
-          }} title="Auto Arrange">Auto Arrange</button>
-        </div>
-        {/* <div className="group">
-          <input className="search" placeholder="Search node…" value={search} onChange={e => setSearch(e.target.value)} />
-        </div> */}
-        <div className="group">
-          <button onClick={exportPNG}><Download size={16}/> PNG</button>
-          <button onClick={exportJSON}><Save size={16}/> JSON</button>
-          <label className="button" title="Import JSON">
-            <Upload size={16}/> Import
-            <input ref={fileRef} type="file" accept="application/json" hidden onChange={(e)=> e.target.files?.[0] && importJSON(e.target.files[0])}/>
-          </label>
-        </div>
-        <div className="group">
-          <button onClick={() => setDark(d => !d)}>{dark ? <Sun size={16}/> : <Moon size={16}/>} Theme</button>
-        </div>
-      </motion.div>
+  <div className="group">
+    <button onClick={() => applyTemplate('exam')}><Layers size={16}/> Exam Prep</button>
+    <button onClick={() => applyTemplate('research')}><Layers size={16}/> Research</button>
+    <button onClick={() => applyTemplate('planner')}><Layers size={16}/> Planner</button>
+  </div>
 
+  <div className="group">
+    <button
+      onClick={handleUndo}
+      disabled={undoStack.length === 0}
+      title="Undo last change"
+    >
+      <Undo2 size={16} /> Undo
+    </button>
+
+    <button
+      onClick={handleRedo}
+      disabled={redoStack.length === 0}
+      title="Redo last undone change"
+    >
+      <Redo2 size={16} /> Redo
+    </button>
+  </div>
+
+  <div className="group">
+    <button onClick={() => addChild('Math')}>+ Math</button>
+    <button onClick={() => addChild('Science')}>+ Science</button>
+    <button onClick={() => addChild('History')}>+ History</button>
+    <button onClick={() => addChild('Literature')}>+ Lit</button>
+    <button onClick={() => addChild('CS')}>+ CS</button>
+  </div>
+
+  <div className="group">
+    <button onClick={() => {
+      saveToHistory();
+      // simple auto-arrange: grid layout
+      const perRow = Math.ceil(Math.sqrt(nodes.length || 1));
+      const spacingX = 200; const spacingY = 160;
+      const arranged = nodes.map((n, idx) => ({
+        ...n,
+        position: { x: 80 + (idx % perRow) * spacingX, y: 80 + Math.floor(idx / perRow) * spacingY }
+      }));
+      setNodes(arranged);
+    }} title="Auto Arrange">Auto Arrange</button>
+  </div>
+
+  <div className="group">
+    <button onClick={exportPNG}><Download size={16}/> PNG</button>
+    <button onClick={exportJSON}><Save size={16}/> JSON</button>
+    <label className="button" title="Import JSON">
+      <Upload size={16}/> Import
+      <input ref={fileRef} type="file" accept="application/json" hidden onChange={(e)=> e.target.files?.[0] && importJSON(e.target.files[0])}/>
+    </label>
+  </div>
+
+  <div className="group">
+    <button onClick={() => setDark(d => !d)}>{dark ? <Sun size={16}/> : <Moon size={16}/>} Theme</button>
+  </div>
+</motion.div>
       {/* Canvas */}
       <div className="canvas" ref={wrapperRef}>
         <ReactFlow
@@ -575,6 +696,7 @@ export default function MindMapEditor() {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
+          onNodeDragStart={saveToHistory}
           onSelectionChange={onSelectionChange}
           onPaneClick={(event, coords) => {
             // coords may be provided by React Flow; prefer using reactFlowInstance.project for accuracy
