@@ -919,3 +919,42 @@
     grid-template-columns: 1fr;
   }
 }
+/* ===== FEEDBACK DARK MODE FIX ===== */
+
+/* Stat cards text */
+html[data-theme="dark"] .feedback .stat-label {
+  color: #374151 !important;
+  -webkit-text-fill-color: #374151 !important;
+}
+
+html[data-theme="dark"] .feedback .stat-number {
+  color: #ffd700 !important;
+  -webkit-text-fill-color: #ffd700 !important;
+}
+
+/* Feedback cards text */
+html[data-theme="dark"] .feedback .student-name,
+html[data-theme="dark"] .feedback .subject-name,
+html[data-theme="dark"] .feedback .detail-section h5,
+html[data-theme="dark"] .feedback .detail-section p,
+html[data-theme="dark"] .feedback .student-details,
+html[data-theme="dark"] .feedback .subject-details,
+html[data-theme="dark"] .feedback .prep-time {
+
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+/* Filters */
+html[data-theme="dark"] .feedback .filter-group label,
+html[data-theme="dark"] .feedback .results-count {
+  color: #111111 !important;
+}
+
+/* Inputs */
+html[data-theme="dark"] .feedback input,
+html[data-theme="dark"] .feedback textarea,
+html[data-theme="dark"] .feedback select {
+  color: #111111 !important;
+  background: #ffffff !important;
+}

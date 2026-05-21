@@ -147,11 +147,6 @@
 }
 
 
-[data-theme="dark"] .story-card {
-  background-color: #1e2a3a; /* A nice dark blue-gray */
-  color: #f0f0f0;            /* Light text color for contrast */
-  border: 1px solid #4a4a4a;    /* Optional: a subtle border for dark mode */
-}
 
 .story-card:hover {
   transform: translateY(-5px);
@@ -255,13 +250,6 @@
   font-weight: bold;
 }
 
-/* Add this to your About.css file */
-
-[data-theme="dark"] .feature-deep {
-  background-color: #1e2a3a; /* A nice dark blue-gray */
-  color: #f0f0f0;            /* Light text color for contrast */
-  border: 1px solid #4a4a4a;    /* Optional: a subtle border for dark mode */
-}
 
 /* Values Section */
 .values {
@@ -319,13 +307,8 @@
   opacity: 0.9;
 }
 
-/* Add this to your About.css file */
 
-[data-theme="dark"] .value-item {
-  background-color: #1e2a3a; /* A nice dark blue-gray */
-  color: #f0f0f0;            /* Light text color for contrast */
-  border: 1px solid #4a4a4a;    /* Optional: a subtle border for dark mode */
-}
+
 
 /* Team Section */
 .team {
@@ -870,4 +853,57 @@
   .value-icon {
     font-size: 1.8rem;
   }
+}
+/* Dark Mode Fixes */
+
+[data-theme="dark"] .about {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+/* Section backgrounds */
+[data-theme="dark"] .mission,
+[data-theme="dark"] .features-deep {
+  background: #181818;
+}
+
+[data-theme="dark"] .story,
+[data-theme="dark"] .values {
+  background: #121212;
+}
+
+/* Headings */
+[data-theme="dark"] .mission-text h2,
+[data-theme="dark"] .story h2,
+[data-theme="dark"] .features-deep h2,
+[data-theme="dark"] .values h2,
+[data-theme="dark"] .story-card h3,
+[data-theme="dark"] .feature-deep h3,
+[data-theme="dark"] .value-item h3 {
+  color: #ffffff;
+}
+
+/* Paragraphs and normal text */
+[data-theme="dark"] .mission-text p,
+[data-theme="dark"] .story-card p,
+[data-theme="dark"] .feature-deep p,
+[data-theme="dark"] .feature-deep ul li,
+[data-theme="dark"] .stat-text,
+[data-theme="dark"] .value-item p {
+  color: #d1d5db;
+}
+
+/* Cards */
+[data-theme="dark"] .feature-deep,
+[data-theme="dark"] .story-card,
+[data-theme="dark"] .value-item {
+  background-color: #1e293b;
+  border: 1px solid #374151;
+}
+
+/* Hover consistency */
+[data-theme="dark"] .story-card:hover,
+[data-theme="dark"] .feature-deep:hover,
+[data-theme="dark"] .value-item:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }

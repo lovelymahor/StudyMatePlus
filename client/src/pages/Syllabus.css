@@ -68,7 +68,8 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255,255,255,0.25);
   border-radius: 15px;
   backdrop-filter: blur(10px);
   min-width: 120px;
@@ -521,4 +522,25 @@
     font-size: 0.8rem;
     padding: 0.3rem 0.6rem;
   }
+}
+/* ===== FINAL DARK MODE FIX ===== */
+
+html[data-theme="dark"] .syllabus {
+  color: white !important;
+}
+
+html[data-theme="dark"] .syllabus .results-header h2,
+html[data-theme="dark"] .syllabus .results-header p,
+html[data-theme="dark"] .syllabus .card-title,
+html[data-theme="dark"] .syllabus .subjects-section h4,
+html[data-theme="dark"] .syllabus .filter-group label,
+html[data-theme="dark"] .syllabus .department,
+html[data-theme="dark"] .syllabus .stat,
+html[data-theme="dark"] .syllabus .subject-tag,
+html[data-theme="dark"] .syllabus .card-meta,
+html[data-theme="dark"] .syllabus .no-results h3,
+html[data-theme="dark"] .syllabus .no-results p {
+
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
 }

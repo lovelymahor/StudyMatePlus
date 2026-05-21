@@ -62,6 +62,52 @@ const Analytics = () => {
       },
     ],
   };
+ const chartOptions = {
+  responsive: true,
+  plugins: {
+    legend: {
+      labels: {
+        color: "#000000", // legend text color
+        font: {
+          size: 14,
+          weight: "bold",
+        },
+      },
+    },
+    tooltip: {
+      bodyColor: "#000",
+      titleColor: "#000",
+    },
+  },
+
+  scales: {
+    x: {
+      ticks: {
+        color: "#000000",
+        font: {
+          size: 13,
+          weight: "bold",
+        },
+      },
+      grid: {
+        color: "rgba(0,0,0,0.1)",
+      },
+    },
+
+    y: {
+      ticks: {
+        color: "#000000",
+        font: {
+          size: 13,
+          weight: "bold",
+        },
+      },
+      grid: {
+        color: "rgba(0,0,0,0.1)",
+      },
+    },
+  },
+};
 
   // State to track selected subject
   const [selectedSubject, setSelectedSubject] = useState('all');
@@ -130,7 +176,7 @@ const Analytics = () => {
   };
 
   return (
-    <div className="home">
+    <div className="analytics-page">
       <div className="container">
         <motion.section 
           className="hero"
@@ -158,12 +204,16 @@ const Analytics = () => {
           variants={staggerChildren}
         >
           <motion.div className="chart-container" variants={scaleIn} whileHover={{ y: -5, boxShadow: "0 12px 28px rgba(0,0,0,0.1)" }}>
-            <h2>PYQs by Subject (Bar Chart)</h2>
-            <Bar data={barData} />
+            <h2 style={{ color: "#000", WebkitTextFillColor: "#000" }}>
+  PYQs by Subject (Bar Chart)
+</h2>
+            <Bar data={barData} options={chartOptions} />
           </motion.div>
           <motion.div className="chart-container" variants={scaleIn} whileHover={{ y: -5, boxShadow: "0 12px 28px rgba(0,0,0,0.1)" }}>
-            <h2>PYQ Subject Distribution (Pie Chart)</h2>
-            <Pie data={pieData} />
+            <h2 style={{ color: "#000", WebkitTextFillColor: "#000" }}>
+  PYQ Subject Distribution (Pie Chart)
+</h2>
+            <Pie data={pieData} options={chartOptions} />
           </motion.div>
         </motion.section>
 
