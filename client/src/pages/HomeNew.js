@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import logo from "./logo.png";
-import "./Home.css";
+import "./HomeNew.css";
 import './ScrollToTop.css';
 
-const Home = () => {
+const HomeNew = () => {
   const [contributors, setContributors] = useState([]);
   const [showScroll, setShowScroll] = useState(false);
 
@@ -161,7 +161,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="home">
+    <div className="home home-new">
       {/* Hero Section */}
       <motion.section
         className="hero"
@@ -169,6 +169,11 @@ const Home = () => {
         animate="visible"
         variants={staggerChildren}
       >
+        {/* Ambient Shifting Glowing Backdrop Orbs */}
+        <div className="hero-blob hero-blob-1"></div>
+        <div className="hero-blob hero-blob-2"></div>
+        <div className="hero-blob hero-blob-3"></div>
+
         <div className="hero-container">
           {/* LEFT — text */}
           <motion.div className="hero-content" variants={slideInLeft}>
@@ -184,13 +189,13 @@ const Home = () => {
             </motion.p>
             <motion.div className="hero-buttons" variants={staggerChildrenFast}>
               <motion.div variants={scaleIn}>
-                <Link to="/syllabus" className="btn btn-primary-home">
-                  Browse Syllabus
+                <Link to="/syllabus" className="btn btn-primary-home btn-premium-syllabus">
+                  <span>Browse Syllabus</span>
                 </Link>
               </motion.div>
               <motion.div variants={scaleIn}>
-                <Link to="/pyqs" className="btn btn-secondary">
-                  Previous Papers
+                <Link to="/pyqs" className="btn btn-premium-pyqs">
+                  <span>Previous Papers</span>
                 </Link>
               </motion.div>
             </motion.div>
@@ -520,7 +525,7 @@ const Home = () => {
             </motion.p>
             <motion.div className="cta-buttons" variants={staggerChildrenFast}>
               <motion.div variants={scaleIn}>
-                <Link to="/syllabus" className="btn btn-primary">
+                <Link to="/syllabus" className="btn btn-primary btn-premium-cta-1">
                   <motion.span
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -530,7 +535,7 @@ const Home = () => {
                 </Link>
               </motion.div>
               <motion.div variants={scaleIn}>
-                <Link to="/about" className="btn btn-primary">
+                <Link to="/about" className="btn btn-primary btn-premium-cta-2">
                   <motion.span
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -694,4 +699,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeNew;

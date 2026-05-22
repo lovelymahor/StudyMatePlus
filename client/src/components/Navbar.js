@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { useTheme } from "../theme/ThemeProvider";
 import { FaMoon, FaSun, FaChevronDown } from "react-icons/fa";
 
+const DEFAULT_AVATAR = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='avatarGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23818cf8'/><stop offset='100%25' stop-color='%234f46e5'/></linearGradient></defs><circle cx='16' cy='16' r='16' fill='url(%23avatarGrad)'/><circle cx='16' cy='13' r='5' fill='%23ffffff'/><path d='M7 26.5c0-4.5 3.5-8 8-8h2c4.5 0 8 3.5 8 8' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round'/></svg>";
+
 const user = {
-  avatar: "https://avatar.iran.liara.run/public/boy",
+  avatar: null, // Set to null by default to showcase our beautiful default SVG profile image
 };
+
 
 // Primary links always visible in the bar
 const primaryLinks = [
@@ -34,6 +37,11 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const location = useLocation();
+
+  const currentPath = location.pathname;
+  const isHomeActive = currentPath === "/" || currentPath === "/homenew";
+  const isMoreActive = moreLinks.some(({ to }) => currentPath === to || currentPath.startsWith(to + "/"));
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
   const closeMobileMenu  = () => setIsMobileMenuOpen(false);
@@ -72,19 +80,19 @@ const Navbar = () => {
 
           {/* Primary nav links */}
           <ul className="navbar-links">
-            {primaryLinks.map(({ to, label }) => (
-              <li key={to}>
-                <NavLink
-                  to={to}
-                  end={to === "/"}
-                  className={({ isActive }) =>
-                    "navbar-link" + (isActive ? " active" : "")
-                  }
-                >
-                  {label}
-                </NavLink>
-              </li>
-            ))}
+            {primaryLinks.map(({ to, label }) => {
+              const isActive = to === "/" ? isHomeActive : (currentPath === to || currentPath.startsWith(to + "/"));
+              return (
+                <li key={to}>
+                  <NavLink
+                    to={to}
+                    className={`navbar-link${isActive ? " active" : ""}`}
+                  >
+                    {label}
+                  </NavLink>
+                </li>
+              );
+            })}
 
             {/* "More" dropdown */}
             <li
@@ -92,7 +100,7 @@ const Navbar = () => {
               ref={dropdownRef}
             >
               <button
-                className="navbar-dropdown-btn"
+                className={`navbar-dropdown-btn${isMoreActive ? " active" : ""}`}
                 onClick={() => setIsDropdownOpen((prev) => !prev)}
                 aria-expanded={isDropdownOpen}
                 aria-haspopup="true"
@@ -131,7 +139,7 @@ const Navbar = () => {
 
           {/* Profile */}
           <Link to="/profile" className="navbar-profile-link" aria-label="User profile">
-            <img src={user.avatar} alt="User Profile" className="navbar-profile-img" />
+            <img src={user.avatar || DEFAULT_AVATAR} alt="User Profile" className="navbar-profile-img" />
           </Link>
 
           {/* Hamburger — mobile only */}
@@ -149,20 +157,20 @@ const Navbar = () => {
       {/* Mobile slide-down menu */}
       <div className={`navbar-menu-mobile${isMobileMenuOpen ? " active" : ""}`}>
         <ul className="navbar-links-mobile">
-          {allLinks.map(({ to, label }) => (
-            <li key={to}>
-              <NavLink
-                to={to}
-                end={to === "/"}
-                className={({ isActive }) =>
-                  "navbar-link-mobile" + (isActive ? " active" : "")
-                }
-                onClick={closeMobileMenu}
-              >
-                {label}
-              </NavLink>
-            </li>
-          ))}
+          {allLinks.map(({ to, label }) => {
+            const isActive = to === "/" ? isHomeActive : (currentPath === to || currentPath.startsWith(to + "/"));
+            return (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  className={`navbar-link-mobile${isActive ? " active" : ""}`}
+                  onClick={closeMobileMenu}
+                >
+                  {label}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Mobile bottom controls */}
@@ -180,7 +188,7 @@ const Navbar = () => {
             onClick={closeMobileMenu}
             aria-label="User profile"
           >
-            <img src={user.avatar} alt="User Profile" className="navbar-profile-img" />
+            <img src={user.avatar || DEFAULT_AVATAR} alt="User Profile" className="navbar-profile-img" />
           </Link>
         </div>
       </div>
