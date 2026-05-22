@@ -1,373 +1,508 @@
-/* About.css - StudyMatePlus - Enhanced Mobile Responsive */
+/* About.css - StudyMatePlus - Polished responsive styling */
 
 .about {
+  --about-text: #1f2937;
+  --about-heading: #111827;
+  --about-muted: #5b6474;
+  --about-soft-bg: #f8fafc;
+  --about-section-bg: #ffffff;
+  --about-surface: #ffffff;
+  --about-surface-alt: #f8fafc;
+  --about-border: rgba(148, 163, 184, 0.18);
+  --about-border-strong: rgba(102, 126, 234, 0.26);
+  --about-shadow-sm: 0 10px 28px rgba(15, 23, 42, 0.06);
+  --about-shadow-md: 0 16px 38px rgba(15, 23, 42, 0.1);
+  --about-shadow-lg: 0 24px 48px rgba(79, 70, 229, 0.16);
+  --about-transition: 0.28s ease;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--about-text);
+  background: var(--bg, #ffffff);
 }
 
-.container {
+html[data-theme="dark"] .about {
+  --about-text: #e5edf7;
+  --about-heading: #ffffff;
+  --about-muted: #c9d3e0;
+  --about-soft-bg: #111827;
+  --about-section-bg: #0f172a;
+  --about-surface: #182436;
+  --about-surface-alt: #1b293c;
+  --about-border: rgba(255, 255, 255, 0.08);
+  --about-border-strong: rgba(129, 140, 248, 0.34);
+  --about-shadow-sm: 0 14px 32px rgba(2, 6, 23, 0.24);
+  --about-shadow-md: 0 18px 38px rgba(2, 6, 23, 0.3);
+  --about-shadow-lg: 0 26px 52px rgba(2, 6, 23, 0.4);
+}
+
+.about *,
+.about *::before,
+.about *::after {
+  box-sizing: border-box;
+}
+
+.about .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
+/* Shared typography */
+.about .mission-text h2,
+.about .story h2,
+.about .features-deep h2,
+.about .values h2,
+.about .team h2,
+.about .cta-content h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.about .story h2,
+.about .features-deep h2,
+.about .values h2,
+.about .team h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.about .mission-text h2 {
+  margin-bottom: 1.5rem;
+  color: var(--about-heading);
+}
+
+.about .cta-content h2 {
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
 /* About Hero Section */
-.about-hero {
+.about .about-hero {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 6rem 0 4rem;
-  color: white;
+  color: #ffffff;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
-.about-hero::before {
+.about .about-hero::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
   opacity: 0.3;
 }
 
-.about-hero-content {
-  position: relative;
-  z-index: 1;
+.about .about-hero::after {
+  content: '';
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  top: -170px;
+  right: -130px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 72%);
+  pointer-events: none;
 }
 
-.about-hero h1 {
+.about .about-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.about .about-hero h1 {
   font-size: 3.5rem;
   font-weight: 800;
-  margin-bottom: 1.5rem;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin-bottom: 1.25rem;
   background: linear-gradient(45deg, #ffd700, #ffed4a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.hero-subtitle {
+.about .hero-subtitle {
   font-size: 1.3rem;
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto;
-  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.75;
 }
 
 /* Mission Section */
-.mission {
+.about .mission {
   padding: 6rem 0;
-  background: #f8fafc;
+  background: var(--about-soft-bg);
 }
 
-.mission-content {
+.about .mission-content {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 4rem;
   align-items: center;
 }
 
-.mission-text h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: #333;
+.about .mission-text p {
+  font-size: 1.05rem;
+  color: var(--about-muted);
+  margin: 0 0 1.35rem;
+  line-height: 1.85;
 }
 
-.mission-text p {
-  font-size: 1.1rem;
-  color: #666;
-  margin-bottom: 1.5rem;
-  line-height: 1.8;
+.about .mission-text p:last-child {
+  margin-bottom: 0;
 }
 
-.mission-visual {
+.about .mission-visual {
   text-align: center;
 }
 
-.mission-icon {
+.about .mission-icon {
   font-size: 5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
   display: block;
+  filter: drop-shadow(0 10px 22px rgba(79, 70, 229, 0.16));
 }
 
-.mission-stats {
+.about .mission-stats {
   display: flex;
   gap: 2rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
-.mini-stat {
+.about .mini-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 110px;
 }
 
-.stat-num {
+.about .stat-num {
   font-size: 2rem;
   font-weight: 800;
+  line-height: 1.1;
   color: #667eea;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.45rem;
 }
 
-.stat-text {
-  font-size: 0.9rem;
-  color: #666;
-  font-weight: 500;
+.about .stat-text {
+  font-size: 0.92rem;
+  color: var(--about-muted);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Shared card styling */
+.about .story-card,
+.about .feature-deep,
+.about .value-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid var(--about-border);
+  box-shadow: var(--about-shadow-sm);
+  transition: transform var(--about-transition), box-shadow var(--about-transition), border-color var(--about-transition), background-color var(--about-transition), color var(--about-transition);
+}
+
+.about .story-card::before,
+.about .feature-deep::before,
+.about .value-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(102, 126, 234, 0.08) 0%, transparent 36%);
+  opacity: 0;
+  transition: opacity var(--about-transition);
+  pointer-events: none;
+}
+
+.about .story-card:hover,
+.about .feature-deep:hover,
+.about .value-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--about-border-strong);
+  box-shadow: var(--about-shadow-lg);
+}
+
+.about .story-card:hover::before,
+.about .feature-deep:hover::before,
+.about .value-item:hover::before {
+  opacity: 1;
+}
+
+.about .story-card h3,
+.about .feature-deep h3,
+.about .value-item h3 {
+  color: var(--about-heading);
+}
+
+.about .story-card p,
+.about .feature-deep p,
+.about .value-item p {
+  color: var(--about-muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
 }
 
 /* Story Section */
-.story {
+.about .story {
   padding: 4rem 0;
-  background: white;
+  background: var(--about-section-bg);
 }
 
-.story h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 3rem;
-  color: #333;
+.about .story h2 {
+  color: var(--about-heading);
 }
 
-.story-content {
+.about .story-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  align-items: stretch;
 }
 
-.story-card {
-  background: #f8fafc;
-  padding: 2.5rem;
-  border-radius: 15px;
+.about .story-card {
+  background: var(--about-surface-alt);
+  padding: 2.4rem 2.25rem;
   text-align: center;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
 }
 
-
-[data-theme="dark"] .story-card {
-  background-color: #1e2a3a; /* A nice dark blue-gray */
-  color: #f0f0f0;            /* Light text color for contrast */
-  border: 1px solid #4a4a4a;    /* Optional: a subtle border for dark mode */
-}
-
-.story-card:hover {
-  transform: translateY(-5px);
-  border-color: #667eea;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
-}
-
-.story-icon {
+.about .story-icon {
   font-size: 3rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   display: block;
+  line-height: 1;
 }
 
-.story-card h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-.story-card p {
-  color: #666;
-  line-height: 1.7;
-}
-
-/* Features Deep Dive */
-.features-deep {
-  padding: 6rem 0;
-  background: #f8fafc;
-}
-
-.features-deep h2 {
-  text-align: center;
-  font-size: 2.5rem;
+.about .story-card h3 {
+  font-size: 1.45rem;
   font-weight: 700;
-  margin-bottom: 3rem;
-  color: #333;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.95rem;
 }
 
-.features-deep-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-}
-
-.feature-deep {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-}
-
-.feature-deep:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-}
-
-.feature-deep-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.feature-deep-icon {
-  font-size: 2.5rem;
-  flex-shrink: 0;
-}
-
-.feature-deep h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #333;
+.about .story-card p {
   margin: 0;
 }
 
-.feature-deep p {
-  color: #666;
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
+/* Features Deep Dive */
+.about .features-deep {
+  padding: 6rem 0;
+  background: var(--about-soft-bg);
 }
 
-.feature-deep ul {
+.about .features-deep h2 {
+  color: var(--about-heading);
+}
+
+.about .features-deep-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.about .feature-deep {
+  background: var(--about-surface);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--about-shadow-md);
+}
+
+.about .feature-deep-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.35rem;
+}
+
+.about .feature-deep-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.about .feature-deep h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.about .feature-deep p {
+  margin: 0 0 1.35rem;
+}
+
+.about .feature-deep ul {
   list-style: none;
   padding: 0;
+  margin: auto 0 0;
+  display: grid;
+  gap: 0.75rem;
 }
 
-.feature-deep ul li {
-  color: #555;
-  margin-bottom: 0.5rem;
+.about .feature-deep ul li {
+  color: var(--about-text);
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 1.65rem;
+  line-height: 1.65;
 }
 
-.feature-deep ul li::before {
-  content: '✓';
+.about .feature-deep ul li::before {
+  content: '\2713';
   position: absolute;
+  top: 0.05rem;
   left: 0;
   color: #667eea;
-  font-weight: bold;
-}
-
-/* Add this to your About.css file */
-
-[data-theme="dark"] .feature-deep {
-  background-color: #1e2a3a; /* A nice dark blue-gray */
-  color: #f0f0f0;            /* Light text color for contrast */
-  border: 1px solid #4a4a4a;    /* Optional: a subtle border for dark mode */
+  font-weight: 700;
 }
 
 /* Values Section */
-.values {
+.about .values {
   padding: 6rem 0;
-  background: white;
+  background: var(--about-section-bg);
 }
 
-.values h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 3rem;
-  color: #333;
+.about .values h2 {
+  color: var(--about-heading);
 }
 
-.values-grid {
+.about .values-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+  align-items: stretch;
 }
 
-.value-item {
+.about .value-item {
+  background: var(--about-surface-alt);
+  padding: 2rem 1.75rem;
   text-align: center;
-  padding: 2rem;
-  background: #f8fafc;
-  border-radius: 15px;
-  transition: all 0.3s ease;
 }
 
-.value-item:hover {
-  transform: translateY(-5px);
+.about .value-item:hover {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  box-shadow: 0 22px 46px rgba(118, 75, 162, 0.24);
 }
 
-.value-icon {
+html[data-theme="dark"] .about .value-item:hover {
+  box-shadow: 0 26px 52px rgba(2, 6, 23, 0.42);
+}
+
+.about .value-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
   display: block;
+  line-height: 1;
 }
 
-.value-item h3 {
+.about .value-item h3 {
   font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.8rem;
+  font-weight: 700;
+  margin: 0 0 0.8rem;
 }
 
-.value-item p {
-  color: inherit;
-  opacity: 0.8;
-  line-height: 1.6;
+.about .value-item p {
+  margin: 0;
 }
 
-.value-item:hover p {
-  opacity: 0.9;
-}
-
-/* Add this to your About.css file */
-
-[data-theme="dark"] .value-item {
-  background-color: #1e2a3a; /* A nice dark blue-gray */
-  color: #f0f0f0;            /* Light text color for contrast */
-  border: 1px solid #4a4a4a;    /* Optional: a subtle border for dark mode */
+.about .value-item:hover h3,
+.about .value-item:hover p {
+  color: #ffffff;
 }
 
 /* Team Section */
-.team {
+.about .team {
   padding: 6rem 0;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  color: #ffffff;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.team h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+.about .team::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.11) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.35;
+  pointer-events: none;
 }
 
-.team-description {
-  font-size: 1.2rem;
-  max-width: 800px;
+.about .team::after {
+  content: '';
+  position: absolute;
+  inset: auto -10% -45% auto;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.16) 0%, transparent 72%);
+  pointer-events: none;
+}
+
+.about .team .container {
+  position: relative;
+  z-index: 1;
+}
+
+.about .team h2 {
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.about .team-content {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.about .team-description {
+  font-size: 1.16rem;
+  max-width: 760px;
   margin: 0 auto 3rem;
-  opacity: 0.9;
-  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.85;
 }
 
-.team-stats {
+.about .team-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
   max-width: 600px;
   margin: 0 auto;
 }
 
-.team-stat {
+.about .team-stat {
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 14px 32px rgba(17, 24, 39, 0.16);
+  transition: transform var(--about-transition), box-shadow var(--about-transition), background-color var(--about-transition);
 }
 
-.team-stat-number {
+.about .team-stat:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 20px 38px rgba(17, 24, 39, 0.22);
+}
+
+.about .team-stat-number {
   display: block;
   font-size: 2.5rem;
   font-weight: 800;
+  line-height: 1.05;
   margin-bottom: 0.5rem;
   background: linear-gradient(45deg, #ffd700, #ffed4a);
   -webkit-background-clip: text;
@@ -375,291 +510,319 @@
   background-clip: text;
 }
 
-.team-stat-label {
+.about .team-stat-label {
   font-size: 1rem;
-  opacity: 0.9;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* About CTA Section */
-.about-cta {
+.about .about-cta {
   padding: 6rem 0;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  color: white;
+  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 55%, #8b5cf6 100%);
+  color: #ffffff;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.cta-content h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
+.about .about-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.3;
+  pointer-events: none;
 }
 
-.cta-content p {
-  font-size: 1.2rem;
-  max-width: 600px;
+.about .cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.about .cta-content p {
+  font-size: 1.16rem;
+  max-width: 620px;
   margin: 0 auto 2.5rem;
-  opacity: 0.9;
-  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.75;
 }
 
-.cta-buttons {
+.about .cta-buttons {
   display: flex;
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.btn {
-  display: inline-block;
+.about .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
   padding: 1rem 2rem;
   text-decoration: none;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.2;
   text-align: center;
   border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
-.btn-primary {
-  background: linear-gradient(45deg, #ffd700, #ffed4a);
-  color: #333;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+.about .btn:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.45);
+  outline-offset: 3px;
 }
 
-.btn-primary:hover {
+.about .btn-primary {
+  background: linear-gradient(135deg, #ffffff 0%, #fff7fb 100%);
+  color: #be185d;
+  box-shadow: 0 10px 24px rgba(157, 23, 77, 0.2);
+}
+
+.about .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+  color: #9d174d;
+  box-shadow: 0 16px 32px rgba(157, 23, 77, 0.28);
 }
 
-.btn-secondary {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
+.about .btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
-.btn-secondary:hover {
-  background: white;
+.about .btn-secondary:hover {
+  background: #ffffff;
   color: #f5576c;
   transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(17, 24, 39, 0.18);
 }
 
-/* Enhanced Responsive Design */
+/* Responsive Design */
 
 /* Large tablets and small desktops */
 @media (max-width: 1024px) {
-  .container {
+  .about .container {
     padding: 0 1.5rem;
   }
-  
-  .mission-content {
+
+  .about .mission-content {
     gap: 3rem;
   }
-  
-  .about-hero h1 {
+
+  .about .about-hero h1 {
     font-size: 3rem;
   }
-  
-  .hero-subtitle {
+
+  .about .hero-subtitle {
     font-size: 1.2rem;
   }
-  
-  .mission-text h2,
-  .story h2,
-  .features-deep h2,
-  .values h2,
-  .team h2 {
+
+  .about .mission-text h2,
+  .about .story h2,
+  .about .features-deep h2,
+  .about .values h2,
+  .about .team h2,
+  .about .cta-content h2 {
     font-size: 2.2rem;
   }
-  
-  .features-deep-grid {
+
+  .about .features-deep-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
-  
-  .mission-icon {
-    font-size: 4rem;
-  }
-  
-  .story-content {
+
+  .about .story-content {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
+
+  .about .mission-icon {
+    font-size: 4rem;
+  }
+
+  .about .story-card,
+  .about .feature-deep {
+    padding: 2.2rem;
+  }
+
+  .about .team-description,
+  .about .cta-content p {
+    font-size: 1.1rem;
+  }
+
 }
 
 /* Tablets */
 @media (max-width: 768px) {
-  .container {
+  .about .container {
     padding: 0 1rem;
   }
-  
-  .about-hero {
+
+  .about .about-hero {
     padding: 4rem 0 3rem;
   }
-  
-  .about-hero h1 {
+
+  .about .about-hero h1 {
     font-size: 2.5rem;
   }
-  
-  .hero-subtitle {
+
+  .about .hero-subtitle {
     font-size: 1.1rem;
     padding: 0 1rem;
   }
-  
-  .mission {
+
+  .about .mission,
+  .about .features-deep,
+  .about .values,
+  .about .team,
+  .about .about-cta {
     padding: 4rem 0;
   }
-  
-  .mission-content {
+
+  .about .story {
+    padding: 4rem 0;
+  }
+
+  .about .mission-content {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
   }
-  
-  .mission-text {
+
+  .about .mission-text {
     order: 2;
   }
-  
-  .mission-visual {
+
+  .about .mission-visual {
     order: 1;
   }
-  
-  .mission-text h2,
-  .story h2,
-  .features-deep h2,
-  .values h2,
-  .team h2 {
+
+  .about .mission-text h2,
+  .about .story h2,
+  .about .features-deep h2,
+  .about .values h2,
+  .about .team h2,
+  .about .cta-content h2 {
     font-size: 2rem;
+  }
+
+  .about .story h2,
+  .about .features-deep h2,
+  .about .values h2,
+  .about .team h2 {
     margin-bottom: 2rem;
   }
-  
-  .mission-text p {
+
+  .about .mission-text p {
     font-size: 1rem;
+    line-height: 1.75;
   }
-  
-  .mission-icon {
+
+  .about .mission-icon {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
   }
-  
-  .mission-stats {
+
+  .about .mission-stats {
     gap: 1.5rem;
   }
-  
-  .stat-num {
+
+  .about .stat-num {
     font-size: 1.8rem;
   }
-  
-  .story {
-    padding: 4rem 0;
-  }
-  
-  .story-content {
+
+  .about .story-content,
+  .about .features-deep-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
-  .story-card {
-    padding: 2rem;
+
+  .about .story-card,
+  .about .feature-deep,
+  .about .value-item {
     margin: 0 0.5rem;
   }
-  
-  .story-icon {
+
+  .about .story-card,
+  .about .feature-deep {
+    padding: 2rem;
+  }
+
+  .about .story-icon {
     font-size: 2.5rem;
     margin-bottom: 1rem;
   }
-  
-  .story-card h3 {
+
+  .about .story-card h3 {
     font-size: 1.3rem;
   }
-  
-  .features-deep {
-    padding: 4rem 0;
-  }
-  
-  .features-deep-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .feature-deep {
-    padding: 2rem;
-    margin: 0 0.5rem;
-  }
-  
-  .feature-deep-header {
+
+  .about .feature-deep-header {
     flex-direction: column;
     text-align: center;
-    gap: 0.5rem;
+    gap: 0.65rem;
   }
-  
-  .feature-deep-icon {
+
+  .about .feature-deep-icon {
     font-size: 2rem;
   }
-  
-  .values {
-    padding: 4rem 0;
-  }
-  
-  .values-grid {
+
+  .about .values-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
   }
-  
-  .value-item {
-    padding: 1.5rem;
-    margin: 0 0.5rem;
+
+  .about .value-item {
+    padding: 1.75rem 1.5rem;
   }
-  
-  .value-icon {
+
+  .about .value-icon {
     font-size: 2.5rem;
   }
-  
-  .value-item h3 {
+
+  .about .value-item h3 {
     font-size: 1.2rem;
   }
-  
-  .team {
-    padding: 4rem 0;
-  }
-  
-  .team-description {
-    font-size: 1.1rem;
+
+  .about .team-description {
+    font-size: 1.05rem;
     padding: 0 1rem;
   }
-  
-  .team-stats {
+
+  .about .team-stats {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     max-width: 400px;
   }
-  
-  .team-stat {
+
+  .about .team-stat {
     padding: 1.25rem;
   }
-  
-  .team-stat-number {
+
+  .about .team-stat-number {
     font-size: 2rem;
   }
-  
-  .about-cta {
-    padding: 4rem 0;
-  }
-  
-  .cta-content h2 {
-    font-size: 2.2rem;
-  }
-  
-  .cta-content p {
-    font-size: 1.1rem;
+
+  .about .cta-content p {
+    font-size: 1.05rem;
     padding: 0 1rem;
   }
-  
-  .cta-buttons {
+
+  .about .cta-buttons {
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
   }
-  
-  .btn {
+
+  .about .btn {
     min-width: 200px;
     padding: 0.875rem 1.5rem;
   }
@@ -667,144 +830,143 @@
 
 /* Mobile phones */
 @media (max-width: 480px) {
-  .container {
+  .about .container {
     padding: 0 1rem;
   }
-  
-  .about-hero {
+
+  .about .about-hero {
     padding: 3rem 0 2rem;
   }
-  
-  .about-hero h1 {
+
+  .about .about-hero h1 {
     font-size: 2rem;
-    line-height: 1.1;
+    line-height: 1.08;
     margin-bottom: 1rem;
   }
-  
-  .hero-subtitle {
+
+  .about .hero-subtitle {
     font-size: 1rem;
     padding: 0 0.5rem;
   }
-  
-  .mission,
-  .story,
-  .features-deep,
-  .values,
-  .team,
-  .about-cta {
+
+  .about .mission,
+  .about .story,
+  .about .features-deep,
+  .about .values,
+  .about .team,
+  .about .about-cta {
     padding: 3rem 0;
   }
-  
-  .mission-text h2,
-  .story h2,
-  .features-deep h2,
-  .values h2,
-  .team h2 {
+
+  .about .mission-text h2,
+  .about .story h2,
+  .about .features-deep h2,
+  .about .values h2,
+  .about .team h2,
+  .about .cta-content h2 {
     font-size: 1.8rem;
+  }
+
+  .about .story h2,
+  .about .features-deep h2,
+  .about .values h2,
+  .about .team h2 {
     margin-bottom: 1.5rem;
   }
-  
-  .mission-text p {
+
+  .about .mission-text p {
     font-size: 0.95rem;
     margin-bottom: 1rem;
   }
-  
-  .mission-icon {
+
+  .about .mission-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
   }
-  
-  .mission-stats {
+
+  .about .mission-stats {
     flex-direction: column;
     gap: 1rem;
     align-items: center;
   }
-  
-  .mini-stat {
+
+  .about .mini-stat {
     width: 100%;
     max-width: 200px;
   }
-  
-  .stat-num {
+
+  .about .stat-num {
     font-size: 1.6rem;
   }
-  
-  .stat-text {
-    font-size: 0.85rem;
+
+  .about .stat-text {
+    font-size: 0.86rem;
   }
-  
-  .story-card,
-  .feature-deep,
-  .value-item {
+
+  .about .story-card,
+  .about .feature-deep,
+  .about .value-item {
     padding: 1.5rem;
     margin: 0 0.25rem;
   }
-  
-  .story-icon,
-  .value-icon {
+
+  .about .story-icon,
+  .about .value-icon {
     font-size: 2rem;
     margin-bottom: 0.75rem;
   }
-  
-  .story-card h3,
-  .value-item h3 {
+
+  .about .story-card h3,
+  .about .value-item h3 {
     font-size: 1.2rem;
     margin-bottom: 0.75rem;
   }
-  
-  .story-card p,
-  .value-item p,
-  .feature-deep p {
-    font-size: 0.9rem;
-    line-height: 1.5;
+
+  .about .story-card p,
+  .about .feature-deep p,
+  .about .value-item p,
+  .about .feature-deep ul li {
+    font-size: 0.92rem;
+    line-height: 1.65;
   }
-  
-  .feature-deep-header {
+
+  .about .feature-deep-header {
     gap: 0.75rem;
   }
-  
-  .feature-deep-icon {
+
+  .about .feature-deep-icon {
     font-size: 1.8rem;
   }
-  
-  .feature-deep h3 {
+
+  .about .feature-deep h3 {
     font-size: 1.1rem;
   }
-  
-  .feature-deep ul li {
-    font-size: 0.9rem;
-    margin-bottom: 0.4rem;
-  }
-  
-  .team-description {
+
+  .about .team-description {
     font-size: 1rem;
     padding: 0 0.5rem;
     margin-bottom: 2rem;
   }
-  
-  .team-stat {
+
+  .about .team-stat {
     padding: 1rem;
   }
-  
-  .team-stat-number {
+
+  .about .team-stat-number {
     font-size: 1.8rem;
   }
-  
-  .team-stat-label {
+
+  .about .team-stat-label {
     font-size: 0.9rem;
   }
-  
-  .cta-content h2 {
-    font-size: 2rem;
-  }
-  
-  .cta-content p {
+
+  .about .cta-content p {
     font-size: 1rem;
     padding: 0 0.5rem;
     margin-bottom: 2rem;
   }
-  
-  .btn {
+
+  .about .btn {
     min-width: 180px;
     padding: 0.75rem 1.25rem;
     font-size: 1rem;
@@ -813,61 +975,72 @@
 
 /* Extra small phones */
 @media (max-width: 360px) {
-  .container {
+  .about .container {
     padding: 0 0.75rem;
   }
-  
-  .about-hero h1 {
+
+  .about .about-hero h1 {
     font-size: 1.8rem;
   }
-  
-  .hero-subtitle {
+
+  .about .hero-subtitle {
     font-size: 0.95rem;
   }
-  
-  .mission-text h2,
-  .story h2,
-  .features-deep h2,
-  .values h2,
-  .team h2 {
+
+  .about .mission-text h2,
+  .about .story h2,
+  .about .features-deep h2,
+  .about .values h2,
+  .about .team h2,
+  .about .cta-content h2 {
     font-size: 1.6rem;
   }
-  
-  .story-card,
-  .feature-deep,
-  .value-item {
+
+  .about .story-card,
+  .about .feature-deep,
+  .about .value-item {
     padding: 1.25rem;
     margin: 0;
   }
-  
-  .mission-stats {
+
+  .about .mission-stats {
     gap: 0.75rem;
   }
-  
-  .team-description {
+
+  .about .team-description {
     padding: 0 0.25rem;
   }
-  
-  .cta-content p {
+
+  .about .cta-content p {
     padding: 0 0.25rem;
   }
-  
-  .btn {
+
+  .about .btn {
     min-width: 160px;
     padding: 0.625rem 1rem;
     font-size: 0.95rem;
   }
-  
-  .feature-deep-header {
+
+  .about .feature-deep-header {
     gap: 0.5rem;
   }
-  
-  .mission-icon {
+
+  .about .mission-icon {
     font-size: 2.5rem;
   }
-  
-  .story-icon,
-  .value-icon {
+
+  .about .story-icon,
+  .about .value-icon {
     font-size: 1.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about .story-card,
+  .about .feature-deep,
+  .about .value-item,
+  .about .team-stat,
+  .about .btn {
+    transition: none;
   }
 }
