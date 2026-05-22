@@ -19,11 +19,12 @@ const primaryLinks = [
 
 // Secondary links hidden inside "More" dropdown
 const moreLinks = [
-  { to: "/about",     label: "About Us"  },
-  { to: "/analytics", label: "Analytics" },
-  { to: "/tasks",     label: "Tasks"     },
-  { to: "/mindmap",   label: "Mind Map"  },
-  { to: "/faq",       label: "FAQs"      },
+  { to: "/about",     label: "About Us"   },
+  { to: "/analytics", label: "Analytics"  },
+  { to: "/tasks",     label: "Tasks"      },
+  { to: "/mindmap",   label: "Mind Map"   },
+  { to: "/faq",       label: "FAQs"       },
+  { to: "/help",      label: "Help Center" },
 ];
 
 // All links for mobile menu
