@@ -18,6 +18,7 @@ import MindMapEditor from "./pages/MindMapEditor";
 import Profile from "./pages/Profile.js";
 import SubmitFeedback from "./pages/SubmitFeedback";
 import Todo from "./pages/Todo";
+import HomeNew from "./pages/HomeNew";
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
           <ScrollToTop />
           <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/homenew" element={<HomeNew />} />
           <Route path="/tasks" element={<Todo />} />
           <Route path="/syllabus" element={<Syllabus />} />
           <Route path="/notes" element={<Notes />} />
