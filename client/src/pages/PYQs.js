@@ -22,12 +22,13 @@ const PYQs = () => {
   };
 
   // Component State
-  const [selectedUniversity, setSelectedUniversity] = useState("");
-  const [selectedDepartment, setSelectedDepartment] = useState("");
-  const [selectedSemester, setSelectedSemester] = useState("");
-  const [selectedSubject, setSelectedSubject] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedUniversity, setSelectedUniversity] = useState("All");
+  const [selectedDepartment, setSelectedDepartment] = useState("All");
+  const [selectedSemester, setSelectedSemester] = useState("All");
+  const [selectedSubject, setSelectedSubject] = useState("All");
 
-  const universities = ["Select University", "LPU", "DU", "JNU"];
+  const universities = ["All", "LPU", "DU", "JNU"];
   const [showScroll, setShowScroll] = useState(false);
   
   // Sample papers data (remains the same)
@@ -40,30 +41,33 @@ const PYQs = () => {
 
   // Memoized lists of available options based on selections
   const availableDepartments = useMemo(() => {
-    if (!selectedUniversity) return [];
-    return [...new Set(samplePapers.filter(paper => paper.university === selectedUniversity).map(paper => paper.department))];
-  }, [selectedUniversity]);
+    return ["All", ...new Set(samplePapers.map(paper => paper.department))];
+  }, []);
 
   const availableSemesters = useMemo(() => {
-    if (!selectedUniversity || !selectedDepartment) return [];
-    return [...new Set(samplePapers.filter(paper => paper.university === selectedUniversity && paper.department === selectedDepartment).map(paper => paper.semester))];
-  }, [selectedUniversity, selectedDepartment]);
+    return ["All", ...new Set(samplePapers.map(paper => paper.semester))];
+  }, []);
 
   const availableSubjects = useMemo(() => {
-    if (!selectedUniversity || !selectedDepartment || !selectedSemester) return [];
-    return [...new Set(samplePapers.filter(paper => paper.university === selectedUniversity && paper.department === selectedDepartment && paper.semester === selectedSemester).map(paper => paper.subject))];
-  }, [selectedUniversity, selectedDepartment, selectedSemester]);
+    return ["All", ...new Set(samplePapers.map(paper => paper.subject))];
+  }, []);
 
-  // Filter papers based on selected options
-  const filteredPapers = samplePapers.filter(
-    (paper) =>
-      paper.university === selectedUniversity &&
-      paper.department === selectedDepartment &&
-      paper.semester === selectedSemester &&
-      paper.subject === selectedSubject
-  );
+  // Filter papers based on selected options and search term
+  const filteredPapers = samplePapers.filter((paper) => {
+    const matchesSearch = 
+      paper.subject.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      paper.uploader.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      paper.university.toLowerCase().includes(searchTerm.toLowerCase());
 
-  const areFiltersSelected = selectedUniversity && selectedDepartment && selectedSubject && selectedSemester;
+    const matchesUniversity = selectedUniversity === "All" || paper.university === selectedUniversity;
+    const matchesDepartment = selectedDepartment === "All" || paper.department === selectedDepartment;
+    const matchesSemester = selectedSemester === "All" || paper.semester === selectedSemester;
+    const matchesSubject = selectedSubject === "All" || paper.subject === selectedSubject;
+
+    return matchesSearch && matchesUniversity && matchesDepartment && matchesSemester && matchesSubject;
+  });
+
+  const areFiltersSelected = true; // Always show results now, as we default to "All"
 
   useEffect(() => {
   const checkScrollTop = () => {
@@ -111,45 +115,48 @@ const scrollToTop = () => {
       >
         <div className="container">
           <motion.div className="pyqs-form" variants={staggerChildren}>
+            {/* Search Bar */}
+            <motion.div className="form-group search-group" variants={fadeInUp} style={{ gridColumn: '1 / -1', marginBottom: '1rem' }}>
+              <input 
+                type="text" 
+                placeholder="Search PYQs by subject, university, or uploader..." 
+                value={searchTerm} 
+                onChange={(e) => setSearchTerm(e.target.value)} 
+                className="pyqs-search-input"
+                style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '1rem' }}
+              />
+            </motion.div>
+
             {/* University Dropdown */}
             <motion.div className="form-group" variants={fadeInUp}>
               <label htmlFor="university">University</label>
               <select
                 id="university"
                 value={selectedUniversity}
-                onChange={(e) => {
-                  setSelectedUniversity(e.target.value);
-                  setSelectedDepartment("");
-                  setSelectedSemester("");
-                  setSelectedSubject("");
-                }}
+                onChange={(e) => setSelectedUniversity(e.target.value)}
               >
-                <option value="" disabled>Select University</option>
-                {universities.slice(1).map((uni, idx) => (<option key={idx} value={uni}>{uni}</option>))}
+                {universities.map((uni, idx) => (<option key={idx} value={uni}>{uni}</option>))}
               </select>
             </motion.div>
 
-            {/* Other dropdowns follow the same pattern... */}
+            {/* Department Dropdown */}
             <motion.div className="form-group" variants={fadeInUp}>
               <label htmlFor="department">Department</label>
-              <select id="department" value={selectedDepartment} onChange={(e) => { setSelectedDepartment(e.target.value); setSelectedSemester(""); setSelectedSubject(""); }} disabled={!selectedUniversity}>
-                <option value="" disabled>Select Department</option>
+              <select id="department" value={selectedDepartment} onChange={(e) => setSelectedDepartment(e.target.value)}>
                 {availableDepartments.map((dept, idx) => (<option key={idx} value={dept}>{dept}</option>))}
               </select>
             </motion.div>
 
             <motion.div className="form-group" variants={fadeInUp}>
               <label htmlFor="semester">Semester</label>
-              <select id="semester" value={selectedSemester} onChange={(e) => { setSelectedSemester(e.target.value); setSelectedSubject(""); }} disabled={!selectedUniversity || !selectedDepartment}>
-                <option value="" disabled>Select Semester</option>
+              <select id="semester" value={selectedSemester} onChange={(e) => setSelectedSemester(e.target.value)}>
                 {availableSemesters.map((sem, idx) => (<option key={idx} value={sem}>{sem}</option>))}
               </select>
             </motion.div>
 
             <motion.div className="form-group" variants={fadeInUp}>
               <label htmlFor="subject">Subject</label>
-              <select id="subject" value={selectedSubject} onChange={(e) => setSelectedSubject(e.target.value)} disabled={!selectedUniversity || !selectedDepartment || !selectedSemester}>
-                <option value="" disabled>Select Subject</option>
+              <select id="subject" value={selectedSubject} onChange={(e) => setSelectedSubject(e.target.value)}>
                 {availableSubjects.map((subj, idx) => (<option key={idx} value={subj}>{subj}</option>))}
               </select>
             </motion.div>
@@ -176,9 +183,7 @@ const scrollToTop = () => {
                 transition={{ duration: 0.5 }}
               >
                 <h2>
-                  Previous Year Question Papers for{" "}
-                  <strong>{selectedSubject}</strong> – {selectedSemester}{" "}
-                  Semester, {selectedDepartment} Department, {selectedUniversity}
+                  Found {filteredPapers.length} Previous Year Question Papers
                 </h2>
 
                 {filteredPapers.length > 0 ? (
