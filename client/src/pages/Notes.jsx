@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp } from "react-icons/fa";
 import './Notes.css';
-
+import Footer from "../components/Footer";
 const Notes = () => {
   const fileInputRef = useRef(null);
   
@@ -419,6 +419,7 @@ const handleDownload = (e, note) => {
           </motion.button>
         )}
       </AnimatePresence>
+      <Footer/>
    </div>
  );
 };

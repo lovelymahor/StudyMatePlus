@@ -4,7 +4,7 @@ import "./Feedback.css";
 import './ScrollToTop.css';
 import { FaArrowUp } from "react-icons/fa";
 import FeedbackModal from "../components/FeedbackModal"; // Import the modal component
-
+import Footer from "../components/Footer";
 const Feedback = () => {
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [selectedUniversity, setSelectedUniversity] = useState("all");
@@ -680,7 +680,7 @@ const Feedback = () => {
         {isModalOpen && <FeedbackModal onClose={closeModal} />}
       </AnimatePresence>
       {/* --- CORRECTED SECTION END --- */}
-
+      <Footer />
     </div>
   );
 };
