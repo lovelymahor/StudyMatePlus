@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
 import "./PYQs.css";
 import './ScrollToTop.css';
-
+import Footer from "../components/Footer";
 const PYQs = () => {
   // Animation Variants from Home.js
   const fadeInUp = {
@@ -243,6 +243,7 @@ const scrollToTop = () => {
           </motion.button>
         )}
       </AnimatePresence>
+      <Footer />
     </div>
   );
 };
