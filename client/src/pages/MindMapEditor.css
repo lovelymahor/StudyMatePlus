@@ -183,6 +183,14 @@
   background: rgba(255,255,255,.2);
 }
 
+.node-badge-progress {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.node-badge-priority {
+  background: rgba(0, 0, 0, 0.18);
+}
+
 .highlight {
   outline: 3px solid #ffd166;
   outline-offset: 2px;
