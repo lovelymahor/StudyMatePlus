@@ -444,6 +444,22 @@
   transform: translateY(-3px);
 }
 
+/* Dark mode: keep About section headings / top titles visible */
+html[data-theme="dark"] .about h2 {
+  color: #0b1220 !important;
+}
+
+html[data-theme="dark"] .about .team h2,
+html[data-theme="dark"] .about .about-cta .cta-content h2 {
+  color: #facc15 !important;
+}
+
+html[data-theme="dark"] .about .story-card p,
+html[data-theme="dark"] .about .feature-deep p,
+html[data-theme="dark"] .about .value-item p {
+  color: #d4d9e6;
+}
+
 /* Enhanced Responsive Design */
 
 /* Large tablets and small desktops */

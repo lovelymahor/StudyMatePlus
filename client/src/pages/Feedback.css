@@ -383,6 +383,26 @@
   margin-bottom: 1.5rem;
 }
 
+/* Dark-mode heading visibility fixes for Feedback page */
+html[data-theme="dark"] .feedback h1,
+html[data-theme="dark"] .feedback h2,
+html[data-theme="dark"] .feedback h3,
+html[data-theme="dark"] .feedback h4,
+html[data-theme="dark"] .feedback h5,
+html[data-theme="dark"] .student-name,
+html[data-theme="dark"] .subject-name,
+html[data-theme="dark"] .detail-section h5,
+html[data-theme="dark"] .stat-number,
+html[data-theme="dark"] .stat-label {
+  color: #ffffff !important;
+}
+
+/* For headings inside white cards in dark mode, switch them to dark for contrast */
+html[data-theme="dark"] .feedback-card .student-name,
+html[data-theme="dark"] .feedback-card .subject-name {
+  color: #0b1220 !important;
+}
+
 .cta-content p {
   font-size: 1.2rem;
   max-width: 600px;

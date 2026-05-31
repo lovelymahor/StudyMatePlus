@@ -330,3 +330,33 @@ button:hover {
     padding: 0.8rem 1rem;
   }
 }
+
+/* Dark-mode overrides for Analytics page: make section background darker and cards white
+   so headings inside cards remain visible and readable. */
+html[data-theme="dark"] .analytics-section {
+  background-color: #333333;
+}
+
+html[data-theme="dark"] .chart-container,
+html[data-theme="dark"] .insights-section,
+html[data-theme="dark"] .filter-section,
+html[data-theme="dark"] .download-section {
+  background: #ffffff;
+  color: #0b1220;
+  border: 1px solid #e6ebf0;
+  box-shadow: 0 8px 24px rgba(2,6,23,0.06);
+}
+
+html[data-theme="dark"] .chart-container h2,
+html[data-theme="dark"] .insights-section h2,
+html[data-theme="dark"] .filter-section h2 {
+  color: #0b1220;
+}
+
+html[data-theme="dark"] .filter-section select,
+html[data-theme="dark"] select {
+  background-color: #ffffff;
+  color: #0b1220;
+  border-color: #e6ebf0;
+}
+

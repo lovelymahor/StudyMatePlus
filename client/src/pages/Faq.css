@@ -338,3 +338,23 @@
     justify-content: center; /* Center social icons */
   }
 }
+/* Default (light theme) */
+.contact-section .section-title {
+  color: #0b1220;
+}
+
+.faq-section .section-title,
+.features-section .section-title {
+  color: #0b1220;
+}
+
+/* Dark theme: be explicit to avoid white-on-white or faded headings */
+html[data-theme="dark"] .contact-section .section-title {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .faq-section .section-title,
+html[data-theme="dark"] .features-section .section-title {
+  /* FAQ/Features use white cards in your desired layout, so keep titles dark */
+  color: #0b1220 !important;
+}
