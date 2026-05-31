@@ -25,7 +25,7 @@ const App = () => {
     <ThemeProvider>
       <Router>
         <Navbar />
-        <div style={{ padding: "2rem" }}>
+        <div style={{padding: "2rem" }}>
           <ScrollToTop />
           <Routes>
           <Route path="/" element={<Home />} />

@@ -425,6 +425,18 @@
 }
 
 
+html[data-theme="dark"] .syllabus .results-header h2,
+html[data-theme="dark"] .syllabus .no-results h3,
+html[data-theme="dark"] .syllabus .card-title,
+html[data-theme="dark"] .syllabus .subjects-section h4 {
+  color: #0b1220 !important;
+}
+
+html[data-theme="dark"] .syllabus .card-meta,
+html[data-theme="dark"] .syllabus .card-stats {
+  color: #94a3b8;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .syllabus-hero h1 {

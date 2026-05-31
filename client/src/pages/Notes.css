@@ -89,9 +89,10 @@
 
 /* Search and Filters */
 .search-filters {
-  background: #f8fafc;
+  background: rgba(248, 250, 252, 0.85);
   padding: 2rem 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid rgba(102, 126, 234, 0.18);
+  backdrop-filter: blur(12px);
 }
 
 .search-bar {
@@ -108,16 +109,16 @@
   width: 100%;
   padding: 1rem 1rem 1rem 3rem;
   font-size: 1.1rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid rgba(226, 232, 240, 0.8);
   border-radius: 50px;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   transition: all 0.3s ease;
   outline: none;
 }
 
 .search-input:focus {
   border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.18);
 }
 
 .search-icon {
@@ -151,9 +152,9 @@
 
 .filter-group select {
   padding: 0.8rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid rgba(226, 232, 240, 0.9);
   border-radius: 8px;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   font-size: 1rem;
   color: #374151;
   cursor: pointer;
@@ -168,7 +169,7 @@
 /* Results Section */
 .results {
   padding: 3rem 0;
-  background: white;
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .results-header {
@@ -192,9 +193,10 @@
 .no-results {
   text-align: center;
   padding: 4rem 2rem;
-  background: #f8fafc;
+  background: rgba(248, 250, 252, 0.90);
   border-radius: 15px;
   margin: 2rem 0;
+  border: 1px solid rgba(102, 126, 234, 0.18);
 }
 
 .no-results-icon {
@@ -223,11 +225,11 @@
 
 /* Note Card */
 .note-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.92);
   border-radius: 15px;
   padding: 2rem;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(102, 126, 234, 0.2);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -236,9 +238,10 @@
 
 .note-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-  border-color: #667eea;
+  box-shadow: 0 20px 75px rgba(15, 23, 42, 0.2), 0 8px 24px rgba(102, 126, 234, 0.16);
+  border-color: rgba(102, 126, 234, 0.45);
 }
+
 
 /* Card Header and Content reuse same styles as syllabus */
 .card-header {
@@ -247,10 +250,12 @@
   align-items: flex-start;
   margin-bottom: 1.5rem;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .card-title-section {
   flex: 1;
+  min-width: 0;
 }
 
 .card-title {
@@ -259,14 +264,18 @@
   color: #333;
   margin-bottom: 0.5rem;
   line-height: 1.4;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .card-meta {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
   font-size: 0.9rem;
   color: #666;
+  min-width: 0;
 }
 
 .university {
@@ -291,11 +300,20 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .card-content {
   flex: 1;
   margin-bottom: 1.5rem;
+  min-width: 0;
+}
+
+.subject {
+  margin: 0;
+  color: #4b5563;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .tags-section {
@@ -321,9 +339,11 @@
 .card-stats {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background: #f8fafc;
+  background: rgba(248, 250, 252, 0.88);
+  border: 1px solid rgba(102, 126, 234, 0.14);
   border-radius: 10px;
   gap: 1rem;
 }
@@ -334,7 +354,8 @@
   gap: 0.4rem;
   font-size: 0.85rem;
   color: #6b7280;
-  flex: 1;
+  flex: 1 1 140px;
+  min-width: 140px;
   justify-content: center;
 }
 
@@ -345,6 +366,7 @@
 .card-actions {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -388,10 +410,10 @@
 
 /* Upload Section */
 .upload-section {
-  background: #f8fafc;
+  background: rgba(248, 250, 252, 0.88);
   padding: 3rem 1rem;
   text-align: center;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid rgba(102, 126, 234, 0.16);
 }
 
 .upload-section h3 {
@@ -405,6 +427,18 @@
   font-size: 1rem;
   color: #555;
   margin-bottom: 2rem;
+}
+
+html[data-theme="dark"] .notes .results-header h2,
+html[data-theme="dark"] .notes .no-results h3,
+html[data-theme="dark"] .notes .card-title,
+html[data-theme="dark"] .notes .upload-section h3 {
+  color: #0b1220 !important;
+}
+
+html[data-theme="dark"] .notes .card-meta,
+html[data-theme="dark"] .notes .card-stats {
+  color: #94a3b8;
 }
 
 /* Responsive Design */
@@ -574,3 +608,4 @@
     gap: 1rem;
   }
 }
+

@@ -109,7 +109,46 @@ const Syllabus = () => {
       fileSize: "3.3 MB",
       difficulty: "Intermediate",
       tags: ["Electrical", "Power Systems", "Circuits"]
-    }
+    },
+    {
+      id: 9,
+      title: "Computer Science Engineering - Semester 6",
+      university: "Delhi University",
+      department: "Computer Science",
+      semester: 6,
+      subjects: ["Operating Systems", "Computer Networks", "Compiler Design", "Artificial Intelligence", "Elective I"],
+      downloadCount: 720,
+      uploadDate: "2024-02-01",
+      fileSize: "3.2 MB",
+      difficulty: "Advanced",
+      tags: ["CSE", "Networks", "AI"]
+    },
+    {
+      id: 10,
+      title: "Computer Science Engineering - Semester 7",
+      university: "Delhi University",
+      department: "Computer Science",
+      semester: 7,
+      subjects: ["Machine Learning", "Cloud Computing", "Elective II", "Project Work I"],
+      downloadCount: 540,
+      uploadDate: "2024-02-10",
+      fileSize: "2.9 MB",
+      difficulty: "Advanced",
+      tags: ["CSE", "ML", "Cloud"]
+    },
+    {
+      id: 11,
+      title: "Computer Science Engineering - Semester 8",
+      university: "Delhi University",
+      department: "Computer Science",
+      semester: 8,
+      subjects: ["Big Data Analytics", "Cyber Security", "Elective III", "Project Work II"],
+      downloadCount: 430,
+      uploadDate: "2024-02-20",
+      fileSize: "3.0 MB",
+      difficulty: "Expert",
+      tags: ["CSE", "Security", "Big Data"]
+    }        
   ];
 
   // Animation variants from Home.js
