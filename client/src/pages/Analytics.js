@@ -11,8 +11,8 @@ import {
 } from 'chart.js';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp } from "react-icons/fa";
-import './Analytics.css';
-import './ScrollToTop.css';
+import './style/Analytics.css';
+import './style/ScrollToTop.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
 

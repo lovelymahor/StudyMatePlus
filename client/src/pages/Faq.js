@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import "./Faq.css";
-import './ScrollToTop.css';
+import "./style/Faq.css";
+import './style/ScrollToTop.css';
 import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FaXTwitter } from "react-icons/fa6";

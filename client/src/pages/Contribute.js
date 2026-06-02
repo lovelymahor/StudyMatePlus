@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import './Contribute.css';
-import './ScrollToTop.css';
+import './style/Contribute.css';
+import './style/ScrollToTop.css';
 
 const Contribute = () => {
   const [activeStep, setActiveStep] = useState(1);

@@ -6,8 +6,8 @@ import ReactFlow, {
   MarkerType, Handle, Position
 } from 'reactflow';
 import 'reactflow/dist/style.css';
-import './MindMapEditor.css';
-import './ScrollToTop.css';
+import './style/MindMapEditor.css';
+import './style/ScrollToTop.css';
 
 import { v4 as uuid } from 'uuid';
 import { motion, AnimatePresence } from 'framer-motion';

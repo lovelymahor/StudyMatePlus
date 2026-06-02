@@ -1,0 +1,15 @@
+export { default as About} from "./About.js";
+export { default as Analytics} from "./Analytics.js";
+export { default as Contact} from "./Contact.js";
+export { default as Contribute} from "./Contribute.js";
+export { default as Faq} from "./Faq.js";
+export { default as Feedback} from "./Feedback.js";
+export { default as Home} from "./Home.js";
+export { default as MindMapEditor} from "./MindMapEditor.js";
+export { default as Notes} from "./Notes.jsx";
+export { default as Privacy} from "./Privacy.js";
+export { default as Profile} from "./Profile.js";
+export { default as PYQs} from "./PYQs.js";
+export { default as SubmitFeedback} from "./SubmitFeedback.js";
+export { default as Syllabus} from "./Syllabus.js";
+export { default as Todo} from "./Todo.js";

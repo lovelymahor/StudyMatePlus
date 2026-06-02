@@ -1,8 +1,8 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
-import "./PYQs.css";
-import './ScrollToTop.css';
+import "./style/PYQs.css";
+import './style/ScrollToTop.css';
 
 const PYQs = () => {
 

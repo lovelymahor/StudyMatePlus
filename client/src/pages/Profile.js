@@ -6,8 +6,8 @@ import {
   FaCommentDots,
   FaBookmark,
 } from "react-icons/fa";
-import "./Profile.css";
-import './ScrollToTop.css';
+import "./style/Profile.css";
+import './style/ScrollToTop.css';
 
 const user = {
   name: "John Doe",

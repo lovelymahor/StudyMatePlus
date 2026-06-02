@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import './SubmitFeedback.css'; // We will create this file next
-import './Feedback.css'; // Reusing some existing styles
+import './style/SubmitFeedback.css'; // We will create this file next
+import './style/Feedback.css'; // Reusing some existing styles
 
 const StarRating = ({ rating, setRating }) => {
   const [hover, setHover] = useState(0);
