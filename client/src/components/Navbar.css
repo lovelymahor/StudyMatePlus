@@ -2,7 +2,7 @@
    Navbar.css — StudyMatePlus  |  Premium Navbar
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* ── Base ── */
 .navbar {
@@ -16,8 +16,15 @@
   top: 0;
   z-index: 1000;
   box-shadow: 0 1px 16px rgba(0, 0, 0, 0.06);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 }
 
 html[data-theme="dark"] .navbar {
@@ -44,6 +51,7 @@ html[data-theme="dark"] .navbar {
   gap: 0.5rem;
   text-decoration: none;
   flex-shrink: 0;
+  min-width: fit-content;
 }
 
 .navbar-logo {
@@ -59,6 +67,7 @@ html[data-theme="dark"] .navbar {
   gap: 0.25rem;
   flex: 1;
   justify-content: flex-end;
+  min-width: 0;
 }
 
 /* ── Desktop nav links ── */
@@ -66,11 +75,10 @@ html[data-theme="dark"] .navbar {
   display: flex;
   align-items: center;
   gap: 0.1rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  flex-wrap: nowrap;
+  min-width: 0;
+  overflow: hidden;
 }
-
 .navbar-link {
   display: inline-flex;
   align-items: center;
@@ -81,7 +89,9 @@ html[data-theme="dark"] .navbar {
   padding: 0.35rem 0.6rem;
   border-radius: 6px;
   white-space: nowrap;
-  transition: background 0.18s ease, color 0.18s ease;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
   letter-spacing: 0.01em;
 }
 
@@ -122,7 +132,9 @@ html[data-theme="dark"] .navbar-link.active {
   border-radius: 6px;
   cursor: pointer;
   white-space: nowrap;
-  transition: background 0.18s ease, color 0.18s ease;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
   letter-spacing: 0.01em;
 }
 
@@ -149,7 +161,7 @@ html[data-theme="dark"] .navbar-link.active {
   background: var(--bg, #fff);
   border: 1px solid var(--border, #e2e8f0);
   border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   padding: 0.5rem;
   display: none;
   flex-direction: column;
@@ -163,8 +175,14 @@ html[data-theme="dark"] .navbar-link.active {
 }
 
 @keyframes dropIn {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .navbar-dropdown-menu a {
@@ -175,7 +193,9 @@ html[data-theme="dark"] .navbar-link.active {
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 500;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
 }
 
 .navbar-dropdown-menu a:hover,
@@ -187,7 +207,7 @@ html[data-theme="dark"] .navbar-link.active {
 html[data-theme="dark"] .navbar-dropdown-menu {
   background: #101826;
   border-color: #263243;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
 html[data-theme="dark"] .navbar-dropdown-menu a:hover,
@@ -218,7 +238,10 @@ html[data-theme="dark"] .navbar-dropdown-menu a.active {
   border: 1px solid var(--border, #e2e8f0);
   cursor: pointer;
   flex-shrink: 0;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
   font-size: 0.9rem;
 }
 
@@ -293,8 +316,10 @@ html[data-theme="dark"] .navbar-theme-toggle:hover {
   right: 0;
   background: var(--bg, #fff);
   border-bottom: 1px solid var(--border, #e2e8f0);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   z-index: 999;
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
 }
 
 html[data-theme="dark"] .navbar-menu-mobile {
@@ -308,8 +333,14 @@ html[data-theme="dark"] .navbar-menu-mobile {
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .navbar-links-mobile {
@@ -334,7 +365,10 @@ html[data-theme="dark"] .navbar-menu-mobile {
   font-weight: 500;
   font-size: 0.95rem;
   border-radius: 10px;
-  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
 }
 
 .navbar-link-mobile:hover,
@@ -372,6 +406,21 @@ html[data-theme="dark"] .navbar-link-mobile.active {
     padding: 0.32rem 0.5rem;
   }
 }
+@media (max-width: 900px) {
+  .navbar-container {
+    gap: 0.5rem;
+  }
+
+  .navbar-links {
+    gap: 0;
+  }
+
+  .navbar-link,
+  .navbar-dropdown-btn {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.45rem;
+  }
+}
 
 @media (max-width: 768px) {
   .navbar-links {
@@ -389,13 +438,28 @@ html[data-theme="dark"] .navbar-link-mobile.active {
   .navbar-toggle {
     display: inline-flex;
   }
+  .navbar-container {
+    min-width: 0;
+  }
+
+  .navbar-brand {
+    min-width: 0;
+  }
 }
 
 @media (max-width: 480px) {
   .navbar {
-    padding: 0 1rem;
+    padding: 0 0.75rem;
   }
+
   .navbar-logo {
-    height: 30px;
+    height: 28px;
+  }
+
+  .navbar-toggle {
+    width: 34px;
+    height: 34px;
+    min-width: 36px;
+    min-height: 36px;
   }
 }

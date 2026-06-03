@@ -10,20 +10,20 @@ const user = {
 
 // Primary links always visible in the bar
 const primaryLinks = [
-  { to: "/",         label: "Home"      },
-  { to: "/syllabus", label: "Syllabus"  },
-  { to: "/notes",    label: "Notes"     },
-  { to: "/pyqs",     label: "PYQs"      },
-  { to: "/feedback", label: "Feedback"  },
+  { to: "/", label: "Home" },
+  { to: "/syllabus", label: "Syllabus" },
+  { to: "/notes", label: "Notes" },
+  { to: "/pyqs", label: "PYQs" },
+  { to: "/feedback", label: "Feedback" },
 ];
 
 // Secondary links hidden inside "More" dropdown
 const moreLinks = [
-  { to: "/about",     label: "About Us"  },
+  { to: "/about", label: "About Us" },
   { to: "/analytics", label: "Analytics" },
-  { to: "/tasks",     label: "Tasks"     },
-  { to: "/mindmap",   label: "Mind Map"  },
-  { to: "/faq",       label: "FAQs"      },
+  { to: "/tasks", label: "Tasks" },
+  { to: "/mindmap", label: "Mind Map" },
+  { to: "/faq", label: "FAQs" },
 ];
 
 // All links for mobile menu
@@ -36,7 +36,7 @@ const Navbar = () => {
   const dropdownRef = useRef(null);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
-  const closeMobileMenu  = () => setIsMobileMenuOpen(false);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -61,15 +61,17 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-
         {/* Logo */}
         <Link to="/" className="navbar-brand">
-          <img src="/logo.png" alt="StudyMatePlus Logo" className="navbar-logo" />
+          <img
+            src="/logo.png"
+            alt="StudyMatePlus Logo"
+            className="navbar-logo"
+          />
         </Link>
 
         {/* Right side — desktop */}
         <div className="navbar-right">
-
           {/* Primary nav links */}
           <ul className="navbar-links">
             {primaryLinks.map(({ to, label }) => (
@@ -95,7 +97,12 @@ const Navbar = () => {
                 className="navbar-dropdown-btn"
                 onClick={() => setIsDropdownOpen((prev) => !prev)}
                 aria-expanded={isDropdownOpen}
-                aria-haspopup="true"
+                aria-haspopup="menu"
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") {
+                    setIsDropdownOpen(false);
+                  }
+                }}
               >
                 More
                 <FaChevronDown className="navbar-dropdown-arrow" />
@@ -105,7 +112,7 @@ const Navbar = () => {
                   <NavLink
                     key={to}
                     to={to}
-                    className={({ isActive }) => isActive ? "active" : ""}
+                    className={({ isActive }) => (isActive ? "active" : "")}
                     onClick={() => setIsDropdownOpen(false)}
                     role="menuitem"
                   >
@@ -124,14 +131,24 @@ const Navbar = () => {
             aria-label="Toggle theme"
             className="navbar-theme-toggle"
             onClick={toggleTheme}
-            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            title={
+              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+            }
           >
             {theme === "dark" ? <FaSun /> : <FaMoon />}
           </button>
 
           {/* Profile */}
-          <Link to="/profile" className="navbar-profile-link" aria-label="User profile">
-            <img src={user.avatar} alt="User Profile" className="navbar-profile-img" />
+          <Link
+            to="/profile"
+            className="navbar-profile-link"
+            aria-label="User profile"
+          >
+            <img
+              src={user.avatar}
+              alt="User Profile"
+              className="navbar-profile-img"
+            />
           </Link>
 
           {/* Hamburger — mobile only */}
@@ -180,7 +197,11 @@ const Navbar = () => {
             onClick={closeMobileMenu}
             aria-label="User profile"
           >
-            <img src={user.avatar} alt="User Profile" className="navbar-profile-img" />
+            <img
+              src={user.avatar}
+              alt="User Profile"
+              className="navbar-profile-img"
+            />
           </Link>
         </div>
       </div>
