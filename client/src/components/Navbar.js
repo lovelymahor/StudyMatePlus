@@ -5,7 +5,7 @@ import { useTheme } from "../theme/ThemeProvider";
 import { FaMoon, FaSun, FaChevronDown } from "react-icons/fa";
 
 const user = {
-  avatar: "https://avatar.iran.liara.run/public/boy",
+  avatar: "https://api.dicebear.com/9.x/initials/svg?seed=User&backgroundColor=6366f1&fontColor=ffffff",
 };
 
 // Primary links always visible in the bar
