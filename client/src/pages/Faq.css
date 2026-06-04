@@ -7,7 +7,7 @@
 .faq-page {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text) ;
 }
 
 /* Hero */
@@ -50,7 +50,7 @@
   margin-top: 100px;
   font-size: 2rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text) ;
   position: relative;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .faq-item {
-  background: #fff;
+  background: var(--bg) ;
   padding: 1.2rem 1.6rem;
   border-radius: 12px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
@@ -89,7 +89,7 @@
 }
 
 .faq-item.active {
-  background: #f8f8ff;
+  background: var(--card) ;
   border-left: 5px solid #764ba2;
 }
 
@@ -105,7 +105,7 @@
 .faq-answer {
   margin-top: 0.8rem;
   font-size: 0.95rem;
-  color: #555;
+  color: var(--text) ;
   line-height: 1.5;
   animation: fadeIn 0.3s ease-in-out;
 }
@@ -117,7 +117,7 @@
 
 /* Features Section */
 .features-section {
-  background: #fafafa;
+  background: var(--card) ;
   padding: 3.5rem 2rem;
   border-radius: 16px;
   margin: 3rem 1rem 0; /* Adjusted margin */
@@ -132,7 +132,7 @@
 }
 
 .features-list li {
-  background: white;
+  background: var(--bg) ;
   margin: 0.8rem 0;
   padding: 1rem 1.2rem;
   border-radius: 10px;

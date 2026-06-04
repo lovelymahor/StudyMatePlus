@@ -306,7 +306,7 @@
 }
 
 .react-flow__node-info .info-node, .info-node {
-  background: #fff;
+  background: var(--bg) ;
   color: #111;
   padding: 8px 10px;
   border-radius: 8px;
@@ -316,5 +316,5 @@
 
 /* Waypoint (small draggable connector) */
 .waypoint-node { display:flex; align-items:center; justify-content:center; width:28px; height:28px; }
-.waypoint-dot { width:18px; height:18px; border-radius:50%; background:#fff; border:2px solid var(--accent); box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+.waypoint-dot { width:18px; height:18px; border-radius:50%; background: var(--bg) ; border:2px solid var(--accent); box-shadow:0 4px 12px rgba(0,0,0,0.08); }
 .react-flow__handle { width:10px; height:10px; }

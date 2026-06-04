@@ -604,7 +604,7 @@ html[data-theme="dark"] .step { background: #101826; }
 /* CTA-specific button overrides — high specificity to override base .btn-primary on <a> tags */
 .cta .cta-buttons a.btn-primary,
 .cta .cta-buttons .btn-primary {
-  background: #ffffff !important;
+  background: var(--bg) !important;
   color: #4f46e5 !important;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
   border-color: transparent !important;
@@ -612,7 +612,7 @@ html[data-theme="dark"] .step { background: #101826; }
 
 .cta .cta-buttons a.btn-primary:hover,
 .cta .cta-buttons .btn-primary:hover {
-  background: #f0f0ff !important;
+  background: var(--card) !important;
   color: #4338ca !important;
   box-shadow: 0 8px 30px rgba(0,0,0,0.25) !important;
 }
