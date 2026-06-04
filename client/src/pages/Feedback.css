@@ -1,7 +1,7 @@
 .feedback {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text) ;
 }
 
 .container {
@@ -57,7 +57,7 @@
 /* Stats Section */
 .feedback-stats {
   padding: 4rem 0;
-  background: #f8fafc;
+  background: var(--card) ;
 }
 
 .stats-grid {
@@ -69,7 +69,7 @@
 .stat-item {
   text-align: center;
   padding: 2rem;
-  background: white;
+  background: var(--bg) ;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
@@ -96,15 +96,15 @@
 
 .stat-label {
   font-size: 1rem;
-  color: #666;
+  color: var(--muted) ;
   font-weight: 500;
 }
 
 /* Filters Section */
 .feedback-filters {
   padding: 3rem 0;
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
+  background: var(--bg) ;
+  border-bottom: 1px solid var(--border);
 }
 
 .filters-wrapper {
@@ -132,7 +132,7 @@
   border: 2px solid #e5e7eb;
   border-radius: 10px;
   font-size: 1rem;
-  background: white;
+  background: var(--bg) ;
   color: #374151;
   transition: all 0.3s ease;
   min-width: 200px;
@@ -147,17 +147,17 @@
 .results-count {
   margin-left: auto;
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--muted) ;
   font-weight: 500;
   padding: 0.75rem 1rem;
-  background: #f3f4f6;
+  background: var(--card) ;
   border-radius: 25px;
 }
 
 /* Feedback Content */
 .feedback-content {
   padding: 4rem 0;
-  background: #f8fafc;
+  background: var(--card) ;
 }
 
 .feedback-grid {
@@ -167,7 +167,7 @@
 }
 
 .feedback-card {
-  background: white;
+  background: var(--bg) ;
   border-radius: 20px;
   padding: 2.5rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -196,13 +196,13 @@
 .student-name {
   font-size: 1.4rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--text) ;
   margin-bottom: 0.5rem;
 }
 
 .student-details {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--muted) ;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -252,13 +252,13 @@
 .subject-name {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--text) ;
   margin-bottom: 0.5rem;
 }
 
 .subject-details {
   font-size: 0.95rem;
-  color: #6b7280;
+  color: var(--muted) ;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -294,10 +294,10 @@
 
 .prep-time {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--muted) ;
   font-weight: 600;
   padding: 0.5rem 1rem;
-  background: #f3f4f6;
+  background: var(--card) ;
   border-radius: 20px;
 }
 
@@ -311,7 +311,7 @@
 .detail-section h5 {
   font-size: 1rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--text) ;
   margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
@@ -348,7 +348,7 @@
 }
 
 .exam-pattern {
-  background: #f8fafc;
+  background: var(--card) ;
   padding: 1rem;
   border-radius: 10px;
   border-left: 4px solid #667eea;
@@ -406,7 +406,7 @@
 
 .btn-primary {
   background: linear-gradient(45deg, #ffd700, #ffed4a);
-  color: #333;
+  color: var(--text) ;
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
@@ -438,7 +438,7 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--bg) ;
   padding: 30px;
   border-radius: 12px;
   width: 90%;
@@ -454,7 +454,7 @@
 .modal-content h2 {
   margin-top: 0;
   margin-bottom: 20px;
-  color: #333;
+  color: var(--text) ;
   text-align: center;
 }
 
@@ -477,7 +477,7 @@
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #555;
+  color: var(--text) ;
 }
 
 .form-group input,
@@ -485,7 +485,7 @@
 .form-group textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border) ;
   border-radius: 6px;
   font-size: 1rem;
   box-sizing: border-box;
@@ -851,7 +851,7 @@
 .loading-state {
   text-align: center;
   padding: 4rem 0;
-  color: #6b7280;
+  color: var(--muted) ;
 }
 
 .loading-spinner {
@@ -872,7 +872,7 @@
 .empty-state {
   text-align: center;
   padding: 4rem 0;
-  color: #6b7280;
+  color: var(--muted) ;
 }
 
 .empty-state h3 {
@@ -910,7 +910,7 @@
   
   .feedback-card {
     box-shadow: none;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border) ;
     page-break-inside: avoid;
     margin-bottom: 2rem;
   }

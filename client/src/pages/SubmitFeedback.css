@@ -1,5 +1,5 @@
 .submit-feedback-page {
-  background-color: #f8fafc;
+  background-color: var(--card) ;
   padding: 4rem 0;
   min-height: 100vh;
 }
@@ -12,19 +12,19 @@
 .form-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--text) ;
   margin-bottom: 1rem;
 }
 
 .form-header p {
   font-size: 1.1rem;
-  color: #6b7280;
+  color: var(--muted) ;
   max-width: 600px;
   margin: 0 auto;
 }
 
 .feedback-form {
-  background: white;
+  background: var(--bg) ;
   padding: 3rem;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);

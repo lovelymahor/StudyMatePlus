@@ -20,7 +20,7 @@ code {
   --text: #0f172a; /* Slate-900 */
   --muted: #334155; /* Slate-700 for stronger contrast */
   --card: #f8fafc; /* Slate-50 */
-  --border: #e2e8f0; /* Slate-200 */
+  --border: var(--border) ; /* Slate-200 */
   --brand: #2563eb; /* Stronger blue for links/buttons */
   --heading: #0a0f1f; /* Deep heading color */
 }

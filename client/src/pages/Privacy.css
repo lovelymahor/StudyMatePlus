@@ -3,7 +3,7 @@
 .privacy {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text) ;
 }
 
 .container {
@@ -75,7 +75,7 @@
 /* Privacy Introduction */
 .privacy-intro {
   padding: 6rem 0;
-  background: #f8fafc;
+  background: var(--card) ;
   text-align: center;
 }
 
@@ -94,19 +94,19 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 2rem;
-  color: #333;
+  color: var(--text) ;
 }
 
 .privacy-intro p {
   font-size: 1.2rem;
-  color: #666;
+  color: var(--muted) ;
   line-height: 1.8;
 }
 
 /* Privacy Content Sections */
 .privacy-content {
   padding: 4rem 0;
-  background: white;
+  background: var(--bg) ;
 }
 
 .privacy-section {
@@ -134,7 +134,7 @@
 .section-header h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text) ;
   margin: 0;
 }
 
@@ -144,7 +144,7 @@
 
 .section-content > p {
   font-size: 1.1rem;
-  color: #666;
+  color: var(--muted) ;
   margin-bottom: 2rem;
   line-height: 1.8;
 }
@@ -158,7 +158,7 @@
 }
 
 .info-category {
-  background: #f8fafc;
+  background: var(--card) ;
   padding: 2rem;
   border-radius: 15px;
   border-left: 4px solid #667eea;
@@ -167,7 +167,7 @@
 .info-category h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text) ;
   margin-bottom: 1rem;
 }
 
@@ -177,7 +177,7 @@
 }
 
 .info-category ul li {
-  color: #555;
+  color: var(--text) ;
   margin-bottom: 0.8rem;
   position: relative;
   padding-left: 1.5rem;
@@ -202,7 +202,7 @@
 }
 
 .usage-item {
-  background: white;
+  background: var(--bg) ;
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
@@ -226,12 +226,12 @@
 .usage-item h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text) ;
   margin-bottom: 1rem;
 }
 
 .usage-item p {
-  color: #666;
+  color: var(--muted) ;
   line-height: 1.6;
 }
 
@@ -255,12 +255,12 @@
 .note-content h3 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text) ;
   margin-bottom: 0.5rem;
 }
 
 .note-content p {
-  color: #555;
+  color: var(--text) ;
   margin: 0;
   line-height: 1.6;
 }
@@ -274,7 +274,7 @@
 }
 
 .sharing-category {
-  background: #f8fafc;
+  background: var(--card) ;
   padding: 2rem;
   border-radius: 15px;
   border: 2px solid #e2e8f0;
@@ -302,7 +302,7 @@
 }
 
 .sharing-category ul li {
-  color: #555;
+  color: var(--text) ;
   margin-bottom: 1rem;
   position: relative;
   padding-left: 1.5rem;
@@ -328,7 +328,7 @@
   gap: 1.5rem;
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background: #f8fafc;
+  background: var(--card) ;
   border-radius: 15px;
   border-left: 4px solid #667eea;
 }
@@ -342,12 +342,12 @@
 .guideline-text h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text) ;
   margin-bottom: 0.5rem;
 }
 
 .guideline-text p {
-  color: #666;
+  color: var(--muted) ;
   margin: 0;
   line-height: 1.6;
 }
@@ -361,7 +361,7 @@
 }
 
 .security-item {
-  background: white;
+  background: var(--bg) ;
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
@@ -385,12 +385,12 @@
 .security-item h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text) ;
   margin-bottom: 1rem;
 }
 
 .security-item p {
-  color: #666;
+  color: var(--muted) ;
   line-height: 1.6;
 }
 
@@ -414,7 +414,7 @@
 }
 
 .disclaimer-content p {
-  color: #555;
+  color: var(--text) ;
   margin: 0;
   line-height: 1.6;
 }
@@ -428,7 +428,7 @@
 }
 
 .right-item {
-  background: #f8fafc;
+  background: var(--card) ;
   padding: 2rem;
   border-radius: 15px;
   text-align: center;
@@ -467,7 +467,7 @@
 
 /* Contact Info */
 .privacy-contact-info {
-  background: #f8fafc;
+  background: var(--card) ;
   padding: 2.5rem;
   border-radius: 15px;
   margin: 2rem 0;
@@ -476,12 +476,12 @@
 .privacy-contact-info h3 {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text) ;
   margin-bottom: 1rem;
 }
 
 .privacy-contact-info p {
-  color: #666;
+  color: var(--muted) ;
   margin-bottom: 1.5rem;
 }
 
@@ -496,7 +496,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: white;
+  background: var(--bg) ;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
@@ -517,7 +517,7 @@
   gap: 2rem;
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background: #f8fafc;
+  background: var(--card) ;
   border-radius: 15px;
 }
 
@@ -538,12 +538,12 @@
 .step-content h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text) ;
   margin-bottom: 0.5rem;
 }
 
 .step-content p {
-  color: #666;
+  color: var(--muted) ;
   margin: 0;
   line-height: 1.6;
 }
@@ -557,7 +557,7 @@
 }
 
 .contact-card {
-  background: white;
+  background: var(--bg) ;
   padding: 2.5rem;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
@@ -581,12 +581,12 @@
 .contact-card h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text) ;
   margin-bottom: 1rem;
 }
 
 .contact-card p {
-  color: #666;
+  color: var(--muted) ;
   line-height: 1.6;
   margin-bottom: 0.5rem;
 }
@@ -640,7 +640,7 @@
 
 .btn-primary {
   background: linear-gradient(45deg, #ffd700, #ffed4a);
-  color: #333;
+  color: var(--text) ;
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
@@ -656,7 +656,7 @@
 }
 
 .btn-secondary:hover {
-  background: white;
+  background: var(--bg) ;
   color: #f5576c;
   transform: translateY(-3px);
 }

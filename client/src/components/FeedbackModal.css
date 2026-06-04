@@ -13,7 +13,7 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--bg) ;
   padding: 30px;
   border-radius: 12px;
   width: 90%;
@@ -36,7 +36,7 @@
 .modal-content h2 {
   margin-top: 0;
   margin-bottom: 20px;
-  color: #333;
+  color: var(--text) ;
   text-align: center;
 }
 
@@ -59,7 +59,7 @@
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #555;
+  color: var(--text) ;
 }
 
 .form-group input,
@@ -67,7 +67,7 @@
 .form-group textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border) ;
   border-radius: 6px;
   font-size: 1rem;
   box-sizing: border-box; /* Important for padding */

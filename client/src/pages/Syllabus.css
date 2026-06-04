@@ -3,7 +3,7 @@
 .syllabus {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text) ;
 }
 
 .container {
@@ -91,9 +91,9 @@
 
 /* Search and Filters */
 .search-filters {
-  background: #f8fafc;
+  background: var(--card) ;
   padding: 2rem 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border);
 }
 
 .search-bar {
@@ -112,7 +112,7 @@
   font-size: 1.1rem;
   border: 2px solid #e2e8f0;
   border-radius: 50px;
-  background: white;
+  background: var(--bg) ;
   transition: all 0.3s ease;
   outline: none;
 }
@@ -128,7 +128,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.2rem;
-  color: #666;
+  color: var(--muted) ;
 }
 
 .filters {
@@ -155,7 +155,7 @@
   padding: 0.8rem;
   border: 2px solid #e2e8f0;
   border-radius: 8px;
-  background: white;
+  background: var(--bg) ;
   font-size: 1rem;
   color: #374151;
   cursor: pointer;
@@ -170,7 +170,7 @@
 /* Results Section */
 .results {
   padding: 3rem 0;
-  background: white;
+  background: var(--bg) ;
 }
 
 .results-header {
@@ -182,11 +182,11 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--text) ;
 }
 
 .results-header p {
-  color: #666;
+  color: var(--muted) ;
   font-size: 1.1rem;
 }
 
@@ -194,7 +194,7 @@
 .no-results {
   text-align: center;
   padding: 4rem 2rem;
-  background: #f8fafc;
+  background: var(--card) ;
   border-radius: 15px;
   margin: 2rem 0;
 }
@@ -212,7 +212,7 @@
 }
 
 .no-results p {
-  color: #6b7280;
+  color: var(--muted) ;
   font-size: 1rem;
 }
 
@@ -225,11 +225,11 @@
 
 /* Syllabus Card */
 .syllabus-card {
-  background: white;
+  background: var(--bg) ;
   border-radius: 15px;
   padding: 2rem;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border) ;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -257,7 +257,7 @@
 .card-title {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text) ;
   margin-bottom: 0.5rem;
   line-height: 1.4;
 }
@@ -267,7 +267,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--muted) ;
 }
 
 .university {
@@ -280,7 +280,7 @@
 }
 
 .department {
-  color: #6b7280;
+  color: var(--muted) ;
 }
 
 .difficulty-badge {
@@ -317,13 +317,13 @@
 }
 
 .subject-tag {
-  background: #f3f4f6;
+  background: var(--card) ;
   color: #374151;
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 500;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border) ;
 }
 
 .tags-section {
@@ -350,7 +350,7 @@
   justify-content: space-between;
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background: #f8fafc;
+  background: var(--card) ;
   border-radius: 10px;
   gap: 1rem;
 }
@@ -360,7 +360,7 @@
   align-items: center;
   gap: 0.4rem;
   font-size: 0.85rem;
-  color: #6b7280;
+  color: var(--muted) ;
   flex: 1;
   justify-content: center;
 }
