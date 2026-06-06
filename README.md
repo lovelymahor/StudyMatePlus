@@ -7,6 +7,20 @@ The goal is to support students during exam preparation by providing a centraliz
 
 ---
 
+## 📑 Table of Contents
+
+- [🎯 Project Objective](#-project-objective)
+- [🌟 Key Features (To Be Developed)](#-key-features-to-be-developed)
+- [🛠️ Tech Stack](#-tech-stack)
+- [📁 Project Structure (To Be Followed)](#-project-structure-to-be-followed)
+- [💻 Getting Started](#-getting-started)
+- [🧑‍💻 How to Contribute](#-how-to-contribute)
+- [🙌 Code of Conduct](#-code-of-conduct)
+- [📜 License](#-license)
+- [📞 Contact & Community](#-contact--community)
+
+---
+
 ## 🎯 Project Objective
 
 Students often face difficulty finding authentic academic materials in one place. Information like syllabus PDFs, PYQs, and exam tips are scattered or unavailable. This project aims to build a platform that:
