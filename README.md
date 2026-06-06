@@ -6,6 +6,23 @@
 The goal is to support students during exam preparation by providing a centralized, reliable, and user-friendly resource hub.
 
 ---
+Table of Contents
+🎯 Project Objective
+🌟 Key Features (To Be Developed)
+🛠️ Tech Stack
+📁 Project Structure (To Be Followed)
+💻 Getting Started
+1. Fork the Repository
+2. Clone Your Fork
+3. Install Dependencies
+4. Configure Environment Variables
+5. Run the Application
+🧑‍💻 How to Contribute
+🙌 Code of Conduct
+📜 License
+📞 Contact & Community
+
+---
 
 ## 🎯 Project Objective
 
