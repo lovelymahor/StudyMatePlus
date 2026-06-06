@@ -28,15 +28,22 @@ const moreLinks = [
 
 // All links for mobile menu
 const allLinks = [...primaryLinks, ...moreLinks];
-
 const Navbar = () => {
+  console.log("Navbar Loaded");
+
   const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
-  const closeMobileMenu  = () => setIsMobileMenuOpen(false);
+const dropdownRef = useRef(null);
+
+const toggleMobileMenu = () => {
+  setIsMobileMenuOpen((prev) => !prev);
+};
+
+const closeMobileMenu = () => {
+  setIsMobileMenuOpen(false);
+};
 
   // Close dropdown on outside click
   useEffect(() => {
