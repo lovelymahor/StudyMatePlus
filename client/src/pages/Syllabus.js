@@ -17,7 +17,8 @@ const Syllabus = () => {
       uploadDate: "2024-01-15",
       fileSize: "2.4 MB",
       difficulty: "Beginner",
-      tags: ["CSE", "First Year", "Basic Programming"]
+      tags: ["CSE", "First Year", "Basic Programming"],
+      fileUrl: "/pdf/placeholder.pdf"
     },
     {
       id: 2,
@@ -30,7 +31,8 @@ const Syllabus = () => {
       uploadDate: "2024-01-20",
       fileSize: "3.1 MB",
       difficulty: "Intermediate",
-      tags: ["CSE", "Data Structures", "Database"]
+      tags: ["CSE", "Data Structures", "Database"],
+      fileUrl: "/pdf/placeholder.pdf"
     },
     {
       id: 3,
@@ -43,7 +45,8 @@ const Syllabus = () => {
       uploadDate: "2024-01-18",
       fileSize: "2.8 MB",
       difficulty: "Intermediate",
-      tags: ["Mechanical", "Thermodynamics", "Manufacturing"]
+      tags: ["Mechanical", "Thermodynamics", "Manufacturing"],
+      fileUrl: "/pdf/placeholder.pdf"
     },
     {
       id: 4,
@@ -56,7 +59,8 @@ const Syllabus = () => {
       uploadDate: "2024-01-22",
       fileSize: "3.5 MB",
       difficulty: "Advanced",
-      tags: ["Electronics", "Microprocessors", "Communication"]
+      tags: ["Electronics", "Microprocessors", "Communication"],
+      fileUrl: "/pdf/placeholder.pdf"
     },
     {
       id: 5,
@@ -69,7 +73,8 @@ const Syllabus = () => {
       uploadDate: "2024-01-25",
       fileSize: "2.2 MB",
       difficulty: "Beginner",
-      tags: ["IT", "Web Development", "Networks"]
+      tags: ["IT", "Web Development", "Networks"],
+      fileUrl: "/pdf/placeholder.pdf"
     },
     {
       id: 6,
@@ -82,7 +87,8 @@ const Syllabus = () => {
       uploadDate: "2024-01-12",
       fileSize: "2.9 MB",
       difficulty: "Intermediate",
-      tags: ["Civil", "Structural", "Environmental"]
+      tags: ["Civil", "Structural", "Environmental"],
+      fileUrl: "/pdf/placeholder.pdf"
     },
     {
       id: 7,
@@ -95,7 +101,8 @@ const Syllabus = () => {
       uploadDate: "2024-01-28",
       fileSize: "4.2 MB",
       difficulty: "Advanced",
-      tags: ["CSE", "Machine Learning", "Security"]
+      tags: ["CSE", "Machine Learning", "Security"],
+      fileUrl: "/pdf/placeholder.pdf"
     },
     {
       id: 8,
@@ -108,7 +115,120 @@ const Syllabus = () => {
       uploadDate: "2024-01-14",
       fileSize: "3.3 MB",
       difficulty: "Intermediate",
-      tags: ["Electrical", "Power Systems", "Circuits"]
+      tags: ["Electrical", "Power Systems", "Circuits"],
+      fileUrl: "/pdf/placeholder.pdf"
+    },
+    {
+      id: 9,
+      title: "Computer Science Engineering - Semester 1",
+      university: "Rajasthan Technical University Kota",
+      department: "Computer Science Engineering",
+      semester: 1,
+      subjects: [],
+      downloadCount: 0,
+      uploadDate: "2025-06-06",
+      fileSize: "N/A",
+      difficulty: "Beginner",
+      tags: ["RTU", "CSE", "Kota", "Rajasthan", "First Year"],
+      fileUrl: "/pdf/RTU_CSE_Sem1.pdf"
+    },
+    {
+      id: 10,
+      title: "Computer Science Engineering - Semester 2",
+      university: "Rajasthan Technical University Kota",
+      department: "Computer Science Engineering",
+      semester: 2,
+      subjects: [],
+      downloadCount: 0,
+      uploadDate: "2025-06-06",
+      fileSize: "N/A",
+      difficulty: "Beginner",
+      tags: ["RTU", "CSE", "Kota", "Rajasthan", "First Year"],
+      fileUrl: "/pdf/RTU_CSE_Sem2.pdf"
+    },
+    {
+      id: 11,
+      title: "Computer Science Engineering - Semester 3",
+      university: "Rajasthan Technical University Kota",
+      department: "Computer Science Engineering",
+      semester: 3,
+      subjects: [],
+      downloadCount: 0,
+      uploadDate: "2025-06-06",
+      fileSize: "N/A",
+      difficulty: "Intermediate",
+      tags: ["RTU", "CSE", "Kota", "Rajasthan"],
+      fileUrl: "/pdf/RTU_CSE_Sem3.pdf"
+    },
+    {
+      id: 12,
+      title: "Computer Science Engineering - Semester 4",
+      university: "Rajasthan Technical University Kota",
+      department: "Computer Science Engineering",
+      semester: 4,
+      subjects: [],
+      downloadCount: 0,
+      uploadDate: "2025-06-06",
+      fileSize: "N/A",
+      difficulty: "Intermediate",
+      tags: ["RTU", "CSE", "Kota", "Rajasthan"],
+      fileUrl: "/pdf/RTU_CSE_Sem4.pdf"
+    },
+    {
+      id: 13,
+      title: "Computer Science Engineering - Semester 5",
+      university: "Rajasthan Technical University Kota",
+      department: "Computer Science Engineering",
+      semester: 5,
+      subjects: [],
+      downloadCount: 0,
+      uploadDate: "2025-06-06",
+      fileSize: "N/A",
+      difficulty: "Intermediate",
+      tags: ["RTU", "CSE", "Kota", "Rajasthan"],
+      fileUrl: "/pdf/RTU_CSE_Sem5.pdf"
+    },
+    {
+      id: 14,
+      title: "Computer Science Engineering - Semester 6",
+      university: "Rajasthan Technical University Kota",
+      department: "Computer Science Engineering",
+      semester: 6,
+      subjects: [],
+      downloadCount: 0,
+      uploadDate: "2025-06-06",
+      fileSize: "N/A",
+      difficulty: "Advanced",
+      tags: ["RTU", "CSE", "Kota", "Rajasthan"],
+      fileUrl: "/pdf/RTU_CSE_Sem6.pdf"
+    },
+    {
+      id: 15,
+      title: "Computer Science Engineering - Semester 7",
+      university: "Rajasthan Technical University Kota",
+      department: "Computer Science Engineering",
+      semester: 7,
+      subjects: [],
+      downloadCount: 0,
+      uploadDate: "2025-06-06",
+      fileSize: "N/A",
+      difficulty: "Advanced",
+      tags: ["RTU", "CSE", "Kota", "Rajasthan"],
+      fileUrl: "/pdf/RTU_CSE_Sem7.pdf"
+    },
+    {
+      id: 16,
+      title: "Computer Science Engineering - Semester 8",
+      university: "Rajasthan Technical University Kota",
+      department: "Computer Science Engineering",
+      semester: 8,
+      subjects: [],
+      downloadCount: 0,
+      uploadDate: "2025-06-06",
+      fileSize: "N/A",
+      difficulty: "Advanced",
+      tags: ["RTU", "CSE", "Kota", "Rajasthan"],
+      fileUrl: "/pdf/RTU_CSE_Sem8.pdf"
     }
   ];
 
@@ -161,8 +281,22 @@ const [showScroll, setShowScroll] = useState(false);
 
   // Get unique values for filters
   const universities = ['All', ...new Set(syllabusData.map(item => item.university))];
-  const departments = ['All', ...new Set(syllabusData.map(item => item.department))];
-  const semesters = ['All', ...new Set(syllabusData.map(item => item.semester))];
+  
+  const departments = ['All', ...new Set(
+    syllabusData
+      .filter(item => selectedUniversity === 'All' || item.university === selectedUniversity)
+      .map(item => item.department)
+  )];
+
+  const semesters = ['All', ...new Set(
+    syllabusData
+      .filter(item => 
+        (selectedUniversity === 'All' || item.university === selectedUniversity) &&
+        (selectedDepartment === 'All' || item.department === selectedDepartment)
+      )
+      .map(item => item.semester)
+      .sort((a, b) => a - b)
+  )];
 
   // Filter and sort logic
   const filteredAndSortedSyllabi = useMemo(() => {
@@ -195,8 +329,24 @@ const [showScroll, setShowScroll] = useState(false);
   }, [searchTerm, selectedUniversity, selectedDepartment, selectedSemester, sortBy, syllabusData]);
 
   const handleDownload = (syllabus) => {
-    // Simulate download
-    alert(`Downloading: ${syllabus.title}`);
+    if (!syllabus.fileUrl) {
+      alert("File not available yet.");
+      return;
+    }
+    const link = document.createElement('a');
+    link.href = syllabus.fileUrl;
+    link.setAttribute('download', `${syllabus.title}.pdf`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handlePreview = (syllabus) => {
+    if (!syllabus.fileUrl) {
+      alert("Preview not available yet.");
+      return;
+    }
+    window.open(syllabus.fileUrl, '_blank');
   };
 
   const getDifficultyColor = (difficulty) => {
@@ -266,7 +416,11 @@ const [showScroll, setShowScroll] = useState(false);
           <motion.div className="filters" variants={staggerChildren}>
             <motion.div className="filter-group" variants={fadeInUp}>
               <label>University:</label>
-              <select value={selectedUniversity} onChange={(e) => setSelectedUniversity(e.target.value)}>
+              <select value={selectedUniversity} onChange={(e) => {
+    setSelectedUniversity(e.target.value);
+    setSelectedDepartment('All');
+    setSelectedSemester('All');
+  }}>
                 {universities.map(uni => (
                   <option key={uni} value={uni}>{uni}</option>
                 ))}
@@ -275,7 +429,10 @@ const [showScroll, setShowScroll] = useState(false);
 
             <motion.div className="filter-group" variants={fadeInUp}>
               <label>Department:</label>
-              <select value={selectedDepartment} onChange={(e) => setSelectedDepartment(e.target.value)}>
+              <select value={selectedDepartment} onChange={(e) => {
+    setSelectedDepartment(e.target.value);
+    setSelectedSemester('All');
+  }}>
                 {departments.map(dept => (
                   <option key={dept} value={dept}>{dept}</option>
                 ))}
@@ -362,14 +519,16 @@ const [showScroll, setShowScroll] = useState(false);
                     </div>
 
                     <div className="card-content">
-                      <div className="subjects-section">
-                        <h4>Subjects Covered:</h4>
-                        <div className="subjects-list">
-                          {syllabus.subjects.map((subject, index) => (
-                            <span key={index} className="subject-tag">{subject}</span>
-                          ))}
+                      {syllabus.subjects && syllabus.subjects.length > 0 && (
+                        <div className="subjects-section">
+                          <h4>Subjects Covered:</h4>
+                          <div className="subjects-list">
+                            {syllabus.subjects.map((subject, index) => (
+                              <span key={index} className="subject-tag">{subject}</span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      )}
 
                       <div className="tags-section">
                         <div className="tags">
@@ -406,6 +565,7 @@ const [showScroll, setShowScroll] = useState(false);
                       </motion.button>
                       <motion.button 
                         className="btn btn-outline"
+                        onClick={() => handlePreview(syllabus)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
