@@ -724,7 +724,7 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
 .footer-section p {
   max-width: 300px;
   line-height: 1.7;
-  color: var(--muted);
+  color: #cbd5e1;
   font-size: 0.95rem;
 }
 
@@ -737,7 +737,7 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
 }
 
 .footer-section a {
-  color: var(--muted);
+  color: #cbd5e1;
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.2s ease;
@@ -779,7 +779,7 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
   border-top: 1px solid var(--border);
   text-align: center;
   font-size: 0.88rem;
-  color: var(--muted);
+  color: #cbd5e1;
 }
 
 /* ============================================================
