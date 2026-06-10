@@ -3,7 +3,7 @@
 .contact {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text);
 }
 
 .container {
@@ -14,7 +14,7 @@
 
 /* Hero Section */
 .contact-hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   color: white;
   padding: 100px 0 80px;
   text-align: center;
@@ -36,7 +36,7 @@
 /* Main Content */
 .contact-main {
   padding: 80px 0;
-  background: #f8f9fa;
+  background: var(--bg);
 }
 
 .contact-content {
@@ -48,7 +48,7 @@
 
 /* Contact Form */
 .contact-form-container {
-  background: white;
+  background: var(--card);
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -57,7 +57,7 @@
 .contact-form-container h2 {
   font-size: 1.8rem;
   margin-bottom: 30px;
-  color: #333;
+  color: var(--text);
 }
 
 .form-group {
@@ -78,7 +78,7 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--brand);
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
@@ -88,7 +88,7 @@
 }
 
 .submit-btn {
-  background: #667eea;
+  background: var(--brand);
   color: white;
   padding: 15px 40px;
   border: none;
@@ -101,7 +101,7 @@
 }
 
 .submit-btn:hover {
-  background: #5a6fd8;
+  background: var(--brand);
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
@@ -115,7 +115,7 @@
 .success-icon {
   width: 60px;
   height: 60px;
-  background: #10b981;
+  background: var(--brand);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -132,14 +132,14 @@
 }
 
 .success-message p {
-  color: #666;
+  color: var(--muted);
 }
 
 /* Contact Info */
 .contact-info h2 {
   font-size: 1.8rem;
   margin-bottom: 40px;
-  color: #333;
+  color: var(--text);
 }
 
 .info-item {
@@ -156,11 +156,11 @@
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 5px;
-  color: #333;
+  color: var(--text);
 }
 
 .info-content p {
-  color: #666;
+  color: var(--muted);
   line-height: 1.6;
 }
 
@@ -172,7 +172,7 @@
 .social-links h3 {
   font-size: 1.1rem;
   margin-bottom: 15px;
-  color: #333;
+  color: var(--text);
 }
 
 .social-icons {
@@ -181,7 +181,7 @@
 }
 
 .social-icon {
-  color: #667eea;
+  color: var(--brand);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
@@ -194,14 +194,14 @@
 /* FAQ Section */
 .faq-section {
   padding: 80px 0;
-  background: white;
+  background: var(--card);
 }
 
 .faq-section h2 {
   text-align: center;
   font-size: 2.2rem;
   margin-bottom: 50px;
-  color: #333;
+  color: var(--text);
 }
 
 .faq-list {
@@ -218,13 +218,13 @@
 }
 
 .faq-item h3 {
-  color: #333;
+  color: var(--text);
   margin-bottom: 10px;
   font-size: 1.1rem;
 }
 
 .faq-item p {
-  color: #666;
+  color: var(--muted);
   line-height: 1.6;
 }
 
@@ -240,7 +240,7 @@
 }
 
 .btn-primary {
-  background: #667eea;
+  background: var(--brand);
   color: white;
 }
 
@@ -256,7 +256,7 @@
 }
 
 .btn-secondary:hover {
-  background: white;
+  background: var(--card);
   color: #1e293b;
   transform: translateY(-2px);
 }

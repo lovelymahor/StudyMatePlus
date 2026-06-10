@@ -10,7 +10,7 @@
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,19 +37,19 @@
 .profile-user-name {
   font-size: 2.25rem;
   font-weight: 700;
-  color: #1a202c;
+  color: var(--text);
   margin: 0;
 }
 
 .profile-user-email {
   font-size: 1.1rem;
-  color: #718096;
+  color: var(--muted);
   margin: 0.25rem 0;
 }
 
 .profile-join-date {
   font-size: 0.9rem;
-  color: #a0aec0;
+  color: var(--muted);
   margin-top: 0.5rem;
 }
 
@@ -64,12 +64,12 @@
   cursor: pointer;
   transition: all 0.3s ease;
   background: transparent;
-  color: #667eea;
+  color: var(--brand);
   border: 2px solid #667eea;
 }
 
 .edit-profile-btn-modern:hover {
-  background: #667eea;
+  background: var(--brand);
   color: white;
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
@@ -95,13 +95,13 @@
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
-  color: #4a5568;
+  color: var(--text);
   border-radius: 50px;
   transition: all 0.3s ease;
 }
 
 .tab-btn.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   color: white;
   font-weight: 600;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
@@ -122,7 +122,7 @@
   justify-content: center;
   text-align: center;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
 }
 
 .content-icon {
