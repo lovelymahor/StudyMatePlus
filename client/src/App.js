@@ -18,6 +18,7 @@ import MindMapEditor from "./pages/MindMapEditor";
 import Profile from "./pages/Profile.js";
 import SubmitFeedback from "./pages/SubmitFeedback";
 import Todo from "./pages/Todo";
+import NotFound from "./pages/NotFound";
 
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/feedback/submit" element={<SubmitFeedback />} />
+          <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </Router>
