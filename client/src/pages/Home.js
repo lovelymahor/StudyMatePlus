@@ -9,6 +9,8 @@ import "./Home.css";
 import './ScrollToTop.css';
 
 const Home = () => {
+
+  document.title = "StudyMatePlus | Home";
   const [contributors, setContributors] = useState([]);
   const [showScroll, setShowScroll] = useState(false);
 

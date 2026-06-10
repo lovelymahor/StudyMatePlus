@@ -17,6 +17,8 @@ const user = {
 };
 
 const Profile = () => {
+
+  document.title = "StudyMatePlus | Profile";
   const [activeTab, setActiveTab] = useState("uploads");
 
   const fadeInUp = {
