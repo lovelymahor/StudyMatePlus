@@ -729,7 +729,7 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
 .footer-section p {
   max-width: 300px;
   line-height: 1.7;
-  color: var(--muted);
+  color: #cbd5e1;
   font-size: 0.95rem;
 }
 
@@ -742,7 +742,7 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
 }
 
 .footer-section a {
-  color: var(--muted);
+  color: #cbd5e1;
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.2s ease;
@@ -780,10 +780,8 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
   padding-top: 1.5rem;
   border-top: 1px solid var(--border);
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 15px;
-  font-size: 0.9rem;
-  color: var(--muted);
+  font-size: 0.88rem;
+  color: #cbd5e1;
 }
 
 .footer-section ul {
