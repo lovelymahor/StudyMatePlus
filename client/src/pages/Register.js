@@ -28,10 +28,10 @@ const BENEFITS = [
 const getPasswordStrength = (pw) => {
   if (!pw) return { score: 0, label: '', color: '', width: '0%' };
   let score = 0;
-  if (pw.length >= 8)              score++;
-  if (/[A-Z]/.test(pw))            score++;
-  if (/[0-9]/.test(pw))            score++;
-  if (/[^A-Za-z0-9]/.test(pw))    score++;
+  if (pw.length >= 8)           score++;
+  if (/[A-Z]/.test(pw))         score++;
+  if (/[0-9]/.test(pw))         score++;
+  if (/[^A-Za-z0-9]/.test(pw)) score++;
   const map = [
     { label: '',       color: '',        width: '0%'   },
     { label: 'Weak',   color: '#ef4444', width: '25%'  },
@@ -53,19 +53,20 @@ const Register = () => {
   const [form, setForm] = useState({
     name: '', email: '', university: '', password: '', confirmPassword: '',
   });
-  const [errors, setErrors] = useState({});
-  const [showPw,  setShowPw]  = useState(false);
-  const [showCpw, setShowCpw] = useState(false);
+  const [errors, setErrors]         = useState({});
+  const [showPw,  setShowPw]        = useState(false);
+  const [showCpw, setShowCpw]       = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [serverError, setServerError] = useState('');
-  const [success, setSuccess] = useState(false);
-  const [mounted,  setMounted]  = useState(false);
-  const [focused, setFocused] = useState({});
-  const [step, setStep] = useState(1); // 1 = personal info, 2 = credentials
+  const [serverError,  setServerError]  = useState('');
+  const [success,  setSuccess]      = useState(false);
+  const [mounted,  setMounted]      = useState(false);
+  const [focused,  setFocused]      = useState({});
+  const [step,     setStep]         = useState(1);
   const [avatarPreview, setAvatarPreview] = useState('');
-  const [avatarFile, setAvatarFile] = useState(null);
+  const [avatarFile,    setAvatarFile]    = useState(null);
 
-  const nameRef = useRef(null);
+  const nameRef    = useRef(null);
+  const avatarRef  = useRef(null);
 
   useEffect(() => {
     setTimeout(() => setMounted(true), 50);
@@ -76,15 +77,15 @@ const Register = () => {
 
   const validate = () => {
     const e = {};
-    if (!form.name.trim())                                e.name            = 'Name is required.';
-    else if (form.name.trim().length < 2)                 e.name            = 'Name must be at least 2 characters.';
-    if (!form.email.trim())                               e.email           = 'Email is required.';
-    else if (!/^\S+@\S+\.\S+$/.test(form.email))         e.email           = 'Enter a valid email.';
-    if (!form.password)                                   e.password        = 'Password is required.';
-    else if (form.password.length < 8)                    e.password        = 'Minimum 8 characters.';
-    else if (!/[A-Z]/.test(form.password))                e.password        = 'Must include an uppercase letter.';
-    else if (!/[0-9]/.test(form.password))                e.password        = 'Must include a number.';
-    if (form.confirmPassword !== form.password)           e.confirmPassword = 'Passwords do not match.';
+    if (!form.name.trim())                        e.name            = 'Name is required.';
+    else if (form.name.trim().length < 2)         e.name            = 'Name must be at least 2 characters.';
+    if (!form.email.trim())                       e.email           = 'Email is required.';
+    else if (!/^\S+@\S+\.\S+$/.test(form.email)) e.email           = 'Enter a valid email.';
+    if (!form.password)                           e.password        = 'Password is required.';
+    else if (form.password.length < 8)            e.password        = 'Minimum 8 characters.';
+    else if (!/[A-Z]/.test(form.password))        e.password        = 'Must include an uppercase letter.';
+    else if (!/[0-9]/.test(form.password))        e.password        = 'Must include a number.';
+    if (form.confirmPassword !== form.password)   e.confirmPassword = 'Passwords do not match.';
     return e;
   };
 
@@ -98,28 +99,24 @@ const Register = () => {
   const handleAvatarChange = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
     if (!file.type.startsWith('image/')) {
       setErrors((p) => ({ ...p, avatar: 'Please choose an image file.' }));
       return;
     }
-
     const reader = new FileReader();
     reader.onload = () => {
-      const result = typeof reader.result === 'string' ? reader.result : '';
-      setAvatarPreview(result);
+      setAvatarPreview(typeof reader.result === 'string' ? reader.result : '');
       setAvatarFile(file);
       setErrors((p) => ({ ...p, avatar: '' }));
     };
     reader.readAsDataURL(file);
   };
 
-  // Step 1 → 2
   const handleNextStep = () => {
     const e = {};
-    if (!form.name.trim())                e.name  = 'Name is required.';
-    else if (form.name.trim().length < 2) e.name  = 'At least 2 characters.';
-    if (!form.email.trim())               e.email = 'Email is required.';
+    if (!form.name.trim())                        e.name  = 'Name is required.';
+    else if (form.name.trim().length < 2)         e.name  = 'At least 2 characters.';
+    if (!form.email.trim())                       e.email = 'Email is required.';
     else if (!/^\S+@\S+\.\S+$/.test(form.email)) e.email = 'Enter a valid email.';
     if (Object.keys(e).length) { setErrors(e); return; }
     setStep(2);
@@ -135,14 +132,12 @@ const Register = () => {
 
     try {
       const payload = new FormData();
-      payload.append('name', form.name);
-      payload.append('email', form.email);
-      payload.append('university', form.university || '');
-      payload.append('password', form.password);
+      payload.append('name',            form.name);
+      payload.append('email',           form.email);
+      payload.append('university',      form.university || '');
+      payload.append('password',        form.password);
       payload.append('confirmPassword', form.confirmPassword);
-      if (avatarFile) {
-        payload.append('avatar', avatarFile);
-      }
+      if (avatarFile) payload.append('avatar', avatarFile);
 
       const result = await register(payload);
       if (result.success) {
@@ -161,7 +156,7 @@ const Register = () => {
   return (
     <div className={`register-page ${mounted ? 'mounted' : ''}`}>
 
-      {/* Background */}
+      {/* ── Animated background ── */}
       <div className="reg-bg">
         <div className="reg-bg-orb orb-a" />
         <div className="reg-bg-orb orb-b" />
@@ -169,7 +164,7 @@ const Register = () => {
         <div className="reg-bg-grid" />
       </div>
 
-      {/* Shapes */}
+      {/* ── Floating shapes ── */}
       <div className="reg-shapes" aria-hidden="true">
         {SHAPES.map((s, i) => (
           <span key={i} className="reg-shape" style={{
@@ -181,9 +176,10 @@ const Register = () => {
 
       <div className="reg-container">
 
-        {/* ════ LEFT PANEL ════ */}
+        {/* ════ LEFT HERO PANEL ════ */}
         <div className="reg-hero">
           <div className="reg-hero-inner">
+
             {/* Brand */}
             <div className="reg-brand">
               <img src="/logo.png" alt="StudyMate Plus" className="reg-logo" />
@@ -197,7 +193,7 @@ const Register = () => {
               </p>
             </div>
 
-            {/* Benefits list */}
+            {/* Benefits */}
             <div className="reg-benefits">
               {BENEFITS.map((b) => (
                 <p key={b} className="reg-benefit-item">{b}</p>
@@ -212,7 +208,7 @@ const Register = () => {
           </div>
         </div>
 
-        {/* ════ RIGHT FORM ════ */}
+        {/* ════ RIGHT FORM PANEL ════ */}
         <div className="reg-form-panel">
           <div className={`reg-card ${success ? 'reg-success-state' : ''}`}>
 
@@ -229,9 +225,11 @@ const Register = () => {
               </div>
             </div>
 
-            {/* Header */}
+            {/* Card header */}
             <div className="reg-card-header">
-              <div className="reg-card-icon">{success ? '🎉' : step === 1 ? '👤' : '🔐'}</div>
+              <div className="reg-card-icon">
+                {success ? '🎉' : step === 1 ? '👤' : '🔐'}
+              </div>
               <h2 className="reg-card-title">
                 {success ? 'Welcome aboard!' : step === 1 ? 'Create Account' : 'Secure Your Account'}
               </h2>
@@ -244,18 +242,24 @@ const Register = () => {
               </p>
             </div>
 
+            {/* Server error */}
             {serverError && (
               <div className="reg-alert" role="alert">
                 <span>⚠️</span> {serverError}
               </div>
             )}
 
-            <form className="reg-form" onSubmit={step === 1 ? (e) => { e.preventDefault(); handleNextStep(); } : handleSubmit} noValidate>
+            <form
+              className="reg-form"
+              onSubmit={step === 1 ? (e) => { e.preventDefault(); handleNextStep(); } : handleSubmit}
+              noValidate
+            >
 
-              {/* ── STEP 1 ── */}
+              {/* ══ STEP 1 — Personal Info ══ */}
               {step === 1 && (
                 <div className="reg-step-fields">
-                  {/* Name */}
+
+                  {/* Full Name */}
                   <div className={`reg-field ${focused.name || form.name ? 'active' : ''} ${errors.name ? 'error' : ''}`}>
                     <label htmlFor="name" className="reg-label">Full Name</label>
                     <div className="reg-input-wrap">
@@ -291,7 +295,9 @@ const Register = () => {
 
                   {/* University (optional) */}
                   <div className={`reg-field ${focused.university || form.university ? 'active' : ''}`}>
-                    <label htmlFor="university" className="reg-label">University <span className="reg-optional">(optional)</span></label>
+                    <label htmlFor="university" className="reg-label">
+                      University <span className="reg-optional">(optional)</span>
+                    </label>
                     <div className="reg-input-wrap">
                       <span className="reg-input-icon">🏛️</span>
                       <input
@@ -305,57 +311,110 @@ const Register = () => {
                     </div>
                   </div>
 
-                  <button type="submit" className="reg-btn">
-
-                  <div className={`reg-field ${avatarPreview ? 'active' : ''} ${errors.avatar ? 'error' : ''}`}>
-                    <label htmlFor="avatar" className="reg-label">Profile Photo <span className="reg-optional">(for your profile)</span></label>
+                  {/* Profile Photo */}
+                  <div className={`reg-field ${errors.avatar ? 'error' : ''}`}>
+                    <label className="reg-label">
+                      Profile Photo <span className="reg-optional">(optional)</span>
+                    </label>
                     <div className="reg-avatar-picker">
-                      <div className="reg-avatar-preview">
-                        <img src={avatarPreview || '/logo.png'} alt="Profile preview" />
-                      </div>
-                      <div className="reg-avatar-actions">
-                        <input
-                          id="avatar"
-                          name="avatar"
-                          type="file"
-                          accept="image/*"
-                          capture="user"
-                          onChange={handleAvatarChange}
-                          className="reg-avatar-input"
-                          disabled={isSubmitting || success}
-                        />
-                        <p className="reg-avatar-help">Use your camera or upload a clear photo. You can change it later in profile.</p>
+
+                      {/* Circle preview / empty state */}
+                      <button
+                        type="button"
+                        className="reg-avatar-circle"
+                        onClick={() => avatarRef.current?.click()}
+                        aria-label="Choose profile photo"
+                        title="Click to upload photo"
+                      >
+                        {avatarPreview ? (
+                          <img src={avatarPreview} alt="Profile preview" className="reg-avatar-img" />
+                        ) : (
+                          <div className="reg-avatar-empty">
+                            <svg className="reg-avatar-cam-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                              <circle cx="12" cy="13" r="4"/>
+                            </svg>
+                            <span className="reg-avatar-empty-text">Upload</span>
+                          </div>
+                        )}
+                        {/* Hover overlay */}
+                        <div className="reg-avatar-overlay" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                            <circle cx="12" cy="13" r="4"/>
+                          </svg>
+                          <span>{avatarPreview ? 'Change' : 'Upload'}</span>
+                        </div>
+                      </button>
+
+                      {/* Hidden file input */}
+                      <input
+                        ref={avatarRef}
+                        id="avatar"
+                        name="avatar"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleAvatarChange}
+                        className="reg-avatar-input-hidden"
+                        disabled={isSubmitting || success}
+                        tabIndex={-1}
+                      />
+
+                      {/* Right side text */}
+                      <div className="reg-avatar-info">
+                        <p className="reg-avatar-info-title">
+                          {avatarPreview ? '✓ Photo selected' : 'Add a profile photo'}
+                        </p>
+                        <p className="reg-avatar-info-sub">
+                          JPG, PNG or GIF · Max 5 MB<br />
+                          You can also add one later from your profile.
+                        </p>
+                        {avatarPreview && (
+                          <button
+                            type="button"
+                            className="reg-avatar-remove"
+                            onClick={() => { setAvatarPreview(''); setAvatarFile(null); }}
+                          >
+                            ✕ Remove
+                          </button>
+                        )}
                       </div>
                     </div>
                     {errors.avatar && <span className="reg-field-err">{errors.avatar}</span>}
                   </div>
+
+                  <button type="submit" className="reg-btn">
                     Continue <span className="reg-btn-arrow">→</span>
                   </button>
                 </div>
               )}
 
-              {/* ── STEP 2 ── */}
+              {/* ══ STEP 2 — Security ══ */}
               {step === 2 && (
                 <div className="reg-step-fields">
+
                   {/* Password */}
                   <div className={`reg-field ${focused.password || form.password ? 'active' : ''} ${errors.password ? 'error' : ''}`}>
                     <label htmlFor="password" className="reg-label">Password</label>
                     <div className="reg-input-wrap">
                       <span className="reg-input-icon">🔒</span>
                       <input
-                        id="password" name="password" type={showPw ? 'text' : 'password'}
+                        id="password" name="password"
+                        type={showPw ? 'text' : 'password'}
                         autoComplete="new-password" value={form.password} onChange={handleChange}
                         onFocus={() => setFocused(p => ({ ...p, password: true }))}
                         onBlur={() => setFocused(p => ({ ...p, password: false }))}
                         className="reg-input" placeholder="Minimum 8 characters"
                         disabled={isSubmitting || success}
                       />
-                      <button type="button" className="reg-pw-toggle" onClick={() => setShowPw(p => !p)} tabIndex={-1}
-                        aria-label={showPw ? 'Hide' : 'Show'}>
+                      <button
+                        type="button" className="reg-pw-toggle"
+                        onClick={() => setShowPw(p => !p)}
+                        tabIndex={-1} aria-label={showPw ? 'Hide password' : 'Show password'}
+                      >
                         {showPw ? '🙈' : '👁️'}
                       </button>
                     </div>
-                    {/* Strength bar */}
                     {form.password && (
                       <div className="reg-pw-strength">
                         <div className="reg-pw-bar">
@@ -373,19 +432,22 @@ const Register = () => {
                     <div className="reg-input-wrap">
                       <span className="reg-input-icon">🔑</span>
                       <input
-                        id="confirmPassword" name="confirmPassword" type={showCpw ? 'text' : 'password'}
+                        id="confirmPassword" name="confirmPassword"
+                        type={showCpw ? 'text' : 'password'}
                         autoComplete="new-password" value={form.confirmPassword} onChange={handleChange}
                         onFocus={() => setFocused(p => ({ ...p, confirmPassword: true }))}
                         onBlur={() => setFocused(p => ({ ...p, confirmPassword: false }))}
                         className="reg-input" placeholder="Re-enter password"
                         disabled={isSubmitting || success}
                       />
-                      <button type="button" className="reg-pw-toggle" onClick={() => setShowCpw(p => !p)} tabIndex={-1}
-                        aria-label={showCpw ? 'Hide' : 'Show'}>
+                      <button
+                        type="button" className="reg-pw-toggle"
+                        onClick={() => setShowCpw(p => !p)}
+                        tabIndex={-1} aria-label={showCpw ? 'Hide password' : 'Show password'}
+                      >
                         {showCpw ? '🙈' : '👁️'}
                       </button>
                     </div>
-                    {/* Match indicator */}
                     {form.confirmPassword && (
                       <span className={`reg-match ${form.password === form.confirmPassword ? 'match' : 'mismatch'}`}>
                         {form.password === form.confirmPassword ? '✓ Passwords match' : '✗ Passwords do not match'}
