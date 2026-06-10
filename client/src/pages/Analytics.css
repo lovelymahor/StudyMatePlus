@@ -232,6 +232,10 @@ button:hover {
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
+.download-section {
+  text-align: center;
+}
+
 .download-btn:hover {
   background: linear-gradient(to right, #ffc400, #ffa000);
   transform: scale(1.03);

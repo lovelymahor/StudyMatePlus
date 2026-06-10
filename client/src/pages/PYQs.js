@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
+import { authAxios } from "../context/AuthContext";
 import "./PYQs.css";
 import './ScrollToTop.css';
 
@@ -87,6 +88,30 @@ const scrollToTop = () => {
     behavior: 'smooth'
   });
 };
+
+  const downloadPyqPdf = async () => {
+    const serverBase = (process.env.REACT_APP_API_URL || 'http://localhost:5000/api/auth').replace(/\/api\/auth$/, '');
+    const response = await authAxios.post(
+      `${serverBase}/api/reports/pyq.pdf`,
+      {
+        selectedUniversity,
+        selectedDepartment,
+        selectedSemester,
+        selectedSubject,
+        papers: filteredPapers,
+      },
+      { responseType: 'blob' }
+    );
+
+    const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'pyq-analysis-report.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  };
 
   return (
     <div className="pyqs-page">
@@ -183,6 +208,17 @@ const scrollToTop = () => {
 
                 {filteredPapers.length > 0 ? (
                   <motion.div
+                    className="pyqs-download-row"
+                    variants={fadeInUp}
+                  >
+                    <button className="pyqs-download-btn" onClick={() => downloadPyqPdf()} type="button">
+                      ⬇️ Download PYQ Analysis PDF
+                    </button>
+                  </motion.div>
+                ) : null}
+
+                {filteredPapers.length > 0 ? (
+                  <motion.div
                     className="pyqs-cards-grid"
                     variants={staggerChildren}
                     initial="hidden"
@@ -200,7 +236,7 @@ const scrollToTop = () => {
                         <p>Uploaded on: {paper.date}</p>
                         <p>Uploader: {paper.uploader}</p>
                         <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                          View ➜
+                          View / Download ➜
                         </motion.button>
                       </motion.div>
                     ))}

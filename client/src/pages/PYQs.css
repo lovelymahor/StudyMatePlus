@@ -63,6 +63,29 @@
   font-weight: 600;
 }
 
+.pyqs-download-row {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.pyqs-download-btn {
+  padding: 0.85rem 1.4rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6b6bcf, #4f46e5);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(79, 70, 229, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pyqs-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(79, 70, 229, 0.28);
+}
+
 /* Prompt Text */
 .prompt {
   color: #999;
@@ -121,6 +144,10 @@
 
 .pyq-card button:hover {
   background-color: #5858b6;
+}
+
+.pyq-card button {
+  margin-right: 0.5rem;
 }
 
 
