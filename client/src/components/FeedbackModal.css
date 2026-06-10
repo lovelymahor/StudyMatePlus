@@ -13,7 +13,7 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--card);
   padding: 30px;
   border-radius: 12px;
   width: 90%;
@@ -36,7 +36,7 @@
 .modal-content h2 {
   margin-top: 0;
   margin-bottom: 20px;
-  color: #333;
+  color: var(--text);
   text-align: center;
 }
 
@@ -48,7 +48,7 @@
   border: none;
   font-size: 1.8rem;
   cursor: pointer;
-  color: #888;
+  color: var(--muted);
 }
 
 .form-group {
@@ -59,7 +59,7 @@
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #555;
+  color: var(--text);
 }
 
 .form-group input,
@@ -67,23 +67,25 @@
 .form-group textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   border-radius: 6px;
   font-size: 1rem;
   box-sizing: border-box; /* Important for padding */
+  background: var(--bg);
+  color: var(--text);
 }
 
 .submit-form-btn {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(90deg, #007BFF, #00C6FF);
+  background: var(--brand);
   color: white;
   border: none;
   border-radius: 6px;
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s, opacity 0.2s;
 }
 
 .submit-form-btn:hover {
@@ -93,6 +95,6 @@
 .status-message {
   text-align: center;
   margin-top: 15px;
-  color: #007BFF;
+  color: var(--brand);
   font-weight: bold;
 }

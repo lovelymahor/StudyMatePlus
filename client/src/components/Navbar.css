@@ -41,6 +41,7 @@ html[data-theme="dark"] .navbar {
 .navbar-brand {
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 0.5rem;
   text-decoration: none;
   flex-shrink: 0;
@@ -111,6 +112,7 @@ html[data-theme="dark"] .navbar-link.active {
 .navbar-dropdown-btn {
   display: inline-flex;
   align-items: center;
+  gap: 1rem; /* Reduced spacing to avoid wrapping */
   gap: 0.3rem;
   color: var(--muted);
   background: none;
@@ -228,6 +230,25 @@ html[data-theme="dark"] .navbar-dropdown-menu a.active {
   transform: rotate(15deg);
 }
 
+/* Desktop navigation links */
+.navbar-links {
+  display: flex; /* This remains flex for desktop layout */
+  gap: 1rem;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap; /* Prevent link text from wrapping to next line */
+}
+
+.navbar-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.92rem; /* Slightly smaller to prevent wrapping */
+  padding: 0.3rem 0.6rem; /* Reduced padding to save horizontal space */
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 html[data-theme="dark"] .navbar-theme-toggle:hover {
   background: rgba(139, 180, 255, 0.12);
   color: #8ab4ff;
