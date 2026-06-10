@@ -8,7 +8,7 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import './MindMapEditor.css';
 import './ScrollToTop.css';
-
+import Footer from "../components/Footer";
 import { v4 as uuid } from 'uuid';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layers, Moon, Sun, Download, Upload, Save, Plus, Trash2 } from 'lucide-react';
@@ -783,6 +783,7 @@ export default function MindMapEditor() {
           </motion.button>
         )}
       </AnimatePresence>
+      <Footer/>
    </div>
  );
 }

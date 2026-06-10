@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp } from "react-icons/fa";
 import './Syllabus.css';
-
+import Footer from "../components/Footer";
 const Syllabus = () => {
 
   document.title = "StudyMatePlus | Syllabus";
@@ -439,6 +439,7 @@ const [showScroll, setShowScroll] = useState(false);
                 </motion.button>
               )}
             </AnimatePresence>
+            <Footer />
     </div>
   );
 };

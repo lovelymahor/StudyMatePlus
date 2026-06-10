@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import Footer from "../components/Footer";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp } from "react-icons/fa";
 import './Analytics.css';
@@ -246,6 +247,7 @@ const Analytics = () => {
           </motion.button>
         )}
       </AnimatePresence>
+      <Footer/>
      </div>
    );
 };
