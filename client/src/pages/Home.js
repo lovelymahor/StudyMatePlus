@@ -4,19 +4,28 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import Skeleton from "../components/Skeleton";
 import logo from "./logo.png";
 import "./Home.css";
 import './ScrollToTop.css';
 
 const Home = () => {
   const [contributors, setContributors] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get("https://api.github.com/repos/lovelymahor/StudyMatePlus/contributors")
-      .then((response) => setContributors(response.data))
-      .catch((error) => console.error("Error fetching contributors", error));
+      .then((response) => {
+        setContributors(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching contributors", error);
+        setIsLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -554,39 +563,48 @@ const Home = () => {
           </motion.h2>
           <motion.div className="contributors-grid" variants={staggerChildren}>
             <AnimatePresence>
-              {contributors.map((contributor, index) => (
-                <motion.a
-                  key={contributor.id}
-                  href={contributor.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="contributor-card"
-                  variants={scaleIn}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.05 }}
-                  whileHover={{ 
-                    scale: 1.05, 
-                    y: -5,
-                    boxShadow: "0 10px 20px rgba(0,0,0,0.1)"
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.img 
-                    src={contributor.avatar_url} 
-                    alt={contributor.login}
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  />
-                  <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.05 + 0.2 }}
+              {isLoading ? (
+                Array.from({ length: 6 }).map((_, index) => (
+                  <div key={`skeleton-${index}`} className="contributor-card">
+                    <Skeleton width="70px" height="70px" borderRadius="50%" />
+                    <Skeleton width="60px" height="15px" borderRadius="4px" />
+                  </div>
+                ))
+              ) : (
+                contributors.map((contributor, index) => (
+                  <motion.a
+                    key={contributor.id}
+                    href={contributor.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contributor-card"
+                    variants={scaleIn}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.05 }}
+                    whileHover={{ 
+                      scale: 1.05, 
+                      y: -5,
+                      boxShadow: "0 10px 20px rgba(0,0,0,0.1)"
+                    }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    {contributor.login}
-                  </motion.p>
-                </motion.a>
-              ))}
+                    <motion.img 
+                      src={contributor.avatar_url} 
+                      alt={contributor.login}
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    />
+                    <motion.p
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.05 + 0.2 }}
+                    >
+                      {contributor.login}
+                    </motion.p>
+                  </motion.a>
+                ))
+              )}
             </AnimatePresence>
           </motion.div>
         </div>
