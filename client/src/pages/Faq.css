@@ -153,6 +153,11 @@
   margin: 3rem 1rem 0; /* Adjusted margin */
   background: linear-gradient(45deg, var(--brand), #764ba2);
   border-radius: 16px;
+  color: white;
+}
+
+.contact-section .section-title {
+  color: white;
 }
 
 .contact-section p {

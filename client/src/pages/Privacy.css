@@ -177,7 +177,7 @@
 }
 
 .info-category ul li {
-  color: #555;
+  color: var(--muted);
   margin-bottom: 0.8rem;
   position: relative;
   padding-left: 1.5rem;
@@ -302,7 +302,7 @@
 }
 
 .sharing-category ul li {
-  color: #555;
+  color: var(--muted);
   margin-bottom: 1rem;
   position: relative;
   padding-left: 1.5rem;

@@ -68,7 +68,7 @@
 .form-group textarea {
   width: 100%;
   padding: 15px;
-  border: 2px solid #e1e5e9;
+  border: 2px solid var(--border);
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
@@ -212,7 +212,7 @@
 .faq-item {
   margin-bottom: 30px;
   padding: 30px;
-  background: #f8f9fa;
+  background: var(--card);
   border-radius: 8px;
   border-left: 4px solid #667eea;
 }
