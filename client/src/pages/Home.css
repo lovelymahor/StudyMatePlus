@@ -191,14 +191,14 @@
 
 .btn-outline {
   background: transparent;
-  color: #4f46e5;
-  border: 2px solid #4f46e5;
+  color: var(--brand);
+  border: 2px solid #667eea;
 }
 
 .btn-outline:hover {
-  background: #4f46e5;
-  color: #ffffff;
-  transform: translateY(-2px);
+  background: var(--brand);
+  color: var(--text);
+  transform: translateY(-3px);
 }
 
 /* ── Hero RIGHT — 2×2 card grid ── */
@@ -335,10 +335,7 @@ html[data-theme="dark"] .section-title { color: #ffffff; }
 }
 
 .feature-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  color: #6366f1;
+  color: var(--brand);
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
@@ -346,14 +343,16 @@ html[data-theme="dark"] .section-title { color: #ffffff; }
 }
 
 .feature-link:hover {
-  color: #4f46e5;
-  gap: 0.6rem;
+  color: var(--brand);
 }
 
 /* ============================================================
    STATS SECTION
    ============================================================ */
 .stats {
+  padding: 4rem 0;
+  background: linear-gradient(45deg, var(--brand), #764ba2);
+  color: var(--text);
   padding: 5rem 0;
   background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
   position: relative;
@@ -710,7 +709,13 @@ html[data-theme="dark"] .footer { background: #07101c; }
   margin-bottom: 2.5rem;
 }
 
-.footer-section h4 {
+.footer-section h3, .footer-section h4 {
+  color: var(--heading);
+  margin-bottom: 10px;
+}
+/* In light mode, use heading color for better contrast */
+html[data-theme="light"] .footer-section h3,
+html[data-theme="light"] .footer-section h4 {
   color: var(--heading);
   font-size: 0.9rem;
   font-weight: 700;
@@ -724,7 +729,7 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
 .footer-section p {
   max-width: 300px;
   line-height: 1.7;
-  color: var(--muted);
+  color: #cbd5e1;
   font-size: 0.95rem;
 }
 
@@ -737,7 +742,7 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
 }
 
 .footer-section a {
-  color: var(--muted);
+  color: #cbd5e1;
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.2s ease;
@@ -767,11 +772,8 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
 }
 
 .social-links a:hover {
-  background: #6366f1;
-  border-color: #6366f1;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(99,102,241,0.35);
+  color: var(--brand);
+  transform: scale(1.2);
 }
 
 .footer-bottom {
@@ -779,7 +781,16 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
   border-top: 1px solid var(--border);
   text-align: center;
   font-size: 0.88rem;
-  color: var(--muted);
+  color: #cbd5e1;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 8px;
 }
 
 /* ============================================================

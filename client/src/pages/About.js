@@ -5,6 +5,7 @@ import { FaArrowUp } from "react-icons/fa";
 import './About.css';
 import './ScrollToTop.css';
 const About = () => {
+  document.title = "StudyMatePlus | About Us";
   // Animation Variants from Home.js
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },

@@ -113,6 +113,7 @@ function computeHiddenTargets(collapsedIds, edges) {
 }
 
 export default function MindMapEditor() {
+    document.title = "StudyMatePlus | Mind Map";
   const [dark, setDark] = useState(false);
   const [search] = useState('');
 

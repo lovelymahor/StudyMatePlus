@@ -6,6 +6,8 @@ import { FaArrowUp } from "react-icons/fa";
 import FeedbackModal from "../components/FeedbackModal"; // Import the modal component
 
 const Feedback = () => {
+
+  document.title = "StudyMatePlus | Feedback";
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [selectedUniversity, setSelectedUniversity] = useState("all");
   const [showScroll, setShowScroll] = useState(false);

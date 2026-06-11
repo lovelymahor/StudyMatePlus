@@ -4,6 +4,9 @@ import './Contact.css';
 import './ScrollToTop.css';
 
 const Contact = () => {
+
+  document.title = "StudyMatePlus | Contribute";
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
