@@ -241,7 +241,7 @@
 }
 
 .feature-deep ul li {
-  color: #555;
+  color: var(--muted);
   margin-bottom: 0.5rem;
   position: relative;
   padding-left: 1.5rem;
@@ -255,12 +255,8 @@
   font-weight: bold;
 }
 
-/* Add this to your About.css file */
-
-[data-theme="dark"] .feature-deep {
-  background-color: #1e2a3a; /* A nice dark blue-gray */
-  color: #f0f0f0;            /* Light text color for contrast */
-  border: 1px solid #4a4a4a;    /* Optional: a subtle border for dark mode */
+html[data-theme="dark"] .feature-deep {
+  border: 1px solid var(--border);
 }
 
 /* Values Section */
@@ -319,12 +315,8 @@
   opacity: 0.9;
 }
 
-/* Add this to your About.css file */
-
-[data-theme="dark"] .value-item {
-  background-color: #1e2a3a; /* A nice dark blue-gray */
-  color: #f0f0f0;            /* Light text color for contrast */
-  border: 1px solid #4a4a4a;    /* Optional: a subtle border for dark mode */
+html[data-theme="dark"] .value-item {
+  border: 1px solid var(--border);
 }
 
 /* Team Section */
