@@ -35,28 +35,30 @@ html[data-theme="dark"] {
   --heading: #ffffff; /* pure white headings */
 }
 
-.container, .home, .faq-page, .features, .stats, .how-it-works, .testimonials, .cta, .contributors, .footer, .navbar {
+/* Base page-level theming only — section backgrounds are set in page CSS */
+.home, .faq-page, .navbar {
   background: var(--bg);
   color: var(--text);
 }
 
-/* Let section containers inherit their section backgrounds (no white strip behind content) */
+/* Transparent containers inside gradient sections */
 .stats .container,
 .cta .container,
+.hero .hero-container,
 .testimonials .container,
 .contributors .container,
 .footer .container {
   background: transparent !important;
 }
 
-.feature-card, .floating-card, .contributor-card {
-  background: var(--card);
-  border-color: var(--border);
+/* Stat and CTA inner elements must not get white backgrounds */
+.stat-item, .cta-content, .footer-content {
+  background: transparent !important;
 }
 
-/* Let these elements sit on section backgrounds (no white panels) */
-.stat-item, .cta-content, .footer-content {
-  background: transparent;
+.feature-card, .floating-card {
+  background: var(--card);
+  border-color: var(--border);
 }
 
 a { color: var(--brand); }
@@ -78,9 +80,8 @@ html[data-theme="dark"] .section-title {
   color: #ffffff;
 }
 
-/* Ensure all cards/sections across pages inherit theme */
-.card, .section, .panel, .list, .grid, .hero, .faq-section, .features-section, .contact-section,
-.contributors, .cta, .stats, .how-it-works, .testimonials {
+/* Generic card/panel theming — does NOT include named page sections which manage their own backgrounds */
+.card, .panel {
   background: var(--card);
   color: var(--text);
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Bar, Pie } from 'react-chartjs-2';
+import { authAxios } from '../context/AuthContext';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -17,6 +18,7 @@ import './ScrollToTop.css';
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
 
 const Analytics = () => {
+  document.title = "StudyMatePlus | Analytics";
   // Animation Variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -92,41 +94,23 @@ const Analytics = () => {
       behavior: 'smooth'
     });
   };
-  
-  // Function to handle download
-  const handleDownload = (subject) => {
-    let fileUrl = '';
-    switch (subject.toLowerCase()) {
-      case 'dsa':
-        fileUrl = '/notes/dsa.pdf'; // Replace with actual path or URL
-        break;
-      case 'dbms':
-        fileUrl = '/notes/dbms.pdf'; // Replace with actual path or URL
-        break;
-      case 'cn':
-        fileUrl = '/notes/cn.pdf'; // Replace with actual path or URL
-        break;
-      case 'os':
-        fileUrl = '/notes/os.pdf'; // Replace with actual path or URL
-        break;
-      case 'java':
-        fileUrl = '/notes/java.pdf'; // Replace with actual path or URL
-        break;
-      case 'python':
-        fileUrl = '/notes/python.pdf'; // Replace with actual path or URL
-        break;
-      default:
-        fileUrl = ''; // No download for 'all'
-    }
 
-    if (fileUrl) {
-      const link = document.createElement('a');
-      link.href = fileUrl;
-      link.download = `${subject}_notes.pdf`; // Customize filename
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
+  const downloadAnalyticsPdf = async () => {
+    const serverBase = (process.env.REACT_APP_API_URL || 'http://localhost:5000/api/auth').replace(/\/api\/auth$/, '');
+    const response = await authAxios.post(
+      `${serverBase}/api/reports/analytics.pdf`,
+      { selectedSubject, subjects, pyqCount },
+      { responseType: 'blob' }
+    );
+
+    const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'pyq-analytics-report.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   };
 
   return (
@@ -217,13 +201,9 @@ const Analytics = () => {
             className="download-btn"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              if (selectedSubject !== 'all') {
-                handleDownload(selectedSubject);
-              }
-            }}
+            onClick={() => downloadAnalyticsPdf()}
           >
-            ⬇️ Download Notes (PDF)
+            ⬇️ Download Analytics PDF
           </motion.button>
         </motion.section>
       </div>

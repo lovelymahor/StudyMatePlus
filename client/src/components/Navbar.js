@@ -1,108 +1,243 @@
-// STEP 1: Import NavLink along with Link
-import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom"; // CHANGED HERE
+import React, { useState, useEffect, useRef } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useTheme } from "../theme/ThemeProvider";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { useAuth } from "../context/AuthContext";
+import { FaMoon, FaSun, FaChevronDown } from "react-icons/fa";
 
-const user = {
-  avatar: "https://avatar.iran.liara.run/public/boy",
-};
+// Primary links always visible in the bar
+const primaryLinks = [
+  { to: "/",         label: "Home"     },
+  { to: "/syllabus", label: "Syllabus" },
+  { to: "/notes",    label: "Notes"    },
+  { to: "/pyqs",     label: "PYQs"     },
+  { to: "/feedback", label: "Feedback" },
+];
+
+// Secondary links hidden inside "More" dropdown
+const moreLinks = [
+  { to: "/about",     label: "About Us"  },
+  { to: "/analytics", label: "Analytics" },
+  { to: "/tasks",     label: "Tasks"     },
+  { to: "/mindmap",   label: "Mind Map"  },
+  { to: "/faq",       label: "FAQs"      },
+];
+
+const allLinks = [...primaryLinks, ...moreLinks];
 
 const Navbar = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme }              = useTheme();
+  const { user, isAuthenticated, logout }   = useAuth();
+  const navigate                            = useNavigate();
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen,   setIsDropdownOpen]   = useState(false);
+  const [isUserMenuOpen,   setIsUserMenuOpen]   = useState(false);
+  const [loggingOut,       setLoggingOut]       = useState(false);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const dropdownRef = useRef(null);
+  const userMenuRef = useRef(null);
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
+  const toggleMobileMenu = () => setIsMobileMenuOpen((p) => !p);
+  const closeMobileMenu  = () => setIsMobileMenuOpen(false);
+
+  // Close dropdowns on outside click
+  useEffect(() => {
+    const handler = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) setIsDropdownOpen(false);
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target))  setIsUserMenuOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    const handler = () => { if (window.innerWidth > 768) setIsMobileMenuOpen(false); };
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
   }, []);
+
+  const handleLogout = async () => {
+    setLoggingOut(true);
+    await logout();
+    setIsUserMenuOpen(false);
+    closeMobileMenu();
+    navigate("/login");
+  };
+
+  const avatarSrc = user?.avatar || `https://avatar.iran.liara.run/public/boy?username=${user?.name || "user"}`;
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Logo and Profile still use <Link> which is fine */}
+
+        {/* Logo */}
         <Link to="/" className="navbar-brand">
-          <img
-            src="/logo.png"
-            alt="StudyMatePlus Logo"
-            className="navbar-logo"
-          />
+          <img src="/logo.png" alt="StudyMatePlus Logo" className="navbar-logo" />
         </Link>
 
+        {/* Right side — desktop */}
         <div className="navbar-right">
-          
-          {/* STEP 2: Change Desktop <Link> to <NavLink> */}
+
+          {/* Primary nav links */}
           <ul className="navbar-links">
-            <li><NavLink to="/" className="navbar-link">Home</NavLink></li>
-            <li><NavLink to="/about" className="navbar-link">About Us</NavLink></li>
-            <li><NavLink to="/syllabus" className="navbar-link">Syllabus</NavLink></li>
-            <li><NavLink to="/notes" className="navbar-link">Notes</NavLink></li>
-            <li><NavLink to="/pyqs" className="navbar-link">PYQs</NavLink></li>
-            <li><NavLink to="/analytics" className="navbar-link">Analytics</NavLink></li>
-            <li><NavLink to="/tasks" className="navbar-link">Tasks</NavLink></li>
-            <li><NavLink to="/mindmap" className="navbar-link">Mind Map</NavLink></li>
-            <li><NavLink to="/feedback" className="navbar-link">Feedback</NavLink></li>
-            <li><NavLink to="/faq" className="navbar-link">FAQs</NavLink></li>
+            {primaryLinks.map(({ to, label }) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  end={to === "/"}
+                  className={({ isActive }) => "navbar-link" + (isActive ? " active" : "")}
+                >
+                  {label}
+                </NavLink>
+              </li>
+            ))}
+
+            {/* "More" dropdown */}
+            <li
+              className={`navbar-dropdown${isDropdownOpen ? " open" : ""}`}
+              ref={dropdownRef}
+            >
+              <button
+                className="navbar-dropdown-btn"
+                onClick={() => setIsDropdownOpen((p) => !p)}
+                aria-expanded={isDropdownOpen}
+                aria-haspopup="true"
+              >
+                More <FaChevronDown className="navbar-dropdown-arrow" />
+              </button>
+              <div className="navbar-dropdown-menu" role="menu">
+                {moreLinks.map(({ to, label }) => (
+                  <NavLink
+                    key={to}
+                    to={to}
+                    className={({ isActive }) => isActive ? "active" : ""}
+                    onClick={() => setIsDropdownOpen(false)}
+                    role="menuitem"
+                  >
+                    {label}
+                  </NavLink>
+                ))}
+              </div>
+            </li>
           </ul>
-          {/* END OF STEP 2 CHANGE */}
 
+          {/* Divider */}
+          <span className="navbar-divider" aria-hidden="true" />
 
+          {/* Theme toggle */}
           <button
             aria-label="Toggle theme"
             className="navbar-theme-toggle"
             onClick={toggleTheme}
-            title={theme === "dark" ? "Switch to light" : "Switch to dark"}
+            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           >
             {theme === "dark" ? <FaSun /> : <FaMoon />}
           </button>
 
-          <Link to="/profile" className="navbar-profile-link">
-            <img
-              src={user.avatar}
-              alt="User Profile"
-              className="navbar-profile-img"
-            />
-          </Link>
+          {/* User menu / Auth */}
+          {isAuthenticated ? (
+            <div className="navbar-user-menu" ref={userMenuRef}>
+              <button
+                className="navbar-profile-btn"
+                onClick={() => setIsUserMenuOpen((p) => !p)}
+                aria-label="User menu"
+                aria-expanded={isUserMenuOpen}
+              >
+                <img src={avatarSrc} alt={user?.name || "User"} className="navbar-profile-img" />
+                <span className="navbar-user-name">{user?.name?.split(" ")[0]}</span>
+                <FaChevronDown className={`navbar-user-chevron ${isUserMenuOpen ? "open" : ""}`} />
+              </button>
+              {isUserMenuOpen && (
+                <div className="navbar-user-dropdown" role="menu">
+                  <div className="navbar-user-info">
+                    <img src={avatarSrc} alt={user?.name} className="navbar-user-avatar-lg" />
+                    <div>
+                      <p className="navbar-user-fullname">{user?.name}</p>
+                      <p className="navbar-user-email">{user?.email}</p>
+                    </div>
+                  </div>
+                  <div className="navbar-user-dropdown-divider" />
+                  <Link to="/profile" className="navbar-user-action" onClick={() => setIsUserMenuOpen(false)} role="menuitem">
+                    👤 My Profile
+                  </Link>
+                  <Link to="/analytics" className="navbar-user-action" onClick={() => setIsUserMenuOpen(false)} role="menuitem">
+                    📊 Analytics
+                  </Link>
+                  <div className="navbar-user-dropdown-divider" />
+                  <button
+                    className="navbar-user-action navbar-logout-btn"
+                    onClick={handleLogout}
+                    disabled={loggingOut}
+                    role="menuitem"
+                  >
+                    {loggingOut ? "Signing out…" : "🚪 Sign Out"}
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="navbar-auth-btns">
+              <Link to="/login"    className="navbar-login-btn">Log In</Link>
+              <Link to="/register" className="navbar-signup-btn">Sign Up</Link>
+            </div>
+          )}
 
-          <button className="navbar-toggle" onClick={toggleMobileMenu}>
-            ☰
+          {/* Hamburger — mobile only */}
+          <button
+            className="navbar-toggle"
+            onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? "✕" : "☰"}
           </button>
         </div>
       </div>
 
-      <div className={`navbar-menu-mobile ${isMobileMenuOpen ? "active" : ""}`}>
-        
-        {/* STEP 3: Change Mobile <Link> to <NavLink> */}
+      {/* Mobile slide-down menu */}
+      <div className={`navbar-menu-mobile${isMobileMenuOpen ? " active" : ""}`}>
         <ul className="navbar-links-mobile">
-          <li><NavLink to="/" className="navbar-link-mobile" onClick={closeMobileMenu}>Home</NavLink></li>
-          <li><NavLink to="/about" className="navbar-link-mobile" onClick={closeMobileMenu}>About Us</NavLink></li>
-          <li><NavLink to="/syllabus" className="navbar-link-mobile" onClick={closeMobileMenu}>Syllabus</NavLink></li>
-          <li><NavLink to="/notes" className="navbar-link-mobile" onClick={closeMobileMenu}>Notes</NavLink></li>
-          <li><NavLink to="/pyqs" className="navbar-link-mobile" onClick={closeMobileMenu}>PYQs</NavLink></li>
-          <li><NavLink to="/analytics" className="navbar-link-mobile" onClick={closeMobileMenu}>Analytics</NavLink></li>
-          <li><NavLink to="/tasks" className="navbar-link-mobile" onClick={closeMobileMenu}>Tasks</NavLink></li>
-          <li><NavLink to="/mindmap" className="navbar-link-mobile" onClick={closeMobileMenu}>Mind Map</NavLink></li>
-          <li><NavLink to="/feedback" className="navbar-link-mobile" onClick={closeMobileMenu}>Feedback</NavLink></li>
-          <li><NavLink to="/faq" className="navbar-link-mobile" onClick={closeMobileMenu}>FAQs</NavLink></li>
+          {allLinks.map(({ to, label }) => (
+            <li key={to}>
+              <NavLink
+                to={to}
+                end={to === "/"}
+                className={({ isActive }) => "navbar-link-mobile" + (isActive ? " active" : "")}
+                onClick={closeMobileMenu}
+              >
+                {label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
-        {/* END OF STEP 3 CHANGE */}
 
+        {/* Mobile bottom controls */}
+        <div className="navbar-mobile-controls">
+          <button aria-label="Toggle theme" className="navbar-theme-toggle" onClick={toggleTheme}>
+            {theme === "dark" ? <FaSun /> : <FaMoon />}
+          </button>
+
+          {isAuthenticated ? (
+            <>
+              <Link to="/profile" className="navbar-profile-link" onClick={closeMobileMenu}>
+                <img src={avatarSrc} alt={user?.name} className="navbar-profile-img" />
+              </Link>
+              <button
+                className="navbar-mobile-logout"
+                onClick={handleLogout}
+                disabled={loggingOut}
+              >
+                {loggingOut ? "…" : "Sign Out"}
+              </button>
+            </>
+          ) : (
+            <div className="navbar-mobile-auth">
+              <Link to="/login"    className="navbar-login-btn"  onClick={closeMobileMenu}>Log In</Link>
+              <Link to="/register" className="navbar-signup-btn" onClick={closeMobileMenu}>Sign Up</Link>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );
