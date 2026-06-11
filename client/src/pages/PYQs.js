@@ -6,6 +6,8 @@ import "./PYQs.css";
 import './ScrollToTop.css';
 
 const PYQs = () => {
+
+  document.title = "StudyMatePlus | PYQs";
   // Animation Variants from Home.js
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },

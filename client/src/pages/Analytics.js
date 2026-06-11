@@ -18,6 +18,7 @@ import './ScrollToTop.css';
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
 
 const Analytics = () => {
+  document.title = "StudyMatePlus | Analytics";
   // Animation Variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },

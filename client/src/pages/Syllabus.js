@@ -4,6 +4,8 @@ import { FaArrowUp } from "react-icons/fa";
 import './Syllabus.css';
 
 const Syllabus = () => {
+
+  document.title = "StudyMatePlus | Syllabus";
   // Mock data for syllabi
   const syllabusData = [
     {

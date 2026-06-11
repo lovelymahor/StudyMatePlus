@@ -3,7 +3,7 @@
 .contribute {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text);
 }
 
 .container {
@@ -14,7 +14,7 @@
 
 /* Contribute Hero Section */
 .contribute-hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   padding: 6rem 0 4rem;
   color: white;
   text-align: center;
@@ -88,7 +88,7 @@
 /* Project Overview */
 .project-overview {
   padding: 6rem 0;
-  background: #f8fafc;
+  background: var(--card);
 }
 
 .overview-content {
@@ -102,12 +102,12 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 2rem;
-  color: #333;
+  color: var(--text);
 }
 
 .overview-text p {
   font-size: 1.1rem;
-  color: #666;
+  color: var(--muted);
   margin-bottom: 1.5rem;
   line-height: 1.8;
 }
@@ -124,14 +124,14 @@
   align-items: center;
   gap: 1rem;
   padding: 1.5rem;
-  background: white;
+  background: var(--card);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
 .steps-nav {
-  background: #f8fafc;
+  background: var(--card);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -153,12 +153,12 @@
 }
 
 .step-nav-button:hover {
-  background: white;
-  border-color: #e5e7eb;
+  background: var(--card);
+  border-color: var(--border);
 }
 
 .step-nav-button.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   color: white;
   border-color: transparent;
 }
@@ -213,21 +213,22 @@
 .step-header h3 {
   font-size: 2rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text);
   margin-bottom: 0.5rem;
 }
 
 .step-header p {
   font-size: 1.1rem;
-  color: #666;
+  color: var(--muted);
   margin-bottom: 2rem;
 }
 
 .code-block {
-  background: #1f2937;
+  background: var(--card);
   border-radius: 10px;
   overflow: hidden;
   margin: 2rem 0;
+  border: 1px solid var(--border);
 }
 
 .code-header {
@@ -235,18 +236,18 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: #374151;
-  border-bottom: 1px solid #4b5563;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
 }
 
 .code-lang {
-  color: #d1d5db;
+  color: var(--border);
   font-size: 0.9rem;
   font-weight: 600;
 }
 
 .copy-button {
-  background: #667eea;
+  background: var(--brand);
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -257,7 +258,8 @@
 }
 
 .copy-button:hover {
-  background: #5a67d8;
+  background: var(--brand);
+  opacity: 0.9;
 }
 
 .code-block pre {
@@ -267,7 +269,7 @@
 }
 
 .code-block code {
-  color: #e5e7eb;
+  color: var(--border);
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
   font-size: 0.9rem;
   line-height: 1.5;
@@ -276,7 +278,7 @@
 .step-details-list h4 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text);
   margin-bottom: 1rem;
   margin-top: 2rem;
 }
@@ -287,7 +289,7 @@
 }
 
 .step-details-list li {
-  color: #555;
+  color: var(--text);
   margin-bottom: 0.75rem;
   position: relative;
   padding-left: 2rem;
@@ -298,7 +300,7 @@
   content: '→';
   position: absolute;
   left: 0;
-  color: #667eea;
+  color: var(--brand);
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -306,7 +308,7 @@
 /* Tech Stack */
 .tech-stack {
   padding: 6rem 0;
-  background: white;
+  background: var(--card);
 }
 
 .tech-stack h2 {
@@ -314,13 +316,13 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--text);
 }
 
 .tech-subtitle {
   text-align: center;
   font-size: 1.2rem;
-  color: #666;
+  color: var(--muted);
   margin-bottom: 4rem;
   max-width: 600px;
   margin-left: auto;
@@ -335,7 +337,7 @@
 }
 
 .tech-category {
-  background: #f8fafc;
+  background: var(--card);
   padding: 2rem;
   border-radius: 15px;
   border: 2px solid transparent;
@@ -343,14 +345,14 @@
 }
 
 .tech-category:hover {
-  border-color: #667eea;
+  border-color: var(--brand);
   box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
 }
 
 .category-title {
   font-size: 1.4rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text);
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -366,7 +368,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: white;
+  background: var(--card);
   border-radius: 10px;
   transition: all 0.3s ease;
 }
@@ -384,14 +386,14 @@
 
 .tech-name {
   font-weight: 600;
-  color: #333;
+  color: var(--text);
   font-size: 1rem;
 }
 
 .tech-version {
   font-size: 0.8rem;
-  color: #667eea;
-  background: #e0e7ff;
+  color: var(--brand);
+  background: var(--card);
   padding: 0.2rem 0.6rem;
   border-radius: 12px;
   font-weight: 600;
@@ -400,13 +402,13 @@
 .tech-description {
   font-size: 0.9rem;
   padding: 0.2rem 0.7rem;
-  color: #666;
+  color: var(--muted);
   font-style: italic;
 }
 
 /* Prerequisites */
 .prerequisites {
-  background: #f8fafc;
+  background: var(--card);
   padding: 3rem;
   border-radius: 20px;
   margin-top: 3rem;
@@ -415,7 +417,7 @@
 .prerequisites h3 {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text);
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -431,7 +433,7 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1.5rem;
-  background: white;
+  background: var(--card);
   border-radius: 15px;
   transition: all 0.3s ease;
 }
@@ -449,20 +451,20 @@
 .prereq-content h4 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text);
   margin-bottom: 0.5rem;
 }
 
 .prereq-content p {
   font-size: 0.95rem;
-  color: #666;
+  color: var(--muted);
   line-height: 1.6;
 }
 
 /* Code of Conduct */
 .code-of-conduct {
   padding: 6rem 0;
-  background: #f8fafc;
+  background: var(--card);
 }
 
 .code-of-conduct h2 {
@@ -470,13 +472,13 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--text);
 }
 
 .conduct-subtitle {
   text-align: center;
   font-size: 1.2rem;
-  color: #666;
+  color: var(--muted);
   margin-bottom: 4rem;
   max-width: 700px;
   margin-left: auto;
@@ -495,7 +497,7 @@
   align-items: flex-start;
   gap: 1.5rem;
   padding: 2rem;
-  background: white;
+  background: var(--card);
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
@@ -514,12 +516,12 @@
 .rule-content h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text);
   margin-bottom: 0.75rem;
 }
 
 .rule-content p {
-  color: #666;
+  color: var(--muted);
   line-height: 1.7;
 }
 
@@ -533,7 +535,7 @@
 .conduct-link {
   display: inline-block;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   color: white;
   text-decoration: none;
   border-radius: 25px;
@@ -549,7 +551,7 @@
 /* Community */
 .community {
   padding: 6rem 0;
-  background: white;
+  background: var(--card);
 }
 
 .community h2 {
@@ -557,13 +559,13 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--text);
 }
 
 .community-subtitle {
   text-align: center;
   font-size: 1.2rem;
-  color: #666;
+  color: var(--muted);
   margin-bottom: 4rem;
   max-width: 600px;
   margin-left: auto;
@@ -581,7 +583,7 @@
   align-items: center;
   gap: 1.5rem;
   padding: 2rem;
-  background: #f8fafc;
+  background: var(--card);
   border-radius: 15px;
   text-decoration: none;
   color: inherit;
@@ -591,13 +593,13 @@
 
 .community-link:hover {
   transform: translateY(-5px);
-  border-color: #667eea;
+  border-color: var(--brand);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-  background: white;
+  background: var(--card);
 }
 
 .community-link.github:hover {
-  border-color: #333;
+  border-color: var(--text);
 }
 
 .community-link.discord:hover {
@@ -624,19 +626,19 @@
 .community-content h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text);
   margin-bottom: 0.5rem;
 }
 
 .community-content p {
-  color: #666;
+  color: var(--muted);
   line-height: 1.6;
   margin-bottom: 0;
 }
 
 .link-arrow {
   font-size: 1.5rem;
-  color: #667eea;
+  color: var(--brand);
   font-weight: bold;
   margin-left: auto;
   flex-shrink: 0;
@@ -645,7 +647,7 @@
 /* Documentation */
 .documentation {
   padding: 6rem 0;
-  background: #f8fafc;
+  background: var(--card);
 }
 
 .documentation h2 {
@@ -653,7 +655,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 3rem;
-  color: #333;
+  color: var(--text);
 }
 
 .docs-grid {
@@ -663,7 +665,7 @@
 }
 
 .doc-card {
-  background: white;
+  background: var(--card);
   padding: 2.5rem;
   border-radius: 15px;
   text-align: center;
@@ -674,7 +676,7 @@
 
 .doc-card:hover {
   transform: translateY(-10px);
-  border-color: #667eea;
+  border-color: var(--brand);
   box-shadow: 0 20px 50px rgba(102, 126, 234, 0.1);
 }
 
@@ -687,12 +689,12 @@
 .doc-card h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text);
   margin-bottom: 1rem;
 }
 
 .doc-card p {
-  color: #666;
+  color: var(--muted);
   line-height: 1.7;
   margin-bottom: 1.5rem;
 }
@@ -700,7 +702,7 @@
 .doc-link {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   color: white;
   text-decoration: none;
   border-radius: 25px;
@@ -758,7 +760,7 @@
 
 .btn-primary {
   background: linear-gradient(45deg, #ffd700, #ffed4a);
-  color: #333;
+  color: var(--text);
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
@@ -774,7 +776,7 @@
 }
 
 .btn-secondary:hover {
-  background: white;
+  background: var(--card);
   color: #f5576c;
   transform: translateY(-3px);
 }
@@ -1133,12 +1135,12 @@
 .impact-number {
   font-size: 1.8rem;
   font-weight: 800;
-  color: #667eea;
+  color: var(--brand);
 }
 
 .impact-desc {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--muted);
   font-weight: 500;
 }
 
@@ -1149,7 +1151,7 @@
 }
 
 .contribution-types-preview {
-  background: white;
+  background: var(--card);
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -1161,7 +1163,7 @@
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: #333;
+  color: var(--text);
 }
 
 .contrib-type-mini {
@@ -1170,13 +1172,13 @@
   gap: 0.75rem;
   padding: 0.75rem;
   margin-bottom: 0.5rem;
-  background: #f8fafc;
+  background: var(--card);
   border-radius: 10px;
   transition: all 0.3s ease;
 }
 
 .contrib-type-mini:hover {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   color: white;
   transform: translateX(5px);
 }
@@ -1203,7 +1205,7 @@
 /* Contribution Types */
 .contribution-types {
   padding: 6rem 0;
-  background: white;
+  background: var(--card);
 }
 
 .contribution-types h2 {
@@ -1211,7 +1213,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 3rem;
-  color: #333;
+  color: var(--text);
 }
 
 .contrib-grid {
@@ -1221,7 +1223,7 @@
 }
 
 .contrib-card {
-  background: #f8fafc;
+  background: var(--card);
   padding: 2.5rem;
   border-radius: 20px;
   transition: all 0.3s ease;
@@ -1230,9 +1232,9 @@
 
 .contrib-card:hover {
   transform: translateY(-10px);
-  border-color: #667eea;
+  border-color: var(--brand);
   box-shadow: 0 20px 50px rgba(102, 126, 234, 0.1);
-  background: white;
+  background: var(--card);
 }
 
 .contrib-header {
@@ -1250,12 +1252,12 @@
 .contrib-header h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text);
   margin: 0;
 }
 
 .contrib-description {
-  color: #666;
+  color: var(--muted);
   margin-bottom: 1.5rem;
   line-height: 1.7;
 }
@@ -1263,7 +1265,7 @@
 .contrib-examples h4 {
   font-size: 1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text);
   margin-bottom: 0.75rem;
 }
 
@@ -1290,7 +1292,7 @@
 /* Contribution Guide */
 .contribution-guide {
   padding: 6rem 0;
-  background: #f8fafc;
+  background: var(--card);
 }
 
 .contribution-guide h2 {
@@ -1298,13 +1300,13 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--text);
 }
 
 .guide-subtitle {
   text-align: center;
   font-size: 1.2rem;
-  color: #666;
+  color: var(--muted);
   margin-bottom: 4rem;
   max-width: 600px;
   margin-left: auto;
@@ -1315,6 +1317,6 @@
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 3rem;
-  background: white;
+  background: var(--card);
   border-radius: 20px;
 }
