@@ -214,18 +214,21 @@ const Analytics = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <motion.button 
-            className="download-btn"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              if (selectedSubject !== 'all') {
-                handleDownload(selectedSubject);
-              }
-            }}
-          >
-            ⬇️ Download Notes (PDF)
-          </motion.button>
+          <motion.button
+  className="download-btn"
+  disabled={selectedSubject === 'all'}
+  whileHover={{ scale: selectedSubject === 'all' ? 1 : 1.05 }}
+  whileTap={{ scale: selectedSubject === 'all' ? 1 : 0.95 }}
+  onClick={() => handleDownload(selectedSubject)}
+>
+  ⬇️ Download Notes (PDF)
+</motion.button>
+
+<p style={{ fontSize: '13px', color: 'var(--color-text-secondary)' }}>
+  {selectedSubject === 'all'
+    ? 'Select a subject above to download its notes'
+    : `Ready to download ${selectedSubject.toUpperCase()} notes`}
+</p>
         </motion.section>
       </div>
 
