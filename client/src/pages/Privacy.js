@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Privacy.css';
-import './ScrollToTop.css';
+import './style/Privacy.css';
+import './style/ScrollToTop.css';
 
 const Privacy = () => {
 

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaArrowUp } from "react-icons/fa";
-import './About.css';
-import './ScrollToTop.css';
+import './style/About.css';
+import './style/ScrollToTop.css';
 const About = () => {
   document.title = "StudyMatePlus | About Us";
   // Animation Variants from Home.js

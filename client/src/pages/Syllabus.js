@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp } from "react-icons/fa";
-import './Syllabus.css';
+import './style/Syllabus.css';
 
 const Syllabus = () => {
 

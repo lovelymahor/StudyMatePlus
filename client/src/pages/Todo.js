@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Todo.css";
+import "./style/Todo.css";
 import Calendar from "../components/Calendar";
 
 const STORAGE_KEY = "smp_tasks_v1";

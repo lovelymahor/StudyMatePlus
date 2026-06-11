@@ -1,6 +1,6 @@
 // client/src/components/FeedbackModal.js
 import React, { useState, useEffect } from "react";
-import './FeedbackModal.css'; // This line connects the component to the CSS above
+import './style/FeedbackModal.css'; // This line connects the component to the CSS above
 
 const FeedbackModal = ({ onClose, onSuccess }) => {
   const [formData, setFormData] = useState({

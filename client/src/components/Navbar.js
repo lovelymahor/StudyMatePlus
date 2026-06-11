@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
-import "./Navbar.css";
+import "./style/Navbar.css";
 import { useTheme } from "../theme/ThemeProvider";
 import { FaMoon, FaSun, FaChevronDown } from "react-icons/fa";
 
