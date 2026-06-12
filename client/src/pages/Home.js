@@ -280,10 +280,14 @@ const Home = () => {
                 linkText: "Read Feedback →"
               }
             ].map((feature, index) => (
-              <motion.div 
+              
+                 <motion.div
                 key={index}
                 className="feature-card"
                 variants={scaleIn}
+                onClick={() => window.location.href = feature.link}
+                style={{ cursor: "pointer" }}  
+
                 whileHover={{ 
                   scale: 1.05, 
                   y: -10,
@@ -309,8 +313,10 @@ const Home = () => {
                   </Link>
                 </motion.div>
               </motion.div>
+             
             ))}
           </motion.div>
+          
         </div>
       </motion.section>
 
