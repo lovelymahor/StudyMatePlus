@@ -163,3 +163,145 @@
     width: 100%;
   }
 }
+
+/* Streak and Achievements styling */
+.profile-streak-card {
+  background: transparent;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  border: 1px solid var(--border);
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.streak-stats {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.streak-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  min-width: 200px;
+}
+
+.streak-icon {
+  font-size: 2.5rem;
+}
+
+.streak-icon.current {
+  color: #ff9800; /* Orange/Fire */
+}
+
+.streak-icon.longest {
+  color: #f44336; /* Red/Fire */
+}
+
+.streak-info h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: var(--text);
+}
+
+.streak-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.streak-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.log-study-btn {
+  background: linear-gradient(45deg, #ff9800, #ff5722);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+}
+
+.log-study-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 152, 0, 0.6);
+}
+
+.log-study-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.streak-message {
+  font-size: 0.9rem;
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.badges-container {
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.badges-container h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: var(--text);
+  text-align: center;
+}
+
+.badges-grid {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 215, 0, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+  width: 120px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.badge-item:hover {
+  transform: translateY(-5px);
+}
+
+.badge-icon {
+  font-size: 2rem;
+  color: #ffd700;
+}
+
+.badge-item span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+}
