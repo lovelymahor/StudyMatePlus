@@ -75,7 +75,7 @@ Add relevant screenshots if UI-related
 - Add features (chat system, filters, feedback forms, etc.)
 - Improve UI/UX design
 - Add test cases
-Write or enhance documentation
+- Write or enhance documentation
 
 ### 🧑‍🎓 Beginner-Friendly Guide
 - First time contributing to open source? Don’t worry:
@@ -113,12 +113,3 @@ Join our GSSoC 2025 Discord or contact the Project Admin:
 📧 lovelymahour1405@gmail.com
 
 🌟 Happy Contributing & Good Luck in GSSoC 2025! 💖
-
----
-
-### ✅ Next Steps:
-- Save this as a file named `CONTRIBUTING.md`
-- Place it in the root folder of your GitHub repository
-- Done! Contributors will see it when they open a pull request or visit your repo 👏
-
-Would you like me to generate `PULL_REQUEST_TEMPLATE.md` and `ISSUE_TEMPLATE.md` next?
