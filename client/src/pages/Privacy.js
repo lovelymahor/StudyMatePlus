@@ -4,6 +4,8 @@ import './Privacy.css';
 import './ScrollToTop.css';
 
 const Privacy = () => {
+
+  document.title = "StudyMatePlus | Privacy Policy";
   return (
     <div className="privacy">
       {/* Hero Section */}

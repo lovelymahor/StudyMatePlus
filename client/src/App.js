@@ -1,6 +1,7 @@
 import React from "react";
 import { ThemeProvider } from "./theme/ThemeProvider";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Syllabus from "./pages/Syllabus";
@@ -20,37 +21,100 @@ import SubmitFeedback from "./pages/SubmitFeedback";
 import Todo from "./pages/Todo";
 import NotFound from "./pages/NotFound";
 
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (
     <ThemeProvider>
-      <Router>
-        <Navbar />
-        <div style={{ padding: "2rem" }}>
+      <AuthProvider>
+        <Router>
+          {/* Navbar is hidden on login/register via CSS — it checks the route */}
+          <NavbarWrapper />
           <ScrollToTop />
           <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/tasks" element={<Todo />} />
-          <Route path="/syllabus" element={<Syllabus />} />
-          <Route path="/notes" element={<Notes />} />
-          <Route path="/pyqs" element={<PYQs />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/feedback" element={<Feedback />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/contribute" element={<Contribute />} />
-          <Route path="/mindmap" element={<MindMapEditor />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/feedback/submit" element={<SubmitFeedback />} />
-          <Route path="*" element={<NotFound />} />
+            {/* ── Public routes ── */}
+            <Route path="/login"    element={<Login />}    />
+            <Route path="/register" element={<Register />} />
+            <Route path="/privacy"  element={<><div style={{ padding: "2rem" }}><Privacy /></div></>} />
+            <Route path="/about"    element={<><div style={{ padding: "2rem" }}><About /></div></>} />
+
+            {/* ── Public landing page ── */}
+            <Route path="/" element={<Home />} />
+            <Route path="/tasks" element={
+              <ProtectedRoute>
+                <div style={{ padding: "2rem" }}><Todo /></div>
+              </ProtectedRoute>
+            } />
+            <Route path="/syllabus" element={
+              <ProtectedRoute>
+                <div style={{ padding: "2rem" }}><Syllabus /></div>
+              </ProtectedRoute>
+            } />
+            <Route path="/notes" element={
+              <ProtectedRoute>
+                <div style={{ padding: "2rem" }}><Notes /></div>
+              </ProtectedRoute>
+            } />
+            <Route path="/pyqs" element={
+              <ProtectedRoute>
+                <div style={{ padding: "2rem" }}><PYQs /></div>
+              </ProtectedRoute>
+            } />
+            <Route path="/analytics" element={
+              <ProtectedRoute>
+                <div style={{ padding: "2rem" }}><Analytics /></div>
+              </ProtectedRoute>
+            } />
+            <Route path="/faq" element={
+              <ProtectedRoute>
+                <div style={{ padding: "2rem" }}><Faq /></div>
+              </ProtectedRoute>
+            } />
+            <Route path="/feedback" element={
+              <ProtectedRoute>
+                <div style={{ padding: "2rem" }}><Feedback /></div>
+              </ProtectedRoute>
+            } />
+            <Route path="/contribute" element={
+              <ProtectedRoute>
+                <div style={{ padding: "2rem" }}><Contribute /></div>
+              </ProtectedRoute>
+            } />
+            <Route path="/mindmap" element={
+              <ProtectedRoute>
+                <div style={{ padding: "2rem" }}><MindMapEditor /></div>
+              </ProtectedRoute>
+            } />
+            <Route path="/contact" element={
+              <ProtectedRoute>
+                <div style={{ padding: "2rem" }}><Contact /></div>
+              </ProtectedRoute>
+            } />
+            <Route path="/profile" element={
+              <ProtectedRoute>
+                <div style={{ padding: "2rem" }}><Profile /></div>
+              </ProtectedRoute>
+            } />
+            <Route path="/feedback/submit" element={
+              <ProtectedRoute>
+                <div style={{ padding: "2rem" }}><SubmitFeedback /></div>
+              </ProtectedRoute>
+            } />
+    <Route path="*" element={<NotFound />} />
           </Routes>
-        </div>
-      </Router>
+        </Router>
+      </AuthProvider>
     </ThemeProvider>
   );
+};
+
+// Hide Navbar on login/register pages
+const NavbarWrapper = () => {
+  const { pathname } = useLocation();
+  if (pathname === "/login" || pathname === "/register") return null;
+  return <Navbar />;
 };
 
 export default App;

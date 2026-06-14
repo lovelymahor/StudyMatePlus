@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.2.0",
+    "jsonwebtoken": "^9.0.3",
+    "jspdf": "^4.2.1"
+  }
+}

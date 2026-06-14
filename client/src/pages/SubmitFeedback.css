@@ -1,5 +1,5 @@
 .submit-feedback-page {
-  background-color: #f8fafc;
+  background-color: var(--card);
   padding: 4rem 0;
   min-height: 100vh;
 }
@@ -18,13 +18,13 @@
 
 .form-header p {
   font-size: 1.1rem;
-  color: #6b7280;
+  color: var(--muted);
   max-width: 600px;
   margin: 0 auto;
 }
 
 .feedback-form {
-  background: white;
+  background: var(--card);
   padding: 3rem;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -49,17 +49,17 @@
 .form-group label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--muted);
 }
 
 .form-input,
 .form-textarea {
   padding: 0.8rem 1rem;
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--border);
   border-radius: 10px;
   font-size: 1rem;
   font-family: 'Inter', sans-serif;
-  color: #374151;
+  color: var(--muted);
   transition: all 0.3s ease;
   width: 100%;
   box-sizing: border-box;
@@ -68,7 +68,7 @@
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--brand);
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
@@ -89,17 +89,17 @@
 }
 
 .error-message {
-  color: #ef4444;
+  color: var(--brand);
   font-size: 0.8rem;
   margin-top: -0.25rem;
 }
 
 .input-error {
-  border-color: #ef4444 !important;
+  border-color: var(--brand) !important;
 }
 
 .input-error:focus {
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
 }
 
 .feedback-form .btn-primary {

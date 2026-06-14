@@ -14,6 +14,15 @@
   --accent: #5aa0ff;
 }
 
+/* Also support ThemeProvider's html[data-theme="dark"] attribute */
+html[data-theme="dark"] .mindmap {
+  --bg: #121418;
+  --text: #e9edf5;
+  --panel: #171a20;
+  --border: #2a2f3a;
+  --accent: #5aa0ff;
+}
+
 .mindmap {
   display: grid;
   grid-template-rows: 56px 1fr;
@@ -306,7 +315,7 @@
 }
 
 .react-flow__node-info .info-node, .info-node {
-  background: #fff;
+  background: var(--card);
   color: #111;
   padding: 8px 10px;
   border-radius: 8px;

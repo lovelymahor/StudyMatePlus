@@ -4,6 +4,8 @@ import { FaArrowUp } from "react-icons/fa";
 import './Notes.css';
 
 const Notes = () => {
+
+  document.title = "StudyMatePlus | Notes";
   const fileInputRef = useRef(null);
   
   // Dynamic state initialized with mock data as fallback

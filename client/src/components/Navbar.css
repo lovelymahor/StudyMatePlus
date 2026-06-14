@@ -41,6 +41,7 @@ html[data-theme="dark"] .navbar {
 .navbar-brand {
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 0.5rem;
   text-decoration: none;
   flex-shrink: 0;
@@ -111,6 +112,7 @@ html[data-theme="dark"] .navbar-link.active {
 .navbar-dropdown-btn {
   display: inline-flex;
   align-items: center;
+  gap: 1rem; /* Reduced spacing to avoid wrapping */
   gap: 0.3rem;
   color: var(--muted);
   background: none;
@@ -228,6 +230,25 @@ html[data-theme="dark"] .navbar-dropdown-menu a.active {
   transform: rotate(15deg);
 }
 
+/* Desktop navigation links */
+.navbar-links {
+  display: flex; /* This remains flex for desktop layout */
+  gap: 1rem;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap; /* Prevent link text from wrapping to next line */
+}
+
+.navbar-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.92rem; /* Slightly smaller to prevent wrapping */
+  padding: 0.3rem 0.6rem; /* Reduced padding to save horizontal space */
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 html[data-theme="dark"] .navbar-theme-toggle:hover {
   background: rgba(139, 180, 255, 0.12);
   color: #8ab4ff;
@@ -399,3 +420,39 @@ html[data-theme="dark"] .navbar-link-mobile.active {
     height: 30px;
   }
 }
+
+/* ── Auth buttons ── */
+.navbar-auth-btns { display: flex; align-items: center; gap: 0.5rem; }
+.navbar-login-btn { padding: 0.4rem 0.9rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; color: var(--brand); text-decoration: none; transition: background 0.2s; }
+.navbar-login-btn:hover { background: rgba(37,99,235,0.08); }
+.navbar-signup-btn { padding: 0.4rem 0.9rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; background: var(--brand); color: #fff; text-decoration: none; transition: opacity 0.2s, transform 0.2s; }
+.navbar-signup-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+/* ── User menu ── */
+.navbar-user-menu { position: relative; }
+.navbar-profile-btn { display: flex; align-items: center; gap: 0.45rem; background: none; border: 1px solid var(--border); border-radius: 10px; padding: 0.3rem 0.6rem; cursor: pointer; color: var(--text); transition: background 0.2s; }
+.navbar-profile-btn:hover { background: var(--card); }
+.navbar-user-name { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+.navbar-user-chevron { font-size: 0.65rem; transition: transform 0.2s; color: var(--muted); }
+.navbar-user-chevron.open { transform: rotate(180deg); }
+.navbar-user-dropdown {
+  position: absolute; top: calc(100% + 8px); right: 0; min-width: 220px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 0.5rem; z-index: 200;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  animation: dropIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes dropIn { from { opacity: 0; transform: translateY(-8px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.navbar-user-info { display: flex; align-items: center; gap: 0.65rem; padding: 0.5rem 0.6rem 0.75rem; }
+.navbar-user-avatar-lg { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
+.navbar-user-fullname { font-size: 0.88rem; font-weight: 700; color: var(--text); margin: 0 0 0.1rem; }
+.navbar-user-email { font-size: 0.74rem; color: var(--muted); margin: 0; }
+.navbar-user-dropdown-divider { height: 1px; background: var(--border); margin: 0.25rem 0; }
+.navbar-user-action { display: block; width: 100%; text-align: left; padding: 0.55rem 0.75rem; border-radius: 8px; font-size: 0.86rem; font-weight: 500; color: var(--text); text-decoration: none; background: none; border: none; cursor: pointer; transition: background 0.15s; }
+.navbar-user-action:hover { background: var(--bg); }
+.navbar-logout-btn { color: #ef4444 !important; }
+.navbar-logout-btn:hover { background: rgba(239,68,68,0.08) !important; }
+
+/* Mobile auth */
+.navbar-mobile-auth { display: flex; gap: 0.5rem; }
+.navbar-mobile-logout { background: none; border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; padding: 0.35rem 0.8rem; color: #ef4444; font-size: 0.84rem; font-weight: 600; cursor: pointer; }
