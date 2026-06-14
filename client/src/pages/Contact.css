@@ -166,12 +166,15 @@
 
 /* Social Links */
 .social-links {
-  margin-top: 40px;
+  margin-top: 50px;
+  display: flex;          /* ADD THIS */
+  align-items: center;    /* ADD THIS */
+  gap: 20px;              /* ADD THIS */
 }
 
 .social-links h3 {
   font-size: 1.1rem;
-  margin-bottom: 15px;
+  margin-bottom: 0;       /* CHANGE THIS (was 20px, remove bottom gap) */
   color: var(--text);
 }
 

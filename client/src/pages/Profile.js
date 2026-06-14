@@ -7,13 +7,11 @@ import {
   FaBookmark,
 } from "react-icons/fa";
 import "./Profile.css";
-import './ScrollToTop.css';
+import "./ScrollToTop.css";
 import { useAuth } from "../context/AuthContext";
 
 const Profile = () => {
-feature/login-auth
   const { user } = useAuth();
-
 
   document.title = "StudyMatePlus | Profile";
   const [activeTab, setActiveTab] = useState("uploads");

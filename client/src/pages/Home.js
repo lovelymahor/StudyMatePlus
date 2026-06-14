@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+// import login from "./Login.js";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useAuth } from "../context/AuthContext";
 import logo from "./logo.png";
 import "./Home.css";
-import './ScrollToTop.css';
+import "./ScrollToTop.css";
 
 const Home = () => {
- feature/login-auth
   const { isAuthenticated } = useAuth();
-
 
   document.title = "StudyMatePlus | Home";
 
@@ -21,7 +20,9 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("https://api.github.com/repos/lovelymahor/StudyMatePlus/contributors")
+      .get(
+        "https://api.github.com/repos/lovelymahor/StudyMatePlus/contributors",
+      )
       .then((response) => setContributors(response.data))
       .catch((error) => console.error("Error fetching contributors", error));
   }, []);
@@ -44,27 +45,27 @@ const Home = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
   // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const fadeInDown = {
     hidden: { opacity: 0, y: -30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const staggerChildren = {
@@ -73,9 +74,9 @@ const Home = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.1
-      }
-    }
+        delayChildren: 0.1,
+      },
+    },
   };
 
   const staggerChildrenFast = {
@@ -84,50 +85,50 @@ const Home = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.1
-      }
-    }
+        delayChildren: 0.1,
+      },
+    },
   };
 
   const scaleIn = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
   };
 
   const slideInLeft = {
     hidden: { opacity: 0, x: -50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const slideInRight = {
     hidden: { opacity: 0, x: 50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const bounceIn = {
     hidden: { opacity: 0, scale: 0.3 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
-      transition: { 
-        duration: 0.6, 
+      transition: {
+        duration: 0.6,
         ease: "easeOut",
         type: "spring",
-        bounce: 0.4
-      }
-    }
+        bounce: 0.4,
+      },
+    },
   };
 
   const floatingAnimation = {
@@ -136,9 +137,9 @@ const Home = () => {
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
   };
 
   const pulseAnimation = {
@@ -147,24 +148,27 @@ const Home = () => {
       transition: {
         duration: 2,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
   };
 
   const testimonials = [
     {
-      quote: "StudyMatePlus helped me organize my entire semester. I wish I had found this earlier!",
-      author: "— Priya Sharma, B.Tech CSE"
+      quote:
+        "StudyMatePlus helped me organize my entire semester. I wish I had found this earlier!",
+      author: "— Priya Sharma, B.Tech CSE",
     },
     {
-      quote: "Thanks to the previous papers section, I was able to focus on the most important topics.",
-      author: "— Rahul Meena, BBA"
+      quote:
+        "Thanks to the previous papers section, I was able to focus on the most important topics.",
+      author: "— Rahul Meena, BBA",
     },
     {
-      quote: "The senior guidance feature is a game-changer. Got great tips and motivation.",
-      author: "— Ayesha Khan, B.Sc Physics"
-    }
+      quote:
+        "The senior guidance feature is a game-changer. Got great tips and motivation.",
+      author: "— Ayesha Khan, B.Sc Physics",
+    },
   ];
 
   return (
@@ -187,7 +191,8 @@ const Home = () => {
             </motion.h1>
             <motion.p className="hero-subtitle" variants={fadeInUp}>
               Your one-stop destination for academic resources, previous year
-              questions, and connecting with seniors for exam preparation success.
+              questions, and connecting with seniors for exam preparation
+              success.
             </motion.p>
             <motion.div className="hero-buttons" variants={staggerChildrenFast}>
               <motion.div variants={scaleIn}>
@@ -220,17 +225,41 @@ const Home = () => {
           {/* RIGHT — 2×2 card grid */}
           <motion.div className="hero-visual" variants={slideInRight}>
             {[
-              { icon: "📚", title: "Study Materials",  desc: "Curated notes & resources", delay: 0    },
-              { icon: "📝", title: "Previous Papers",  desc: "Year-wise PYQs by dept",    delay: 0.1  },
-              { icon: "🎓", title: "Senior Guidance",  desc: "Connect with seniors",       delay: 0.2  },
-              { icon: "💬", title: "Exam Feedback",    desc: "Real student insights",      delay: 0.3  },
+              {
+                icon: "📚",
+                title: "Study Materials",
+                desc: "Curated notes & resources",
+                delay: 0,
+              },
+              {
+                icon: "📝",
+                title: "Previous Papers",
+                desc: "Year-wise PYQs by dept",
+                delay: 0.1,
+              },
+              {
+                icon: "🎓",
+                title: "Senior Guidance",
+                desc: "Connect with seniors",
+                delay: 0.2,
+              },
+              {
+                icon: "💬",
+                title: "Exam Feedback",
+                desc: "Real student insights",
+                delay: 0.3,
+              },
             ].map((card, i) => (
               <motion.div
                 key={i}
                 className="hero-card"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: card.delay + 0.5, duration: 0.5, ease: "easeOut" }}
+                transition={{
+                  delay: card.delay + 0.5,
+                  duration: 0.5,
+                  ease: "easeOut",
+                }}
                 whileHover={{ y: -6, scale: 1.04 }}
               >
                 <span className="hero-card-icon">{card.icon}</span>
@@ -245,7 +274,7 @@ const Home = () => {
       </motion.section>
 
       {/* Features Section */}
-      <motion.section 
+      <motion.section
         className="features"
         initial="hidden"
         whileInView="visible"
@@ -261,37 +290,40 @@ const Home = () => {
               {
                 icon: "📋",
                 title: "Organized Syllabus",
-                description: "Department-wise syllabus collection with easy navigation and search functionality.",
+                description:
+                  "Department-wise syllabus collection with easy navigation and search functionality.",
                 link: "/syllabus",
-                linkText: "Explore Syllabus →"
+                linkText: "Explore Syllabus →",
               },
               {
                 icon: "📄",
                 title: "Previous Year Papers",
-                description: "Comprehensive collection of PYQs from multiple universities and departments.",
+                description:
+                  "Comprehensive collection of PYQs from multiple universities and departments.",
                 link: "/pyqs",
-                linkText: "Browse PYQs →"
+                linkText: "Browse PYQs →",
               },
               {
                 icon: "💬",
                 title: "Exam Feedback",
-                description: "Real student feedback on difficulty levels, important topics, and exam patterns.",
+                description:
+                  "Real student feedback on difficulty levels, important topics, and exam patterns.",
                 link: "/feedback",
-                linkText: "Read Feedback →"
-              }
+                linkText: "Read Feedback →",
+              },
             ].map((feature, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 className="feature-card"
                 variants={scaleIn}
-                whileHover={{ 
-                  scale: 1.05, 
+                whileHover={{
+                  scale: 1.05,
                   y: -10,
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
                 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <motion.div 
+                <motion.div
                   className="feature-icon"
                   whileHover={{ scale: 1.2, rotate: 10 }}
                   transition={{ type: "spring", stiffness: 400 }}
@@ -315,7 +347,7 @@ const Home = () => {
       </motion.section>
 
       {/* Stats Section */}
-      <motion.section 
+      <motion.section
         className="stats"
         initial="hidden"
         whileInView="visible"
@@ -328,32 +360,29 @@ const Home = () => {
               { number: "500+", label: "Study Materials" },
               { number: "50+", label: "Universities" },
               { number: "1000+", label: "Previous Papers" },
-              { number: "200+", label: "Active Mentors" }
+              { number: "200+", label: "Active Mentors" },
             ].map((stat, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 className="stat-item"
                 variants={bounceIn}
                 whileHover={{ scale: 1.05, y: -5 }}
                 {...pulseAnimation}
               >
-                <motion.div 
+                <motion.div
                   className="stat-number"
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ 
+                  transition={{
                     delay: index * 0.2,
                     type: "spring",
-                    stiffness: 200
+                    stiffness: 200,
                   }}
                   viewport={{ once: true }}
                 >
                   {stat.number}
                 </motion.div>
-                <motion.div 
-                  className="stat-label"
-                  variants={fadeInUp}
-                >
+                <motion.div className="stat-label" variants={fadeInUp}>
                   {stat.label}
                 </motion.div>
               </motion.div>
@@ -363,7 +392,7 @@ const Home = () => {
       </motion.section>
 
       {/* How It Works Section */}
-      <motion.section 
+      <motion.section
         className="how-it-works"
         initial="hidden"
         whileInView="visible"
@@ -379,37 +408,40 @@ const Home = () => {
               {
                 icon: "🏫",
                 title: "Choose Your Department",
-                description: "Select your university and department to access relevant study materials.",
+                description:
+                  "Select your university and department to access relevant study materials.",
                 link: "/syllabus",
-                linkText: "Select Department →"
+                linkText: "Select Department →",
               },
               {
                 icon: "📚",
                 title: "Browse Resources",
-                description: "Explore syllabus, previous papers, and feedback from fellow students.",
+                description:
+                  "Explore syllabus, previous papers, and feedback from fellow students.",
                 link: "/pyqs",
-                linkText: "Browse Resources →"
+                linkText: "Browse Resources →",
               },
               {
                 icon: "🤝",
                 title: "Connect & Learn",
-                description: "Get guidance from seniors and share your own exam experiences.",
+                description:
+                  "Get guidance from seniors and share your own exam experiences.",
                 link: "/mentorship",
-                linkText: "Connect Now →"
-              }
+                linkText: "Connect Now →",
+              },
             ].map((step, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 className="step"
                 variants={scaleIn}
-                whileHover={{ 
-                  scale: 1.05, 
+                whileHover={{
+                  scale: 1.05,
                   y: -10,
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
                 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <motion.div 
+                <motion.div
                   className="step-icon"
                   whileHover={{ scale: 1.2, rotate: 10 }}
                   transition={{ type: "spring", stiffness: 400 }}
@@ -433,7 +465,7 @@ const Home = () => {
       </motion.section>
 
       {/* Testimonials Section */}
-      <motion.section 
+      <motion.section
         className="testimonials"
         initial="hidden"
         whileInView="visible"
@@ -445,25 +477,25 @@ const Home = () => {
             What Students Say
           </motion.h2>
           <div className="testimonial-wrapper">
-            <motion.div 
+            <motion.div
               className="testimonial-scroller"
               animate={{ x: ["0%", "-50%"] }}
-              transition={{ 
-                duration: 30, 
-                repeat: Infinity, 
+              transition={{
+                duration: 30,
+                repeat: Infinity,
                 ease: "linear",
-                repeatType: "loop"
+                repeatType: "loop",
               }}
             >
               {testimonials.map((testimonial, index) => (
-                <motion.div 
+                <motion.div
                   key={index}
                   className="testimonial-card"
                   variants={scaleIn}
-                  whileHover={{ 
-                    scale: 1.02, 
+                  whileHover={{
+                    scale: 1.02,
                     y: -8,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)"
+                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
                   }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -486,14 +518,14 @@ const Home = () => {
                 </motion.div>
               ))}
               {testimonials.map((testimonial, index) => (
-                <motion.div 
+                <motion.div
                   key={index + testimonials.length}
                   className="testimonial-card"
                   variants={scaleIn}
-                  whileHover={{ 
-                    scale: 1.02, 
+                  whileHover={{
+                    scale: 1.02,
                     y: -8,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)"
+                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
                   }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -521,7 +553,7 @@ const Home = () => {
       </motion.section>
 
       {/* CTA Section */}
-      <motion.section 
+      <motion.section
         className="cta"
         initial="hidden"
         whileInView="visible"
@@ -562,7 +594,7 @@ const Home = () => {
       </motion.section>
 
       {/* Contributors Section */}
-      <motion.section 
+      <motion.section
         className="contributors"
         initial="hidden"
         whileInView="visible"
@@ -586,15 +618,15 @@ const Home = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.05 }}
-                  whileHover={{ 
-                    scale: 1.05, 
+                  whileHover={{
+                    scale: 1.05,
                     y: -5,
-                    boxShadow: "0 10px 20px rgba(0,0,0,0.1)"
+                    boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <motion.img 
-                    src={contributor.avatar_url} 
+                  <motion.img
+                    src={contributor.avatar_url}
                     alt={contributor.login}
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
@@ -614,7 +646,7 @@ const Home = () => {
       </motion.section>
 
       {/* Footer */}
-      <motion.footer 
+      <motion.footer
         className="footer"
         initial="hidden"
         whileInView="visible"
@@ -625,24 +657,47 @@ const Home = () => {
           <motion.div className="footer-content" variants={staggerChildren}>
             {/* Left Section */}
             <motion.div className="footer-section" variants={slideInLeft}>
-              <img 
-                src={logo} 
-                alt="StudyMatePlus Logo" 
-                style={{ height: "50px", marginBottom: "10px" }} 
+              <img
+                src={logo}
+                alt="StudyMatePlus Logo"
+                style={{ height: "50px", marginBottom: "10px" }}
               />
-              <p>Empowering students with comprehensive academic resources and peer-to-peer learning.</p>
+              <p>
+                Empowering students with comprehensive academic resources and
+                peer-to-peer learning.
+              </p>
               {/* Social Links with Icons */}
               <div className="social-links">
-                <a href="https://github.com/lovelymahor/StudyMatePlus" target="_blank" rel="noopener noreferrer" className="social-icon github">
+                <a
+                  href="https://github.com/lovelymahor/StudyMatePlus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon github"
+                >
                   <FaGithub />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon linkedin"
+                >
                   <FaLinkedin />
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon twitter"
+                >
                   <FaXTwitter />
                 </a>
-                <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon discord">
+                <a
+                  href="https://discord.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon discord"
+                >
                   <FaDiscord />
                 </a>
               </div>
@@ -656,9 +711,13 @@ const Home = () => {
                   { to: "/syllabus", text: "Syllabus" },
                   { to: "/pyqs", text: "Previous Papers" },
                   { to: "/feedback", text: "Feedback" },
-                  { to: "/mentorship", text: "Mentorship" }
+                  { to: "/mentorship", text: "Mentorship" },
                 ].map((link, index) => (
-                  <motion.li key={index} variants={fadeInUp} whileHover={{ x: 5, color: "#3b82f6" }}>
+                  <motion.li
+                    key={index}
+                    variants={fadeInUp}
+                    whileHover={{ x: 5, color: "#3b82f6" }}
+                  >
                     <Link to={link.to}>{link.text}</Link>
                   </motion.li>
                 ))}
@@ -673,9 +732,13 @@ const Home = () => {
                   { to: "/help", text: "Help Center" },
                   { to: "/contact", text: "Contact Us" },
                   { to: "/contribute", text: "Contribute" },
-                  { to: "/privacy", text: "Privacy Policy" }
+                  { to: "/privacy", text: "Privacy Policy" },
                 ].map((link, index) => (
-                  <motion.li key={index} variants={fadeInUp} whileHover={{ x: 5, color: "#3b82f6" }}>
+                  <motion.li
+                    key={index}
+                    variants={fadeInUp}
+                    whileHover={{ x: 5, color: "#3b82f6" }}
+                  >
                     <Link to={link.to}>{link.text}</Link>
                   </motion.li>
                 ))}
@@ -685,7 +748,10 @@ const Home = () => {
 
           {/* Footer Bottom */}
           <motion.div className="footer-bottom" variants={fadeInUp}>
-            <p>&copy; {new Date().getFullYear()} StudyMatePlus. Open-source educational platform for students.</p>
+            <p>
+              &copy; {new Date().getFullYear()} StudyMatePlus. Open-source
+              educational platform for students.
+            </p>
           </motion.div>
         </div>
       </motion.footer>

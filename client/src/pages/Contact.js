@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
 import './Contact.css';
 import './ScrollToTop.css';
 
@@ -140,12 +140,12 @@ const Contact = () => {
               </div>
               
               <div className="social-links">
-                <h3>Follow Us</h3>
+                <h3>Follow Us : </h3>
                 <div className="social-icons">
-                  <a href="#" className="social-icon">Facebook</a>
-                  <a href="#" className="social-icon">Twitter</a>
-                  <a href="#" className="social-icon">LinkedIn</a>
-                  <a href="#" className="social-icon">Instagram</a>
+                  <a href="https://facebook.com/StudyMatePlus"><FaFacebook size={20} /></a>
+                  <a href="https://instagram.com/StudyMatePlus"><FaInstagram size={20} /></a>
+                  <a href="https://twitter.com/StudyMatePlus"><FaTwitter size={20} /></a>
+                  <a href="https://youtube.com/StudyMatePlus"><FaLinkedin size={20} /></a>
                 </div>
               </div>
             </div>
