@@ -114,11 +114,3 @@ Join our GSSoC 2025 Discord or contact the Project Admin:
 
 🌟 Happy Contributing & Good Luck in GSSoC 2025! 💖
 
----
-
-### ✅ Next Steps:
-- Save this as a file named `CONTRIBUTING.md`
-- Place it in the root folder of your GitHub repository
-- Done! Contributors will see it when they open a pull request or visit your repo 👏
-
-Would you like me to generate `PULL_REQUEST_TEMPLATE.md` and `ISSUE_TEMPLATE.md` next?
