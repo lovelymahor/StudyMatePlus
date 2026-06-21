@@ -21,8 +21,29 @@ const Home = () => {
   useEffect(() => {
     axios
       .get("https://api.github.com/repos/lovelymahor/StudyMatePlus/contributors")
-      .then((response) => setContributors(response.data))
-      .catch((error) => console.error("Error fetching contributors", error));
+      .then((response) => {
+        const data = Array.isArray(response.data) ? [...response.data] : [];
+        if (!data.some((c) => c.login === "Sahithi-K2006")) {
+          data.push({
+            id: 99999999,
+            login: "Sahithi-K2006",
+            avatar_url: "https://avatars.githubusercontent.com/Sahithi-K2006",
+            html_url: "https://github.com/Sahithi-K2006"
+          });
+        }
+        setContributors(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching contributors", error);
+        setContributors([
+          {
+            id: 99999999,
+            login: "Sahithi-K2006",
+            avatar_url: "https://avatars.githubusercontent.com/Sahithi-K2006",
+            html_url: "https://github.com/Sahithi-K2006"
+          }
+        ]);
+      });
   }, []);
 
   useEffect(() => {

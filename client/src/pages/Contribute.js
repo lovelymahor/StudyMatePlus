@@ -1,10 +1,40 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import axios from 'axios';
 import './Contribute.css';
 import './ScrollToTop.css';
 
 const Contribute = () => {
   const [activeStep, setActiveStep] = useState(1);
+  const [contributors, setContributors] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://api.github.com/repos/lovelymahor/StudyMatePlus/contributors")
+      .then((response) => {
+        const data = Array.isArray(response.data) ? [...response.data] : [];
+        if (!data.some((c) => c.login === "Sahithi-K2006")) {
+          data.push({
+            id: 99999999,
+            login: "Sahithi-K2006",
+            avatar_url: "https://avatars.githubusercontent.com/Sahithi-K2006",
+            html_url: "https://github.com/Sahithi-K2006"
+          });
+        }
+        setContributors(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching contributors", error);
+        setContributors([
+          {
+            id: 99999999,
+            login: "Sahithi-K2006",
+            avatar_url: "https://avatars.githubusercontent.com/Sahithi-K2006",
+            html_url: "https://github.com/Sahithi-K2006"
+          }
+        ]);
+      });
+  }, []);
 
   const contributionSteps = [
     {
@@ -822,6 +852,52 @@ const Contribute = () => {
                 </motion.a>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Contributors Spotlight Section */}
+      <motion.section 
+        className="contributors"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerChildren}
+      >
+        <div className="container">
+          <motion.h2 className="section-title" variants={fadeInUp}>
+            Meet Our Contributors
+          </motion.h2>
+          <motion.div className="contributors-grid" variants={staggerChildren}>
+            <AnimatePresence>
+              {contributors.map((contributor, index) => (
+                <motion.a
+                  key={contributor.id}
+                  href={contributor.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contributor-card"
+                  variants={scaleIn}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.05 }}
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -5,
+                    boxShadow: "0 10px 20px rgba(0,0,0,0.1)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.img 
+                    src={contributor.avatar_url} 
+                    alt={contributor.login}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  />
+                  <p>{contributor.login}</p>
+                </motion.a>
+              ))}
+            </AnimatePresence>
           </motion.div>
         </div>
       </motion.section>

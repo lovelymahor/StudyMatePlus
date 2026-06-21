@@ -1320,3 +1320,63 @@
   background: var(--card);
   border-radius: 20px;
 }
+
+/* Contributors Section */
+.contributors {
+  padding: 5rem 0;
+  background: var(--card);
+  text-align: center;
+}
+
+html[data-theme="dark"] .contributors { background: #0d1a2d; }
+
+.contributors-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.contributor-card {
+  text-decoration: none;
+  color: var(--text);
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.contributor-card:hover {
+  border-color: rgba(99,102,241,0.4);
+  background: var(--bg);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(99,102,241,0.12);
+}
+
+.contributor-card img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  transition: border-color 0.25s ease;
+  object-fit: cover;
+}
+
+.contributor-card:hover img {
+  border-color: #6366f1;
+}
+
+.contributor-card p {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-align: center;
+  word-break: break-all;
+  margin: 0.5rem 0 0;
+}
