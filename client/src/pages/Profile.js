@@ -10,9 +10,14 @@ import "./Profile.css";
 import './ScrollToTop.css';
 import { useAuth } from "../context/AuthContext";
 
+
+
 const Profile = () => {
-feature/login-auth
-  const { user } = useAuth();
+
+    const auth = useAuth();
+  const user = auth ? auth.user : null;
+
+
 
 
   document.title = "StudyMatePlus | Profile";
@@ -137,5 +142,6 @@ feature/login-auth
     </motion.div>
   );
 };
+
 
 export default Profile;
