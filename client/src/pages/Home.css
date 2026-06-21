@@ -555,7 +555,7 @@ html[data-theme="dark"] .step { background: #101826; }
    ============================================================ */
 .cta {
   padding: 5rem 0;
-  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #4f46e5 100%);
+  background: #000000;
   color: #ffffff;
   text-align: center;
   position: relative;
@@ -570,9 +570,18 @@ html[data-theme="dark"] .step { background: #101826; }
   background-size: 28px 28px;
 }
 
-.cta-content {
+.cta .cta-content {
   position: relative;
   z-index: 1;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .cta-content h2 {
