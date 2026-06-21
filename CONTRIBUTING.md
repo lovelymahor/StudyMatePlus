@@ -1,6 +1,6 @@
 # 🤝 Contributing to StudyMatePlus
 
-🎉 Thank you for considering contributing to **StudyMatePlus**, an open-source resource hub for students built with ❤️ during **GirlScript Summer of Code 2025 (GSSoC'25)**.
+🎉 Thank you for considering contributing to **StudyMatePlus**, an open-source resource hub for students built with ❤️ during **GirlScript Summer of Code 2026 (GSSoC'26)**.
 
 Whether you're a beginner or an experienced developer, your contributions are valued and appreciated.
 
