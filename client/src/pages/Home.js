@@ -10,7 +10,6 @@ import "./Home.css";
 import './ScrollToTop.css';
 
 const Home = () => {
- feature/login-auth
   const { isAuthenticated } = useAuth();
 
 
