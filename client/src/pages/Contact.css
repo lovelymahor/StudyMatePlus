@@ -127,7 +127,7 @@
 }
 
 .success-message h3 {
-  color: #10b981;
+  color: var(--brand);
   margin-bottom: 10px;
 }
 
@@ -160,7 +160,7 @@
 }
 
 .info-content p {
-  color: var(--muted);
+  color: #1e293b;
   line-height: 1.6;
 }
 
@@ -179,19 +179,21 @@
 }
 
 .social-icons {
-  display: flex;
+  display: flex !important;
+
   gap: 15px;
 }
 
 .social-icon {
-  color: var(--brand);
+  color: #1e293b;
   text-decoration: none;
   font-weight: 500;
+  font-size:small;
   transition: color 0.3s ease;
 }
 
 .social-icon:hover {
-  color: #5a6fd8;
+  color:#2563eb;
 }
 
 /* FAQ Section */

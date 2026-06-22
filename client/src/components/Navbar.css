@@ -252,7 +252,7 @@ html[data-theme="dark"] .navbar-dropdown-menu a.active {
   html[data-theme="dark"].navbar-theme-toggle:hover {
   background: rgba(139, 180, 255, 0.12);
   color: #8ab4ff;
-  }
+/.  }
 }
 
 /* ── Profile avatar ── */

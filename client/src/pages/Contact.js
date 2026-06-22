@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
 import './Contact.css';
 import './ScrollToTop.css';
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const Contact = () => {
 

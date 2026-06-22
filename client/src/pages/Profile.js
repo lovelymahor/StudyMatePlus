@@ -10,6 +10,8 @@ import "./Profile.css";
 import "./ScrollToTop.css";
 import { useAuth } from "../context/AuthContext";
 
+
+
 const Profile = () => {
   const { user } = useAuth();
 
@@ -135,5 +137,6 @@ const Profile = () => {
     </motion.div>
   );
 };
+
 
 export default Profile;
