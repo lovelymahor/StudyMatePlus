@@ -19,6 +19,8 @@ import MindMapEditor from "./pages/MindMapEditor";
 import Profile from "./pages/Profile.js";
 import SubmitFeedback from "./pages/SubmitFeedback";
 import Todo from "./pages/Todo";
+import NotFound from "./pages/NotFound";
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -100,6 +102,7 @@ const App = () => {
                 <div style={{ padding: "2rem" }}><SubmitFeedback /></div>
               </ProtectedRoute>
             } />
+    <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
       </AuthProvider>
