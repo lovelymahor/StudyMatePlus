@@ -8,16 +8,26 @@ import {
 } from "react-icons/fa";
 import "./Profile.css";
 import './ScrollToTop.css';
+import { useAuth } from "../context/AuthContext";
 
-const user = {
-  name: "John Doe",
-  email: "john.doe@example.com",
-  joinDate: "Joined on August 29, 2025",
-  avatar: "https://avatar.iran.liara.run/public/boy",
-};
+
 
 const Profile = () => {
+
+    const auth = useAuth();
+  const user = auth ? auth.user : null;
+
+
+
+
+  document.title = "StudyMatePlus | Profile";
   const [activeTab, setActiveTab] = useState("uploads");
+  const profileUser = user || {
+    name: "Your Profile",
+    email: "",
+    createdAt: null,
+    avatar: "/logo.png",
+  };
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -78,15 +88,19 @@ const Profile = () => {
       <motion.div className="profile-header-card" variants={fadeInUp}>
         <div className="profile-info">
           <motion.img
-            src={user.avatar}
-            alt="User Avatar"
+            src={profileUser.avatar || "/logo.png"}
+            alt={`${profileUser.name || "User"} avatar`}
             className="profile-avatar"
             whileHover={{ scale: 1.05 }}
           />
           <div className="profile-text">
-            <h1 className="profile-user-name">{user.name}</h1>
-            <p className="profile-user-email">{user.email}</p>
-            <p className="profile-join-date">{user.joinDate}</p>
+            <h1 className="profile-user-name">{profileUser.name}</h1>
+            <p className="profile-user-email">{profileUser.email}</p>
+            <p className="profile-join-date">
+              {profileUser.createdAt
+                ? `Joined on ${new Date(profileUser.createdAt).toLocaleDateString()}`
+                : "Profile photo and account details appear here after sign in."}
+            </p>
           </div>
         </div>
         <motion.button
@@ -128,5 +142,6 @@ const Profile = () => {
     </motion.div>
   );
 };
+
 
 export default Profile;

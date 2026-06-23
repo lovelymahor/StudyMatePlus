@@ -1,161 +1,162 @@
-# 📘 StudyMatePlus
+# StudyMatePlus
 
-🔗 **Live Website**: [https://studymateplus.vercel.app](https://studymateplus.vercel.app)
+Live demo: [https://studymateplus.vercel.app](https://studymateplus.vercel.app)
 
-**StudyMatePlus** is an open-source platform designed to help college students access academic resources such as **syllabus**, **previous year question papers (PYQs)**, and **exam feedback**, along with an option to connect with **seniors** for guidance.
-The goal is to support students during exam preparation by providing a centralized, reliable, and user-friendly resource hub.
+StudyMatePlus is a student-focused academic resource platform built to help learners find everything they need for exam preparation in one place. It brings together syllabus material, previous year question papers, feedback from other students, analytics, and community-driven study tools in a clean React experience backed by a Node.js API.
 
----
+## Overview
 
-## 🎯 Project Objective
+Students often spend too much time searching across multiple websites, folders, and group chats for reliable academic material. StudyMatePlus reduces that friction by organizing study resources around the way students actually prepare for exams.
 
-Students often face difficulty finding authentic academic materials in one place. Information like syllabus PDFs, PYQs, and exam tips are scattered or unavailable. This project aims to build a platform that:
+The platform currently focuses on:
 
-* Organizes syllabus and PYQs department-wise
-* Includes student feedback on exam papers (e.g., difficulty levels, important topics)
-* Connects juniors with seniors for mentoring and doubt clearing
-* Supports **multiple universities and departments** in one place
+- Syllabus browsing by university, department, and semester
+- Previous year question papers with downloadable reports
+- Student exam feedback and difficulty insights
+- Notes, study resources, and contribution workflows
+- Authenticated pages for a more personalized experience
+- Supporting pages such as FAQ, privacy, about, contact, profile, and analytics
 
----
+## Key features
 
-## 🌟 Key Features (To Be Developed)
+- Responsive landing page with clear navigation into study resources
+- Protected routes for authenticated users
+- Syllabus and PYQ browsing experiences tailored for academic planning
+- Feedback collection to capture exam difficulty, important topics, and preparation tips
+- Analytics views for understanding resource trends
+- Mind map, tasks, profile, and contribution sections for student productivity
+- Light/dark theme support in the client UI
 
-* ✅ Filter syllabus and papers by **university**, **semester**, **subject**
-* ✅ **Student feedback** section for each paper (e.g., "Paper was tricky — focus on Unit 2")
-* ✅ Secure **senior-student chat** or forum system
-* ✅ Upload and browse **notes, guides, and important questions**
-* ✅ Clean and **mobile-friendly** interface
+## Tech stack
 
----
+### Frontend
 
-## 🛠️ Tech Stack
+- React 19
+- React Router
+- Framer Motion
+- Chart.js / react-chartjs-2
+- React Icons
+- Axios
 
-| Area           | Technology                         |
-| -------------- | ---------------------------------- |
-| Frontend       | React.js / Next.js                 |
-| Backend        | Node.js / Express / Firebase       |
-| Database       | MongoDB / Firebase Firestore       |
-| Authentication | Google / University Email Login    |
-| Real-time      | Socket.io / Firebase Realtime DB   |
-| Hosting        | Netlify / Vercel / Heroku / Render |
+### Backend
 
----
+- Node.js
+- Express
+- MongoDB with Mongoose
+- JWT authentication
+- Helmet and rate limiting for basic hardening
+- Multer for file uploads
+- PDF generation utilities
 
-## 📁 Project Structure (To Be Followed)
+## Repository structure
 
-```
+```text
 StudyMatePlus/
-├── client/                # Frontend code
-├── server/                # Backend code
-├── docs/                  # Diagrams, mockups
-├── .github/               # Issue templates, PR templates
+├── client/            # React frontend
+├── server/            # Express / MongoDB backend
+├── tools/             # Utility scripts
 ├── README.md
 ├── CONTRIBUTING.md
-├── LICENSE
-└── .env.example
+├── CODE_OF_CONDUCT.md
+└── LICENSE
 ```
 
----
+## Prerequisites
 
-## 💻 Getting Started
+- Node.js 18 or newer
+- npm 9 or newer
+- MongoDB connection string
 
-### 1. Fork the Repository
+## Local setup
 
-Click on the **Fork** button on the top-right corner of this page to create your own copy.
-
-### 2. Clone Your Fork
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/StudyMatePlus.git
+git clone https://github.com/<your-username>/StudyMatePlus.git
 cd StudyMatePlus
 ```
 
-### 3. Install Dependencies
+### 2. Install dependencies
 
-To install the required dependencies, run the following commands:
+Install backend and frontend dependencies separately:
 
 ```bash
-npm install         # Install server-side dependencies
-cd client
-npm install         # Install frontend (React) dependencies
+cd server
+npm install
+
+cd ..\client
+npm install
 ```
 
-### 4. Configure Environment Variables
+### 3. Configure environment variables
 
-Create a `.env` file in both the root and `client/` directories using the `.env.example` file provided as a reference.
+Create a `.env` file in `server/` and add the required values.
 
-Update values like your MongoDB URI and secret keys.
-Example
+Recommended variables:
+
 ```bash
 PORT=5000
-MONGO_URI=your-mongodb-uri-here
-JWT_SECRET=your-secret-key-here
+MONGO_URI=your-mongodb-connection-string
+JWT_SECRET=your-strong-jwt-secret
+CLIENT_URL=http://localhost:3000
+OPENAI_API_KEY=optional-if-you-use-ai-features
 ```
 
-### 5. Run the Application
+If your frontend needs to point at a deployed backend or a different local API, set the client API URL as well:
 
-Start both the backend and frontend:
+```bash
+REACT_APP_API_URL=http://localhost:5000
+```
+
+### 4. Run the application
+
+Start the backend and frontend in separate terminals:
 
 ```bash
 # Terminal 1
-npm run dev         # Runs server on localhost:5000 (or your preferred port)
+cd server
+npm run dev
 
 # Terminal 2
 cd client
-npm start           # Runs React frontend on localhost:3000
+npm start
 ```
 
----
+The frontend usually runs on `http://localhost:3000`, and the backend API runs on `http://localhost:5000`.
 
-## 🧑‍💻 How to Contribute
+## Available scripts
 
-We welcome contributors of **all experience levels**, especially **beginners** participating through **GirlScript Summer of Code (GSSoC) 2025** and beyond.
+### Server
 
-Follow the steps below to begin your contribution journey:
+- `npm run dev` — start the backend with Nodemon
+- `npm start` — start the backend in production mode
 
-### 📄 Step 1: Read the Guidelines
+### Client
 
-* 📘 Read our [README.md](./README.md)
-* 📚 Go through the [CONTRIBUTING.md](./CONTRIBUTING.md)
-* 🤝 Understand our [Code of Conduct](./CODE_OF_CONDUCT.md)
+- `npm start` — run the React development server
+- `npm run build` — build the frontend for production
+- `npm test` — run the React test suite
 
-### 🌐 Step 2: Choose an Issue
+## Contributing
 
-* Check the **Issues** tab for `good first issue` labels
-* Comment on the issue you want to work on
-* Wait for the maintainers to assign you the issue
+Contributions are welcome. A good workflow is:
 
-### 🔧 Step 3: Make Your Changes
+1. Read the [CONTRIBUTING.md](./CONTRIBUTING.md) guide.
+2. Check the Issues tab for an open task.
+3. Create a branch for your work.
+4. Make your changes and verify them locally.
+5. Open a pull request with a clear summary of what changed.
 
-* Create a new branch: `git checkout -b feature-name`
-* Make your changes
-* Run tests and ensure everything works smoothly
+Please follow the [Code of Conduct](./CODE_OF_CONDUCT.md) in all contributions and discussions.
 
-### 📤 Step 4: Submit a Pull Request
-
-* Push your changes: `git push origin feature-name`
-* Open a Pull Request (PR) from your forked repository
-* Link the issue number in your PR description
-
----
-
-## 🙌 Code of Conduct
-
-We follow a [Contributor Covenant](https://www.contributor-covenant.org/) to ensure a welcoming environment for everyone.
-
----
-
-## 📜 License
+## License
 
 This project is licensed under the [MIT License](./LICENSE).
 
+## Contact
+
+For questions, suggestions, or collaboration ideas, please use the repository issues/discussions or connect through the project maintainer’s linked channels.
+
 ---
 
-## 📞 Contact & Community
-
-For queries or discussions:
-
-* Contact me on LinkedIn (https://www.linkedin.com/in/lovely-mahour-992316265/)
-* Follow project updates in Issues and Discussions tab
-
-Let's build a student-friendly platform together! 🚀
+Built to make academic preparation a little less chaotic and a lot more organized.

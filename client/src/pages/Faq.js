@@ -57,6 +57,9 @@ import { FaXTwitter } from "react-icons/fa6";
   };
 
 const Faq = () => {
+
+  document.title = "StudyMatePlus | FAQs";
+
   const [openIndex, setOpenIndex] = useState(null);
   const [showScroll, setShowScroll] = useState(false);
 

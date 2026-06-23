@@ -19,6 +19,7 @@ function addIntervalToDate(iso, recurrence) {
 }
 
 export default function Todo() {
+   document.title = "StudyMatePlus | Todo";
   const [tasks, setTasks] = useState([]);
   const [form, setForm] = useState(defaultForm);
   const [isEditing, setIsEditing] = useState(false);

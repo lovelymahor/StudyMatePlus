@@ -4,11 +4,19 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { useAuth } from "../context/AuthContext";
 import logo from "./logo.png";
 import "./Home.css";
 import './ScrollToTop.css';
 
+
 const Home = () => {
+
+const auth = useAuth();
+  const isAuthenticated = auth ? auth.isAuthenticated : false;
+  
+  document.title = "StudyMatePlus | Home";
+
   const [contributors, setContributors] = useState([]);
   const [showScroll, setShowScroll] = useState(false);
 
@@ -193,6 +201,20 @@ const Home = () => {
                   Previous Papers
                 </Link>
               </motion.div>
+              {!isAuthenticated && (
+                <>
+                  <motion.div variants={scaleIn}>
+                    <Link to="/login" className="btn btn-secondary">
+                      Log In
+                    </Link>
+                  </motion.div>
+                  <motion.div variants={scaleIn}>
+                    <Link to="/register" className="btn btn-primary">
+                      Create Account
+                    </Link>
+                  </motion.div>
+                </>
+              )}
             </motion.div>
           </motion.div>
 

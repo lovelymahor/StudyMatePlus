@@ -9,7 +9,7 @@
   min-height: 100vh;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text);
 }
 
 .container {
@@ -19,7 +19,7 @@
 }
 
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, var(--brand), #764ba2);
   min-height: 60vh;
   display: flex;
   align-items: center;
@@ -80,11 +80,11 @@
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
-  background-color: #f9f9f9;
+  background-color: var(--bg);
 }
 
 .chart-container {
-  background: white;
+  background: var(--card);
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
@@ -95,37 +95,38 @@
 .chart-container h2 {
   margin-bottom: 1rem;
   font-size: 1.4rem;
-  color: #333;
+  color: var(--text);
   text-align: center;
 }
 select {
-  border: 2px solid #667eea;
+  border: 1px solid var(--border);
   border-radius: 6px;
-  background-color: white;
-  color: #333;
+  background-color: var(--card);
+  color: var(--text);
 }
 
 button:hover {
-  background-color: #5a3e91;
+  filter: brightness(0.92);
 }
 .insights-section, .filter-section, .download-section {
   margin-top: 3rem;
   padding: 1rem 2rem;
-  background-color: #f9f9f9;
+  background-color: var(--card);
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
 .insights-section h2,
 .filter-section h2 {
   margin-bottom: 1rem;
-  color: #444;
+  color: var(--text);
 }
 
 .insights-section ul {
   list-style: disc;
   padding-left: 1.5rem;
   font-size: 1.1rem;
+  color: var(--muted);
 }
 
 .filter-section select {
@@ -139,16 +140,16 @@ button:hover {
   margin-top: 1rem;
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
-  background-color: #ffd700;
-  color: #333;
+  background-color: var(--brand);
+  color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: filter 0.12s ease;
 }
 
 .download-btn:hover {
-  background-color: #ffc400;
+  filter: brightness(0.94);
 }
 /* Section Wrappers */
 .insights-section,
@@ -156,9 +157,9 @@ button:hover {
 .download-section {
   margin-top: 3rem;
   padding: 1.5rem 2rem;
-  background: linear-gradient(135deg, #fefcea, #dfeaf7);
+  background: var(--card);
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -173,10 +174,10 @@ button:hover {
 .insights-section h2,
 .filter-section h2 {
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--text);
   font-size: 1.6rem;
   font-weight: 600;
-  border-left: 6px solid #ffda00;
+  border-left: 6px solid var(--brand);
   padding-left: 12px;
 }
 
@@ -185,7 +186,7 @@ button:hover {
   list-style: none;
   padding-left: 0;
   font-size: 1.1rem;
-  color: #444;
+  color: var(--muted);
 }
 
 .insights-section ul li {
@@ -205,16 +206,16 @@ button:hover {
 .filter-section select {
   padding: 0.7rem 1rem;
   font-size: 1rem;
-  background-color: #fff8d6;
-  border: 1px solid #e0c000;
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: 8px;
-  color: #333;
+  color: var(--text);
   outline: none;
   transition: border-color 0.3s ease;
 }
 
 .filter-section select:focus {
-  border-color: #c9a900;
+  border-color: var(--brand);
 }
 
 /* Download Button */
@@ -223,18 +224,22 @@ button:hover {
   margin-top: 1.2rem;
   padding: 0.9rem 1.8rem;
   font-size: 1.1rem;
-  background: linear-gradient(to right, #ffd700, #ffb300);
-  color: #222;
+  background: var(--brand);
+  color: #fff;
   font-weight: 600;
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+.download-section {
+  text-align: center;
 }
 
 .download-btn:hover {
-  background: linear-gradient(to right, #ffc400, #ffa000);
   transform: scale(1.03);
+  filter: brightness(0.94);
 }
 
 

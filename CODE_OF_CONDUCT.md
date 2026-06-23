@@ -1,59 +1,78 @@
-# Contributor Covenant Code of Conduct
+# StudyMatePlus Code of Conduct
 
-## 👥 Our Pledge
+## Our commitment
 
-We as members, contributors, and leaders pledge to make participation in our project and community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+StudyMatePlus is built to help students learn, collaborate, and share academic resources. To keep this community helpful and welcoming, everyone who participates in the project must treat others with respect, professionalism, and care.
 
-We commit to acting and interacting in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
+We are committed to providing a harassment-free experience for everyone, regardless of age, ability, background, ethnicity, gender identity or expression, education level, nationality, religion, appearance, socioeconomic status, sexual orientation, or experience level.
 
----
+## Expected behavior
 
-## 💬 Our Standards
+We expect all contributors, maintainers, and community members to:
 
-Examples of behavior that contributes to a positive environment include:
+- Be respectful, patient, and considerate in all interactions
+- Use inclusive, clear, and constructive language
+- Welcome feedback and respond to criticism professionally
+- Focus on the project and the community, not on personal differences
+- Respect the privacy, boundaries, and safety of others
+- Support a collaborative environment where people can ask questions and learn
 
-- Being respectful and considerate toward others
-- Using inclusive and welcoming language
-- Accepting constructive criticism gracefully
-- Focusing on what is best for the community
-- Showing empathy towards others
+## Unacceptable behavior
 
-Examples of unacceptable behavior include:
+The following behaviors are not acceptable in any project space:
 
-- Harassment, bullying, or discrimination of any kind
-- Publishing others' private information (e.g., addresses, contacts) without permission
-- Trolling, insulting or derogatory comments
-- Personal or political attacks
-- Disruptive or disrespectful communication
+- Harassment, intimidation, threats, stalking, or bullying
+- Discrimination or offensive comments based on personal identity or background
+- Sexualized language, imagery, or attention
+- Trolling, insulting remarks, or repeated disruptive behavior
+- Publishing another person’s private information without permission
+- Personal attacks, political attacks, or other hostile commentary
+- Deliberately derailing discussions or making participation difficult for others
 
----
+## Where this applies
 
-## 📢 Enforcement Responsibilities
+This Code of Conduct applies in all StudyMatePlus spaces, including:
 
-Project admins and maintainers are responsible for clarifying and enforcing this code of conduct. They will take appropriate and fair corrective action in response to any behavior they deem inappropriate or harmful.
+- GitHub issues and pull requests
+- Discussions, reviews, and comments
+- Chat or community channels connected to the project
+- Any event, meeting, or public interaction related to the project
 
----
+## Maintainer responsibilities
 
-## 🚫 Enforcement
+Project maintainers are responsible for upholding this Code of Conduct and for responding to reports in a fair, consistent, and timely manner.
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the project team at:
+When reviewing reports, maintainers should:
+
+- Listen carefully and treat reports seriously
+- Protect the privacy of the person reporting the issue
+- Investigate concerns fairly and without bias
+- Take action that is appropriate to the situation
+
+## Reporting a concern
+
+If you experience or witness behavior that violates this Code of Conduct, please report it to the project team at:
 
 📧 lovelymahour1405@gmail.com
 
-All complaints will be reviewed and investigated promptly and fairly.
+Please include as much relevant detail as possible, such as the date, location, people involved, and a short description of what happened. Reports will be reviewed promptly and handled as respectfully and privately as possible.
 
----
+## Enforcement
 
-## 🙌 Scope
+Depending on the situation, enforcement actions may include one or more of the following:
 
-This Code of Conduct applies within all project spaces—GitHub issues, pull requests, Discord discussions, and any project-related online/offline event.
+- A private warning
+- A request to stop or change the behavior
+- Removal of content that violates this policy
+- Temporary restriction from project spaces
+- Permanent removal from project spaces for serious or repeated violations
 
----
+The exact response will depend on the severity and pattern of the behavior.
 
-## 🙏 Attribution
+## Acknowledgment
 
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.1.
+By participating in StudyMatePlus, you agree to follow this Code of Conduct and help maintain a safe, respectful, and inclusive community.
 
----
+## Attribution
 
-**Let’s work together to make StudyMatePlus a welcoming, inclusive, and impactful open-source community! 💙**
+This Code of Conduct is based on the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.1, and adapted for StudyMatePlus.

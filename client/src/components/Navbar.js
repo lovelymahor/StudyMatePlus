@@ -1,20 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useTheme } from "../theme/ThemeProvider";
+import { useAuth } from "../context/AuthContext";
 import { FaMoon, FaSun, FaChevronDown } from "react-icons/fa";
+
 
 const user = {
   avatar: "https://api.dicebear.com/9.x/initials/svg?seed=User&backgroundColor=6366f1&fontColor=ffffff",
 };
 
+
 // Primary links always visible in the bar
 const primaryLinks = [
-  { to: "/",         label: "Home"      },
-  { to: "/syllabus", label: "Syllabus"  },
-  { to: "/notes",    label: "Notes"     },
-  { to: "/pyqs",     label: "PYQs"      },
-  { to: "/feedback", label: "Feedback"  },
+  { to: "/",         label: "Home"     },
+  { to: "/syllabus", label: "Syllabus" },
+  { to: "/notes",    label: "Notes"    },
+  { to: "/pyqs",     label: "PYQs"     },
+  { to: "/feedback", label: "Feedback" },
 ];
 
 // Secondary links hidden inside "More" dropdown
@@ -26,37 +29,49 @@ const moreLinks = [
   { to: "/faq",       label: "FAQs"      },
 ];
 
-// All links for mobile menu
 const allLinks = [...primaryLinks, ...moreLinks];
 
 const Navbar = () => {
-  const { theme, toggleTheme } = useTheme();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const { theme, toggleTheme }              = useTheme();
+  const { user, isAuthenticated, logout }   = useAuth();
+  const navigate                            = useNavigate();
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen,   setIsDropdownOpen]   = useState(false);
+  const [isUserMenuOpen,   setIsUserMenuOpen]   = useState(false);
+  const [loggingOut,       setLoggingOut]       = useState(false);
+
+  const dropdownRef = useRef(null);
+  const userMenuRef = useRef(null);
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen((p) => !p);
   const closeMobileMenu  = () => setIsMobileMenuOpen(false);
 
-  // Close dropdown on outside click
+  // Close dropdowns on outside click
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setIsDropdownOpen(false);
-      }
+    const handler = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) setIsDropdownOpen(false);
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target))  setIsUserMenuOpen(false);
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  // Close mobile menu on resize to desktop
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) setIsMobileMenuOpen(false);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const handler = () => { if (window.innerWidth > 768) setIsMobileMenuOpen(false); };
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
   }, []);
+
+  const handleLogout = async () => {
+    setLoggingOut(true);
+    await logout();
+    setIsUserMenuOpen(false);
+    closeMobileMenu();
+    navigate("/login");
+  };
+
+  const avatarSrc = user?.avatar || `https://avatar.iran.liara.run/public/boy?username=${user?.name || "user"}`;
 
   return (
     <nav className="navbar">
@@ -77,9 +92,7 @@ const Navbar = () => {
                 <NavLink
                   to={to}
                   end={to === "/"}
-                  className={({ isActive }) =>
-                    "navbar-link" + (isActive ? " active" : "")
-                  }
+                  className={({ isActive }) => "navbar-link" + (isActive ? " active" : "")}
                 >
                   {label}
                 </NavLink>
@@ -93,12 +106,11 @@ const Navbar = () => {
             >
               <button
                 className="navbar-dropdown-btn"
-                onClick={() => setIsDropdownOpen((prev) => !prev)}
+                onClick={() => setIsDropdownOpen((p) => !p)}
                 aria-expanded={isDropdownOpen}
                 aria-haspopup="true"
               >
-                More
-                <FaChevronDown className="navbar-dropdown-arrow" />
+                More <FaChevronDown className="navbar-dropdown-arrow" />
               </button>
               <div className="navbar-dropdown-menu" role="menu">
                 {moreLinks.map(({ to, label }) => (
@@ -129,10 +141,53 @@ const Navbar = () => {
             {theme === "dark" ? <FaSun /> : <FaMoon />}
           </button>
 
-          {/* Profile */}
-          <Link to="/profile" className="navbar-profile-link" aria-label="User profile">
-            <img src={user.avatar} alt="User Profile" className="navbar-profile-img" />
-          </Link>
+          {/* User menu / Auth */}
+          {isAuthenticated ? (
+            <div className="navbar-user-menu" ref={userMenuRef}>
+              <button
+                className="navbar-profile-btn"
+                onClick={() => setIsUserMenuOpen((p) => !p)}
+                aria-label="User menu"
+                aria-expanded={isUserMenuOpen}
+              >
+                <img src={avatarSrc} alt={user?.name || "User"} className="navbar-profile-img" />
+                <span className="navbar-user-name">{user?.name?.split(" ")[0]}</span>
+                <FaChevronDown className={`navbar-user-chevron ${isUserMenuOpen ? "open" : ""}`} />
+              </button>
+              {isUserMenuOpen && (
+                <div className="navbar-user-dropdown" role="menu">
+                  <div className="navbar-user-info">
+                    <img src={avatarSrc} alt={user?.name} className="navbar-user-avatar-lg" />
+                    <div>
+                      <p className="navbar-user-fullname">{user?.name}</p>
+                      <p className="navbar-user-email">{user?.email}</p>
+                    </div>
+                  </div>
+                  <div className="navbar-user-dropdown-divider" />
+                  <Link to="/profile" className="navbar-user-action" onClick={() => setIsUserMenuOpen(false)} role="menuitem">
+                    👤 My Profile
+                  </Link>
+                  <Link to="/analytics" className="navbar-user-action" onClick={() => setIsUserMenuOpen(false)} role="menuitem">
+                    📊 Analytics
+                  </Link>
+                  <div className="navbar-user-dropdown-divider" />
+                  <button
+                    className="navbar-user-action navbar-logout-btn"
+                    onClick={handleLogout}
+                    disabled={loggingOut}
+                    role="menuitem"
+                  >
+                    {loggingOut ? "Signing out…" : "🚪 Sign Out"}
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="navbar-auth-btns">
+              <Link to="/login"    className="navbar-login-btn">Log In</Link>
+              <Link to="/register" className="navbar-signup-btn">Sign Up</Link>
+            </div>
+          )}
 
           {/* Hamburger — mobile only */}
           <button
@@ -154,9 +209,7 @@ const Navbar = () => {
               <NavLink
                 to={to}
                 end={to === "/"}
-                className={({ isActive }) =>
-                  "navbar-link-mobile" + (isActive ? " active" : "")
-                }
+                className={({ isActive }) => "navbar-link-mobile" + (isActive ? " active" : "")}
                 onClick={closeMobileMenu}
               >
                 {label}
@@ -167,21 +220,29 @@ const Navbar = () => {
 
         {/* Mobile bottom controls */}
         <div className="navbar-mobile-controls">
-          <button
-            aria-label="Toggle theme"
-            className="navbar-theme-toggle"
-            onClick={toggleTheme}
-          >
+          <button aria-label="Toggle theme" className="navbar-theme-toggle" onClick={toggleTheme}>
             {theme === "dark" ? <FaSun /> : <FaMoon />}
           </button>
-          <Link
-            to="/profile"
-            className="navbar-profile-link"
-            onClick={closeMobileMenu}
-            aria-label="User profile"
-          >
-            <img src={user.avatar} alt="User Profile" className="navbar-profile-img" />
-          </Link>
+
+          {isAuthenticated ? (
+            <>
+              <Link to="/profile" className="navbar-profile-link" onClick={closeMobileMenu}>
+                <img src={avatarSrc} alt={user?.name} className="navbar-profile-img" />
+              </Link>
+              <button
+                className="navbar-mobile-logout"
+                onClick={handleLogout}
+                disabled={loggingOut}
+              >
+                {loggingOut ? "…" : "Sign Out"}
+              </button>
+            </>
+          ) : (
+            <div className="navbar-mobile-auth">
+              <Link to="/login"    className="navbar-login-btn"  onClick={closeMobileMenu}>Log In</Link>
+              <Link to="/register" className="navbar-signup-btn" onClick={closeMobileMenu}>Sign Up</Link>
+            </div>
+          )}
         </div>
       </div>
     </nav>
