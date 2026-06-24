@@ -3,11 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp } from "react-icons/fa";
 import './Syllabus.css';
 
-const Syllabus = () => {
-
-  document.title = "StudyMatePlus | Syllabus";
-  // Mock data for syllabi
-  const syllabusData = [
+// Mock data for syllabi
+const syllabusData = [
     {
       id: 1,
       title: "Computer Science Engineering - Semester 1",
@@ -18,6 +15,7 @@ const Syllabus = () => {
       downloadCount: 1250,
       uploadDate: "2024-01-15",
       fileSize: "2.4 MB",
+      fileUrl: "/pdf/WebDevelopment.pdf",
       difficulty: "Beginner",
       tags: ["CSE", "First Year", "Basic Programming"]
     },
@@ -31,6 +29,7 @@ const Syllabus = () => {
       downloadCount: 675,
       uploadDate: "2024-01-18",
       fileSize: "2.8 MB",
+      fileUrl: "/pdf/WebDevelopment.pdf",
       difficulty: "Intermediate",
       tags: ["Mechanical", "Thermodynamics", "Manufacturing"]
     },
@@ -44,6 +43,7 @@ const Syllabus = () => {
       downloadCount: 890,
       uploadDate: "2024-01-20",
       fileSize: "3.1 MB",
+      fileUrl: "/pdf/WebDevelopment.pdf",
       difficulty: "Intermediate",
       tags: ["CSE", "Data Structures", "Database"]
     },
@@ -57,6 +57,7 @@ const Syllabus = () => {
       downloadCount: 1120,
       uploadDate: "2024-01-22",
       fileSize: "3.5 MB",
+      fileUrl: "/pdf/WebDevelopment.pdf",
       difficulty: "Advanced",
       tags: ["Electronics", "Microprocessors", "Communication"]
     },
@@ -70,6 +71,7 @@ const Syllabus = () => {
       downloadCount: 945,
       uploadDate: "2024-01-25",
       fileSize: "2.2 MB",
+      fileUrl: "/pdf/WebDevelopment.pdf",
       difficulty: "Beginner",
       tags: ["IT", "Web Development", "Networks"]
     },
@@ -83,6 +85,7 @@ const Syllabus = () => {
       downloadCount: 720,
       uploadDate: "2024-01-12",
       fileSize: "2.9 MB",
+      fileUrl: "/pdf/WebDevelopment.pdf",
       difficulty: "Intermediate",
       tags: ["Civil", "Structural", "Environmental"]
     },
@@ -96,6 +99,7 @@ const Syllabus = () => {
       downloadCount: 1340,
       uploadDate: "2024-01-28",
       fileSize: "4.2 MB",
+      fileUrl: "/pdf/WebDevelopment.pdf",
       difficulty: "Advanced",
       tags: ["CSE", "Machine Learning", "Security"]
     },
@@ -109,10 +113,15 @@ const Syllabus = () => {
       downloadCount: 850,
       uploadDate: "2024-01-14",
       fileSize: "3.3 MB",
+      fileUrl: "/pdf/WebDevelopment.pdf",
       difficulty: "Intermediate",
       tags: ["Electrical", "Power Systems", "Circuits"]
     }
-  ];
+];
+
+const Syllabus = () => {
+
+  document.title = "StudyMatePlus | Syllabus";
 
   // Animation variants from Home.js
   const fadeInUp = {
@@ -160,6 +169,7 @@ const [showScroll, setShowScroll] = useState(false);
   const [selectedDepartment, setSelectedDepartment] = useState('All');
   const [selectedSemester, setSelectedSemester] = useState('All');
   const [sortBy, setSortBy] = useState('downloads');
+  const [openingSyllabusId, setOpeningSyllabusId] = useState(null);
 
   // Get unique values for filters
   const universities = ['All', ...new Set(syllabusData.map(item => item.university))];
@@ -194,11 +204,26 @@ const [showScroll, setShowScroll] = useState(false);
     });
 
     return filtered;
-  }, [searchTerm, selectedUniversity, selectedDepartment, selectedSemester, sortBy, syllabusData]);
+  }, [searchTerm, selectedUniversity, selectedDepartment, selectedSemester, sortBy]);
 
-  const handleDownload = (syllabus) => {
-    // Simulate download
-    alert(`Downloading: ${syllabus.title}`);
+  const openSyllabusFile = (syllabus) => {
+    setOpeningSyllabusId(syllabus.id);
+
+    try {
+      if (!syllabus.fileUrl) {
+        alert('Syllabus file is not available yet.');
+        return;
+      }
+
+      const openedWindow = window.open(syllabus.fileUrl, '_blank', 'noopener,noreferrer');
+      if (!openedWindow) {
+        alert('Please allow pop-ups to open the syllabus file.');
+      }
+    } catch {
+      alert('Unable to open the syllabus file. Please try again.');
+    } finally {
+      setOpeningSyllabusId(null);
+    }
   };
 
   const getDifficultyColor = (difficulty) => {
@@ -400,18 +425,21 @@ const [showScroll, setShowScroll] = useState(false);
                     <div className="card-actions">
                       <motion.button 
                         className="btn btn-primary" 
-                        onClick={() => handleDownload(syllabus)}
+                        onClick={() => openSyllabusFile(syllabus)}
+                        disabled={openingSyllabusId === syllabus.id}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        📥 Download Syllabus
+                        {openingSyllabusId === syllabus.id ? 'Opening...' : '📥 Download Syllabus'}
                       </motion.button>
                       <motion.button 
                         className="btn btn-outline"
+                        onClick={() => openSyllabusFile(syllabus)}
+                        disabled={openingSyllabusId === syllabus.id}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        👁️ Preview
+                        {openingSyllabusId === syllabus.id ? 'Opening...' : '👁️ Preview'}
                       </motion.button>
                     </div>
                   </motion.div>
