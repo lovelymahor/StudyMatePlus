@@ -5,6 +5,12 @@ import { useTheme } from "../theme/ThemeProvider";
 import { useAuth } from "../context/AuthContext";
 import { FaMoon, FaSun, FaChevronDown } from "react-icons/fa";
 
+
+const user = {
+  avatar: "https://api.dicebear.com/9.x/initials/svg?seed=User&backgroundColor=6366f1&fontColor=ffffff",
+};
+
+
 // Primary links always visible in the bar
 const primaryLinks = [
   { to: "/",         label: "Home"     },
