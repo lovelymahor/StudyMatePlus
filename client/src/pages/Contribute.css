@@ -241,7 +241,7 @@
 }
 
 .code-lang {
-  color: var(--border);
+  color: var(--muted);
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -269,7 +269,7 @@
 }
 
 .code-block code {
-  color: var(--border);
+  color: var(--text);
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
   font-size: 0.9rem;
   line-height: 1.5;

@@ -196,7 +196,7 @@
 .student-name {
   font-size: 1.4rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--heading);
   margin-bottom: 0.5rem;
 }
 
@@ -252,7 +252,7 @@
 .subject-name {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--heading);
   margin-bottom: 0.5rem;
 }
 
@@ -311,7 +311,7 @@
 .detail-section h5 {
   font-size: 1rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--heading);
   margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
@@ -319,7 +319,7 @@
 }
 
 .detail-section p {
-  color: #4b5563;
+  color: var(--muted);
   line-height: 1.6;
   font-size: 0.95rem;
 }
@@ -479,7 +479,7 @@
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #555;
+  color: var(--muted);
 }
 
 .form-group input,
@@ -487,7 +487,7 @@
 .form-group textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   border-radius: 6px;
   font-size: 1rem;
   box-sizing: border-box;
