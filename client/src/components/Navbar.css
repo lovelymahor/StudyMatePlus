@@ -249,10 +249,11 @@ html[data-theme="dark"] .navbar-dropdown-menu a.active {
   padding: 0.3rem 0.6rem; /* Reduced padding to save horizontal space */
   border-radius: 6px;
   transition: background-color 0.2s ease, color 0.2s ease;
+}
 html[data-theme="dark"] .navbar-theme-toggle:hover {
   background: rgba(139, 180, 255, 0.12);
   color: #8ab4ff;
-}
+}}
 
 /* ── Profile avatar ── */
 .navbar-profile-link {

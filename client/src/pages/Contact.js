@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Contact.css';
 import './ScrollToTop.css';
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const Contact = () => {
 
@@ -142,10 +143,10 @@ const Contact = () => {
               <div className="social-links">
                 <h3>Follow Us</h3>
                 <div className="social-icons">
-                  <a href="#" className="social-icon">Facebook</a>
-                  <a href="#" className="social-icon">Twitter</a>
-                  <a href="#" className="social-icon">LinkedIn</a>
-                  <a href="#" className="social-icon">Instagram</a>
+                  <a href="#" className="social-icon" title="Facebook" aria-label="Facebook"><FaFacebook /></a>
+                  <a href="#" className="social-icon" title="Twitter" aria-label="Twitter"><FaTwitter/></a>
+                  <a href="#" className="social-icon" title="LinkedIn" aria-label="LinkedIn"><FaLinkedin/>n</a>
+                  <a href="#" className="social-icon" title="Instagram" aria-label="Instagram"><FaInstagram/></a>
                 </div>
               </div>
             </div>

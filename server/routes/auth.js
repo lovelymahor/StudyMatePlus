@@ -360,4 +360,59 @@ router.patch(
   }
 );
 
+// ─── LOG STUDY SESSION ────────────────────────────────────────────────────────
+router.post('/study-streak', protect, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const lastStudyDate = user.lastStudyDate ? new Date(user.lastStudyDate) : null;
+    if (lastStudyDate) {
+      lastStudyDate.setHours(0, 0, 0, 0);
+    }
+
+    const diffTime = lastStudyDate ? Math.abs(today - lastStudyDate) : null;
+    const diffDays = diffTime !== null ? Math.ceil(diffTime / (1000 * 60 * 60 * 24)) : null;
+
+    if (diffDays === 0) {
+      // Already studied today
+      return res.status(200).json({ success: true, message: 'Already marked for today.', data: { user: user.toPublicJSON() } });
+    } else if (diffDays === 1) {
+      // Studied yesterday
+      user.currentStreak += 1;
+    } else {
+      // Missed a day or first time
+      user.currentStreak = 1;
+    }
+
+    user.lastStudyDate = new Date();
+
+    if (user.currentStreak > user.longestStreak) {
+      user.longestStreak = user.currentStreak;
+    }
+
+    // Award badges
+    const badgeCheckmarks = [
+      { days: 3, name: '3-Day Streak' },
+      { days: 7, name: '7-Day Streak' },
+      { days: 30, name: '30-Day Streak' },
+    ];
+
+    badgeCheckmarks.forEach(badge => {
+      if (user.longestStreak >= badge.days && !user.badges.includes(badge.name)) {
+        user.badges.push(badge.name);
+      }
+    });
+
+    await user.save();
+
+    res.status(200).json({ success: true, message: 'Study streak updated!', data: { user: user.toPublicJSON() } });
+  } catch (error) {
+    console.error('Streak update error:', error);
+    res.status(500).json({ success: false, message: 'Server error updating study streak.' });
+  }
+});
+
 module.exports = router;
