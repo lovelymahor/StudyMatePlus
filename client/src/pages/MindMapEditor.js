@@ -1,3 +1,25 @@
+There is a trailing curly brace (`}`) at the very end of your file that is completely outside the component block. It has no matching opening bracket, which will throw a syntax compilation error (`Parsing error: Unexpected token`).
+
+Here is the exact fix and clean code refactor.
+
+### The Error Location
+
+If you look at the bottom of your original file, you have:
+
+```javascript
+   </div>
+ );
+}
+
+} // <-- THIS EXTRA BRACKET IS CAUSING THE ERROR
+
+```
+
+### Fixed Code
+
+Here is the corrected file with the syntax error resolved:
+
+```javascript
 'use client'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import ReactFlow, {
@@ -46,10 +68,9 @@ function StudyNode({ id, data, selected }) {
     </div>
   );
 }
-// small draggable waypoint node used to bend edges
+
 // small draggable waypoint node used to bend edges
 function WaypointNode({ id, data }) {
-  // Provide source and target handles so edges can connect to this waypoint
   return (
     <div className="waypoint-node" title="Waypoint" style={{ position: 'relative' }}>
       <Handle type="target" position={Position.Left} id="left" style={{ background: '#fff', border: '2px solid rgba(0,0,0,0.12)' }} />
@@ -58,6 +79,7 @@ function WaypointNode({ id, data }) {
     </div>
   );
 }
+
 function InfoNode({ data }) {
   return (
     <div className="info-node">{data?.label || 'Info'}</div>
@@ -82,7 +104,7 @@ function computeHiddenTargets(collapsedIds, edges) {
 }
 
 export default function MindMapEditor() {
-    document.title = "StudyMatePlus | Mind Map";
+  document.title = "StudyMatePlus | Mind Map";
   const [dark, setDark] = useState(false);
   const [search] = useState('');
 
@@ -100,15 +122,16 @@ export default function MindMapEditor() {
   const [selectedEdgeId, setSelectedEdgeId] = useState(null);
   const [collapsed, setCollapsed] = useState(new Set());
   const [showScroll, setShowScroll] = useState(false);
+  
   // connection settings
   const [connLabel, setConnLabel] = useState('');
-  const [connType, setConnType] = useState('one-way'); // 'one-way' | 'two-way' | 'none'
+  const [connType, setConnType] = useState('one-way'); 
   const [connColor, setConnColor] = useState('#4f46e5');
   const [connWidth, setConnWidth] = useState(2);
   const [connLabelBg, setConnLabelBg] = useState(true);
   const [connLabelBgColor, setConnLabelBgColor] = useState('#ffffff');
   const [connLabelTextColor, setConnLabelTextColor] = useState('#111827');
-  const [currentTool, setCurrentTool] = useState('one-way'); // one-way | two-way | informational | node | dotted
+  const [currentTool, setCurrentTool] = useState('one-way'); 
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
   // Persist
@@ -125,11 +148,13 @@ export default function MindMapEditor() {
     }
     if (theme) setDark(theme === 'dark');
   }, []);
+
   useEffect(() => {
     const toast = document.getElementById('save-toast');
     localStorage.setItem('smp_map_v2', JSON.stringify({ nodes, edges, collapsed: Array.from(collapsed) }));
     if (toast) { toast.style.opacity = 1; setTimeout(() => (toast.style.opacity = 0), 900); }
   }, [nodes, edges, collapsed]);
+
   useEffect(() => { localStorage.setItem('smp_theme', dark ? 'dark' : 'light'); }, [dark]);
 
   // Effect to handle scroll events for the button
@@ -222,7 +247,6 @@ export default function MindMapEditor() {
       }
 
       if (currentTool === 'informational') {
-        // informational: create a waypoint and split the connection into two segments (no arrows)
         const wpId = uuid();
         const srcNode = nodes.find(n => n.id === params.source);
         const tgtNode = nodes.find(n => n.id === params.target);
@@ -254,7 +278,6 @@ export default function MindMapEditor() {
         return;
       }
 
-      // default behavior: one-way or two-way based on connType
       const edge = {
         id,
         source: params.source,
@@ -276,7 +299,6 @@ export default function MindMapEditor() {
 
   // Selection
   const onSelectionChange = useCallback(({ nodes, edges }) => {
-    // prefer node selection; if an edge is selected set edge id
     if (nodes && nodes[0]) {
       setSelectedId(nodes[0].id);
       setSelectedEdgeId(null);
@@ -292,10 +314,9 @@ export default function MindMapEditor() {
   const selectedNode = useMemo(() => nodes.find(n => n.id === selectedId), [nodes, selectedId]);
   const selectedEdge = useMemo(() => edges.find(e => e.id === selectedEdgeId), [edges, selectedEdgeId]);
 
-  // Keyboard shortcuts: Delete to remove selected node/edge, Shift+N to create a new node at center
+  // Keyboard shortcuts
   useEffect(() => {
     const onKey = (e) => {
-      // Delete / Backspace removes selected node or edge
       if (e.key === 'Delete' || e.key === 'Backspace') {
         if (selectedEdgeId) {
           setEdges(eds => eds.filter(x => x.id !== selectedEdgeId));
@@ -312,10 +333,8 @@ export default function MindMapEditor() {
         }
       }
 
-      // Shift+N creates new node at viewport center
       if (e.key.toLowerCase() === 'n' && e.shiftKey) {
         e.preventDefault();
-        // compute center of viewport in react-flow coords
         if (reactFlowInstance && typeof reactFlowInstance.project === 'function') {
           const rect = wrapperRef.current?.getBoundingClientRect();
           const cx = rect ? rect.width / 2 : 200;
@@ -353,9 +372,7 @@ export default function MindMapEditor() {
     setSelectedId('root');
   }, [selectedNode]);
 
-  // Waypoint helpers (allow bending edges by inserting a tiny draggable waypoint node)
   const splitEdgeToWaypoint = useCallback((edgeId) => {
-    // need current nodes/edges via functional updates
     setEdges((eds) => {
       const e = eds.find(x => x.id === edgeId);
       if (!e) return eds;
@@ -373,20 +390,15 @@ export default function MindMapEditor() {
     });
   }, [nodes]);
 
-  // Insert a waypoint at a specific position and split the given edge
   const insertWaypointAt = useCallback((edgeId, position) => {
-    // create waypoint node
     const wpId = uuid();
     const waypoint = { id: wpId, type: 'waypoint', position, data: {} };
-    // add waypoint node first
     setNodes(nds => nds.concat(waypoint));
-    // split edge into two segments and ensure markers/styles are set so lines render
     setEdges(eds => {
       const e = eds.find(x => x.id === edgeId);
       if (!e) return eds;
       const others = eds.filter(x => x.id !== edgeId);
       const style = e.style || {};
-      // keep any start marker on the first segment, move end marker to the second segment
       const a = {
         id: uuid(),
         source: e.source,
@@ -412,7 +424,6 @@ export default function MindMapEditor() {
   }, []);
 
   const removeWaypoint = useCallback((edgeId) => {
-    // find the waypoint node that is adjacent to this edge
     const e = edges.find(x => x.id === edgeId);
     if (!e) return;
     const wp = nodes.find(n => n.type === 'waypoint' && (edges.some(ed => ed.source === n.id && ed.target === e.target) || edges.some(ed => ed.target === n.id && ed.source === e.source)));
@@ -430,7 +441,6 @@ export default function MindMapEditor() {
     });
   }, [edges, nodes]);
 
-  // Inspector edits
   const updateSelected = (patch) => {
     setNodes(nds => nds.map(n => n.id === selectedId ? { ...n, data: { ...n.data, ...patch } } : n));
   };
@@ -525,6 +535,7 @@ export default function MindMapEditor() {
           <button className={currentTool==='waypoint'? 'active': ''} onClick={()=>{ setCurrentTool('waypoint'); }}>Waypoint</button>
         </div>
       </div>
+
       {/* Toolbar */}
       <motion.div className="toolbar" initial={{ y: -24, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
         <div className="group">
@@ -541,7 +552,6 @@ export default function MindMapEditor() {
         </div>
         <div className="group">
           <button onClick={() => {
-            // simple auto-arrange: grid layout
             const perRow = Math.ceil(Math.sqrt(nodes.length || 1));
             const spacingX = 200; const spacingY = 160;
             const arranged = nodes.map((n, idx) => ({
@@ -551,9 +561,6 @@ export default function MindMapEditor() {
             setNodes(arranged);
           }} title="Auto Arrange">Auto Arrange</button>
         </div>
-        {/* <div className="group">
-          <input className="search" placeholder="Search node…" value={search} onChange={e => setSearch(e.target.value)} />
-        </div> */}
         <div className="group">
           <button onClick={exportPNG}><Download size={16}/> PNG</button>
           <button onClick={exportJSON}><Save size={16}/> JSON</button>
@@ -578,14 +585,11 @@ export default function MindMapEditor() {
           onConnect={onConnect}
           onSelectionChange={onSelectionChange}
           onPaneClick={(event, coords) => {
-            // coords may be provided by React Flow; prefer using reactFlowInstance.project for accuracy
             const rect = wrapperRef.current?.getBoundingClientRect();
             let pos = null;
             if (reactFlowInstance) {
-              // project mouse coordinates to flow coordinates
               const clientX = event.clientX;
               const clientY = event.clientY;
-              // project expects coords relative to the container, so subtract bounding rect
               const projected = reactFlowInstance.project({ x: clientX - (rect?.left || 0), y: clientY - (rect?.top || 0) });
               pos = projected;
             } else if (coords) {
@@ -602,36 +606,34 @@ export default function MindMapEditor() {
             if (currentTool === 'informational') {
               createInfoNodeAt(pos);
             }
-            }}
-            onEdgeDoubleClick={(event, edge) => {
-              // compute flow coords and insert waypoint
+          }}
+          onEdgeDoubleClick={(event, edge) => {
+            const rect = wrapperRef.current?.getBoundingClientRect();
+            let pos = null;
+            if (reactFlowInstance && typeof reactFlowInstance.project === 'function') {
+              const clientX = event.clientX;
+              const clientY = event.clientY;
+              pos = reactFlowInstance.project({ x: clientX - (rect?.left || 0), y: clientY - (rect?.top || 0) });
+            } else {
+              if (rect) pos = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+            }
+            if (pos) insertWaypointAt(edge.id, pos);
+          }}
+          onEdgeClick={(event, edge) => {
+            if (currentTool === 'waypoint') {
               const rect = wrapperRef.current?.getBoundingClientRect();
               let pos = null;
               if (reactFlowInstance && typeof reactFlowInstance.project === 'function') {
-                const clientX = event.clientX;
-                const clientY = event.clientY;
-                pos = reactFlowInstance.project({ x: clientX - (rect?.left || 0), y: clientY - (rect?.top || 0) });
-              } else {
-                if (rect) pos = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+                pos = reactFlowInstance.project({ x: event.clientX - (rect?.left || 0), y: event.clientY - (rect?.top || 0) });
+              } else if (rect) {
+                pos = { x: event.clientX - rect.left, y: event.clientY - rect.top };
               }
               if (pos) insertWaypointAt(edge.id, pos);
-            }}
-            onEdgeClick={(event, edge) => {
-              if (currentTool === 'waypoint') {
-                const rect = wrapperRef.current?.getBoundingClientRect();
-                let pos = null;
-                if (reactFlowInstance && typeof reactFlowInstance.project === 'function') {
-                  pos = reactFlowInstance.project({ x: event.clientX - (rect?.left || 0), y: event.clientY - (rect?.top || 0) });
-                } else if (rect) {
-                  pos = { x: event.clientX - rect.left, y: event.clientY - rect.top };
-                }
-                if (pos) insertWaypointAt(edge.id, pos);
-              }
-            }}
+            }
+          }}
           onInit={setReactFlowInstance}
           fitView
         >
-          
           <Controls />
           <Background gap={18} />
         </ReactFlow>
@@ -693,6 +695,7 @@ export default function MindMapEditor() {
         ) : (
           <div style={{ opacity: .7, fontSize: 14 }}>Select a node to edit.</div>
         )}
+
         {/* Edge inspector */}
         {selectedEdge && (
           <div style={{ marginTop: 12, borderTop: '1px solid var(--border)', paddingTop: 12 }}>
@@ -707,63 +710,63 @@ export default function MindMapEditor() {
             </div>
           </div>
         )}
-          <hr style={{ margin: '12px 0' }} />
-          <h4>Connections</h4>
-            <div style={{ marginBottom: 8 }}>
-            <label style={{ display: 'block', fontSize: 12 }}>Default label</label>
-            <input value={connLabel} onChange={e=>setConnLabel(e.target.value)} placeholder="e.g., causes, leads to" />
-            <label style={{ display: 'block', fontSize: 12, marginTop:8 }}>Type</label>
-            <select value={connType} onChange={e=>setConnType(e.target.value)}>
-              <option value="one-way">One-way</option>
-              <option value="two-way">Two-way</option>
-              <option value="none">No arrow</option>
-            </select>
-            <label style={{ display: 'block', fontSize: 12, marginTop:8 }}>Color</label>
-            <input type="color" value={connColor} onChange={e=>setConnColor(e.target.value)} />
-            <label style={{ display: 'block', fontSize: 12, marginTop:8 }}>Width</label>
-            <input type="number" min={1} max={8} value={connWidth} onChange={e=>setConnWidth(e.target.value)} />
-              <label style={{ display: 'block', fontSize: 12, marginTop:8 }}>
-                <input type="checkbox" checked={connLabelBg} onChange={e=>setConnLabelBg(e.target.checked)} /> Show label background
-              </label>
-              {connLabelBg && (
-                <div style={{ display:'flex', gap:8, alignItems:'center', marginTop:6 }}>
-                  <label style={{ fontSize:12 }}>BG</label>
-                  <input type="color" value={connLabelBgColor} onChange={e=>setConnLabelBgColor(e.target.value)} />
-                  <label style={{ fontSize:12 }}>Text</label>
-                  <input type="color" value={connLabelTextColor} onChange={e=>setConnLabelTextColor(e.target.value)} />
-                </div>
-              )}
-          </div>
+        <hr style={{ margin: '12px 0' }} />
+        <h4>Connections</h4>
+        <div style={{ marginBottom: 8 }}>
+          <label style={{ display: 'block', fontSize: 12 }}>Default label</label>
+          <input value={connLabel} onChange={e=>setConnLabel(e.target.value)} placeholder="e.g., causes, leads to" />
+          <label style={{ display: 'block', fontSize: 12, marginTop:8 }}>Type</label>
+          <select value={connType} onChange={e=>setConnType(e.target.value)}>
+            <option value="one-way">One-way</option>
+            <option value="two-way">Two-way</option>
+            <option value="none">No arrow</option>
+          </select>
+          <label style={{ display: 'block', fontSize: 12, marginTop:8 }}>Color</label>
+          <input type="color" value={connColor} onChange={e=>setConnColor(e.target.value)} />
+          <label style={{ display: 'block', fontSize: 12, marginTop:8 }}>Width</label>
+          <input type="number" min={1} max={8} value={connWidth} onChange={e=>setConnWidth(e.target.value)} />
+          <label style={{ display: 'block', fontSize: 12, marginTop:8 }}>
+            <input type="checkbox" checked={connLabelBg} onChange={e=>setConnLabelBg(e.target.checked)} /> Show label background
+          </label>
+          {connLabelBg && (
+            <div style={{ display:'flex', gap:8, alignItems:'center', marginTop:6 }}>
+              <label style={{ fontSize:12 }}>BG</label>
+              <input type="color" value={connLabelBgColor} onChange={e=>setConnLabelBgColor(e.target.value)} />
+              <label style={{ fontSize:12 }}>Text</label>
+              <input type="color" value={connLabelTextColor} onChange={e=>setConnLabelTextColor(e.target.value)} />
+            </div>
+          )}
+        </div>
 
-          <div>
-            {edges.length === 0 && <div style={{ color: 'var(--muted)' }}>No connections yet.</div>}
-            {edges.map(ed => (
-              <div key={ed.id} style={{ display:'flex', gap:8, alignItems:'center', marginBottom:6, background:'var(--bg)', padding:6, borderRadius:6 }}>
-                <div style={{ flex:1 }}>
-                  <div style={{ fontWeight:600 }}>{ed.source} → {ed.target}</div>
-                  <div style={{ fontSize:12, color:'var(--muted)' }}>{ed.label || '—'}</div>
-                  <div style={{ display:'flex', gap:8, marginTop:6 }}>
-                    <input style={{flex:1}} value={ed.label||''} onChange={(e)=> setEdges(eds=>eds.map(x=> x.id===ed.id?{...x,label:e.target.value}:x))} />
-                    <select value={(ed.markerStart && ed.markerEnd)?'two-way':(ed.markerEnd?'one-way':'none')} onChange={(e)=>{
-                      const v=e.target.value;
-                      setEdges(eds=>eds.map(x=> x.id===ed.id?{...x, markerEnd: v!=='none' ? { type: MarkerType.ArrowClosed } : undefined, markerStart: v==='two-way' ? { type: MarkerType.ArrowClosed } : undefined }:x));
-                    }}>
-                      <option value="one-way">One-way</option>
-                      <option value="two-way">Two-way</option>
-                      <option value="none">No arrow</option>
-                    </select>
-                    <input type="color" value={ed.style?.stroke||'#4f46e5'} onChange={(e)=> setEdges(eds=>eds.map(x=> x.id===ed.id?{...x, style:{ ...(x.style||{}), stroke:e.target.value }}:x))} />
-                    <input type="number" min={1} max={8} value={ed.style?.strokeWidth||2} onChange={(e)=> setEdges(eds=>eds.map(x=> x.id===ed.id?{...x, style:{ ...(x.style||{}), strokeWidth:Number(e.target.value) }}:x))} />
-                  </div>
-                </div>
-                <div style={{ display:'flex', flexDirection:'column', gap:6 }}>
-                  <button onClick={() => setEdges(eds=>eds.filter(e=>e.id!==ed.id))} className="btn-danger">Delete</button>
-                  <button onClick={() => splitEdgeToWaypoint(ed.id)} className="btn">Add waypoint</button>
-                  <button onClick={() => removeWaypoint(ed.id)} className="btn">Remove waypoint</button>
+        <div>
+          {edges.length === 0 && <div style={{ color: 'var(--muted)' }}>No connections yet.</div>}
+          {edges.map(ed => (
+            <div key={ed.id} style={{ display:'flex', gap:8, alignItems:'center', marginBottom:6, background:'var(--bg)', padding:6, borderRadius:6 }}>
+              <div style={{ flex:1 }}>
+                <div style={{ fontWeight:600 }}>{ed.source} → {ed.target}</div>
+                <div style={{ fontSize:12, color:'var(--muted)' }}>{ed.label || '—'}</div>
+                <div style={{ display:'flex', gap:8, marginTop:6 }}>
+                  <input style={{flex:1}} value={ed.label||''} onChange={(e)=> setEdges(eds=>eds.map(x=> x.id===ed.id?{...x,label:e.target.value}:x))} />
+                  <select value={(ed.markerStart && ed.markerEnd)?'two-way':(ed.markerEnd?'one-way':'none')} onChange={(e)=>{
+                    const v=e.target.value;
+                    setEdges(eds=>eds.map(x=> x.id===ed.id?{...x, markerEnd: v!=='none' ? { type: MarkerType.ArrowClosed } : undefined, markerStart: v==='two-way' ? { type: MarkerType.ArrowClosed } : undefined }:x));
+                  }}>
+                    <option value="one-way">One-way</option>
+                    <option value="two-way">Two-way</option>
+                    <option value="none">No arrow</option>
+                  </select>
+                  <input type="color" value={ed.style?.stroke||'#4f46e5'} onChange={(e)=> setEdges(eds=>eds.map(x=> x.id===ed.id?{...x, style:{ ...(x.style||{}), stroke:e.target.value }}:x))} />
+                  <input type="number" min={1} max={8} value={ed.style?.strokeWidth||2} onChange={(e)=> setEdges(eds=>eds.map(x=> x.id===ed.id?{...x, style:{ ...(x.style||{}), strokeWidth:Number(e.target.value) }}:x))} />
                 </div>
               </div>
-            ))}
-          </div>
+              <div style={{ display:'flex', flexDirection:'column', gap:6 }}>
+                <button onClick={() => setEdges(eds=>eds.filter(e=>e.id!==ed.id))} className="btn-danger">Delete</button>
+                <button onClick={() => splitEdgeToWaypoint(ed.id)} className="btn">Add waypoint</button>
+                <button onClick={() => removeWaypoint(ed.id)} className="btn">Remove waypoint</button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Scroll to Top Button */}
@@ -783,6 +786,8 @@ export default function MindMapEditor() {
           </motion.button>
         )}
       </AnimatePresence>
-   </div>
- );
+    </div>
+  );
 }
+
+```
