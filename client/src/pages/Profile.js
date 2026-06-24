@@ -12,7 +12,10 @@ import "./Profile.css";
 import './ScrollToTop.css';
 import { useAuth, authAxios } from "../context/AuthContext";
 
+
+
 const Profile = () => {
+
   const { user, updateUser } = useAuth();
 
   const [loadingStreak, setLoadingStreak] = useState(false);
@@ -33,6 +36,10 @@ const Profile = () => {
       setLoadingStreak(false);
     }
   };
+
+    const auth = useAuth();
+  const user = auth ? auth.user : null;
+
 
 
   document.title = "StudyMatePlus | Profile";
@@ -200,5 +207,6 @@ const Profile = () => {
     </motion.div>
   );
 };
+
 
 export default Profile;
