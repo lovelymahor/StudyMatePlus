@@ -11,11 +11,15 @@ const fs = require('fs');
 dotenv.config();
 
 const app = express();
-feature/login-auth
+
 app.use(cors());
 app.use(express.json());
-const fs = require('fs');
-const path = require('path');
+
+
+app.use(cors());
+app.use(express.json());
+
+
 const crypto = require('crypto');
 const multer = require('multer');
 const { Configuration, OpenAIApi } = require('openai');

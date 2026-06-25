@@ -5,15 +5,34 @@ import {
   FaFileUpload,
   FaCommentDots,
   FaBookmark,
+  FaFireAlt,
+  FaMedal,
 } from "react-icons/fa";
 import "./Profile.css";
 import './ScrollToTop.css';
-import { useAuth } from "../context/AuthContext";
+import { useAuth, authAxios } from "../context/AuthContext";
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
 
+  const [loadingStreak, setLoadingStreak] = useState(false);
+  const [streakMessage, setStreakMessage] = useState("");
 
+  const handleLogStudy = async () => {
+    setLoadingStreak(true);
+    setStreakMessage("");
+    try {
+      const res = await authAxios.post('/study-streak');
+      if (res.data.success) {
+        if (updateUser) updateUser(res.data.data.user);
+        setStreakMessage(res.data.message);
+      }
+    } catch (error) {
+      setStreakMessage("Failed to log study session.");
+    } finally {
+      setLoadingStreak(false);
+    }
+  };
   document.title = "StudyMatePlus | Profile";
   const [activeTab, setActiveTab] = useState("uploads");
   const profileUser = user || {
@@ -107,6 +126,49 @@ const Profile = () => {
         </motion.button>
       </motion.div>
 
+      <motion.div className="profile-streak-card" variants={fadeInUp}>
+        <div className="streak-stats">
+          <div className="streak-stat-item">
+            <FaFireAlt className="streak-icon current" />
+            <div className="streak-info">
+              <h3>{profileUser.currentStreak || 0}</h3>
+              <p>Current Streak</p>
+            </div>
+          </div>
+          <div className="streak-stat-item">
+            <FaFireAlt className="streak-icon longest" />
+            <div className="streak-info">
+              <h3>{profileUser.longestStreak || 0}</h3>
+              <p>Longest Streak</p>
+            </div>
+          </div>
+        </div>
+        <div className="streak-actions">
+           <button 
+             className="log-study-btn" 
+             onClick={handleLogStudy} 
+             disabled={loadingStreak}
+           >
+             {loadingStreak ? "Logging..." : "Log Study Session"}
+           </button>
+           {streakMessage && <p className="streak-message">{streakMessage}</p>}
+        </div>
+        
+        {profileUser.badges && profileUser.badges.length > 0 && (
+          <div className="badges-container">
+            <h4>Achievements</h4>
+            <div className="badges-grid">
+              {profileUser.badges.map((badge, idx) => (
+                <div key={idx} className="badge-item">
+                  <FaMedal className="badge-icon" />
+                  <span>{badge}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </motion.div>
+
       <motion.div className="profile-tabs-container" variants={fadeInUp}>
         <div className="profile-tabs">
           <button
@@ -136,5 +198,6 @@ const Profile = () => {
     </motion.div>
   );
 };
+
 
 export default Profile;

@@ -9,9 +9,10 @@ import logo from "./logo.png";
 import "./Home.css";
 import './ScrollToTop.css';
 
-const Home = () => {
-  const { isAuthenticated } = useAuth();
 
+const Home = () => {
+  const auth = useAuth();
+  const isAuthenticated = auth ? auth.isAuthenticated : false;
 
   document.title = "StudyMatePlus | Home";
 

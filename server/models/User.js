@@ -62,6 +62,22 @@ const userSchema = new mongoose.Schema(
       default: '',
       trim: true,
     },
+    currentStreak: {
+      type: Number,
+      default: 0,
+    },
+    longestStreak: {
+      type: Number,
+      default: 0,
+    },
+    lastStudyDate: {
+      type: Date,
+      default: null,
+    },
+    badges: {
+      type: [String],
+      default: [],
+    },
   },
   {
     timestamps: true,
@@ -135,6 +151,10 @@ userSchema.methods.toPublicJSON = function () {
     isVerified: this.isVerified,
     createdAt: this.createdAt,
     lastLogin: this.lastLogin,
+    currentStreak: this.currentStreak,
+    longestStreak: this.longestStreak,
+    lastStudyDate: this.lastStudyDate,
+    badges: this.badges,
   };
 };
 
