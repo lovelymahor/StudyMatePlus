@@ -11,12 +11,7 @@ import './ScrollToTop.css';
 
 
 const Home = () => {
-  const { isAuthenticated } = useAuth();
-
-
-const Home = () => {
-
-const auth = useAuth();
+  const auth = useAuth();
   const isAuthenticated = auth ? auth.isAuthenticated : false;
   
   document.title = "StudyMatePlus | Home";

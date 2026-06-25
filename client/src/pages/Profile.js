@@ -37,9 +37,6 @@ const Profile = () => {
     }
   };
 
-    const auth = useAuth();
-  const user = auth ? auth.user : null;
-
 
 
   document.title = "StudyMatePlus | Profile";
