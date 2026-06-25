@@ -12,10 +12,7 @@ import "./Profile.css";
 import './ScrollToTop.css';
 import { useAuth, authAxios } from "../context/AuthContext";
 
-
-
 const Profile = () => {
-
   const { user, updateUser } = useAuth();
 
   const [loadingStreak, setLoadingStreak] = useState(false);
@@ -36,9 +33,6 @@ const Profile = () => {
       setLoadingStreak(false);
     }
   };
-
-
-
   document.title = "StudyMatePlus | Profile";
   const [activeTab, setActiveTab] = useState("uploads");
   const profileUser = user || {
