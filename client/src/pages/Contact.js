@@ -111,7 +111,7 @@ const Contact = () => {
                 <div className="info-icon">📧</div>
                 <div className="info-content">
                   <h3>Email</h3>
-                  <p>support@studymateplus.com</p>
+                  <p><a href="mailto:support@studymateplus.com">support@studymateplus.com</a></p>
                 </div>
               </div>
               
@@ -171,7 +171,7 @@ const Contact = () => {
             
             <div className="faq-item">
               <h3>How do I report a problem?</h3>
-              <p>Use the contact form above or email us directly at support@studymateplus.com</p>
+              <p>Use the contact form above or email us directly at <a href="mailto:support@studymateplus.com">support@studymateplus.com</a></p>
             </div>
           </div>
         </div>
