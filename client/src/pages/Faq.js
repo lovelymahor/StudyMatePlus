@@ -86,7 +86,7 @@ const Faq = () => {
     },
     {
       q: "❓ How can I contact support?",
-      a: "Reach out to us via the Contact section at the bottom of the page or email support@studymateplus.com."
+      a: <>Reach out to us via the Contact section at the bottom of the page or email <a href="mailto:support@studymateplus.com">support@studymateplus.com</a>.</>
     }
   ];
 
@@ -170,7 +170,7 @@ const Faq = () => {
       <section className="contact-section container">
         <h2 className="section-title">📩 Contact Us</h2>
         <p>
-          Still have questions? Reach out to us at <b>support@studymateplus.com</b> or fill out the form below.
+          Still have questions? Reach out to us at <b><a href="mailto:support@studymateplus.com">support@studymateplus.com</a></b> or fill out the form below.
         </p>
         <form className="contact-form">
           <input type="text" placeholder="Your Name" required />
