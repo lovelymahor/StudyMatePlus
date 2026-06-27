@@ -16,6 +16,10 @@ app.use(cors());
 app.use(express.json());
 
 
+app.use(cors());
+app.use(express.json());
+
+
 const crypto = require('crypto');
 const multer = require('multer');
 const { Configuration, OpenAIApi } = require('openai');
