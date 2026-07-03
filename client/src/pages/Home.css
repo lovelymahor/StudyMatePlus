@@ -290,7 +290,7 @@ html[data-theme="dark"] .section-title { color: #ffffff; }
   text-align: center;
   border: 1px solid var(--border);
   box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
   position: relative;
   overflow: hidden;
 }
@@ -301,7 +301,7 @@ html[data-theme="dark"] .section-title { color: #ffffff; }
   inset: 0;
   background: linear-gradient(135deg, rgba(79,70,229,0.04), rgba(124,58,237,0.04));
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease-out;
   border-radius: 20px;
 }
 
