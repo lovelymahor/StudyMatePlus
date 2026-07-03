@@ -10,7 +10,6 @@ import "./Home.css";
 import './ScrollToTop.css';
 
 const Home = () => {
- feature/login-auth
   const { isAuthenticated } = useAuth();
 
 
@@ -394,7 +393,7 @@ const Home = () => {
                 icon: "🤝",
                 title: "Connect & Learn",
                 description: "Get guidance from seniors and share your own exam experiences.",
-                link: "/mentorship",
+                link: "/hackathon-guidance",
                 linkText: "Connect Now →"
               }
             ].map((step, index) => (

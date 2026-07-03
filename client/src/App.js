@@ -22,6 +22,7 @@ import Todo from "./pages/Todo";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
+import HackathonGuidance from "./pages/HackathonGuidance";
 
 const App = () => {
   return (
@@ -98,6 +99,11 @@ const App = () => {
             <Route path="/feedback/submit" element={
               <ProtectedRoute>
                 <div style={{ padding: "2rem" }}><SubmitFeedback /></div>
+              </ProtectedRoute>
+            } />
+            <Route path="/hackathon-guidance" element={
+              <ProtectedRoute>
+                <div style={{ padding: "2rem" }}><HackathonGuidance /></div>
               </ProtectedRoute>
             } />
           </Routes>

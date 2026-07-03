@@ -11,6 +11,7 @@ const primaryLinks = [
   { to: "/syllabus", label: "Syllabus" },
   { to: "/notes",    label: "Notes"    },
   { to: "/pyqs",     label: "PYQs"     },
+  { to: "/hackathon-guidance", label: "Hackathon" },
   { to: "/feedback", label: "Feedback" },
 ];
 

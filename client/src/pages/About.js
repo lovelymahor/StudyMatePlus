@@ -100,21 +100,93 @@ const About = () => {
                 academic success.
               </p>
             </motion.div>
-            <motion.div className="mission-visual" variants={slideInRight}>
-              <div className="mission-icon">🎯</div>
-              <motion.div className="mission-stats" variants={staggerChildren}>
-                <motion.div className="mini-stat" variants={scaleIn}>
-                  <span className="stat-num">50+</span>
-                  <span className="stat-text">Universities</span>
-                </motion.div>
-                <motion.div className="mini-stat" variants={scaleIn}>
-                  <span className="stat-num">1000+</span>
-                  <span className="stat-text">Resources</span>
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
+          <motion.div
+  className="mission-visual"
+  variants={slideInRight}
+>
+  <motion.div
+    className="mission-grid"
+    variants={staggerChildren}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+  >
+    <motion.div
+      className="mission-card"
+      variants={scaleIn}
+      whileHover={{
+        y: -10,
+        scale: 1.05,
+        transition: { duration: 0.3 }
+      }}
+      whileTap={{ scale: 0.97 }}
+    >
+      <div className="mission-card-content">
+
+<h3>Study Resources</h3>
+
+<p>
+
+<span>1200+</span>
+
+Available Resources
+
+</p>
+
+</div>
+    </motion.div>
+
+    <motion.div
+      className="mission-card"
+      variants={scaleIn}
+      whileHover={{
+        y: -10,
+        scale: 1.05,
+        transition: { duration: 0.3 }
+      }}
+      whileTap={{ scale: 0.97 }}
+    >
+      <div className="mission-card-icon">📝</div>
+      <h3>PYQs</h3>
+      <span>10+ Years</span>
+      <p>Previous Papers</p>
+    </motion.div>
+
+    <motion.div
+      className="mission-card"
+      variants={scaleIn}
+      whileHover={{
+        y: -10,
+        scale: 1.05,
+        transition: { duration: 0.3 }
+      }}
+      whileTap={{ scale: 0.97 }}
+    >
+      <div className="mission-card-icon">👨‍🎓</div>
+      <h3>Students</h3>
+      <span>5000+</span>
+      <p>Community Driven</p>
+    </motion.div>
+
+    <motion.div
+      className="mission-card"
+      variants={scaleIn}
+      whileHover={{
+        y: -10,
+        scale: 1.05,
+        transition: { duration: 0.3 }
+      }}
+      whileTap={{ scale: 0.97 }}
+    >
+      <div className="mission-card-icon">🏫</div>
+      <h3>Universities</h3>
+      <span>50+</span>
+      <p>Growing Network</p>
+    </motion.div>
+  </motion.div>
+</motion.div>
+  </div>
+  </div>
       </motion.section>
 
       {/* Story Section */}

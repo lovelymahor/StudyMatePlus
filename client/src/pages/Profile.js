@@ -11,7 +11,6 @@ import './ScrollToTop.css';
 import { useAuth } from "../context/AuthContext";
 
 const Profile = () => {
-feature/login-auth
   const { user } = useAuth();
 
 

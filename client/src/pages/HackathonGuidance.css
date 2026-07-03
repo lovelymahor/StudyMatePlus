@@ -1,0 +1,129 @@
+.hackathon-guidance-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.hg-hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+.hg-hero p {
+  color: var(--text-secondary, #4b5563);
+  max-width: 760px;
+}
+
+.hg-section {
+  margin-top: 2rem;
+}
+
+.hg-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.hg-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.experts-grid,
+.guidance-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.hg-card {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+}
+
+.hg-card h3 {
+  margin: 0.2rem 0 0.5rem;
+}
+
+.hg-meta {
+  color: var(--text-secondary, #6b7280);
+  font-size: 0.9rem;
+}
+
+.hg-list {
+  margin: 0.8rem 0 0;
+  padding-left: 1rem;
+}
+
+.hg-chip {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+  background: #dbeafe;
+  color: #1e40af;
+  text-transform: capitalize;
+}
+
+.hg-tags {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.hg-tags span {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-radius: 8px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+.hg-select,
+.hg-form input,
+.hg-form textarea {
+  border: 1px solid var(--border-color, #d1d5db);
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+}
+
+.hg-form {
+  display: grid;
+  gap: 0.8rem;
+  max-width: 700px;
+}
+
+.hg-form button {
+  justify-self: start;
+  border: 0;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 0.65rem 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hg-banner {
+  margin-top: 1rem;
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+}
+
+.hg-warning {
+  background: #fffbeb;
+  border: 1px solid #facc15;
+  color: #854d0e;
+}
+
+.hg-success {
+  background: #ecfdf5;
+  border: 1px solid #34d399;
+  color: #065f46;
+}
