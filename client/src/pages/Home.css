@@ -104,6 +104,8 @@
   line-height: 1.15;
   color: #ffffff;
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .brand-highlight {
@@ -256,6 +258,8 @@
   margin-bottom: 0.75rem;
   color: var(--heading);
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .section-subtitle {
@@ -400,6 +404,8 @@ html[data-theme="dark"] .section-title { color: #ffffff; }
   background-clip: text;
   margin-bottom: 0.4rem;
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .stat-label {
@@ -581,6 +587,8 @@ html[data-theme="dark"] .step { background: #101826; }
   margin-bottom: 1rem;
   color: #ffffff;
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .cta-content p {
