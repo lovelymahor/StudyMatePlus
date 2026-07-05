@@ -4,7 +4,6 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-const { body, validationResult } = require('express-validator');
 const path = require('path');
 const fs = require('fs');
 
@@ -89,18 +88,6 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB connected!'))
   .catch((err) => console.error('❌ MongoDB connection error:', err));
 
-// ─── Schemas & Models ─────────────────────────────────────────────────────────
-const feedbackSchema = new mongoose.Schema({
-  studentName: String,
-  university: { type: String, required: true },
-  examName: { type: String, required: true },
-  difficulty: { type: String, required: true },
-  feedback: { type: String, required: true },
-  tips: String,
-  createdAt: { type: Date, default: Date.now },
-});
-const Feedback = mongoose.model('Feedback', feedbackSchema);
-
 // ─── Routes ───────────────────────────────────────────────────────────────────
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
@@ -108,36 +95,14 @@ app.use('/api/auth', authRoutes);
 const reportRoutes = require('./routes/reports');
 app.use('/api/reports', reportRoutes);
 
+const { createRouter, listRouter } = require('./src/routes/feedback');
+app.use('/api/feedback', createRouter);
+app.use('/api/feedbacks', listRouter);
+
 // Default Route
 app.get('/', (req, res) => {
   res.send('StudyMatePlus API is running ✅');
 });
-
-// Feedback Routes (existing — unchanged)
-app.post(
-  '/api/feedback',
-  [
-    body('university').trim().notEmpty().withMessage('University cannot be empty.').escape(),
-    body('examName').trim().notEmpty().withMessage('Exam name cannot be empty.').escape(),
-    body('difficulty').notEmpty().withMessage('Please select a difficulty.').escape(),
-    body('feedback').trim().notEmpty().withMessage('Feedback cannot be empty.').escape(),
-    body('studentName').trim().escape(),
-    body('tips').trim().escape(),
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
-    try {
-      const newFeedback = new Feedback(req.body);
-      await newFeedback.save();
-      res.status(201).json({ message: 'Feedback submitted and saved successfully!' });
-    } catch (error) {
-      res.status(500).json({ message: 'Failed to save feedback.', error: error.message });
-    }
-  }
-);
-
-
 
 // --- Syllabus upload API ---
 app.post('/api/syllabus/upload', upload.single('file'), async (req, res) => {
@@ -203,17 +168,6 @@ app.post('/api/syllabus/upload', upload.single('file'), async (req, res) => {
     console.error('Syllabus upload error:', error);
     if (error.message && error.message.includes('Invalid file type')) return res.status(400).json({ error: 'Invalid file format. Allowed: pdf, docx, txt' });
     res.status(500).json({ error: 'Failed to process file', details: error.message });
-  }
-});
-
-// GET Route (Added from second file)
-
-app.get('/api/feedbacks', async (req, res) => {
-  try {
-    const feedbacks = await Feedback.find({}).sort({ createdAt: -1 });
-    res.status(200).json(feedbacks);
-  } catch {
-    res.status(500).json({ message: 'Error fetching feedbacks.' });
   }
 });
 
