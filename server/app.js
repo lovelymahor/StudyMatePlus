@@ -3,7 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 const connectDB = require('./src/config/db');
-const feedbackRoutes = require('./src/routes/feedback.routes');
+const { createRouter, listRouter } = require('./src/routes/feedback');
 
 dotenv.config();
 
@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 });
 
 // Routes
-app.use('/api', feedbackRoutes);
+app.use('/api/feedback', createRouter);
+app.use('/api/feedbacks', listRouter);
 
 module.exports = app;
