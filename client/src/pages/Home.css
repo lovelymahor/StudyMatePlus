@@ -729,8 +729,9 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
 .footer-section p {
   max-width: 300px;
   line-height: 1.7;
-  color: #cbd5e1;
   font-size: 0.95rem;
+  color: var(--muted);
+  transition: color 0.3s ease;
 }
 
 .footer-section ul {
@@ -746,6 +747,16 @@ html[data-theme="dark"] .footer-section h4 { color: #fbbf24; }
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.2s ease;
+}
+
+html[data-theme="light"] .footer-section p,
+html[data-theme="light"] .footer-section a,
+html[data-theme="light"] .footer-bottom {
+  color: #2b2d30; /* Darker for better readability */
+}
+
+html[data-theme="light"] .footer-section a:hover {
+  color: #4f46e5;
 }
 
 .footer-section a:hover { color: #6366f1; }
