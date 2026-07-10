@@ -14,8 +14,6 @@ StudyMatePlus/
 
 ├── server/ # Backend (Node.js / Express)
 
-├── docs/ # Diagrams, UI mockups
-
 ├── .github/ # Issue & PR templates
 
 ├── README.md # Project overview
