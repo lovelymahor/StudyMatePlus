@@ -5,17 +5,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaDiscord, FaArrowUp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../theme/ThemeProvider"; // adjust the path if needed
 import logo from "./logo.png";
 import "./Home.css";
 import './ScrollToTop.css';
 
 
+
 const Home = () => {
   const auth = useAuth();
+  const { theme } = useTheme();
   const isAuthenticated = auth ? auth.isAuthenticated : false;
   
   document.title = "StudyMatePlus | Home";
-
+  
   const [contributors, setContributors] = useState([]);
   const [showScroll, setShowScroll] = useState(false);
 
@@ -51,8 +54,8 @@ const Home = () => {
   // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: "easeOut" }
     }
@@ -60,8 +63,8 @@ const Home = () => {
 
   const fadeInDown = {
     hidden: { opacity: 0, y: -30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: "easeOut" }
     }
@@ -91,8 +94,8 @@ const Home = () => {
 
   const scaleIn = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
       transition: { duration: 0.5, ease: "easeOut" }
     }
@@ -100,8 +103,8 @@ const Home = () => {
 
   const slideInLeft = {
     hidden: { opacity: 0, x: -50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
       transition: { duration: 0.6, ease: "easeOut" }
     }
@@ -109,8 +112,8 @@ const Home = () => {
 
   const slideInRight = {
     hidden: { opacity: 0, x: 50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
       transition: { duration: 0.6, ease: "easeOut" }
     }
@@ -118,11 +121,11 @@ const Home = () => {
 
   const bounceIn = {
     hidden: { opacity: 0, scale: 0.3 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
-      transition: { 
-        duration: 0.6, 
+      transition: {
+        duration: 0.6,
         ease: "easeOut",
         type: "spring",
         bounce: 0.4
@@ -220,10 +223,10 @@ const Home = () => {
           {/* RIGHT — 2×2 card grid */}
           <motion.div className="hero-visual" variants={slideInRight}>
             {[
-              { icon: "📚", title: "Study Materials",  desc: "Curated notes & resources", delay: 0    },
-              { icon: "📝", title: "Previous Papers",  desc: "Year-wise PYQs by dept",    delay: 0.1  },
-              { icon: "🎓", title: "Senior Guidance",  desc: "Connect with seniors",       delay: 0.2  },
-              { icon: "💬", title: "Exam Feedback",    desc: "Real student insights",      delay: 0.3  },
+              { icon: "📚", title: "Study Materials", desc: "Curated notes & resources", delay: 0 },
+              { icon: "📝", title: "Previous Papers", desc: "Year-wise PYQs by dept", delay: 0.1 },
+              { icon: "🎓", title: "Senior Guidance", desc: "Connect with seniors", delay: 0.2 },
+              { icon: "💬", title: "Exam Feedback", desc: "Real student insights", delay: 0.3 },
             ].map((card, i) => (
               <motion.div
                 key={i}
@@ -245,7 +248,7 @@ const Home = () => {
       </motion.section>
 
       {/* Features Section */}
-      <motion.section 
+      <motion.section
         className="features"
         initial="hidden"
         whileInView="visible"
@@ -280,18 +283,18 @@ const Home = () => {
                 linkText: "Read Feedback →"
               }
             ].map((feature, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 className="feature-card"
                 variants={scaleIn}
-                whileHover={{ 
-                  scale: 1.05, 
+                whileHover={{
+                  scale: 1.05,
                   y: -10,
                   boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
                 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <motion.div 
+                <motion.div
                   className="feature-icon"
                   whileHover={{ scale: 1.2, rotate: 10 }}
                   transition={{ type: "spring", stiffness: 400 }}
@@ -315,7 +318,7 @@ const Home = () => {
       </motion.section>
 
       {/* Stats Section */}
-      <motion.section 
+      <motion.section
         className="stats"
         initial="hidden"
         whileInView="visible"
@@ -330,18 +333,18 @@ const Home = () => {
               { number: "1000+", label: "Previous Papers" },
               { number: "200+", label: "Active Mentors" }
             ].map((stat, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 className="stat-item"
                 variants={bounceIn}
                 whileHover={{ scale: 1.05, y: -5 }}
                 {...pulseAnimation}
               >
-                <motion.div 
+                <motion.div
                   className="stat-number"
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ 
+                  transition={{
                     delay: index * 0.2,
                     type: "spring",
                     stiffness: 200
@@ -350,7 +353,7 @@ const Home = () => {
                 >
                   {stat.number}
                 </motion.div>
-                <motion.div 
+                <motion.div
                   className="stat-label"
                   variants={fadeInUp}
                 >
@@ -363,7 +366,7 @@ const Home = () => {
       </motion.section>
 
       {/* How It Works Section */}
-      <motion.section 
+      <motion.section
         className="how-it-works"
         initial="hidden"
         whileInView="visible"
@@ -398,18 +401,18 @@ const Home = () => {
                 linkText: "Connect Now →"
               }
             ].map((step, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 className="step"
                 variants={scaleIn}
-                whileHover={{ 
-                  scale: 1.05, 
+                whileHover={{
+                  scale: 1.05,
                   y: -10,
                   boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
                 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <motion.div 
+                <motion.div
                   className="step-icon"
                   whileHover={{ scale: 1.2, rotate: 10 }}
                   transition={{ type: "spring", stiffness: 400 }}
@@ -433,7 +436,7 @@ const Home = () => {
       </motion.section>
 
       {/* Testimonials Section */}
-      <motion.section 
+      <motion.section
         className="testimonials"
         initial="hidden"
         whileInView="visible"
@@ -445,23 +448,23 @@ const Home = () => {
             What Students Say
           </motion.h2>
           <div className="testimonial-wrapper">
-            <motion.div 
+            <motion.div
               className="testimonial-scroller"
               animate={{ x: ["0%", "-50%"] }}
-              transition={{ 
-                duration: 30, 
-                repeat: Infinity, 
+              transition={{
+                duration: 30,
+                repeat: Infinity,
                 ease: "linear",
                 repeatType: "loop"
               }}
             >
               {testimonials.map((testimonial, index) => (
-                <motion.div 
+                <motion.div
                   key={index}
                   className="testimonial-card"
                   variants={scaleIn}
-                  whileHover={{ 
-                    scale: 1.02, 
+                  whileHover={{
+                    scale: 1.02,
                     y: -8,
                     boxShadow: "0 15px 30px rgba(0,0,0,0.1)"
                   }}
@@ -486,12 +489,12 @@ const Home = () => {
                 </motion.div>
               ))}
               {testimonials.map((testimonial, index) => (
-                <motion.div 
+                <motion.div
                   key={index + testimonials.length}
                   className="testimonial-card"
                   variants={scaleIn}
-                  whileHover={{ 
-                    scale: 1.02, 
+                  whileHover={{
+                    scale: 1.02,
                     y: -8,
                     boxShadow: "0 15px 30px rgba(0,0,0,0.1)"
                   }}
@@ -521,7 +524,7 @@ const Home = () => {
       </motion.section>
 
       {/* CTA Section */}
-      <motion.section 
+      <motion.section
         className="cta"
         initial="hidden"
         whileInView="visible"
@@ -562,7 +565,7 @@ const Home = () => {
       </motion.section>
 
       {/* Contributors Section */}
-      <motion.section 
+      <motion.section
         className="contributors"
         initial="hidden"
         whileInView="visible"
@@ -586,15 +589,15 @@ const Home = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.05 }}
-                  whileHover={{ 
-                    scale: 1.05, 
+                  whileHover={{
+                    scale: 1.05,
                     y: -5,
                     boxShadow: "0 10px 20px rgba(0,0,0,0.1)"
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <motion.img 
-                    src={contributor.avatar_url} 
+                  <motion.img
+                    src={contributor.avatar_url}
                     alt={contributor.login}
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
@@ -614,7 +617,7 @@ const Home = () => {
       </motion.section>
 
       {/* Footer */}
-      <motion.footer 
+      <motion.footer
         className="footer"
         initial="hidden"
         whileInView="visible"
@@ -625,12 +628,17 @@ const Home = () => {
           <motion.div className="footer-content" variants={staggerChildren}>
             {/* Left Section */}
             <motion.div className="footer-section" variants={slideInLeft}>
-              <img 
-                src={logo} 
-                alt="StudyMatePlus Logo" 
-                style={{ height: "50px", marginBottom: "10px" }} 
+              <img
+                src={logo}
+                alt="StudyMatePlus Logo"
+                style={{ height: "50px", marginBottom: "10px" }}
               />
-              <p>Empowering students with comprehensive academic resources and peer-to-peer learning.</p>
+              <p className="footer-description"
+                style={{
+                  color: theme === "dark" ? "#ffffff" : "#000000",
+                }}>
+                Empowering students with comprehensive academic resources and peer-to-peer learning.
+              </p>
               {/* Social Links with Icons */}
               <div className="social-links">
                 <a href="https://github.com/lovelymahor/StudyMatePlus" target="_blank" rel="noopener noreferrer" className="social-icon github">
