@@ -126,7 +126,7 @@ const Syllabus = () => {
       difficulty: "Intermediate",
       tags: ["Electrical", "Power Systems", "Circuits"],
 
-      pdf: "/pdf/DSA.pdf"
+      pdf: null
     }
   ];
 
@@ -214,7 +214,7 @@ const Syllabus = () => {
 
   const handleDownload = (syllabus) => {
     if (!syllabus.pdf) {
-      alert("Syllabus PDF is not available.");
+      window.alert("This syllabus PDF is not available yet.");
       return;
     }
 
@@ -229,7 +229,7 @@ const Syllabus = () => {
 
   const handlePreview = (syllabus) => {
     if (!syllabus.pdf) {
-      alert("Preview is not available.");
+      window.alert("Preview is not available because the syllabus PDF has not been uploaded yet.");
       return;
     }
 
