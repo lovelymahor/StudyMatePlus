@@ -164,7 +164,7 @@ const [showScroll, setShowScroll] = useState(false);
   // Get unique values for filters
   const universities = ['All', ...new Set(syllabusData.map(item => item.university))];
   const departments = ['All', ...new Set(syllabusData.map(item => item.department))];
-  const semesters = ['All', ...new Set(syllabusData.map(item => item.semester))];
+  const semesters = ['All', ...new Set(syllabusData.map(item => item.semester))].sort((a, b) => a - b);
 
   // Filter and sort logic
   const filteredAndSortedSyllabi = useMemo(() => {
