@@ -24,6 +24,7 @@ export default function Todo() {
   const [form, setForm] = useState(defaultForm);
   const [isEditing, setIsEditing] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     // Load tasks and normalize recurring tasks so their deadlines are not in the past
@@ -77,11 +78,20 @@ export default function Todo() {
     setForm(defaultForm);
     setIsEditing(false);
     setShowModal(false);
+    setError("");
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!form.title || !form.deadline) return alert("Please provide a title and deadline");
+    if (!form.title || !form.title.trim()) {
+      setError("Task title is required");
+      return;
+    }
+    if (!form.deadline) {
+      setError("Deadline is required");
+      return;
+    }
+    setError("");
 
     if (isEditing) {
       setTasks((prev) => prev.map((t) => (t.id === form.id ? { ...t, ...form } : t)));
@@ -172,10 +182,14 @@ export default function Todo() {
               <button aria-label="Close" className="modal-close" onClick={resetForm}>×</button>
             </div>
             <form className="todo-form" onSubmit={handleSubmit}>
+              {error && <div className="error-message" style={{color: 'red', fontSize: '0.85rem', marginBottom: '0.5rem'}}>{error}</div>}
               <div className="row">
                 <input
                   value={form.title}
-                  onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
+                  onChange={(e) => {
+                    setForm((f) => ({ ...f, title: e.target.value }));
+                    if (error) setError("");
+                  }}
                   placeholder="Task title"
                 />
                 <select value={form.recurrence} onChange={(e) => setForm((f) => ({ ...f, recurrence: e.target.value }))}>
@@ -202,6 +216,7 @@ export default function Todo() {
                           const v = e.target.value; // yyyy-mm-ddThh:mm
                           const iso = v ? new Date(v).toISOString() : '';
                           setForm((f) => ({ ...f, deadline: iso }));
+                          if (error) setError("");
                         }}
                   />
                 </label>
