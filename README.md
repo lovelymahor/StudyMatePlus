@@ -67,6 +67,23 @@ StudyMatePlus/
 - npm 9 or newer
 - MongoDB connection string
 
+## Docker Setup (Alternative & Recommended)
+
+If you have Docker and Docker Compose installed, you can spin up the complete development environment (Frontend, Backend, and a local MongoDB instance) with a single command. This avoids having to configure local environments manually.
+
+### 1. Build and start containers
+
+```bash
+docker-compose up --build
+```
+
+### 2. Access the application
+
+- **Frontend client**: http://localhost:3000
+- **Backend API**: http://localhost:5000
+
+The services support volume mounting, so any changes you make in `client/` or `server/` will automatically sync and trigger hot reloading inside the containers.
+
 ## Local setup
 
 ### 1. Clone the repository

@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp } from "react-icons/fa";
 import './Notes.css';
 
+const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 const Notes = () => {
 
   document.title = "StudyMatePlus | Notes";
@@ -36,7 +38,7 @@ const Notes = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/notes');
+        const response = await fetch(`${API_BASE}/api/notes`);
         if (response.ok) {
           const dbData = await response.json();
           if (dbData && dbData.length > 0) {
@@ -79,7 +81,7 @@ const Notes = () => {
     setUploadProgress(0);
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:5000/api/notes/upload', true);
+    xhr.open('POST', `${API_BASE}/api/notes/upload`, true);
 
     xhr.upload.onprogress = (event) => {
       if (event.lengthComputable) {
