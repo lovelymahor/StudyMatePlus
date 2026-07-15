@@ -10,7 +10,7 @@ import PYQs from "./pages/PYQs";
 import Feedback from "./pages/Feedback";
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
-import Contact from "./pages/Contact";
+import Contact from "./pages/Contact1.js";
 import Analytics from "./pages/Analytics";
 import Faq from "./pages/Faq";
 import Contribute from "./pages/Contribute";

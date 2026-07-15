@@ -1,0 +1,200 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+/* Hero Section */
+.contact-hero {
+  text-align: center;
+  /* padding: 100px 20px 60px; */
+}
+
+.contact-hero h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color:white;
+}
+
+.contact-hero p {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.contact{
+  width:calc(100vw-2rem);
+  /* border:1px solid black; */
+}
+
+/* Main Container */
+.contact-main .container {
+  /* max-width: 1100px; */
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.container{
+   background: transparent;
+   color:white;
+}
+
+.contact-content {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px;
+  flex: 1;
+  min-width: 320px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+}
+
+/* Contact Info Section */
+.contact-info h2 {
+  margin-bottom: 20px;
+  font-size:2rem;
+  color:white;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  margin-bottom: 30px;
+  margin-left:30px;
+}
+
+.info-icon {
+  font-size: 1.8rem;
+  margin-right: 15px;
+}
+
+.info-icon img {
+  width: 30px;
+  height: 30px;
+  filter:invert(100%);
+}
+
+.social-links {
+  margin-top: 30px;
+  display:flex;
+  flex-direction: column;
+  /* border:1px solid black; */
+}
+
+.social-links > h3{
+  margin-bottom:10px;
+  font-size:26px;
+  color:white;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-left:4rem;
+  /* border:1px solid black; */
+}
+
+.social-icon {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.5s;
+  margin-left: 20px;
+}
+
+.social-icon img{
+  width:40px;
+  height:40px;
+  transition:all 0.5s ease-in-out;
+}
+
+.social-icon:hover {
+  color: #00ffe7;
+}
+
+
+
+/* Contact Form Section */
+.contact-form-container h2 {
+  margin-bottom: 20px;
+  color:white;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.faq-list {
+  margin-top: 30px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+  }
+}
