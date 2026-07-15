@@ -1,0 +1,160 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0a192f;
+    color: #ccd6f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Main Container for centering content */
+.container {
+    width: 100%;
+    max-width: 500px; /* Increased max-width slightly for the features list */
+    text-align: center;
+}
+
+/* --- Welcome Page Specific Styles --- */
+.welcome-container h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.welcome-container p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: #8892b0;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* --- Features Section on Welcome Page --- */
+.features {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+    display: inline-block;
+}
+
+.features h2 {
+    text-align: center;
+    color: #a7fff6;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.features ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.features li {
+    color: #8892b0;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* --- Login Box Styles --- */
+.login-box {
+    background-color: #112240;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #1d3b66;
+    text-align: left;
+    max-width: 420px; /* Max width for the login box itself */
+    margin: 0 auto;   /* Center login box within the container */
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 2em;
+    color: #64ffda;
+}
+
+/* --- Form Element Styles --- */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #8892b0;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #2c4a79;
+    background-color: #0a192f;
+    color: #ccd6f6;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #64ffda;
+    box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.2);
+}
+
+/* --- Shared Button Style --- */
+.action-button {
+    display: inline-block;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #64ffda;
+    color: #0a192f;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+    background-color: #52d3bc;
+    transform: translateY(-2px);
+}
+
+/* --- Extra Links (Forgot Password, etc.) --- */
+.extra-links {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.extra-links a {
+    color: #64ffda;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.extra-links a:hover {
+    text-decoration: underline;
+    color: #a7fff6;
+}
+
+.extra-links .separator {
+    margin: 0 10px;
+    color: #8892b0;
+}
