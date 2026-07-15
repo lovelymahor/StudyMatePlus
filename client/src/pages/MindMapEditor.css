@@ -43,7 +43,7 @@ html[data-theme="dark"] .mindmap {
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border); 
   background: linear-gradient(180deg, var(--panel), var(--panel));
   position: sticky;
   top: 0;
@@ -190,6 +190,14 @@ html[data-theme="dark"] .mindmap {
   border-radius: 999px;
   margin-top: 6px;
   background: rgba(255,255,255,.2);
+}
+
+.node-badge-progress {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.node-badge-priority {
+  background: rgba(0, 0, 0, 0.18);
 }
 
 .highlight {

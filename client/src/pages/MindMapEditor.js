@@ -25,10 +25,38 @@ const SUBJECTS = {
   Default:'#2d7ef7',
 };
 
+const STUDY_LEVELS = ['Subject', 'Unit', 'Topic', 'Subtopic'];
+const PROGRESS_LEVELS = ['Not Started', 'In Progress', 'Revised', 'Completed'];
+const PRIORITY_LEVELS = ['High', 'Medium', 'Low'];
+
+const makeStudyNodeData = (overrides = {}) => ({
+  label: 'New Node',
+  subject: 'Default',
+  nodeType: 'Topic',
+  progress: 'Not Started',
+  priority: 'Medium',
+  color: SUBJECTS.Default,
+  collapsed: false,
+  ...overrides,
+});
+
 // ---- Custom Node Renderer (label+subject+collapse) ----
 function StudyNode({ id, data, selected }) {
-  const { label, subject, color, onToggleCollapse, collapsed, matchesQuery } = data;
+  const {
+    label,
+    subject,
+    nodeType,
+    progress,
+    priority,
+    color,
+    onToggleCollapse,
+    collapsed,
+    matchesQuery,
+  } = data;
   const bg = color || SUBJECTS[subject] || SUBJECTS.Default;
+  const studyLevel = nodeType || 'Topic';
+  const studyProgress = progress || 'Not Started';
+  const studyPriority = priority || 'Medium';
 
   return (
     <div className={`node-inner ${matchesQuery ? 'highlight' : ''}`} style={{ background: bg, position: 'relative' }}>
@@ -36,7 +64,10 @@ function StudyNode({ id, data, selected }) {
       <Handle type="target" position={Position.Left} id="a" style={{ background: '#fff', border: '2px solid rgba(0,0,0,0.12)' }} />
       <div style={{ padding: '8px 12px' }}>
         <div>{label}</div>
+        <div className="node-badge">{studyLevel}</div>
         <div className="node-badge">{subject || 'General'}</div>
+        <div className="node-badge node-badge-progress">{studyProgress}</div>
+        <div className="node-badge node-badge-priority">{studyPriority}</div>
       </div>
       <div className="collapse-toggle" onClick={() => onToggleCollapse?.(id)}>
         {collapsed ? 'Expand' : 'Collapse'}
@@ -92,7 +123,7 @@ export default function MindMapEditor() {
       id: 'root',
       type: 'study',
       position: { x: 250, y: 100 },
-      data: { label: 'Study Plan', subject: 'Default', color: SUBJECTS.Default, collapsed: false },
+      data: makeStudyNodeData({ label: 'Study Plan' }),
     },
   ]);
   const [edges, setEdges] = useState([]);
@@ -188,7 +219,7 @@ export default function MindMapEditor() {
     const id = uuid();
     const pos = { x: 120 + Math.random() * 200, y: 120 + Math.random() * 200 };
     const color = SUBJECTS.Default;
-    const newNode = { id, type: 'study', position: pos, data: { label: `New Node`, subject: 'Default', color, collapsed: false } };
+    const newNode = { id, type: 'study', position: pos, data: makeStudyNodeData({ color }) };
     setNodes(nds => nds.concat(newNode));
     setSelectedId(id);
   }, []);
@@ -196,7 +227,7 @@ export default function MindMapEditor() {
   const createNodeBoxAt = useCallback((pos) => {
     const id = uuid();
     const color = SUBJECTS.Default;
-    const newNode = { id, type: 'study', position: pos, data: { label: `New Node`, subject: 'Default', color, collapsed: false } };
+    const newNode = { id, type: 'study', position: pos, data: makeStudyNodeData({ color }) };
     setNodes(nds => nds.concat(newNode));
     setSelectedId(id);
   }, []);
@@ -339,7 +370,7 @@ export default function MindMapEditor() {
     const id = uuid();
     const pos = { x: base.position.x + 200, y: base.position.y + (Math.random() * 160 - 80) };
     const color = SUBJECTS[subject] || SUBJECTS.Default;
-    const newNode = { id, type: 'study', position: pos, data: { label: `${subject} Topic`, subject, color, collapsed: false } };
+    const newNode = { id, type: 'study', position: pos, data: makeStudyNodeData({ label: `${subject} Topic`, subject, color }) };
     setNodes(nds => nds.concat(newNode));
     setEdges(eds => eds.concat({ id: uuid(), source: base.id, target: id, type: 'smoothstep', markerEnd: { type: MarkerType.ArrowClosed } }));
     setSelectedId(id);
@@ -438,10 +469,10 @@ export default function MindMapEditor() {
   // Templates
   const applyTemplate = (type) => {
     if (type === 'exam') {
-      const n1 = { id: '1', type: 'study', position: { x: 250, y: 80 }, data: { label: 'Exam Prep', subject: 'Default', color: SUBJECTS.Default } };
-      const n2 = { id: '2', type: 'study', position: { x: 60, y: 260 }, data: { label: 'Math', subject: 'Math', color: SUBJECTS.Math } };
-      const n3 = { id: '3', type: 'study', position: { x: 250, y: 260 }, data: { label: 'Science', subject: 'Science', color: SUBJECTS.Science } };
-      const n4 = { id: '4', type: 'study', position: { x: 440, y: 260 }, data: { label: 'History', subject: 'History', color: SUBJECTS.History } };
+      const n1 = { id: '1', type: 'study', position: { x: 250, y: 80 }, data: makeStudyNodeData({ label: 'Exam Prep', subject: 'Default', nodeType: 'Subject', color: SUBJECTS.Default }) };
+      const n2 = { id: '2', type: 'study', position: { x: 60, y: 260 }, data: makeStudyNodeData({ label: 'Math', subject: 'Math', nodeType: 'Subject', color: SUBJECTS.Math }) };
+      const n3 = { id: '3', type: 'study', position: { x: 250, y: 260 }, data: makeStudyNodeData({ label: 'Science', subject: 'Science', nodeType: 'Subject', color: SUBJECTS.Science }) };
+      const n4 = { id: '4', type: 'study', position: { x: 440, y: 260 }, data: makeStudyNodeData({ label: 'History', subject: 'History', nodeType: 'Subject', color: SUBJECTS.History }) };
       setNodes([n1, n2, n3, n4]);
       setEdges([
         { id: 'e1-2', source: '1', target: '2', type: 'smoothstep', markerEnd: { type: MarkerType.ArrowClosed } },
@@ -462,7 +493,7 @@ export default function MindMapEditor() {
       ].map((x, idx) => ({
         id: x.id, type:'study',
         position: { x: 140 + idx*160, y: idx ? 260 : 90 },
-        data: { label: x.label, subject:'Default', color: SUBJECTS.Default }
+        data: makeStudyNodeData({ label: x.label, subject:'Default', color: SUBJECTS.Default, nodeType: idx === 0 ? 'Subject' : 'Topic' })
       }));
       setNodes(base);
       setEdges(base.slice(1).map(n => ({ id: uuid(), source: ids[0], target: n.id, type:'smoothstep', markerEnd:{ type: MarkerType.ArrowClosed }})));
@@ -470,10 +501,10 @@ export default function MindMapEditor() {
       return;
     }
     if (type === 'planner') {
-      const root = { id:'root', type:'study', position:{ x:250, y:90 }, data:{ label:'Today', subject:'Default', color:SUBJECTS.Default }};
-      const morn = { id:'m', type:'study', position:{ x:80, y:250 }, data:{ label:'Morning', subject:'Default', color:'#6c8cff' }};
-      const noon = { id:'n', type:'study', position:{ x:250, y:250 }, data:{ label:'Afternoon', subject:'Default', color:'#64d2b4' }};
-      const eve  = { id:'e', type:'study', position:{ x:420, y:250 }, data:{ label:'Evening', subject:'Default', color:'#ff9e6e' }};
+      const root = { id:'root', type:'study', position:{ x:250, y:90 }, data:makeStudyNodeData({ label:'Today', subject:'Default', nodeType:'Subject', color:SUBJECTS.Default }) };
+      const morn = { id:'m', type:'study', position:{ x:80, y:250 }, data:makeStudyNodeData({ label:'Morning', subject:'Default', nodeType:'Topic', color:'#6c8cff' }) };
+      const noon = { id:'n', type:'study', position:{ x:250, y:250 }, data:makeStudyNodeData({ label:'Afternoon', subject:'Default', nodeType:'Topic', color:'#64d2b4' }) };
+      const eve  = { id:'e', type:'study', position:{ x:420, y:250 }, data:makeStudyNodeData({ label:'Evening', subject:'Default', nodeType:'Topic', color:'#ff9e6e' }) };
       setNodes([root, morn, noon, eve]);
       setEdges([
         { id: uuid(), source:'root', target:'m', type:'smoothstep', markerEnd:{ type: MarkerType.ArrowClosed }},
@@ -658,27 +689,52 @@ export default function MindMapEditor() {
                 placeholder="e.g., Algebra, Literature Review"
               />
             </div>
-            <div className="row">
-              <div className="field" style={{ flex: 1 }}>
-                <label>Subject</label>
-                <select
-                  value={selectedNode.data.subject || 'Default'}
-                  onChange={(e) => {
-                    const subj = e.target.value;
-                    updateSelected({ subject: subj, color: SUBJECTS[subj] || SUBJECTS.Default });
-                  }}
-                >
-                  {Object.keys(SUBJECTS).map(k => <option key={k} value={k}>{k}</option>)}
-                </select>
-              </div>
-              <div className="field" style={{ width: 110 }}>
-                <label>Custom Color</label>
-                <input
-                  type="color"
-                  value={selectedNode.data.color || SUBJECTS.Default}
-                  onChange={(e) => updateSelected({ color: e.target.value })}
-                />
-              </div>
+            <div className="field">
+              <label>Subject</label>
+              <select
+                value={selectedNode.data.subject || 'Default'}
+                onChange={(e) => {
+                  const subj = e.target.value;
+                  updateSelected({ subject: subj, color: SUBJECTS[subj] || SUBJECTS.Default });
+                }}
+              >
+                {Object.keys(SUBJECTS).map(k => <option key={k} value={k}>{k}</option>)}
+              </select>
+            </div>
+            <div className="field">
+              <label>Study Level</label>
+              <select
+                value={selectedNode.data.nodeType || 'Topic'}
+                onChange={(e) => updateSelected({ nodeType: e.target.value })}
+              >
+                {STUDY_LEVELS.map(level => <option key={level} value={level}>{level}</option>)}
+              </select>
+            </div>
+            <div className="field">
+              <label>Progress</label>
+              <select
+                value={selectedNode.data.progress || 'Not Started'}
+                onChange={(e) => updateSelected({ progress: e.target.value })}
+              >
+                {PROGRESS_LEVELS.map(level => <option key={level} value={level}>{level}</option>)}
+              </select>
+            </div>
+            <div className="field">
+              <label>Priority</label>
+              <select
+                value={selectedNode.data.priority || 'Medium'}
+                onChange={(e) => updateSelected({ priority: e.target.value })}
+              >
+                {PRIORITY_LEVELS.map(level => <option key={level} value={level}>{level}</option>)}
+              </select>
+            </div>
+            <div className="field" style={{ width: 110 }}>
+              <label>Custom Color</label>
+              <input
+                type="color"
+                value={selectedNode.data.color || SUBJECTS.Default}
+                onChange={(e) => updateSelected({ color: e.target.value })}
+              />
             </div>
 
             <div className="row">
