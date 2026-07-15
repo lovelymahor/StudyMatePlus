@@ -22,6 +22,7 @@ import Todo from "./pages/Todo";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Router>
           {/* Navbar is hidden on login/register via CSS — it checks the route */}
           <NavbarWrapper />
+          <ScrollToTop />
           <ScrollToTop />
           <Routes>
             {/* ── Public routes ── */}
