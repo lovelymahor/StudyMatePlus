@@ -405,7 +405,7 @@
 
 .upload-section p {
   font-size: 1rem;
-  color: #555;
+  color: var(--muted);
   margin-bottom: 2rem;
 }
 

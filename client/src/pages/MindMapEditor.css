@@ -316,7 +316,7 @@ html[data-theme="dark"] .mindmap {
 
 .react-flow__node-info .info-node, .info-node {
   background: var(--card);
-  color: #111;
+  color: var(--text);
   padding: 8px 10px;
   border-radius: 8px;
   border: 1px solid var(--border);
