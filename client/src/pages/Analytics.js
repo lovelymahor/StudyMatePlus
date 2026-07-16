@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Bar, Pie } from 'react-chartjs-2';
 import { authAxios } from '../context/AuthContext';
 import {
@@ -10,10 +10,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaArrowUp } from "react-icons/fa";
+import { motion } from 'framer-motion';
 import './Analytics.css';
-import './ScrollToTop.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
 
@@ -67,33 +65,6 @@ const Analytics = () => {
 
   // State to track selected subject
   const [selectedSubject, setSelectedSubject] = useState('all');
-
-  // State for the scroll-to-top button
-  const [showScroll, setShowScroll] = useState(false);
-
-  // Effect to handle scroll events for the button
-  useEffect(() => {
-    const checkScrollTop = () => {
-      if (!showScroll && window.scrollY > 300) {
-        setShowScroll(true);
-      } else if (showScroll && window.scrollY <= 300) {
-        setShowScroll(false);
-      }
-    };
-
-    window.addEventListener('scroll', checkScrollTop);
-    return () => {
-      window.removeEventListener('scroll', checkScrollTop);
-    };
-  }, [showScroll]);
-
-  // Function to scroll to the top
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
 
   const downloadAnalyticsPdf = async () => {
     const serverBase = (process.env.REACT_APP_API_URL || 'http://localhost:5000/api/auth').replace(/\/api\/auth$/, '');
@@ -207,24 +178,6 @@ const Analytics = () => {
           </motion.button>
         </motion.section>
       </div>
-
-      {/* Scroll to Top Button */}
-      <AnimatePresence>
-        {showScroll && (
-          <motion.button
-            key="scrollTop"
-            className="scroll-to-top"
-            onClick={scrollToTop}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5 }}
-            whileHover={{ scale: 1.15, rotate: 5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <FaArrowUp />
-          </motion.button>
-        )}
-      </AnimatePresence>
      </div>
    );
 };
