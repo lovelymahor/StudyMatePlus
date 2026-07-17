@@ -81,7 +81,8 @@ export default function Todo() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!form.title || !form.deadline) return alert("Please provide a title and deadline");
+    const title = form.title.trim();
+    if (!title || !form.deadline) return alert("Please provide a title and deadline");
 
     if (isEditing) {
       setTasks((prev) => prev.map((t) => (t.id === form.id ? { ...t, ...form } : t)));
