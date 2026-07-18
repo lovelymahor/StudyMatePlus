@@ -203,6 +203,14 @@ app.post('/api/syllabus/upload', upload.single('file'), async (req, res) => {
     console.error('Syllabus upload error:', error);
     if (error.message && error.message.includes('Invalid file type')) return res.status(400).json({ error: 'Invalid file format. Allowed: pdf, docx, txt' });
     res.status(500).json({ error: 'Failed to process file', details: error.message });
+  } finally {
+    // Always clean up the uploaded temp file after processing (success or failure)
+    // to prevent unbounded disk growth and unintended file retention.
+    if (req.file && req.file.path) {
+      fs.unlink(req.file.path, (err) => {
+        if (err) console.error('Failed to delete uploaded temp file:', err);
+      });
+    }
   }
 });
 
