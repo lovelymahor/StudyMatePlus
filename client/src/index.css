@@ -106,3 +106,10 @@ html[data-theme="dark"] .navbar-logo,
 html[data-theme="dark"] .themed-logo {
   filter: brightness(0) invert(1) contrast(1.05) saturate(1.1);
 }
+
+/* Shared logo glow pulse animation for auth & hero branding */
+@keyframes logoPulse {
+  0%, 100% { filter: drop-shadow(0 0 16px rgba(99, 179, 237, 0.5)); }
+  50%       { filter: drop-shadow(0 0 28px rgba(99, 179, 237, 0.9)); }
+}
+
