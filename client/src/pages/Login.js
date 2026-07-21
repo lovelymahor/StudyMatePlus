@@ -3,65 +3,42 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Login.css';
 
-// ─── Floating academic shapes ────────────────────────────────────────────────
+// ─── Floating Academic Shapes ────────────────────────────────────────────────
 const SHAPES = [
-  { icon: '📚', x: 8,  y: 15, size: 2.2, delay: 0   },
-  { icon: '🎓', x: 85, y: 10, size: 1.8, delay: 0.8 },
-  { icon: '✏️', x: 12, y: 72, size: 1.5, delay: 1.6 },
-  { icon: '🔬', x: 90, y: 65, size: 1.9, delay: 0.4 },
-  { icon: '💡', x: 50, y: 5,  size: 1.6, delay: 1.2 },
-  { icon: '🧠', x: 3,  y: 45, size: 1.4, delay: 2.0 },
-  { icon: '📐', x: 92, y: 38, size: 1.7, delay: 0.6 },
-  { icon: '🏆', x: 70, y: 88, size: 1.5, delay: 1.8 },
-  { icon: '⚡', x: 25, y: 92, size: 1.3, delay: 1.0 },
-  { icon: '🌟', x: 60, y: 18, size: 1.6, delay: 2.4 },
+  { icon: '📚', x: 5,  y: 12, size: 2.2, delay: 0   },
+  { icon: '🎓', x: 88, y: 8,  size: 2.0, delay: 0.8 },
+  { icon: '✏️', x: 8,  y: 80, size: 1.8, delay: 1.6 },
+  { icon: '🔬', x: 92, y: 75, size: 2.1, delay: 0.4 },
+  { icon: '💡', x: 48, y: 5,  size: 1.8, delay: 1.2 },
+  { icon: '🧠', x: 3,  y: 48, size: 1.6, delay: 2.0 },
+  { icon: '📐', x: 94, y: 40, size: 1.8, delay: 0.6 },
+  { icon: '🏆', x: 72, y: 88, size: 1.7, delay: 1.8 },
 ];
 
 const STATS = [
-  { value: 'Senior guidance', label: 'From mentors who have been there' },
-  { value: 'Exam feedback', label: 'Improve after every mock and review' },
-  { value: 'Previous papers', label: 'Practice with real exam patterns' },
-  { value: 'Mind maps', label: 'Visual study paths for tough topics' },
+  { value: 'Senior Guidance', label: 'From expert mentors' },
+  { value: 'Exam Feedback',   label: 'Mock review analysis' },
+  { value: 'Previous Papers', label: 'Real exam patterns' },
+  { value: 'Mind Maps',       label: 'Visual study paths' },
 ];
 
 const FEATURES = [
-  { icon: '📖', title: 'Smart Notes',      desc: 'AI-powered organized notes for every subject'   },
-  { icon: '🧑‍🏫', title: 'Senior Guidance', desc: 'Learn from senior tips, shortcuts, and direction' },
-  { icon: '📝', title: 'Exam Feedback',    desc: 'See where you stand after practice and mock tests' },
-  { icon: '📚', title: 'Previous Papers',  desc: 'Practice with exam-style questions and patterns'  },
+  { icon: '📖', title: 'Smart Notes',     desc: 'AI-powered structured notes for all subjects' },
+  { icon: '🧑‍🏫', title: 'Senior Guidance', desc: 'Direct tips & shortcuts from experienced seniors' },
+  { icon: '📝', title: 'Exam Feedback',   desc: 'Detailed performance review after every mock test' },
+  { icon: '📚', title: 'Previous Papers', desc: 'Comprehensive archives with authentic patterns' },
 ];
 
-// ─── Password strength calculator ────────────────────────────────────────────
-const getPasswordStrength = (pw) => {
-  if (!pw) return { score: 0, label: '', color: '' };
-  let score = 0;
-  if (pw.length >= 8)   score++;
-  if (/[A-Z]/.test(pw)) score++;
-  if (/[0-9]/.test(pw)) score++;
-  if (/[^A-Za-z0-9]/.test(pw)) score++;
-  const map = [
-    { label: '',        color: ''        },
-    { label: 'Weak',    color: '#ef4444' },
-    { label: 'Fair',    color: '#f97316' },
-    { label: 'Good',    color: '#eab308' },
-    { label: 'Strong',  color: '#22c55e' },
-  ];
-  return { score, ...map[score] };
-};
-
-// ─── Component ────────────────────────────────────────────────────────────────
 const Login = () => {
   const { login, isAuthenticated, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
 
-  // Redirect if already logged in
   useEffect(() => {
     if (!authLoading && isAuthenticated) navigate(from, { replace: true });
   }, [isAuthenticated, authLoading, navigate, from]);
 
-  // ── Form state ────────────────────────────────────────────────────────────
   const [form, setForm] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
@@ -69,23 +46,21 @@ const Login = () => {
   const [serverError, setServerError] = useState('');
   const [success, setSuccess] = useState(false);
   const [mounted, setMounted] = useState(false);
-
-  // Active label for floating inputs
   const [focused, setFocused] = useState({});
 
   const emailRef = useRef(null);
 
   useEffect(() => {
-    setTimeout(() => setMounted(true), 50);
+    const timer = setTimeout(() => setMounted(true), 50);
     emailRef.current?.focus();
+    return () => clearTimeout(timer);
   }, []);
 
-  // ── Client-side validation ────────────────────────────────────────────────
   const validate = () => {
     const e = {};
-    if (!form.email.trim())                          e.email    = 'Email is required.';
-    else if (!/^\S+@\S+\.\S+$/.test(form.email))    e.email    = 'Enter a valid email.';
-    if (!form.password)                              e.password = 'Password is required.';
+    if (!form.email.trim())                   e.email    = 'Email is required.';
+    else if (!/^\S+@\S+\.\S+$/.test(form.email)) e.email    = 'Enter a valid email address.';
+    if (!form.password)                       e.password = 'Password is required.';
     return e;
   };
 
@@ -96,7 +71,6 @@ const Login = () => {
     if (serverError)  setServerError('');
   };
 
-  // ── Submit ────────────────────────────────────────────────────────────────
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
@@ -111,7 +85,7 @@ const Login = () => {
         setSuccess(true);
         setTimeout(() => navigate(from, { replace: true }), 900);
       } else {
-        setServerError(result.message || 'Login failed. Please try again.');
+        setServerError(result.message || 'Login failed. Please verify your credentials.');
       }
     } catch (err) {
       const msg = err.response?.data?.message || 'Something went wrong. Please try again.';
@@ -124,7 +98,7 @@ const Login = () => {
   return (
     <div className={`login-page ${mounted ? 'mounted' : ''}`}>
 
-      {/* ── Animated background ── */}
+      {/* Background Orbs & Grid */}
       <div className="login-bg">
         <div className="login-bg-orb orb-1" />
         <div className="login-bg-orb orb-2" />
@@ -132,7 +106,7 @@ const Login = () => {
         <div className="login-bg-grid" />
       </div>
 
-      {/* ── Floating shapes ── */}
+      {/* Floating Shapes */}
       <div className="login-shapes" aria-hidden="true">
         {SHAPES.map((s, i) => (
           <span
@@ -152,25 +126,33 @@ const Login = () => {
 
       <div className="login-container">
 
-        {/* ════════════ LEFT HERO PANEL ════════════ */}
+        {/* Left Hero Panel */}
         <div className="login-hero">
           <div className="login-hero-inner">
 
-            {/* Brand */}
+            {/* Standout Logo Badge */}
             <div className="login-brand">
-              <img src="/logo.png" alt="StudyMate Plus" className="login-logo" />
+              <div className="login-logo-badge">
+                <img src="/logo.png" alt="StudyMate Plus" className="login-logo" />
+              </div>
+              <div>
+                <h1 className="login-brand-name">StudyMate Plus</h1>
+                <p className="login-brand-tagline">Academic Excellence Platform</p>
+              </div>
             </div>
 
             {/* Headline */}
             <div className="login-headline">
-              <h2>Unlock Your Full<br /><span className="login-gradient-text">Academic Potential</span></h2>
+              <h2>
+                Unlock Your Full<br />
+                <span className="login-gradient-text">Academic Potential</span>
+              </h2>
               <p className="login-hero-desc">
-                Join thousands of students who are already learning smarter,
-                not harder — with tools built for modern learners.
+                Join thousands of students learning smarter with AI-powered notes, real mock analytics, and senior mentorship.
               </p>
             </div>
 
-            {/* Stats */}
+            {/* Stats Row */}
             <div className="login-stats">
               {STATS.map((s) => (
                 <div key={s.label} className="login-stat">
@@ -180,12 +162,12 @@ const Login = () => {
               ))}
             </div>
 
-            {/* Feature pills */}
+            {/* Feature Grid */}
             <div className="login-features">
               {FEATURES.map((f) => (
                 <div key={f.title} className="login-feature-pill">
                   <span className="login-feature-icon">{f.icon}</span>
-                  <div>
+                  <div className="login-feature-text">
                     <p className="login-feature-title">{f.title}</p>
                     <p className="login-feature-desc">{f.desc}</p>
                   </div>
@@ -193,16 +175,10 @@ const Login = () => {
               ))}
             </div>
 
-            {/* Decorative card */}
-            <div className="login-hero-card" aria-hidden="true">
-              <div className="login-hero-card-glow" />
-              <span>🎯</span>
-              <p>Ready to ace your exams?</p>
-            </div>
           </div>
         </div>
 
-        {/* ════════════ RIGHT FORM PANEL ════════════ */}
+        {/* Right Form Panel */}
         <div className="login-form-panel">
           <div className={`login-card ${success ? 'success-state' : ''}`}>
 
@@ -217,11 +193,11 @@ const Login = () => {
               <p className="login-card-subtitle">
                 {success
                   ? 'Redirecting to your dashboard…'
-                  : 'Sign in to continue your learning journey'}
+                  : 'Sign in to access your dashboard'}
               </p>
             </div>
 
-            {/* Server error banner */}
+            {/* Error Banner */}
             {serverError && (
               <div className="login-alert login-alert-error" role="alert">
                 <span>⚠️</span> {serverError}
@@ -231,7 +207,7 @@ const Login = () => {
             {/* Form */}
             <form className="login-form" onSubmit={handleSubmit} noValidate>
 
-              {/* Email */}
+              {/* Email Field */}
               <div className={`login-field ${focused.email || form.email ? 'active' : ''} ${errors.email ? 'error' : ''}`}>
                 <label htmlFor="email" className="login-label">Email Address</label>
                 <div className="login-input-wrapper">
@@ -254,7 +230,7 @@ const Login = () => {
                 {errors.email && <span className="login-field-error">{errors.email}</span>}
               </div>
 
-              {/* Password */}
+              {/* Password Field */}
               <div className={`login-field ${focused.password || form.password ? 'active' : ''} ${errors.password ? 'error' : ''}`}>
                 <label htmlFor="password" className="login-label">Password</label>
                 <div className="login-input-wrapper">
@@ -285,7 +261,7 @@ const Login = () => {
                 {errors.password && <span className="login-field-error">{errors.password}</span>}
               </div>
 
-              {/* Submit */}
+              {/* Submit CTA */}
               <button
                 type="submit"
                 className={`login-btn ${isSubmitting ? 'loading' : ''} ${success ? 'success' : ''}`}
@@ -301,21 +277,20 @@ const Login = () => {
               </button>
             </form>
 
-            {/* Divider */}
             <div className="login-divider"><span>New to StudyMate Plus?</span></div>
 
-            {/* Register link */}
             <Link to="/register" className="login-register-btn">
               Create Free Account ✨
             </Link>
 
-            {/* Footer */}
             <p className="login-footer-note">
               By signing in, you agree to our{' '}
-              <Link to="/privacy">Privacy Policy</Link>
+              <Link to="/privacy">Terms of Service & Privacy Policy</Link>
             </p>
+
           </div>
         </div>
+
       </div>
     </div>
   );
