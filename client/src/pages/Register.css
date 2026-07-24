@@ -74,13 +74,38 @@
 .reg-hero {
   flex: 1;
   display: flex; align-items: center; justify-content: center;
-  padding: 3rem 3.5rem; overflow-y: auto;
+  padding: 2rem 3.5rem; overflow-y: auto;
   background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(37,99,235,0.07) 100%);
   border-right: 1px solid rgba(255,255,255,0.05);
 }
+
+/* Slim, unobtrusive scrollbar — kept consistent with the Login page */
+.reg-hero,
+.reg-form-panel {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.15) transparent;
+}
+.reg-hero::-webkit-scrollbar,
+.reg-form-panel::-webkit-scrollbar {
+  width: 6px;
+}
+.reg-hero::-webkit-scrollbar-track,
+.reg-form-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.reg-hero::-webkit-scrollbar-thumb,
+.reg-form-panel::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+}
+.reg-hero::-webkit-scrollbar-thumb:hover,
+.reg-form-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.28);
+}
+
 .reg-hero-inner {
   max-width: 500px; width: 100%;
-  display: flex; flex-direction: column; gap: 2rem;
+  display: flex; flex-direction: column; gap: 1.6rem;
   animation: regSlideLeft 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 @keyframes regSlideLeft {
@@ -88,33 +113,50 @@
   to   { opacity: 1; transform: translateX(0); }
 }
 
-.reg-brand { display: flex; align-items: center; gap: 1rem; }
+/* Brand row — logo sits on a soft plate so it stays visible
+   regardless of the logo file's own colors, in dark or light mode.
+   Sized to match the Login page exactly. */
+.reg-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0.7rem;
+  background: rgba(255,255,255,0.94);
+  border-radius: 18px;
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.28),
+    0 0 0 1px rgba(255,255,255,0.5) inset;
+}
 .reg-logo {
-  width: 141px; height: 141px; object-fit: contain;
-  filter: drop-shadow(0 0 14px rgba(167,139,250,0.5));
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  display: block;
   animation: regLogoPulse 3s ease-in-out infinite;
 }
 @keyframes regLogoPulse {
-  0%, 100% { filter: drop-shadow(0 0 14px rgba(167,139,250,0.5)); }
-  50%       { filter: drop-shadow(0 0 26px rgba(167,139,250,0.9)); }
+  0%, 100% { transform: scale(1);    }
+  50%       { transform: scale(1.04); }
 }
 
 .reg-hero-text h2 {
-  font-size: clamp(1.8rem, 2.8vw, 2.5rem); font-weight: 800;
-  color: #fff; margin: 0 0 0.75rem; letter-spacing: -0.03em; line-height: 1.18;
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 800;
+  color: #fff; margin: 0 0 0.7rem; letter-spacing: -0.03em; line-height: 1.18;
 }
 .reg-gradient {
   background: linear-gradient(135deg, #a78bfa, #60a5fa, #34d399);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.reg-hero-desc { font-size: 0.98rem; color: rgba(255,255,255,0.52); line-height: 1.7; margin: 0; }
+.reg-hero-desc { font-size: 0.95rem; color: rgba(255,255,255,0.52); line-height: 1.65; margin: 0; }
 
 /* Benefits */
-.reg-benefits { display: flex; flex-direction: column; gap: 0.5rem; }
+.reg-benefits { display: flex; flex-direction: column; gap: 0.45rem; }
 .reg-benefit-item {
-  font-size: 0.88rem; color: rgba(255,255,255,0.65);
+  font-size: 0.86rem; color: rgba(255,255,255,0.65);
   background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 10px; padding: 0.55rem 0.9rem; margin: 0;
+  border-radius: 10px; padding: 0.5rem 0.9rem; margin: 0;
   transition: background 0.2s, transform 0.2s;
 }
 .reg-benefit-item:hover { background: rgba(167,139,250,0.1); transform: translateX(4px); }
@@ -123,11 +165,22 @@
 .reg-trust {
   display: flex; align-items: center; gap: 0.75rem;
   background: rgba(5,150,105,0.1); border: 1px solid rgba(5,150,105,0.25);
-  border-radius: 12px; padding: 0.85rem 1rem;
-  font-size: 0.82rem; color: rgba(255,255,255,0.6);
+  border-radius: 12px; padding: 0.75rem 1rem;
+  font-size: 0.8rem; color: rgba(255,255,255,0.6);
 }
-.reg-trust span { font-size: 1.3rem; flex-shrink: 0; }
+.reg-trust span { font-size: 1.25rem; flex-shrink: 0; }
 .reg-trust p { margin: 0; }
+
+/* Shrink further on shorter viewports so nothing needs to scroll */
+@media (max-height: 800px) {
+  .reg-hero { padding: 1.5rem 3.5rem; }
+  .reg-hero-inner { gap: 1.1rem; }
+  .reg-hero-text h2 { font-size: clamp(1.5rem, 2.2vw, 1.9rem); margin-bottom: 0.4rem; }
+  .reg-hero-desc { display: none; }
+}
+@media (max-height: 680px) {
+  .reg-trust { display: none; }
+}
 
 /* ════════════════════════════════════════════════════════════════
    RIGHT FORM PANEL
@@ -480,7 +533,7 @@
   .reg-form-panel { padding: 1rem; }
   .reg-card { padding: 1.75rem 1.25rem; border-radius: 18px; }
   .reg-card-title { font-size: 1.35rem; }
-  .reg-logo { width: 114px; height: 114px; }
+  .reg-logo { width: 80px; height: 80px; }
   .reg-avatar-circle { width: 64px; height: 64px; }
 }
 
@@ -491,6 +544,12 @@ html[data-theme="light"] .register-page  { background: #f5f3ff; }
 html[data-theme="light"] .reg-bg-orb     { opacity: 0.2; }
 html[data-theme="light"] .reg-shape      { opacity: 0.07; }
 html[data-theme="light"] .reg-hero       { background: linear-gradient(135deg, rgba(124,58,237,0.07) 0%, rgba(37,99,235,0.05) 100%); }
+html[data-theme="light"] .reg-brand {
+  background: rgba(255,255,255,0.98);
+  box-shadow:
+    0 6px 18px rgba(15,23,42,0.12),
+    0 0 0 1px rgba(15,23,42,0.05) inset;
+}
 html[data-theme="light"] .reg-hero-text h2 { color: #0f172a; }
 html[data-theme="light"] .reg-hero-desc    { color: #475569; }
 html[data-theme="light"] .reg-benefit-item { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.06); color: #374151; }
@@ -521,3 +580,11 @@ html[data-theme="light"] .reg-avatar-cam-icon  { color: rgba(59,130,246,0.55); s
 html[data-theme="light"] .reg-avatar-empty-text { color: rgba(59,130,246,0.5); }
 html[data-theme="light"] .reg-avatar-info-title { color: #334155; }
 html[data-theme="light"] .reg-avatar-info-sub   { color: #64748b; }
+html[data-theme="light"] .reg-hero,
+html[data-theme="light"] .reg-form-panel {
+  scrollbar-color: rgba(15,23,42,0.15) transparent;
+}
+html[data-theme="light"] .reg-hero::-webkit-scrollbar-thumb,
+html[data-theme="light"] .reg-form-panel::-webkit-scrollbar-thumb {
+  background: rgba(15,23,42,0.15);
+}
