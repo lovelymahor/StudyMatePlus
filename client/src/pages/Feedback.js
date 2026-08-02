@@ -451,7 +451,7 @@ const Feedback = () => {
               initial="hidden"
               animate="visible"
             >
-              {filteredFeedback.map((feedback, index) => (
+              {(filteredFeedback ?? []).map((feedback, index) => (
                 <motion.div
                   key={feedback.id}
                   className="feedback-card"
