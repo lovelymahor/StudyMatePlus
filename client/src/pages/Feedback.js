@@ -402,7 +402,7 @@ const Feedback = () => {
                 <option value="all">All Difficulties</option>
                 {difficulties.slice(1).map((difficulty) => (
                   <option key={difficulty} value={difficulty}>
-                    {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
+                    {difficulty[0].toUpperCase() + difficulty.slice(1)}
                   </option>
                 ))}
               </motion.select>
@@ -451,7 +451,7 @@ const Feedback = () => {
               initial="hidden"
               animate="visible"
             >
-              {filteredFeedback.map((feedback, index) => (
+              {(filteredFeedback ?? []).map((feedback, index) => (
                 <motion.div
                   key={feedback.id}
                   className="feedback-card"
