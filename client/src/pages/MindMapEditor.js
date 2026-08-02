@@ -432,7 +432,7 @@ export default function MindMapEditor() {
 
   // Inspector edits
   const updateSelected = (patch) => {
-    setNodes(nds => nds.map(n => n.id === selectedId ? { ...n, data: { ...n.data, ...patch } } : n));
+    setNodes(nds => (nds ?? []).map(n => n.id === selectedId ? { ...n, data: { ...n.data, ...patch } } : n));
   };
 
   // Templates
