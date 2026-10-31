@@ -75,12 +75,13 @@
   flex: 1;
   display: flex; align-items: center; justify-content: center;
   padding: 3rem 3.5rem; overflow-y: auto;
-  background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(37,99,235,0.07) 100%);
-  border-right: 1px solid rgba(255,255,255,0.05);
+  background: linear-gradient(135deg, rgba(124,58,237,0.14) 0%, rgba(37,99,235,0.1) 100%);
+  border-right: 1px solid rgba(255,255,255,0.09);
+  box-shadow: 4px 0 24px rgba(0,0,0,0.18);
 }
 .reg-hero-inner {
   max-width: 500px; width: 100%;
-  display: flex; flex-direction: column; gap: 2rem;
+  display: flex; flex-direction: column; gap: 1.5rem;
   animation: regSlideLeft 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 @keyframes regSlideLeft {
@@ -140,12 +141,12 @@
 
 .reg-card {
   width: 100%; max-width: 440px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.06);
   backdrop-filter: blur(32px) saturate(1.5);
   -webkit-backdrop-filter: blur(32px) saturate(1.5);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.14);
   border-radius: 24px;
-  padding: 2.25rem 2.25rem;
+  padding: 1.75rem 2rem;
   box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset, 0 28px 70px rgba(0,0,0,0.4);
   animation: regSlideRight 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
   transition: box-shadow 0.3s;
@@ -166,37 +167,55 @@
 }
 
 /* ── Step indicator ──────────────────────────────────────────── */
-.reg-steps {
-  display: flex; align-items: center; justify-content: center;
-  gap: 0.5rem; margin-bottom: 1.5rem;
+.reg-steps-label {
+  text-align: center; margin: 0 0 0.6rem;
+  font-size: 0.72rem; font-weight: 700; color: #93c5fd;
+  text-transform: uppercase; letter-spacing: 0.08em;
 }
-.reg-step { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+.reg-steps {
+  display: flex; align-items: flex-start; justify-content: center;
+  gap: 0.6rem; margin-bottom: 1.1rem;
+}
+.reg-step { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
 .reg-step span {
-  width: 32px; height: 32px; border-radius: 50%;
+  width: 36px; height: 36px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.82rem; font-weight: 700;
-  background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.4);
+  font-size: 0.88rem; font-weight: 700;
+  background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.5);
   transition: all 0.3s;
 }
-.reg-step.active span { background: rgba(99,179,237,0.2); border-color: #60a5fa; color: #60a5fa; }
-.reg-step.done span   { background: rgba(34,197,94,0.2);  border-color: #22c55e; color: #22c55e; }
-.reg-step p { font-size: 0.7rem; color: rgba(255,255,255,0.35); margin: 0; }
-.reg-step.active p { color: #93c5fd; }
-.reg-step-line { flex: 1; height: 2px; max-width: 60px; background: rgba(255,255,255,0.1); border-radius: 1px; }
+.reg-step.active span {
+  background: rgba(99,179,237,0.22); border-color: #60a5fa; color: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(96,165,250,0.14);
+}
+.reg-step.done span   { background: rgba(34,197,94,0.22);  border-color: #22c55e; color: #22c55e; }
+.reg-step p { font-size: 0.72rem; font-weight: 500; color: rgba(255,255,255,0.42); margin: 0; }
+.reg-step.active p { color: #93c5fd; font-weight: 700; }
+.reg-step.done p    { color: rgba(255,255,255,0.55); }
+.reg-step-line {
+  flex: 1; height: 3px; max-width: 60px; margin-top: 17px;
+  background: rgba(255,255,255,0.12); border-radius: 2px; overflow: hidden;
+}
+.reg-step-line::after {
+  content: ''; display: block; height: 100%; width: 0%;
+  background: linear-gradient(90deg, #60a5fa, #22c55e);
+  transition: width 0.35s ease;
+}
+.reg-step-line.filled::after { width: 100%; }
 
 /* ── Card header ─────────────────────────────────────────────── */
-.reg-card-header { text-align: center; margin-bottom: 1.5rem; }
+.reg-card-header { text-align: center; margin-bottom: 1.1rem; }
 .reg-card-icon {
-  font-size: 2.3rem; margin-bottom: 0.6rem; display: block;
+  font-size: 2rem; margin-bottom: 0.4rem; display: block;
   animation: regIconBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
 }
 @keyframes regIconBounce {
   from { transform: scale(0.5) rotate(-10deg); opacity: 0; }
   to   { transform: scale(1) rotate(0deg);     opacity: 1; }
 }
-.reg-card-title   { font-size: 1.55rem; font-weight: 800; color: #fff; margin: 0 0 0.35rem; letter-spacing: -0.03em; }
-.reg-card-subtitle { font-size: 0.86rem; color: rgba(255,255,255,0.42); margin: 0; }
+.reg-card-title   { font-size: 1.4rem; font-weight: 800; color: #fff; margin: 0 0 0.3rem; letter-spacing: -0.03em; }
+.reg-card-subtitle { font-size: 0.85rem; color: rgba(255,255,255,0.48); margin: 0; }
 
 /* ── Alert ───────────────────────────────────────────────────── */
 .reg-alert {
@@ -213,19 +232,19 @@
 }
 
 /* ── Form & fields ───────────────────────────────────────────── */
-.reg-step-fields { display: flex; flex-direction: column; gap: 1rem; }
+.reg-step-fields { display: flex; flex-direction: column; gap: 0.85rem; }
 
 .reg-field { position: relative; }
 .reg-label {
-  display: block; font-size: 0.78rem; font-weight: 600;
-  color: rgba(255,255,255,0.48); margin-bottom: 0.38rem;
+  display: block; font-size: 0.78rem; font-weight: 700;
+  color: rgba(255,255,255,0.62); margin-bottom: 0.35rem;
   text-transform: uppercase; letter-spacing: 0.06em; transition: color 0.2s;
 }
 .reg-field.active .reg-label,
 .reg-field:focus-within .reg-label { color: #93c5fd; }
 .reg-field.error .reg-label         { color: #fca5a5; }
 .reg-optional {
-  font-size: 0.7rem; color: rgba(255,255,255,0.3);
+  font-size: 0.7rem; color: rgba(255,255,255,0.4);
   font-weight: 400; text-transform: none; letter-spacing: 0;
 }
 
@@ -237,13 +256,13 @@
 .reg-field:focus-within .reg-input-icon { transform: scale(1.15); }
 
 .reg-input {
-  width: 100%; padding: 0.82rem 3rem 0.82rem 2.75rem;
-  background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.1);
+  width: 100%; padding: 0.75rem 3rem 0.75rem 2.75rem;
+  background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.16);
   border-radius: 12px; color: #fff; font-size: 0.92rem; outline: none;
   transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
   box-sizing: border-box;
 }
-.reg-input::placeholder { color: rgba(255,255,255,0.2); }
+.reg-input::placeholder { color: rgba(255,255,255,0.35); }
 .reg-input:focus {
   border-color: #7c3aed;
   background: rgba(124,58,237,0.08);
@@ -290,9 +309,9 @@
 .reg-avatar-picker {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 16px;
+  gap: 0.85rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 14px;
   border: 1px solid rgba(255,255,255,0.08);
   background: rgba(255,255,255,0.03);
   transition: border-color 0.25s, background 0.25s;
@@ -305,7 +324,7 @@
 /* ── Circle button ── */
 .reg-avatar-circle {
   position: relative;
-  width: 76px; height: 76px;
+  width: 56px; height: 56px;
   border-radius: 50%;
   flex-shrink: 0;
   border: 2px dashed rgba(147,197,253,0.35);
@@ -344,16 +363,11 @@
   pointer-events: none;
 }
 .reg-avatar-cam-icon {
-  width: 26px; height: 26px;
+  width: 20px; height: 20px;
   color: rgba(147,197,253,0.55);
   stroke: rgba(147,197,253,0.55);
 }
-.reg-avatar-empty-text {
-  font-size: 0.58rem; font-weight: 700;
-  color: rgba(147,197,253,0.5);
-  text-transform: uppercase; letter-spacing: 0.08em;
-  pointer-events: none;
-}
+.reg-avatar-empty-text { display: none; }
 
 /* ── Hover overlay ── */
 .reg-avatar-overlay {
@@ -369,11 +383,11 @@
 }
 .reg-avatar-circle:hover .reg-avatar-overlay { opacity: 1; }
 .reg-avatar-overlay svg {
-  width: 22px; height: 22px;
+  width: 18px; height: 18px;
   color: #fff; stroke: #fff;
 }
 .reg-avatar-overlay span {
-  font-size: 0.6rem; font-weight: 700;
+  font-size: 0.55rem; font-weight: 700;
   color: #fff; text-transform: uppercase; letter-spacing: 0.07em;
 }
 
@@ -481,7 +495,6 @@
   .reg-card { padding: 1.75rem 1.25rem; border-radius: 18px; }
   .reg-card-title { font-size: 1.35rem; }
   .reg-logo { width: 114px; height: 114px; }
-  .reg-avatar-circle { width: 64px; height: 64px; }
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -511,6 +524,8 @@ html[data-theme="light"] .reg-step span    { background: rgba(0,0,0,0.04); borde
 html[data-theme="light"] .reg-step.active span { background: rgba(37,99,235,0.08); border-color: #3b82f6; color: #2563eb; }
 html[data-theme="light"] .reg-step p       { color: #94a3b8; }
 html[data-theme="light"] .reg-step.active p { color: #2563eb; }
+html[data-theme="light"] .reg-steps-label  { color: #2563eb; }
+html[data-theme="light"] .reg-optional     { color: #94a3b8; }
 
 /* Avatar — light mode */
 html[data-theme="light"] .reg-avatar-picker    { background: #f8fafc; border-color: rgba(148,163,184,0.25); }
