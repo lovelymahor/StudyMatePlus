@@ -133,30 +133,33 @@ app.post(
 
 // --- Syllabus upload API ---
 app.post('/api/syllabus/upload', upload.single('file'), async (req, res) => {
+  const filePath = req.file ? req.file.path : null;
+  
   try {
     if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
 
-    // Validate file size and basic health
-    const filePath = req.file.path;
     const stat = fs.statSync(filePath);
-    if (stat.size === 0) return res.status(400).json({ error: 'Empty file' });
+    if (stat.size === 0) {
+      fs.unlink(filePath, () => {});
+      return res.status(400).json({ error: 'Empty file' });
+    }
 
-    // Compute hash for caching
     const hash = crypto.createHash('sha256').update(fs.readFileSync(filePath)).digest('hex');
     const cacheFile = path.join(CACHE_DIR, `${hash}.json`);
     if (fs.existsSync(cacheFile)) {
       const cached = JSON.parse(fs.readFileSync(cacheFile, 'utf8'));
+      fs.unlink(filePath, () => {});
       return res.json({ ...cached, cached: true });
     }
 
-    // Parse text
     let text = await parseFile(filePath, req.file.mimetype);
-    if (!text || text.trim().length === 0) return res.status(400).json({ error: 'Unable to extract text from document' });
+    if (!text || text.trim().length === 0) {
+      fs.unlink(filePath, () => {});
+      return res.status(400).json({ error: 'Unable to extract text from document' });
+    }
 
-    // Call AI to generate structured summary (if OpenAI key present)
     let aiResult = null;
     if (openai) {
-      // Build prompt
       const prompt = `You are an assistant that extracts structured syllabus information from raw text. Return a JSON object with keys: courseName,difficulty,modules,summary,learningOutcomes,examWeightage,moduleNotes.\nText:\n"""\n${text.slice(0, 20000)}\n"""`;
 
       const response = await openai.createCompletion({
@@ -172,7 +175,6 @@ app.post('/api/syllabus/upload', upload.single('file'), async (req, res) => {
         aiResult = { summary: raw || '', rawAiText: raw };
       }
     } else {
-      // Fallback lightweight extraction
       const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
       const title = lines[0] || 'Untitled Course';
       aiResult = {
@@ -186,13 +188,21 @@ app.post('/api/syllabus/upload', upload.single('file'), async (req, res) => {
       };
     }
 
-    // Save cache
     const out = { ...aiResult, parsedTextExcerpt: text.slice(0, 2000) };
     fs.writeFileSync(cacheFile, JSON.stringify(out, null, 2));
+
+    fs.unlink(filePath, (err) => {
+      if (err) console.error('Failed to delete temp file:', err);
+    });
 
     res.json(out);
   } catch (error) {
     console.error('Syllabus upload error:', error);
+    
+    if (filePath && fs.existsSync(filePath)) {
+      fs.unlink(filePath, () => {});
+    }
+
     if (error.message && error.message.includes('Invalid file type')) return res.status(400).json({ error: 'Invalid file format. Allowed: pdf, docx, txt' });
     res.status(500).json({ error: 'Failed to process file', details: error.message });
   }
