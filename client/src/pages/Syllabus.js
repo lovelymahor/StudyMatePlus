@@ -19,7 +19,9 @@ const Syllabus = () => {
       uploadDate: "2024-01-15",
       fileSize: "2.4 MB",
       difficulty: "Beginner",
-      tags: ["CSE", "First Year", "Basic Programming"]
+      tags: ["CSE", "First Year", "Basic Programming"],
+
+      pdf: "/pdf/DBMS.pdf"
     },
     {
       id: 2,
@@ -32,7 +34,9 @@ const Syllabus = () => {
       uploadDate: "2024-01-18",
       fileSize: "2.8 MB",
       difficulty: "Intermediate",
-      tags: ["Mechanical", "Thermodynamics", "Manufacturing"]
+      tags: ["Mechanical", "Thermodynamics", "Manufacturing"],
+
+      pdf: "/pdf/DSA.pdf"
     },
     {
       id: 3,
@@ -45,7 +49,9 @@ const Syllabus = () => {
       uploadDate: "2024-01-20",
       fileSize: "3.1 MB",
       difficulty: "Intermediate",
-      tags: ["CSE", "Data Structures", "Database"]
+      tags: ["CSE", "Data Structures", "Database"],
+
+      pdf: "/pdf/Java.pdf"
     },
     {
       id: 4,
@@ -58,7 +64,9 @@ const Syllabus = () => {
       uploadDate: "2024-01-22",
       fileSize: "3.5 MB",
       difficulty: "Advanced",
-      tags: ["Electronics", "Microprocessors", "Communication"]
+      tags: ["Electronics", "Microprocessors", "Communication"],
+
+      pdf: "/pdf/OS.pdf"
     },
     {
       id: 5,
@@ -71,7 +79,9 @@ const Syllabus = () => {
       uploadDate: "2024-01-25",
       fileSize: "2.2 MB",
       difficulty: "Beginner",
-      tags: ["IT", "Web Development", "Networks"]
+      tags: ["IT", "Web Development", "Networks"],
+
+      pdf: "/pdf/python.pdf"
     },
     {
       id: 6,
@@ -84,7 +94,9 @@ const Syllabus = () => {
       uploadDate: "2024-01-12",
       fileSize: "2.9 MB",
       difficulty: "Intermediate",
-      tags: ["Civil", "Structural", "Environmental"]
+      tags: ["Civil", "Structural", "Environmental"],
+
+      pdf: "/pdf/WebDevelopment.pdf"
     },
     {
       id: 7,
@@ -97,7 +109,9 @@ const Syllabus = () => {
       uploadDate: "2024-01-28",
       fileSize: "4.2 MB",
       difficulty: "Advanced",
-      tags: ["CSE", "Machine Learning", "Security"]
+      tags: ["CSE", "Machine Learning", "Security"],
+
+      pdf: "/pdf/DBMS.pdf"
     },
     {
       id: 8,
@@ -110,7 +124,9 @@ const Syllabus = () => {
       uploadDate: "2024-01-14",
       fileSize: "3.3 MB",
       difficulty: "Intermediate",
-      tags: ["Electrical", "Power Systems", "Circuits"]
+      tags: ["Electrical", "Power Systems", "Circuits"],
+
+      pdf: null
     }
   ];
 
@@ -124,13 +140,13 @@ const Syllabus = () => {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } }
   };
-  
+
   const scaleIn = {
     hidden: { opacity: 0, scale: 0.85 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
   };
 
-const [showScroll, setShowScroll] = useState(false);
+  const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
     const checkScrollTop = () => {
@@ -170,8 +186,8 @@ const [showScroll, setShowScroll] = useState(false);
   const filteredAndSortedSyllabi = useMemo(() => {
     let filtered = syllabusData.filter(item => {
       const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          item.subjects.some(subject => subject.toLowerCase().includes(searchTerm.toLowerCase())) ||
-                          item.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+        item.subjects.some(subject => subject.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        item.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
       const matchesUniversity = selectedUniversity === 'All' || item.university === selectedUniversity;
       const matchesDepartment = selectedDepartment === 'All' || item.department === selectedDepartment;
       const matchesSemester = selectedSemester === 'All' || item.semester.toString() === selectedSemester;
@@ -197,8 +213,27 @@ const [showScroll, setShowScroll] = useState(false);
   }, [searchTerm, selectedUniversity, selectedDepartment, selectedSemester, sortBy, syllabusData]);
 
   const handleDownload = (syllabus) => {
-    // Simulate download
-    alert(`Downloading: ${syllabus.title}`);
+    if (!syllabus.pdf) {
+      window.alert("This syllabus PDF is not available yet.");
+      return;
+    }
+
+    const link = document.createElement("a");
+    link.href = syllabus.pdf;
+    link.download = syllabus.title + ".pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+
+  const handlePreview = (syllabus) => {
+    if (!syllabus.pdf) {
+      window.alert("Preview is not available because the syllabus PDF has not been uploaded yet.");
+      return;
+    }
+
+    window.open(syllabus.pdf, "_blank");
   };
 
   const getDifficultyColor = (difficulty) => {
@@ -213,7 +248,7 @@ const [showScroll, setShowScroll] = useState(false);
   return (
     <div className="syllabus">
       {/* Hero Section */}
-      <motion.section 
+      <motion.section
         className="syllabus-hero"
         initial="hidden"
         animate="visible"
@@ -244,7 +279,7 @@ const [showScroll, setShowScroll] = useState(false);
       </motion.section>
 
       {/* Search and Filters */}
-      <motion.section 
+      <motion.section
         className="search-filters"
         initial="hidden"
         whileInView="visible"
@@ -306,7 +341,7 @@ const [showScroll, setShowScroll] = useState(false);
       </motion.section>
 
       {/* Results Section */}
-      <motion.section 
+      <motion.section
         className="results"
         initial="hidden"
         whileInView="visible"
@@ -318,10 +353,10 @@ const [showScroll, setShowScroll] = useState(false);
             <h2>Found {filteredAndSortedSyllabi.length} syllabi</h2>
             <p>Browse through our collection of verified academic syllabi</p>
           </motion.div>
-          
+
           <AnimatePresence>
             {filteredAndSortedSyllabi.length === 0 ? (
-              <motion.div 
+              <motion.div
                 className="no-results"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -332,14 +367,14 @@ const [showScroll, setShowScroll] = useState(false);
                 <p>Try adjusting your search criteria or filters to find what you're looking for.</p>
               </motion.div>
             ) : (
-              <motion.div 
+              <motion.div
                 className="syllabus-grid"
                 layout
                 variants={staggerChildren}
               >
                 {filteredAndSortedSyllabi.map(syllabus => (
-                  <motion.div 
-                    key={syllabus.id} 
+                  <motion.div
+                    key={syllabus.id}
                     className="syllabus-card"
                     layout
                     variants={scaleIn}
@@ -398,16 +433,17 @@ const [showScroll, setShowScroll] = useState(false);
                     </div>
 
                     <div className="card-actions">
-                      <motion.button 
-                        className="btn btn-primary" 
+                      <motion.button
+                        className="btn btn-primary"
                         onClick={() => handleDownload(syllabus)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
                         📥 Download Syllabus
                       </motion.button>
-                      <motion.button 
+                      <motion.button
                         className="btn btn-outline"
+                        onClick={() => handlePreview(syllabus)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -423,22 +459,22 @@ const [showScroll, setShowScroll] = useState(false);
       </motion.section>
 
       {/* Scroll to Top Button */}
-            <AnimatePresence>
-              {showScroll && (
-                <motion.button
-                  key="scrollTop"
-                  className="scroll-to-top"
-                  onClick={scrollToTop}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.5 }}
-                  whileHover={{ scale: 1.15, rotate: 5 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <FaArrowUp />
-                </motion.button>
-              )}
-            </AnimatePresence>
+      <AnimatePresence>
+        {showScroll && (
+          <motion.button
+            key="scrollTop"
+            className="scroll-to-top"
+            onClick={scrollToTop}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            whileHover={{ scale: 1.15, rotate: 5 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FaArrowUp />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
