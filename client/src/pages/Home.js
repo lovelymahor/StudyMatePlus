@@ -432,8 +432,8 @@ const Home = () => {
         </div>
       </motion.section>
 
-      {/* Testimonials Section */}
-      <motion.section 
+     {/* Testimonials Section */}
+      <motion.section
         className="testimonials"
         initial="hidden"
         whileInView="visible"
@@ -444,75 +444,37 @@ const Home = () => {
           <motion.h2 className="section-title" variants={fadeInUp}>
             What Students Say
           </motion.h2>
+
           <div className="testimonial-wrapper">
-            <motion.div 
+            <motion.div
               className="testimonial-scroller"
               animate={{ x: ["0%", "-50%"] }}
-              transition={{ 
-                duration: 30, 
-                repeat: Infinity, 
+              transition={{
+                duration: 30,
+                repeat: Infinity,
                 ease: "linear",
-                repeatType: "loop"
+                repeatType: "loop" // Ensures a continuous, seamless loop
               }}
             >
-              {testimonials.map((testimonial, index) => (
-                <motion.div 
+              {/* Combine original and cloned arrays for a seamless buffer */}
+              {[...testimonials, ...testimonials].map((testimonial, index) => (
+                <motion.div
                   key={index}
                   className="testimonial-card"
-                  variants={scaleIn}
-                  whileHover={{ 
-                    scale: 1.02, 
+                  whileHover={{
+                    scale: 1.02,
                     y: -8,
                     boxShadow: "0 15px 30px rgba(0,0,0,0.1)"
                   }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    "{testimonial.quote}"
-                  </motion.p>
-                  <motion.h4
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: index * 0.1 + 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    {testimonial.author}
-                  </motion.h4>
-                </motion.div>
-              ))}
-              {testimonials.map((testimonial, index) => (
-                <motion.div 
-                  key={index + testimonials.length}
-                  className="testimonial-card"
-                  variants={scaleIn}
-                  whileHover={{ 
-                    scale: 1.02, 
-                    y: -8,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)"
-                  }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    "{testimonial.quote}"
-                  </motion.p>
-                  <motion.h4
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: index * 0.1 + 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    {testimonial.author}
-                  </motion.h4>
+                  {/* 
+                      Removed the individual whileInView/initial animations here. 
+                      Scroll-triggered animations inside an infinitely scrolling 
+                      container cause layout recalculations, leading to lag/jumps.
+                  */}
+                  <p>"{testimonial.quote}"</p>
+                  <h4>{testimonial.author}</h4>
                 </motion.div>
               ))}
             </motion.div>

@@ -17,12 +17,9 @@ const SHAPES = [
 ];
 
 const BENEFITS = [
-  '✅ Senior guidance when you need help most',
-  '✅ AI-powered notes and mind maps',
-  '✅ Exam feedback to guide your revision',
-  '✅ Previous year papers for real practice',
-  '✅ Personal analytics dashboard',
-  '✅ Mobile-friendly, learn anywhere',
+  '✅ Senior guidance & AI-powered notes',
+  '✅ Exam feedback and previous year papers',
+  '✅ Personal analytics, anywhere on mobile',
 ];
 
 const getPasswordStrength = (pw) => {
@@ -213,12 +210,13 @@ const Register = () => {
           <div className={`reg-card ${success ? 'reg-success-state' : ''}`}>
 
             {/* Step indicator */}
+            <p className="reg-steps-label">Step {success ? 2 : step} of 2</p>
             <div className="reg-steps">
               <div className={`reg-step ${step >= 1 ? 'active' : ''} ${step > 1 ? 'done' : ''}`}>
                 <span>{step > 1 ? '✓' : '1'}</span>
                 <p>Your Info</p>
               </div>
-              <div className="reg-step-line" />
+              <div className={`reg-step-line ${step > 1 ? 'filled' : ''}`} />
               <div className={`reg-step ${step >= 2 ? 'active' : ''} ${success ? 'done' : ''}`}>
                 <span>{success ? '✓' : '2'}</span>
                 <p>Security</p>
@@ -365,10 +363,7 @@ const Register = () => {
                         <p className="reg-avatar-info-title">
                           {avatarPreview ? '✓ Photo selected' : 'Add a profile photo'}
                         </p>
-                        <p className="reg-avatar-info-sub">
-                          JPG, PNG or GIF · Max 5 MB<br />
-                          You can also add one later from your profile.
-                        </p>
+                        <p className="reg-avatar-info-sub">JPG, PNG or GIF · Max 5 MB · Optional</p>
                         {avatarPreview && (
                           <button
                             type="button"

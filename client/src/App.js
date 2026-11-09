@@ -15,6 +15,7 @@ import Analytics from "./pages/Analytics";
 import Faq from "./pages/Faq";
 import Contribute from "./pages/Contribute";
 import ScrollToTop from "./components/scrolltotop";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 import MindMapEditor from "./pages/MindMapEditor";
 import Profile from "./pages/Profile.js";
 import SubmitFeedback from "./pages/SubmitFeedback";
@@ -31,6 +32,7 @@ const App = () => {
           {/* Navbar is hidden on login/register via CSS — it checks the route */}
           <NavbarWrapper />
           <ScrollToTop />
+          <ScrollToTopButton />
           <Routes>
             {/* ── Public routes ── */}
             <Route path="/login"    element={<Login />}    />
