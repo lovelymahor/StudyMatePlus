@@ -1,0 +1,57 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: studymateplus-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - studymateplus-network
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: studymateplus-server
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - MONGO_URI=mongodb://mongodb:27017/studymateplus
+      - JWT_SECRET=studymateplus_secret_key_123
+      - CLIENT_URL=http://localhost:3000
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    depends_on:
+      - mongodb
+    networks:
+      - studymateplus-network
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: studymateplus-client
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000
+      - WDS_SOCKET_PORT=0
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    depends_on:
+      - server
+    networks:
+      - studymateplus-network
+
+volumes:
+  mongo-data:
+
+networks:
+  studymateplus-network:
+    driver: bridge
