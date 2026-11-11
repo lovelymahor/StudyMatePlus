@@ -14,7 +14,7 @@ const app = express();
 
 const crypto = require('crypto');
 const multer = require('multer');
-const { Configuration, OpenAIApi } = require('openai');
+const OpenAI = require('openai');
 const { parseFile } = require('./utils/parser');
 
 // Ensure uploads and cache directories exist
@@ -45,8 +45,7 @@ const upload = multer({
 // OpenAI setup (optional)
 let openai = null;
 if (process.env.OPENAI_API_KEY) {
-  const conf = new Configuration({ apiKey: process.env.OPENAI_API_KEY });
-  openai = new OpenAIApi(conf);
+  openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 }
 
 
@@ -162,13 +161,13 @@ app.post('/api/syllabus/upload', upload.single('file'), async (req, res) => {
     if (openai) {
       const prompt = `You are an assistant that extracts structured syllabus information from raw text. Return a JSON object with keys: courseName,difficulty,modules,summary,learningOutcomes,examWeightage,moduleNotes.\nText:\n"""\n${text.slice(0, 20000)}\n"""`;
 
-      const response = await openai.createCompletion({
-        model: 'text-davinci-003',
+      const response = await openai.completions.create({
+        model: 'gpt-3.5-turbo-instruct',
         prompt,
         temperature: 0.2,
         max_tokens: 1200
       });
-      const raw = response.data.choices && response.data.choices[0] && response.data.choices[0].text;
+      const raw = response.choices && response.choices[0] && response.choices[0].text;
       try {
         aiResult = JSON.parse(raw);
       } catch (e) {
