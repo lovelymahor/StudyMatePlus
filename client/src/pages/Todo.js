@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./Todo.css";
 import Calendar from "../components/Calendar";
 
+function toLocalDatetimeInputValue(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  const offset = d.getTimezoneOffset();
+  const local = new Date(d.getTime() - offset * 60000);
+  return local.toISOString().slice(0, 16);
+}
+
 const STORAGE_KEY = "smp_tasks_v1";
 
 const defaultForm = { id: null, title: "", description: "", deadline: "", recurrence: "none" };
@@ -197,7 +205,7 @@ export default function Todo() {
                   Deadline
                   <input
                     type="datetime-local"
-                        value={form.deadline ? new Date(form.deadline).toISOString().slice(0,16) : ''}
+                        value={form.deadline ? toLocalDatetimeInputValue(form.deadline) : ''}
                         onChange={(e) => {
                           const v = e.target.value; // yyyy-mm-ddThh:mm
                           const iso = v ? new Date(v).toISOString() : '';
