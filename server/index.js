@@ -10,6 +10,14 @@ const fs = require('fs');
 
 dotenv.config();
 
+// Fail fast with a clear message instead of a MongoDB or JWT error later on.
+const REQUIRED_ENV = ['MONGO_URI', 'JWT_SECRET', 'JWT_REFRESH_SECRET'];
+const missingEnv = REQUIRED_ENV.filter((name) => !process.env[name]);
+if (missingEnv.length > 0) {
+  console.error(`Missing required environment variables: ${missingEnv.join(', ')}. Check server/.env.`);
+  process.exit(1);
+}
+
 const app = express();
 
 const crypto = require('crypto');
