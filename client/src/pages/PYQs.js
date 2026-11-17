@@ -4,6 +4,7 @@ import { FaArrowUp } from "react-icons/fa";
 import { authAxios } from "../context/AuthContext";
 import "./PYQs.css";
 import './ScrollToTop.css';
+import { SERVER_BASE } from '../config/api';
 
 const PYQs = () => {
 
@@ -92,9 +93,8 @@ const scrollToTop = () => {
 };
 
   const downloadPyqPdf = async () => {
-    const serverBase = (process.env.REACT_APP_API_URL || 'http://localhost:5000/api/auth').replace(/\/api\/auth$/, '');
     const response = await authAxios.post(
-      `${serverBase}/api/reports/pyq.pdf`,
+      `${SERVER_BASE}/api/reports/pyq.pdf`,
       {
         selectedUniversity,
         selectedDepartment,

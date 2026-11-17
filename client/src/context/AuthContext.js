@@ -8,9 +8,10 @@ import React, {
   useState,
 } from 'react';
 import axios from 'axios';
+import { AUTH_BASE } from '../config/api';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/auth';
+const API_BASE = AUTH_BASE;
 const ACCESS_TOKEN_KEY = 'smp_access_token';
 const REFRESH_TOKEN_KEY = 'smp_refresh_token';
 const USER_KEY = 'smp_user';
