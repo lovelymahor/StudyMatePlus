@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { motion } from 'framer-motion';
 import './Analytics.css';
+import { SERVER_BASE } from '../config/api';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
 
@@ -67,9 +68,8 @@ const Analytics = () => {
   const [selectedSubject, setSelectedSubject] = useState('all');
 
   const downloadAnalyticsPdf = async () => {
-    const serverBase = (process.env.REACT_APP_API_URL || 'http://localhost:5000/api/auth').replace(/\/api\/auth$/, '');
     const response = await authAxios.post(
-      `${serverBase}/api/reports/analytics.pdf`,
+      `${SERVER_BASE}/api/reports/analytics.pdf`,
       { selectedSubject, subjects, pyqCount },
       { responseType: 'blob' }
     );
