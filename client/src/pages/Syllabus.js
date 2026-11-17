@@ -3,132 +3,133 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp } from "react-icons/fa";
 import './Syllabus.css';
 
+// Mock data for syllabi
+const syllabusData = [
+  {
+    id: 1,
+    title: "Computer Science Engineering - Semester 1",
+    university: "Delhi University",
+    department: "Computer Science",
+    semester: 1,
+    subjects: ["Mathematics I", "Physics", "Chemistry", "Programming in C", "English Communication"],
+    downloadCount: 1250,
+    uploadDate: "2024-01-15",
+    fileSize: "2.4 MB",
+    difficulty: "Beginner",
+    tags: ["CSE", "First Year", "Basic Programming"],
+
+    pdf: "/pdf/DBMS.pdf"
+  },
+  {
+    id: 2,
+    title: "Mechanical Engineering - Semester 2",
+    university: "Mumbai University",
+    department: "Mechanical Engineering",
+    semester: 2,
+    subjects: ["Engineering Mechanics", "Thermodynamics", "Manufacturing Processes", "Engineering Drawing", "Materials Science"],
+    downloadCount: 675,
+    uploadDate: "2024-01-18",
+    fileSize: "2.8 MB",
+    difficulty: "Intermediate",
+    tags: ["Mechanical", "Thermodynamics", "Manufacturing"],
+
+    pdf: "/pdf/DSA.pdf"
+  },
+  {
+    id: 3,
+    title: "Computer Science Engineering - Semester 3",
+    university: "Delhi University",
+    department: "Computer Science",
+    semester: 3,
+    subjects: ["Data Structures", "Computer Organization", "Discrete Mathematics", "Database Systems", "Software Engineering"],
+    downloadCount: 890,
+    uploadDate: "2024-01-20",
+    fileSize: "3.1 MB",
+    difficulty: "Intermediate",
+    tags: ["CSE", "Data Structures", "Database"],
+
+    pdf: "/pdf/Java.pdf"
+  },
+  {
+    id: 4,
+    title: "Electronics Engineering - Semester 4",
+    university: "IIT Delhi",
+    department: "Electronics Engineering",
+    semester: 4,
+    subjects: ["Digital Electronics", "Microprocessors", "Control Systems", "Signals & Systems", "Communication Systems"],
+    downloadCount: 1120,
+    uploadDate: "2024-01-22",
+    fileSize: "3.5 MB",
+    difficulty: "Advanced",
+    tags: ["Electronics", "Microprocessors", "Communication"],
+
+    pdf: "/pdf/OS.pdf"
+  },
+  {
+    id: 5,
+    title: "Information Technology - Semester 1",
+    university: "Anna University",
+    department: "Information Technology",
+    semester: 1,
+    subjects: ["Programming Fundamentals", "Digital Logic", "Computer Networks Basics", "Web Technologies", "Statistics"],
+    downloadCount: 945,
+    uploadDate: "2024-01-25",
+    fileSize: "2.2 MB",
+    difficulty: "Beginner",
+    tags: ["IT", "Web Development", "Networks"],
+
+    pdf: "/pdf/python.pdf"
+  },
+  {
+    id: 6,
+    title: "Civil Engineering - Semester 3",
+    university: "NIT Trichy",
+    department: "Civil Engineering",
+    semester: 3,
+    subjects: ["Structural Analysis", "Fluid Mechanics", "Surveying", "Building Materials", "Environmental Engineering"],
+    downloadCount: 720,
+    uploadDate: "2024-01-12",
+    fileSize: "2.9 MB",
+    difficulty: "Intermediate",
+    tags: ["Civil", "Structural", "Environmental"],
+
+    pdf: "/pdf/WebDevelopment.pdf"
+  },
+  {
+    id: 7,
+    title: "Computer Science Engineering - Semester 5",
+    university: "VIT Vellore",
+    department: "Computer Science",
+    semester: 5,
+    subjects: ["Machine Learning", "Compiler Design", "Computer Graphics", "Network Security", "Mobile Computing"],
+    downloadCount: 1340,
+    uploadDate: "2024-01-28",
+    fileSize: "4.2 MB",
+    difficulty: "Advanced",
+    tags: ["CSE", "Machine Learning", "Security"],
+
+    pdf: "/pdf/DBMS.pdf"
+  },
+  {
+    id: 8,
+    title: "Electrical Engineering - Semester 2",
+    university: "IIT Bombay",
+    department: "Electrical Engineering",
+    semester: 2,
+    subjects: ["Circuit Analysis", "Electromagnetic Theory", "Power Systems", "Digital Circuits", "Instrumentation"],
+    downloadCount: 850,
+    uploadDate: "2024-01-14",
+    fileSize: "3.3 MB",
+    difficulty: "Intermediate",
+    tags: ["Electrical", "Power Systems", "Circuits"],
+
+    pdf: null
+  }
+];
+
 const Syllabus = () => {
 
   document.title = "StudyMatePlus | Syllabus";
-  // Mock data for syllabi
-  const syllabusData = [
-    {
-      id: 1,
-      title: "Computer Science Engineering - Semester 1",
-      university: "Delhi University",
-      department: "Computer Science",
-      semester: 1,
-      subjects: ["Mathematics I", "Physics", "Chemistry", "Programming in C", "English Communication"],
-      downloadCount: 1250,
-      uploadDate: "2024-01-15",
-      fileSize: "2.4 MB",
-      difficulty: "Beginner",
-      tags: ["CSE", "First Year", "Basic Programming"],
-
-      pdf: "/pdf/DBMS.pdf"
-    },
-    {
-      id: 2,
-      title: "Mechanical Engineering - Semester 2",
-      university: "Mumbai University",
-      department: "Mechanical Engineering",
-      semester: 2,
-      subjects: ["Engineering Mechanics", "Thermodynamics", "Manufacturing Processes", "Engineering Drawing", "Materials Science"],
-      downloadCount: 675,
-      uploadDate: "2024-01-18",
-      fileSize: "2.8 MB",
-      difficulty: "Intermediate",
-      tags: ["Mechanical", "Thermodynamics", "Manufacturing"],
-
-      pdf: "/pdf/DSA.pdf"
-    },
-    {
-      id: 3,
-      title: "Computer Science Engineering - Semester 3",
-      university: "Delhi University",
-      department: "Computer Science",
-      semester: 3,
-      subjects: ["Data Structures", "Computer Organization", "Discrete Mathematics", "Database Systems", "Software Engineering"],
-      downloadCount: 890,
-      uploadDate: "2024-01-20",
-      fileSize: "3.1 MB",
-      difficulty: "Intermediate",
-      tags: ["CSE", "Data Structures", "Database"],
-
-      pdf: "/pdf/Java.pdf"
-    },
-    {
-      id: 4,
-      title: "Electronics Engineering - Semester 4",
-      university: "IIT Delhi",
-      department: "Electronics Engineering",
-      semester: 4,
-      subjects: ["Digital Electronics", "Microprocessors", "Control Systems", "Signals & Systems", "Communication Systems"],
-      downloadCount: 1120,
-      uploadDate: "2024-01-22",
-      fileSize: "3.5 MB",
-      difficulty: "Advanced",
-      tags: ["Electronics", "Microprocessors", "Communication"],
-
-      pdf: "/pdf/OS.pdf"
-    },
-    {
-      id: 5,
-      title: "Information Technology - Semester 1",
-      university: "Anna University",
-      department: "Information Technology",
-      semester: 1,
-      subjects: ["Programming Fundamentals", "Digital Logic", "Computer Networks Basics", "Web Technologies", "Statistics"],
-      downloadCount: 945,
-      uploadDate: "2024-01-25",
-      fileSize: "2.2 MB",
-      difficulty: "Beginner",
-      tags: ["IT", "Web Development", "Networks"],
-
-      pdf: "/pdf/python.pdf"
-    },
-    {
-      id: 6,
-      title: "Civil Engineering - Semester 3",
-      university: "NIT Trichy",
-      department: "Civil Engineering",
-      semester: 3,
-      subjects: ["Structural Analysis", "Fluid Mechanics", "Surveying", "Building Materials", "Environmental Engineering"],
-      downloadCount: 720,
-      uploadDate: "2024-01-12",
-      fileSize: "2.9 MB",
-      difficulty: "Intermediate",
-      tags: ["Civil", "Structural", "Environmental"],
-
-      pdf: "/pdf/WebDevelopment.pdf"
-    },
-    {
-      id: 7,
-      title: "Computer Science Engineering - Semester 5",
-      university: "VIT Vellore",
-      department: "Computer Science",
-      semester: 5,
-      subjects: ["Machine Learning", "Compiler Design", "Computer Graphics", "Network Security", "Mobile Computing"],
-      downloadCount: 1340,
-      uploadDate: "2024-01-28",
-      fileSize: "4.2 MB",
-      difficulty: "Advanced",
-      tags: ["CSE", "Machine Learning", "Security"],
-
-      pdf: "/pdf/DBMS.pdf"
-    },
-    {
-      id: 8,
-      title: "Electrical Engineering - Semester 2",
-      university: "IIT Bombay",
-      department: "Electrical Engineering",
-      semester: 2,
-      subjects: ["Circuit Analysis", "Electromagnetic Theory", "Power Systems", "Digital Circuits", "Instrumentation"],
-      downloadCount: 850,
-      uploadDate: "2024-01-14",
-      fileSize: "3.3 MB",
-      difficulty: "Intermediate",
-      tags: ["Electrical", "Power Systems", "Circuits"],
-
-      pdf: null
-    }
-  ];
 
   // Animation variants from Home.js
   const fadeInUp = {
@@ -210,7 +211,7 @@ const Syllabus = () => {
     });
 
     return filtered;
-  }, [searchTerm, selectedUniversity, selectedDepartment, selectedSemester, sortBy, syllabusData]);
+  }, [searchTerm, selectedUniversity, selectedDepartment, selectedSemester, sortBy]);
 
   const handleDownload = (syllabus) => {
     if (!syllabus.pdf) {
