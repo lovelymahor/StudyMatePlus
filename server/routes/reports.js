@@ -4,6 +4,17 @@ const { protect } = require('../middleware/auth');
 
 const router = express.Router();
 
+const MAX_ITEMS = 200;
+const MAX_TEXT_LENGTH = 200;
+
+// Helvetica only handles WinAnsi, so anything outside Latin-1 would make pdf-lib throw.
+const clean = (value) =>
+  String(value ?? '')
+    .replace(/[^\x20-\x7E\xA0-\xFF]/g, '?')
+    .slice(0, MAX_TEXT_LENGTH);
+
+const asList = (value) => (Array.isArray(value) ? value.slice(0, MAX_ITEMS) : null);
+
 const buildPdf = async (title, lines) => {
   const pdfDoc = await PDFDocument.create();
   const page = pdfDoc.addPage([595.28, 841.89]);
@@ -33,13 +44,18 @@ const buildPdf = async (title, lines) => {
 
 router.post('/analytics.pdf', protect, async (req, res) => {
   try {
-    const { selectedSubject, subjects = [], pyqCount = [] } = req.body || {};
+    const { selectedSubject, subjects: rawSubjects = [], pyqCount: rawCounts = [] } = req.body || {};
+    const subjects = asList(rawSubjects);
+    const pyqCount = asList(rawCounts);
+    if (!subjects || !pyqCount) {
+      return res.status(400).json({ success: false, message: 'subjects and pyqCount must be arrays.' });
+    }
     const lines = [];
-    lines.push(`Focus: ${selectedSubject && selectedSubject !== 'all' ? selectedSubject.toUpperCase() : 'All Subjects'}`);
+    lines.push(`Focus: ${selectedSubject && selectedSubject !== 'all' ? clean(selectedSubject).toUpperCase() : 'All Subjects'}`);
     lines.push('');
     lines.push('PYQs by subject:');
     subjects.forEach((subject, index) => {
-      lines.push(`${subject}: ${pyqCount[index] || 0} papers`);
+      lines.push(`${clean(subject)}: ${Number(pyqCount[index]) || 0} papers`);
     });
     lines.push('');
     lines.push('Key takeaways:');
@@ -59,24 +75,28 @@ router.post('/analytics.pdf', protect, async (req, res) => {
 
 router.post('/pyq.pdf', protect, async (req, res) => {
   try {
-    const { selectedUniversity, selectedDepartment, selectedSemester, selectedSubject, papers = [] } = req.body || {};
+    const { selectedUniversity, selectedDepartment, selectedSemester, selectedSubject, papers: rawPapers = [] } = req.body || {};
+    const papers = asList(rawPapers);
+    if (!papers) {
+      return res.status(400).json({ success: false, message: 'papers must be an array.' });
+    }
     const lines = [];
-    lines.push(`University: ${selectedUniversity || 'Not selected'}`);
-    lines.push(`Department: ${selectedDepartment || 'Not selected'}`);
-    lines.push(`Semester: ${selectedSemester || 'Not selected'}`);
-    lines.push(`Subject: ${selectedSubject || 'Not selected'}`);
+    lines.push(`University: ${clean(selectedUniversity) || 'Not selected'}`);
+    lines.push(`Department: ${clean(selectedDepartment) || 'Not selected'}`);
+    lines.push(`Semester: ${clean(selectedSemester) || 'Not selected'}`);
+    lines.push(`Subject: ${clean(selectedSubject) || 'Not selected'}`);
     lines.push('');
     lines.push(`Matching papers: ${papers.length}`);
     lines.push('');
 
     if (papers.length > 0) {
       papers.forEach((paper, index) => {
-        lines.push(`${index + 1}. ${paper.subject}`);
-        lines.push(`   University: ${paper.university}`);
-        lines.push(`   Department: ${paper.department}`);
-        lines.push(`   Semester: ${paper.semester}`);
-        lines.push(`   Uploader: ${paper.uploader}`);
-        lines.push(`   Date: ${paper.date}`);
+        lines.push(`${index + 1}. ${clean(paper?.subject)}`);
+        lines.push(`   University: ${clean(paper?.university)}`);
+        lines.push(`   Department: ${clean(paper?.department)}`);
+        lines.push(`   Semester: ${clean(paper?.semester)}`);
+        lines.push(`   Uploader: ${clean(paper?.uploader)}`);
+        lines.push(`   Date: ${clean(paper?.date)}`);
         lines.push('');
       });
     } else {
