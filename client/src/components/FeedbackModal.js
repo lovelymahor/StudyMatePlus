@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import './FeedbackModal.css'; // This line connects the component to the CSS above
 
+const SERVER_BASE = (process.env.REACT_APP_API_URL || 'http://localhost:5000/api/auth').replace(/\/api\/auth$/, '');
+
 const FeedbackModal = ({ onClose, onSuccess }) => {
   const [formData, setFormData] = useState({
     studentName: '',
@@ -39,7 +41,7 @@ const FeedbackModal = ({ onClose, onSuccess }) => {
     setStatusMessage('Submitting...');
 
     try {
-      const response = await fetch('http://localhost:5000/api/feedback', {
+      const response = await fetch(`${SERVER_BASE}/api/feedback`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
