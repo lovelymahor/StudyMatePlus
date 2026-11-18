@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
@@ -9,6 +9,12 @@ import logo from "./logo.png";
 import "./Home.css";
 import './ScrollToTop.css';
 
+const statistics = [
+  { target: 500, label: "Study Materials" },
+  { target: 50, label: "Universities" },
+  { target: 1000, label: "Previous Papers" },
+  { target: 200, label: "Active Mentors" }
+];
 
 const Home = () => {
   const auth = useAuth();
@@ -18,12 +24,47 @@ const Home = () => {
 
   const [contributors, setContributors] = useState([]);
   const [showScroll, setShowScroll] = useState(false);
+  const [statCounts, setStatCounts] = useState(() => statistics.map(() => 0));
+  const statsSectionRef = useRef(null);
 
   useEffect(() => {
     axios
       .get("https://api.github.com/repos/lovelymahor/StudyMatePlus/contributors")
       .then((response) => setContributors(response.data))
       .catch((error) => console.error("Error fetching contributors", error));
+  }, []);
+
+  useEffect(() => {
+    const section = statsSectionRef.current;
+    if (!section) return undefined;
+
+    let animationFrame;
+    let startTime;
+    const duration = 2500;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+
+      observer.disconnect();
+      const animateCounts = (timestamp) => {
+        if (startTime === undefined) startTime = timestamp;
+
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        setStatCounts(statistics.map(({ target }) => Math.floor(target * easedProgress)));
+
+        if (progress < 1) {
+          animationFrame = requestAnimationFrame(animateCounts);
+        }
+      };
+
+      animationFrame = requestAnimationFrame(animateCounts);
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
+    return () => {
+      observer.disconnect();
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+    };
   }, []);
 
   useEffect(() => {
@@ -316,6 +357,7 @@ const Home = () => {
 
       {/* Stats Section */}
       <motion.section 
+        ref={statsSectionRef}
         className="stats"
         initial="hidden"
         whileInView="visible"
@@ -324,12 +366,7 @@ const Home = () => {
       >
         <div className="container">
           <motion.div className="stats-grid" variants={staggerChildrenFast}>
-            {[
-              { number: "500+", label: "Study Materials" },
-              { number: "50+", label: "Universities" },
-              { number: "1000+", label: "Previous Papers" },
-              { number: "200+", label: "Active Mentors" }
-            ].map((stat, index) => (
+            {statistics.map((stat, index) => (
               <motion.div 
                 key={index}
                 className="stat-item"
@@ -348,7 +385,7 @@ const Home = () => {
                   }}
                   viewport={{ once: true }}
                 >
-                  {stat.number}
+                  {statCounts[index]}+
                 </motion.div>
                 <motion.div 
                   className="stat-label"
